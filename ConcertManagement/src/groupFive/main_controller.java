@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 
@@ -20,6 +21,9 @@ import java.util.List;
 public class main_controller {
     @FXML
     private ListView loginListView;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     public void initialize() {
@@ -43,9 +47,8 @@ public class main_controller {
             public void handle(MouseEvent event) {
                 String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
                 System.out.println("clicked on " + itemClicked);
-                Main.changeView(itemClicked);
-                ReadWriteConfig.readFile(itemClicked);
-
+                Main main = new Main();
+                main.changeView(rootPane, itemClicked);
             }
         });
     }

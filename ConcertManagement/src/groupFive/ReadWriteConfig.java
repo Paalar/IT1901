@@ -22,7 +22,6 @@ public class ReadWriteConfig {
             while (scanner.hasNext()) {
                 String toAdd = scanner.nextLine();
                 output.add(toAdd);
-                System.out.println(toAdd);
             }
         } catch (IOException e) {
             System.out.println(e);

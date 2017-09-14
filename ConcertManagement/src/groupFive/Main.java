@@ -5,6 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -20,7 +24,15 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void changeView(String fxmlFile) {
+    public void changeView(AnchorPane rootPane, String fxmlFile) {
+        // Denne burde også legge til hva du har endret til i en stack så vi kan lett lage fram og tilbake knapper.
 
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlFile + ".fxml"));
+            rootPane.getChildren().setAll(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
