@@ -1,0 +1,19 @@
+__Arbeidere
+?_Lorde
+@_Lydtekniker
+navn:Jens Stoltenberg
+navn:Sondre Dahl
+navn:Pål Larsen
+@_Lystekniker
+navn:Astrid Vik
+navn:Erna Solberg
+navn:Tinus Flagstad
+navn:Petter Rein
+navn:Svenn Grønbeck
+__Festivaler
+?_UKA
+@_Scene1
+konsert:Lorde
+konsert:Martin Garrix
+@_Scene2
+konsert:Future
