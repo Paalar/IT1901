@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class Arrangør_controller {
 
     @FXML
     private ChoiceBox choiceBoxArtists;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     public void initialize() {
@@ -47,6 +51,19 @@ public class Arrangør_controller {
         ArrayList<String> artists = Main.filterList(wholeList,"?_");
         ObservableList<String> observableListToAdd = FXCollections.observableArrayList(artists);
         choiceBoxArtists.setItems(observableListToAdd);
+    }
+
+    @FXML
+    private void goBack(){
+        String fxmlFileName = "main";
+        Main main = new Main();
+        main.changeView(rootPane, fxmlFileName);
+    }
+
+    @FXML
+    private void goHome(){
+        Main main = new Main();
+        main.changeView(rootPane, constants.getHome());
     }
 
 }
