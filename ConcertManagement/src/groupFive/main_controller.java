@@ -41,7 +41,11 @@ public class main_controller {
         loginListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("clicked on " + loginListView.getSelectionModel().getSelectedItem());
+                String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
+                System.out.println("clicked on " + itemClicked);
+                Main.changeView(itemClicked);
+                ReadWriteConfig.readFile(itemClicked);
+
             }
         });
     }
