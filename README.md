@@ -8,5 +8,6 @@ Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ans
 #### Sprint 3
 #### Sprint 4
 
+### Bugs
 ### Known bugs
 #### Fixed bugs
