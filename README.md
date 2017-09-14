@@ -1,5 +1,6 @@
 # it1901
 ## Gruppeprosjekt 
+#### Description
 Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ansvar for å arrangere konserter på flere scener, som involverer rigging av scene, teknisk gjennomføring av konserter, samt booking av band. Brukerhistoriene er oppgitt i alfabetisk rekkefølge.
 
 ### Changelog
@@ -9,5 +10,5 @@ Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ans
 #### Sprint 4
 
 ### Bugs
-### Known bugs
+#### Known bugs
 #### Fixed bugs
