@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
+import org.json.simple.JSONArray;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class Main extends Application {
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
+
+        JSONArray jsonArray = JsonDecode.parseJSON();
     }
 
     public static void main(String[] args) {
