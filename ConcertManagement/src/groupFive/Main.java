@@ -18,6 +18,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        if(constants.getHome() == null){
+            constanses.setHome("main");
+            constanses.setCurrent("main");
+        }
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
@@ -29,10 +33,6 @@ public class Main extends Application {
 
     public void changeView(AnchorPane rootPane, String fxmlFile) {
         // Denne burde også legge til hva du har endret til i en stack så vi kan lett lage fram og tilbake knapper.
-        if(constants.getHome() == null){
-            setHome("main");
-            setCurrent("main");
-        }
         constanses.setPrev(constanses.getCurrent());
         constanses.setCurrent(fxmlFile);
         try {

@@ -63,6 +63,7 @@ public class Arrangør_controller {
     @FXML
     private void goHome(){
         Main main = new Main();
+        constants.emptyStack();
         main.changeView(rootPane, constants.getHome());
     }
 

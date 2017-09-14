@@ -21,9 +21,13 @@ public class constants {
     
     @FXML
     static private Stack<String> forw = new Stack<String>();
-    
+
     public String getForw() {
 		return forw.pop();
+	}
+
+	public  void emptyStack(Stack<String> stack){
+
 	}
 
 	public void setForw(String forw) {
