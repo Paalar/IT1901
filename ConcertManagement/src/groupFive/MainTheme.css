@@ -1,0 +1,25 @@
+.background {
+    -fx-background-color: #ffe6cc;
+}
+
+.listView -list-cell:even {
+    -fx-background-color: blue;
+    -fx-text-fill: black;
+    -fx-background-insets: 10, 10, 10, 10;
+
+}
+
+.listView -list-cell:odd {
+    -fx-background-color: blue;
+    -fx-text-fill: black;
+    -fx-background-insets: 10, 10, 10, 10;
+
+}
+
+#listText .list-cell {
+    -fx-alignment: center;
+}
+
+#listViewWrap {
+
+}
