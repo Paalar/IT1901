@@ -2,14 +2,27 @@ package groupFive;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Arrangør_controller {
+    private ArrayList<String> wholeList;
+
     @FXML
     private ListView listView;
+
+    @FXML
+    private ChoiceBox choiceBoxArtists;
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     public void initialize() {
@@ -17,16 +30,40 @@ public class Arrangør_controller {
     }
 
     private void addItemsToList() {
-        ArrayList<String> wholeList = ReadWriteConfig.readFile("arrangor");
-        ArrayList<String> listToAdd = new ArrayList<>();
         listView.setEditable(true);
-        for (int x  = 0; x < wholeList.size(); x++) {
-            if (wholeList.get(x).startsWith("__")) {
-                listToAdd.add(wholeList.get(x));
-            }
-        }
+        wholeList = ReadWriteConfig.readFile("arrangor");
+        ArrayList<String> listToAdd = Main.filterList(wholeList, "__");
         ObservableList<String> observableListToAdd = FXCollections.observableArrayList(listToAdd);
         listView.setItems(observableListToAdd);
+        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String itemClicked = listView.getSelectionModel().getSelectedItem().toString();
+                if (itemClicked.equals("Arbeidere")) {
+                    showArbeidere();
+                }
+            }
+        });
+    }
+
+    private void showArbeidere() {
+        choiceBoxArtists.setVisible(true);
+        ArrayList<String> artists = Main.filterList(wholeList,"?_");
+        ObservableList<String> observableListToAdd = FXCollections.observableArrayList(artists);
+        choiceBoxArtists.setItems(observableListToAdd);
+    }
+
+    @FXML
+    private void goBack(){
+        String fxmlFileName = "main";
+        Main main = new Main();
+        main.changeView(rootPane, fxmlFileName);
+    }
+
+    @FXML
+    private void goHome(){
+        Main main = new Main();
+        main.changeView(rootPane, constants.getHome());
     }
 
 }
