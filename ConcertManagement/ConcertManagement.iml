@@ -9,28 +9,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library>
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Downloads/json-simple-master/src/main/java" />
-          <root url="file://$USER_HOME$/Downloads/json-simple-master/src/test/java" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES />
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/Downloads/json-simple-master.zip!/json-simple-master/src/main/java" />
-          <root url="jar://$USER_HOME$/Downloads/json-simple-master.zip!/json-simple-master/src/test/java" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/json-simple-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/resources/json-simple-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
