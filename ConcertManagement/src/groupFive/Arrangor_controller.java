@@ -1,5 +1,7 @@
 package groupFive;
 
+import util.Constants;
+import IO.ReadWriteConfig;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -9,10 +11,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Arrangør_controller {
+public class Arrangor_controller {
     private ArrayList<String> wholeList;
 
     @FXML
@@ -63,8 +64,8 @@ public class Arrangør_controller {
     @FXML
     private void goHome(){
         Main main = new Main();
-        constants.emptyStack();
-        main.changeView(rootPane, constants.getHome());
+        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
+        main.changeView(rootPane, Constants.getHome());
     }
 
 }

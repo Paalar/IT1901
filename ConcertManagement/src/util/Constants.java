@@ -1,13 +1,11 @@
-package groupFive;
+package util;
 
-import java.io.IOException;
 import java.util.Stack;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
-public class constants {
+public class Constants {
     private static final AnchorPane AnchorPane = null;
 
 	@FXML 
@@ -26,12 +24,12 @@ public class constants {
 		return forw.pop();
 	}
 
-	public  void emptyStack(Stack<String> stack){
+	public void emptyStack(Stack<String> stack){
 
 	}
 
 	public void setForw(String forw) {
-		constants.forw.push(forw);
+		Constants.forw.push(forw);
 	}
 
 	public static String getHome() {
@@ -39,7 +37,7 @@ public class constants {
 	}
 
 	public static void setHome(String string) {
-		constants.home = string;
+		Constants.home = string;
 	}
 
 	public String getCurrent() {
@@ -47,7 +45,7 @@ public class constants {
 	}
 
 	public static void setCurrent(String current) {
-		constants.current = current;
+		Constants.current = current;
 	}
 
 	public String getPrev() {
@@ -55,7 +53,7 @@ public class constants {
 	}
 
 	public void setPrev(String prev) {
-		constants.prev.push(prev);
+		Constants.prev.push(prev);
 	}
     
     

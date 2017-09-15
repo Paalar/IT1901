@@ -1,5 +1,7 @@
 package groupFive;
 
+import util.Constants;
+import Json.JsonDecode;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,17 +13,15 @@ import org.json.simple.JSONArray;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static groupFive.constants.*;
-
 public class Main extends Application {
-    constants constanses = new constants();
+    Constants constants = new Constants();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        if(constants.getHome() == null){
-            constanses.setHome("main");
-            constanses.setCurrent("main");
+        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        if(Constants.getHome() == null){
+            constants.setHome("main");
+            constants.setCurrent("main");
         }
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
@@ -36,8 +36,9 @@ public class Main extends Application {
 
     public void changeView(AnchorPane rootPane, String fxmlFile) {
         // Denne burde også legge til hva du har endret til i en stack så vi kan lett lage fram og tilbake knapper.
-        constanses.setPrev(constanses.getCurrent());
-        constanses.setCurrent(fxmlFile);
+        fxmlFile = fxmlFile.replace("ø","o");
+        constants.setPrev(constants.getCurrent());
+        constants.setCurrent(fxmlFile);
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlFile + ".fxml"));
             rootPane.getChildren().setAll(pane);
@@ -48,9 +49,9 @@ public class Main extends Application {
     }
 
     public void changeViewBack(AnchorPane rootPane, String fxmlFile){
-        constanses.setForw(fxmlFile);
-        constanses.setCurrent(fxmlFile);
-        changeView(rootPane,constanses.getPrev());
+        constants.setForw(fxmlFile);
+        constants.setCurrent(fxmlFile);
+        changeView(rootPane, constants.getPrev());
     }
 
     public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
