@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class main_controller {
+public class Main_controller {
     @FXML
     private ListView loginListView;
 

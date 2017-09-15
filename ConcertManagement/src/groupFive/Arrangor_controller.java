@@ -1,5 +1,7 @@
 package groupFive;
 
+import util.Constants;
+import IO.ReadWriteConfig;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -8,11 +10,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import util.Filer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Arrangør_controller {
+public class Arrangor_controller {
     private ArrayList<String> wholeList;
 
     @FXML
@@ -32,7 +34,7 @@ public class Arrangør_controller {
     private void addItemsToList() {
         listView.setEditable(true);
         wholeList = ReadWriteConfig.readFile("arrangor");
-        ArrayList<String> listToAdd = Main.filterList(wholeList, "__");
+        ArrayList<String> listToAdd = Filer.filterList(wholeList, "__");
         ObservableList<String> observableListToAdd = FXCollections.observableArrayList(listToAdd);
         listView.setItems(observableListToAdd);
         listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -48,7 +50,7 @@ public class Arrangør_controller {
 
     private void showArbeidere() {
         choiceBoxArtists.setVisible(true);
-        ArrayList<String> artists = Main.filterList(wholeList,"?_");
+        ArrayList<String> artists = Filer.filterList(wholeList,"?_");
         ObservableList<String> observableListToAdd = FXCollections.observableArrayList(artists);
         choiceBoxArtists.setItems(observableListToAdd);
     }
@@ -63,8 +65,8 @@ public class Arrangør_controller {
     @FXML
     private void goHome(){
         Main main = new Main();
-        constants.emptyStack();
-        main.changeView(rootPane, constants.getHome());
+        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
+        main.changeView(rootPane, Constants.getHome());
     }
 
 }
