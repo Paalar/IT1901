@@ -1,36 +1,37 @@
 package Json;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class JsonDecode {
 
-    public static JSONArray parseJSON() {
-        JSONParser parser = new JSONParser();
-
+    public static List<Festival> parseJSON() {
         try {
-            Object obj = parser.parse(new FileReader(("src/resources/concertManagement.json")));
-            //JSONObject jsonObject = (JSONObject) obj;
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.add(obj);
-            System.out.println(jsonArray.get(0));
+            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/concertManagement.json"));
 
-            return jsonArray;
+            Gson gson = new Gson();
+            Type foundListType = new TypeToken<ArrayList<Festival>>(){}.getType();
+            List<Festival> festival = gson.fromJson(jsonReader, foundListType);
+            return festival;
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
         }
-        catch (FileNotFoundException e) {e.printStackTrace(); }
-        catch (IOException e) {e.printStackTrace(); }
-        catch (ParseException e) {e.printStackTrace(); }
-        catch (Exception e) {e.printStackTrace(); }
 
-        return null;
     }
 
 }
+
+
+
+

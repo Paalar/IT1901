@@ -1,55 +1,69 @@
-{
-  "festival" : [
-    {
-      "festival" :"UKA",
-      "konsert" : [
-        {
-          "artist" : "Lorde",
-          "scene" : 2,
-          "lys" : {
-            "lys1" : "Sondre Dahl",
-            "lys2" : "Pål Larsen"
+[
+  {
+    "festival": "UKA",
+    "konsert": [
+      {
+        "artist": "Lorde",
+        "scene": 2,
+        "lys": [
+          {
+            "navn": "Petter Rein"
           },
-          "lyd" : {
-            "lyd1" : "Tinus Flagstad",
-            "lyd2" : "Astrid vik"
+          {
+            "navn": "Svenn Grønbeck"
+          }
+        ],
+        "lyd": [
+          {
+            "navn": "Jens Stoltenberg"
           },
-          "pris" : 590,
-          "dato" : "20-9-2017",
-          "sjanger" : "Pop"
-        },
-        {
-          "artist" : "Future",
-          "scene" : 1,
-          "lys" : {
-            "lys1" : "Petter Rein",
-            "lys2" : "Svenn Grønbeck"
+          {
+            "navn": "Erna Solberg"
+          }
+        ],
+        "pris": 590,
+        "dato": "20-9-2017",
+        "sjanger": "Pop"
+      },
+      {
+        "artist": "Future",
+        "scene": 1,
+        "lys": [
+          {
+            "navn": "Petter Rein"
           },
-          "lyd" : {
-            "lyd1" : "Jens Stoltenberg",
-            "lyd2" : "Erna Solberg"
+          {
+            "navn": "Svenn Grønbeck"
+          }
+        ],
+        "lyd": [
+          {
+            "navn": "Jens Stoltenberg"
           },
-          "pris" : 590,
-          "dato" : "21-9-2017",
-          "sjanger" : "Pop"
-        }
-      ],
-      "tilbud" : [
-        {
-          "artist" : "Kanye West",
-          "dato" : "31-10-2017",
-          "pris" : 100000
-        }
-      ],
-      "resultat" : [
-        {
-          "artist" : "Lorde",
-          "publikum" : 5000,
-          "kostnad" : 40000,
-          "inntekt" : 100000,
-          "scene" : 2
-        }
-      ]
-    }
-  ]
-}
+          {
+            "navn": "Erna Solberg"
+          }
+        ],
+        "pris": 590,
+        "dato": "21-9-2017",
+        "sjanger": "Pop"
+      }
+    ],
+    "tilbud": [
+      {
+        "artist": "Kanye West",
+        "dato": "31-10-2017",
+        "pris": 10
+      }
+    ],
+    "resultat": [
+      {
+        "artist": "Lorde",
+        "publikum": 5000,
+        "kostnad": 40000,
+        "inntekt": 100000,
+        "scene": 2
+      }
+    ]
+  }
+]
