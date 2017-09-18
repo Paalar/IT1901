@@ -20,8 +20,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         if(Constants.getHome() == null){
-            constants.setHome("main");
-            constants.setCurrent("main");
+            constants.setHome("Main");
+            constants.setCurrent("Main");
         }
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
