@@ -1,31 +1,29 @@
 package groupFive;
 
-import Json.Concert;
 import Json.Festival;
 import Json.JsonDecode;
 import util.Constants;
-import IO.ReadWriteConfig;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import util.Filter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.Filter.getAllFestivalsObservableList;
+
 public class Arrangor_controller {
-    private ArrayList<String> wholeList;
+    @FXML
+    private ListView listViewScene1;
+    @FXML
+    private ListView listViewScene2;
+    @FXML
+    private ListView listViewScene3;
 
     @FXML
-    private ListView listView;
-
-    @FXML
-    private ChoiceBox choiceBoxArtists;
+    private ChoiceBox choiceBoxFestivals;
 
     @FXML
     private AnchorPane rootPane;
@@ -36,18 +34,8 @@ public class Arrangor_controller {
     }
 
     private void addItemsToList() {
-        listView.setEditable(true);
-
-
-        List<Festival> festivals = JsonDecode.parseJSON();
-        List<Concert> allConcerts = Filter.getAllConcerts(festivals);
-        List<String> artists = new ArrayList<>();
-        for (Concert c : allConcerts) {
-            artists.add(c.getArtist());
-        }
-        ObservableList<String> observableListToAdd = FXCollections.observableArrayList(artists);
-        choiceBoxArtists.setItems(observableListToAdd);
-        choiceBoxArtists.getSelectionModel().selectFirst();
+        putFestivalsInChoiceBox();
+        //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
 
 
 //        wholeList = ReadWriteConfig.readFile("arrangor");
@@ -63,6 +51,15 @@ public class Arrangor_controller {
 //                }
 //            }
 //        });
+    }
+
+    private void putFestivalsInChoiceBox() {
+        listViewScene1.setEditable(true);
+        List<Festival> festivals = JsonDecode.parseJSON();
+        ObservableList<String> observableListToAdd = getAllFestivalsObservableList(festivals);
+        choiceBoxFestivals.setItems(observableListToAdd);
+        choiceBoxFestivals.getSelectionModel().selectFirst();
+        // Denne linjen gjør bare at det første itemet i listen blir vist og selected.
     }
 
     private void showArbeidere() {
