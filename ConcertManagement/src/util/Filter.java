@@ -13,7 +13,7 @@ public class Filter {
         // Denne funksjonen går gjennom alle festivaler og gir ut en liste over konserter.
         List<Concert> filtered = new ArrayList<>();
         for (Festival f : festivals) {
-            filtered.addAll(f.getKonsert());
+            //filtered.addAll(f.getKonsert());
         }
         return filtered;
     }

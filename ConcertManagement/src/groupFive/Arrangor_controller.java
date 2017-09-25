@@ -1,15 +1,24 @@
 package groupFive;
 
+import IO.ReadWriteConfig;
+import Json.Concert;
 import Json.Festival;
 import Json.JsonDecode;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.scene.control.TextField;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.MouseEvent;
+import javafx.event.EventHandler;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
@@ -22,6 +31,21 @@ public class Arrangor_controller {
     @FXML
     private ListView listViewScene3;
 
+    // De 3 listviewsene i en liste.
+    private List<ListView> listViews;
+
+    @FXML
+    private TextField textFieldScene1;
+
+    @FXML
+    private TextField textFieldScene2;
+
+    @FXML
+    private TextField textFieldScene3;
+
+    //3 textfields i en liste
+    private List<TextField> textFields;
+
     @FXML
     private ChoiceBox choiceBoxFestivals;
 
@@ -30,36 +54,103 @@ public class Arrangor_controller {
 
     @FXML
     public void initialize() {
+        listViews = Arrays.asList(listViewScene1, listViewScene2, listViewScene3);
+        textFields = Arrays.asList(textFieldScene1, textFieldScene2, textFieldScene3);
         addItemsToList();
+    }
+
+    private void createChoiceBoxListener() {
+        choiceBoxFestivals.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                putConcertsInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
+                System.out.println(choiceBoxFestivals.getItems().get((Integer) newValue));
+            }
+        });
     }
 
     private void addItemsToList() {
         putFestivalsInChoiceBox();
+        createChoiceBoxListener();
+        putConcertsInSceneLists("UKA 2017"); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
-
-
-//        wholeList = ReadWriteConfig.readFile("arrangor");
-//        ArrayList<String> listToAdd = Filter.filterList(wholeList, "__");
-//        ObservableList<String> observableListToAdd = FXCollections.observableArrayList(listToAdd);
-//        listView.setItems(observableListToAdd);
-//        listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                String itemClicked = listView.getSelectionModel().getSelectedItem().toString();
-//                if (itemClicked.equals("Arbeidere")) {
-//                    showArbeidere();
-//                }
-//            }
-//        });
     }
 
     private void putFestivalsInChoiceBox() {
-        listViewScene1.setEditable(true);
-        List<Festival> festivals = JsonDecode.parseJSON();
-        ObservableList<String> observableListToAdd = getAllFestivalsObservableList(festivals);
+        ObservableList<String> observableListToAdd = getAllFestivalsObservableList(Main.festivals);
         choiceBoxFestivals.setItems(observableListToAdd);
         choiceBoxFestivals.getSelectionModel().selectFirst();
         // Denne linjen gjør bare at det første itemet i listen blir vist og selected.
+        // TODO: gjør listen klikkbar og endre ting i scene boksen videre.
+    }
+
+    private void putSceneNamesInTextBox(String festival) {
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (int i = 0; i < 3; i++) {
+                    textFields.get(i).setText(f.getScene().get(i).getNavn());
+                }
+            }
+        }
+    }
+
+    private void putConcertsInSceneLists(String festival) {
+        putSceneNamesInTextBox(festival);
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                // Når du har funnet riktig festival.
+                for (int i = 0; i < 3; i++) {
+                    listViews.get(i).setEditable(true);
+                    List<String> concerts = new ArrayList<>();
+                    for (Concert c : f.getScene().get(i).getKonsert()) {
+                        concerts.add(c.getArtist());
+                    }
+                    ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concerts);
+                    listViews.get(i).setItems(observableListToAdd);
+
+                    // Jeg vet dette er veldig klønete, men jeg har ikke en bedre måte å gjøre dette på akuratt nå.
+                    switch (i) {
+                        case 0: {
+                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    String itemClicked = listViewScene1.getSelectionModel().getSelectedItem().toString();
+                                    System.out.println(itemClicked);
+                                }
+                            });
+                            break;
+                        }
+                        case 1: {
+                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    String itemClicked = listViewScene2.getSelectionModel().getSelectedItem().toString();
+                                    System.out.println(itemClicked);
+                                }
+                            });
+                            break;
+                        }
+                        case 2: {
+                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    String itemClicked = listViewScene3.getSelectionModel().getSelectedItem().toString();
+                                    System.out.println(itemClicked);
+                                }
+                            });
+                            break;
+                        }
+                        default: {
+                            System.out.println("Error");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 
     private void showArbeidere() {

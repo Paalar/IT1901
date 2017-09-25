@@ -8,10 +8,10 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Arrangor_controller">
    <children>
-      <ListView fx:id="listViewScene1" layoutX="499.0" layoutY="198.0" prefHeight="475.0" prefWidth="336.0" />
+      <ListView fx:id="listViewScene2" layoutX="499.0" layoutY="198.0" prefHeight="475.0" prefWidth="336.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
       <Button layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Start" />
-      <ListView fx:id="listViewScene2" layoutX="113.0" layoutY="198.0" prefHeight="475.0" prefWidth="336.0" />
+      <ListView fx:id="listViewScene1" layoutX="113.0" layoutY="198.0" prefHeight="475.0" prefWidth="336.0" />
       <ListView fx:id="listViewScene3" layoutX="885.0" layoutY="198.0" prefHeight="475.0" prefWidth="336.0" />
       <ChoiceBox fx:id="choiceBoxFestivals" layoutX="207.0" layoutY="93.0" prefWidth="150.0" />
       <TextField layoutX="208.0" layoutY="58.0" text="Festivals" />
