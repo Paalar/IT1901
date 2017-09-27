@@ -115,11 +115,15 @@ public class Arrangor_controller {
                     listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent event) {
-                            String itemClicked = listViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
-                            int whichScene = iFinal;
-                            if (!itemClicked.equals("")) {
+                            try {
+                                String itemClicked = listViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
+                                int whichScene = iFinal;
                                 showArbeidere(itemClicked, whichScene, festival);
+                            } catch (Exception e) {
+                                System.out.println("Du har ikke valgt en konsert.");
                             }
+
+
                         }
                     });
                 }
