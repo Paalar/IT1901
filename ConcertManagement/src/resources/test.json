@@ -1,296 +1,325 @@
 [{
-		"festival": "UKA 2017",
-		"datoStart": "1-10-2017",
-		"datoSlutt": "1-11-2017",
-		"scene": [{
-				"navn": "Dødens dal",
-				"plasser": 7000,
-				"konsert": [{
-						"artist": "Lorde",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
-					},
-					{
-						"artist": "Martin Garrix",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Ola Nordmann"
-						}, {
-							"navn": "Kari Nordmann"
-						}],
-						"lyd": [{
-							"navn": "Sondre Strande Dahl"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"billettPris": 470,
-						"dato": "25-10-2017",
-						"sjanger": "Rap",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1700000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							},
-              {
-                "behov": "miksebord"
-              },
-              {
-                "behov": "2 monitorer"
-              }
-						]
-					}
+	"festival": "UKA 2017",
+	"datoStart": "1-10-2017",
+	"datoSlutt": "1-11-2017",
+	"scene": [{
+		"navn": "Dødens dal",
+		"plasser": 7000,
+		"konsert": [{
+			"artist": "Lorde",
+			"billetterSolgt": 0,
+			"lys": [{
+				"navn": "Petter Rein"
+			}, {
+				"navn": "Svenn Grønbeck"
+			}],
+			"lyd": [{
+				"navn": "Jens Stoltenberg"
+			}, {
+				"navn": "Erna Solberg"
+			}],
+			"billettPris": 590,
+			"dato": "20-09-2017",
+			"sjanger": "Pop",
+			"populæritet": 100,
+			"salg": 100,
+			"pris": 1000000,
+			"tekniskeBehov": [{
+				"behov": "Co2"
+			},
+				{
+					"behov": "4 mikrofoner"
+				}
+			]
+		},
 
+			{
+				"artist": "Kjartan Lauritzen",
+				"billetterSolgt": 0,
+				"lys": [{
+					"navn": "Per Aki"
+				}, {
+					"navn": "Christine Dancke"
+				}],
+				"lyd": [{
+					"navn": "Ole Brumm"
+				}, {
+					"navn": "Nasse Nøff"
+				}],
+				"billettPris": 190,
+				"dato": "11-10-2017",
+				"sjanger": "Rap",
+				"populæritet": 100,
+				"salg": 100,
+				"pris": 100000,
+				"tekniskeBehov": [{
+					"behov": "1 stk vibbefanger"
+				},
+					{
+						"behov": "Banan"
+					}
 				]
 			},
 
 			{
-				"navn": "Storsalen",
-				"plasser": 1000,
-				"konsert": [{
-						"artist": "Astrid S",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"plassser": 10000,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+				"artist": "Martin Garrix",
+				"billetterSolgt": 0,
+				"lys": [{
+					"navn": "Ola Nordmann"
+				}, {
+					"navn": "Kari Nordmann"
+				}],
+				"lyd": [{
+					"navn": "Sondre Strande Dahl"
+				}, {
+					"navn": "Svenn Grønbeck"
+				}],
+				"billettPris": 470,
+				"dato": "25-10-2017",
+				"sjanger": "Rap",
+				"populæritet": 100,
+				"salg": 100,
+				"pris": 1700000,
+				"tekniskeBehov": [{
+					"behov": "Co2"
+				},
+					{
+						"behov": "4 mikrofoner"
 					},
 					{
-						"artist": "Lorde4",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"plassser": 10000,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
-					}
-
-				]
-			},
-			{
-				"navn": "Knaus",
-				"plasser": 1000,
-				"konsert": [{
-						"artist": "Lorde",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+						"behov": "miksebord"
 					},
 					{
-						"artist": "Martin Garrix",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Ola Nordmann"
-						}, {
-							"navn": "Kari Nordmann"
-						}],
-						"lyd": [{
-							"navn": "Sondre Strande Dahl"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"billettPris": 470,
-						"dato": "11-10-2017",
-						"sjanger": "Rap",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+						"behov": "2 monitorer"
 					}
-
 				]
 			}
+
 		]
 	},
+
+		{
+			"navn": "Storsalen",
+			"plasser": 1000,
+			"konsert": [{
+				"artist": "Astrid S",
+				"billetterSolgt": 0,
+				"lys": [{
+					"navn": "Petter Rein"
+				}, {
+					"navn": "Svenn Grønbeck"
+				}],
+				"lyd": [{
+					"navn": "Jens Stoltenberg"
+				}, {
+					"navn": "Erna Solberg"
+				}],
+				"billettPris": 590,
+				"plassser": 10000,
+				"dato": "20-09-2017",
+				"sjanger": "Pop",
+				"populæritet": 100,
+				"salg": 100,
+				"pris": 1000000,
+				"tekniskeBehov": [{
+					"behov": "Co2"
+				},
+					{
+						"behov": "4 mikrofoner"
+					}
+				]
+			},
+				{
+					"artist": "Lorde4",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Petter Rein"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"lyd": [{
+						"navn": "Jens Stoltenberg"
+					}, {
+						"navn": "Erna Solberg"
+					}],
+					"billettPris": 590,
+					"plassser": 10000,
+					"dato": "20-09-2017",
+					"sjanger": "Pop",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
+					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				}
+
+			]
+		},
+		{
+			"navn": "Knaus",
+			"plasser": 1000,
+			"konsert": [{
+				"artist": "Lorde",
+				"billetterSolgt": 0,
+				"lys": [{
+					"navn": "Petter Rein"
+				}, {
+					"navn": "Svenn Grønbeck"
+				}],
+				"lyd": [{
+					"navn": "Jens Stoltenberg"
+				}, {
+					"navn": "Erna Solberg"
+				}],
+				"billettPris": 590,
+				"dato": "20-09-2017",
+				"sjanger": "Pop",
+				"populæritet": 100,
+				"salg": 100,
+				"pris": 1000000,
+				"tekniskeBehov": [{
+					"behov": "Co2"
+				},
+					{
+						"behov": "4 mikrofoner"
+					}
+				]
+			},
+				{
+					"artist": "Martin Garrix",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Ola Nordmann"
+					}, {
+						"navn": "Kari Nordmann"
+					}],
+					"lyd": [{
+						"navn": "Sondre Strande Dahl"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"billettPris": 470,
+					"dato": "11-10-2017",
+					"sjanger": "Rap",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
+					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				}
+
+			]
+		}
+	]
+},
 	{
 		"festival": "UKA 2015",
 		"datoStart": "1-10-2015",
 		"datoSlutt": "1-11-2015",
 		"scene": [{
-				"navn": "Dødens dal",
-				"plasser": 7000,
-				"konsert": [{
-						"artist": "Lorde2",
-						"billetterSolgt": 4566,
-						"lys": [{
-							"navn": "Frank Arne"
-						}, {
-							"navn": "Fritjof Arne"
-						}],
-						"lyd": [{
-							"navn": "Per Arne"
-						}, {
-							"navn": "Anne Arne"
-						}],
-						"billettPris": 390,
-						"dato": "20-9-2015",
-						"sjanger": "Pop",
-						"populæritet": 90,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
-					},
+			"navn": "Dødens dal",
+			"plasser": 7000,
+			"konsert": [{
+				"artist": "Major Lazer",
+				"billetterSolgt": 4566,
+				"lys": [{
+					"navn": "Frank Arne"
+				}, {
+					"navn": "Fritjof Arne"
+				}],
+				"lyd": [{
+					"navn": "Per Arne"
+				}, {
+					"navn": "Anne Arne"
+				}],
+				"billettPris": 390,
+				"dato": "20-9-2015",
+				"sjanger": "Pop",
+				"populæritet": 90,
+				"salg": 100,
+				"pris": 1000000,
+				"tekniskeBehov": [{
+					"behov": "Co2"
+				},
 					{
-						"artist": "Martin Garrix",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Ola Nordmann"
-						}, {
-							"navn": "Kari Nordmann"
-						}],
-						"lyd": [{
-							"navn": "Sondre Strande Dahl"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"billettPris": 470,
-						"dato": "25-10-2017",
-						"sjanger": "Rap",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1700000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+						"behov": "4 mikrofoner"
 					}
-
 				]
 			},
+				{
+					"artist": "Wiz Khalifa",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Ola Nordmann"
+					}, {
+						"navn": "Kari Nordmann"
+					}],
+					"lyd": [{
+						"navn": "Sondre Strande Dahl"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"billettPris": 470,
+					"dato": "25-10-2017",
+					"sjanger": "Rap",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1700000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
+					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				}
+
+			]
+		},
 
 			{
 				"navn": "Storsalen",
 				"plasser": 1000,
 				"konsert": [{
-						"artist": "Lorde3",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"plassser": 10000,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+					"artist": "The Prodigy",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Petter Rein"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"lyd": [{
+						"navn": "Jens Stoltenberg"
+					}, {
+						"navn": "Erna Solberg"
+					}],
+					"billettPris": 590,
+					"plassser": 10000,
+					"dato": "20-09-2015",
+					"sjanger": "Pop",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
 					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				},
 					{
-						"artist": "Lorde4",
+						"artist": "The National",
 						"billetterSolgt": 0,
 						"lys": [{
 							"navn": "Petter Rein"
@@ -304,14 +333,14 @@
 						}],
 						"billettPris": 590,
 						"plassser": 10000,
-						"dato": "20-9-2017",
+						"dato": "02-10-2015",
 						"sjanger": "Pop",
 						"populæritet": 100,
 						"salg": 100,
 						"pris": 1000000,
 						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
+							"behov": "Co2"
+						},
 							{
 								"behov": "4 mikrofoner"
 							}
@@ -324,34 +353,34 @@
 				"navn": "Knaus",
 				"plasser": 1000,
 				"konsert": [{
-						"artist": "Lorde",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+					"artist": "Kakkmaddafakka",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Petter Rein"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"lyd": [{
+						"navn": "Jens Stoltenberg"
+					}, {
+						"navn": "Erna Solberg"
+					}],
+					"billettPris": 590,
+					"dato": "20-09-2015",
+					"sjanger": "Pop",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
 					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				},
 					{
-						"artist": "Martin Garrix",
+						"artist": "Lemaitre",
 						"billetterSolgt": 0,
 						"lys": [{
 							"navn": "Ola Nordmann"
@@ -364,14 +393,14 @@
 							"navn": "Svenn Grønbeck"
 						}],
 						"billettPris": 470,
-						"dato": "11-10-2017",
+						"dato": "11-10-2015",
 						"sjanger": "Rap",
 						"populæritet": 100,
 						"salg": 100,
 						"pris": 1000000,
 						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
+							"behov": "Co2"
+						},
 							{
 								"behov": "4 mikrofoner"
 							}
@@ -387,99 +416,99 @@
 		"datoStart": "1-10-2013",
 		"datoSlutt": "1-11-2013",
 		"scene": [{
-				"navn": "Dødens dal",
-				"plasser": 7000,
-				"konsert": [{
-						"artist": "Lorde",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"dato": "20-9-2013",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
-					},
+			"navn": "Dødens dal",
+			"plasser": 7000,
+			"konsert": [{
+				"artist": "Calvin Harris",
+				"billetterSolgt": 0,
+				"lys": [{
+					"navn": "Petter Rein"
+				}, {
+					"navn": "Svenn Grønbeck"
+				}],
+				"lyd": [{
+					"navn": "Jens Stoltenberg"
+				}, {
+					"navn": "Erna Solberg"
+				}],
+				"billettPris": 590,
+				"dato": "20-09-2013",
+				"sjanger": "Pop",
+				"populæritet": 100,
+				"salg": 100,
+				"pris": 1000000,
+				"tekniskeBehov": [{
+					"behov": "Co2"
+				},
 					{
-						"artist": "Martin Garrix",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Ola Nordmann"
-						}, {
-							"navn": "Kari Nordmann"
-						}],
-						"lyd": [{
-							"navn": "Sondre Strande Dahl"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"billettPris": 470,
-						"dato": "25-10-2017",
-						"sjanger": "Rap",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1700000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+						"behov": "4 mikrofoner"
 					}
-
 				]
 			},
+				{
+					"artist": "Mac Miller",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Ola Nordmann"
+					}, {
+						"navn": "Kari Nordmann"
+					}],
+					"lyd": [{
+						"navn": "Sondre Strande Dahl"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"billettPris": 470,
+					"dato": "25-10-2013",
+					"sjanger": "Rap",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1700000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
+					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				}
+
+			]
+		},
 
 			{
 				"navn": "Storsalen",
 				"plasser": 1000,
 				"konsert": [{
-						"artist": "Lorde3",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"plassser": 10000,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+					"artist": "Dj Lavterskel",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Petter Rein"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"lyd": [{
+						"navn": "Jens Stoltenberg"
+					}, {
+						"navn": "Erna Solberg"
+					}],
+					"billettPris": 590,
+					"plassser": 10000,
+					"dato": "20-09-2013",
+					"sjanger": "Pop",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
 					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				},
 					{
-						"artist": "Lorde4",
+						"artist": "Kristian Valen",
 						"billetterSolgt": 0,
 						"lys": [{
 							"navn": "Petter Rein"
@@ -493,14 +522,14 @@
 						}],
 						"billettPris": 590,
 						"plassser": 10000,
-						"dato": "20-9-2017",
+						"dato": "20-09-2013",
 						"sjanger": "Pop",
 						"populæritet": 100,
 						"salg": 100,
 						"pris": 1000000,
 						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
+							"behov": "Co2"
+						},
 							{
 								"behov": "4 mikrofoner"
 							}
@@ -513,32 +542,32 @@
 				"navn": "Knaus",
 				"plasser": 1000,
 				"konsert": [{
-						"artist": "Lorde",
-						"billetterSolgt": 0,
-						"lys": [{
-							"navn": "Petter Rein"
-						}, {
-							"navn": "Svenn Grønbeck"
-						}],
-						"lyd": [{
-							"navn": "Jens Stoltenberg"
-						}, {
-							"navn": "Erna Solberg"
-						}],
-						"billettPris": 590,
-						"dato": "20-9-2017",
-						"sjanger": "Pop",
-						"populæritet": 100,
-						"salg": 100,
-						"pris": 1000000,
-						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
-							{
-								"behov": "4 mikrofoner"
-							}
-						]
+					"artist": "DJ Dan",
+					"billetterSolgt": 0,
+					"lys": [{
+						"navn": "Petter Rein"
+					}, {
+						"navn": "Svenn Grønbeck"
+					}],
+					"lyd": [{
+						"navn": "Jens Stoltenberg"
+					}, {
+						"navn": "Erna Solberg"
+					}],
+					"billettPris": 590,
+					"dato": "20-09-2013",
+					"sjanger": "Pop",
+					"populæritet": 100,
+					"salg": 100,
+					"pris": 1000000,
+					"tekniskeBehov": [{
+						"behov": "Co2"
 					},
+						{
+							"behov": "4 mikrofoner"
+						}
+					]
+				},
 					{
 						"artist": "Martin Garrix",
 						"billetterSolgt": 0,
@@ -553,14 +582,14 @@
 							"navn": "Svenn Grønbeck"
 						}],
 						"billettPris": 470,
-						"dato": "11-10-2017",
+						"dato": "11-10-2013",
 						"sjanger": "Rap",
 						"populæritet": 100,
 						"salg": 100,
 						"pris": 1000000,
 						"tekniskeBehov": [{
-								"behov": "Co2"
-							},
+							"behov": "Co2"
+						},
 							{
 								"behov": "4 mikrofoner"
 							}

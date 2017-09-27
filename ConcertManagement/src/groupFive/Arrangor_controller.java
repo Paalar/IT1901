@@ -37,6 +37,16 @@ public class Arrangor_controller {
     private List<ListView> listViews;
 
     @FXML
+    private ListView listViewDatesScene1;
+    @FXML
+    private ListView listViewDatesScene2;
+    @FXML
+    private ListView listViewDatesScene3;
+
+    //De 3 datoviewsene settes i en liste
+    private List<ListView> dateListViews;
+
+    @FXML
     private TextField textFieldScene1;
 
     @FXML
@@ -57,6 +67,7 @@ public class Arrangor_controller {
     @FXML
     public void initialize() {
         listViews = Arrays.asList(listViewScene1, listViewScene2, listViewScene3);
+        dateListViews = Arrays.asList(listViewDatesScene1, listViewDatesScene2, listViewDatesScene3);
         textFields = Arrays.asList(textFieldScene1, textFieldScene2, textFieldScene3);
         addItemsToList();
     }
@@ -66,6 +77,7 @@ public class Arrangor_controller {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 putConcertsInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
+                putConcertDatesInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
                 System.out.println(choiceBoxFestivals.getItems().get((Integer) newValue));
             }
         });
@@ -75,6 +87,7 @@ public class Arrangor_controller {
         putFestivalsInChoiceBox();
         createChoiceBoxListener();
         putConcertsInSceneLists("UKA 2017"); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
+        putConcertDatesInSceneLists("UKA 2017");
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
     }
 
@@ -128,6 +141,36 @@ public class Arrangor_controller {
                     });
                 }
             }
+        }
+    }
+
+    private void putConcertDatesInSceneLists(String festival) {
+        putSceneNamesInTextBox(festival);
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                // Når du har funnet riktig festival.
+                for (int i = 0; i < 3; i++) {
+                    final int iFinal = i;
+                    // Denne må være final for å kunne bruke i en anonym klasse.
+
+                    dateListViews.get(i).setEditable(true);
+                    List<String> concertDates = new ArrayList<>();
+                    for (Concert c : f.getScene().get(i).getKonsert()) {
+                        concertDates.add(c.getDato());
+                    }
+                    ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concertDates);
+                    dateListViews.get(i).setItems(observableListToAdd);
+                    dateListViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            String itemClicked = dateListViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
+
+                            System.out.println(itemClicked);
+                        }
+                    });
+                }
+            }
+
         }
     }
 
