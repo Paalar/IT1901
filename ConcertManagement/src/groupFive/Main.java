@@ -13,9 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Main extends Application {
     Constants constants = new Constants();
+    public static List<Festival> festivals;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,6 +29,7 @@ public class Main extends Application {
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
+        festivals = JsonDecode.parseJSON();
     }
 
     public static void main(String[] args) {

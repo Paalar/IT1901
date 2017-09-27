@@ -5,23 +5,35 @@ import java.util.List;
 public class Festival {
 
     String festival;
-    List<Concert> konsert;
+    String datoStart;
+    String datoSlutt;
+    List<Scene> scene;
+    /*
     List<Offer> tilbud;
     List<Result> resultat;
+    */
 
     public String getFestival() {
         return festival;
     }
 
-    public List<Concert> getKonsert() {
-        return konsert;
+    public String getDatoStart() {
+        return datoStart;
     }
 
-    public List<Offer> getTilbud() {
-        return tilbud;
+    public String getDatoSlutt() {
+        return datoSlutt;
     }
+
+    public List<Scene> getScene() {
+        return scene;
+    }
+
+   /*
+    public List<Offer> getTilbud() { return tilbud; }
 
     public List<Result> getResultat() {
         return resultat;
     }
+    */
 }

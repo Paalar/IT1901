@@ -16,10 +16,11 @@ public class JsonDecode {
 
     public static List<Festival> parseJSON() {
         try {
-            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/concertManagement.json"));
+            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/test.json"));
 
             Gson gson = new Gson();
             Type foundListType = new TypeToken<ArrayList<Festival>>(){}.getType();
+
             List<Festival> festival = gson.fromJson(jsonReader, foundListType);
             return festival;
 
