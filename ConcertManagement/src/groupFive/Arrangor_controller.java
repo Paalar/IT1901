@@ -100,6 +100,9 @@ public class Arrangor_controller {
             if (f.getFestival().equals(festival)) {
                 // Når du har funnet riktig festival.
                 for (int i = 0; i < 3; i++) {
+                    final int iFinal = i;
+                    // Denne må være final for å kunne bruke i en anonym klasse.
+
                     listViews.get(i).setEditable(true);
                     List<String> concerts = new ArrayList<>();
                     for (Concert c : f.getScene().get(i).getKonsert()) {
@@ -107,44 +110,14 @@ public class Arrangor_controller {
                     }
                     ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concerts);
                     listViews.get(i).setItems(observableListToAdd);
-
-                    // Jeg vet dette er veldig klønete, men jeg har ikke en bedre måte å gjøre dette på akuratt nå.
-                    switch (i) {
-                        case 0: {
-                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    String itemClicked = listViewScene1.getSelectionModel().getSelectedItem().toString();
-                                    System.out.println(itemClicked);
-                                }
-                            });
-                            break;
+                    listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            String itemClicked = listViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
+                            
+                            System.out.println(itemClicked);
                         }
-                        case 1: {
-                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    String itemClicked = listViewScene2.getSelectionModel().getSelectedItem().toString();
-                                    System.out.println(itemClicked);
-                                }
-                            });
-                            break;
-                        }
-                        case 2: {
-                            listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                                @Override
-                                public void handle(MouseEvent event) {
-                                    String itemClicked = listViewScene3.getSelectionModel().getSelectedItem().toString();
-                                    System.out.println(itemClicked);
-                                }
-                            });
-                            break;
-                        }
-                        default: {
-                            System.out.println("Error");
-                            break;
-                        }
-                    }
+                    });
                 }
             }
         }
