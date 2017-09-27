@@ -1,13 +1,15 @@
 package groupFive;
 
 import IO.ReadWriteConfig;
-import Json.Concert;
-import Json.Festival;
-import Json.JsonDecode;
+import Json.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -94,7 +96,7 @@ public class Arrangor_controller {
         }
     }
 
-    private void putConcertsInSceneLists(String festival) {
+    private void putConcertsInSceneLists(final String festival) {
         putSceneNamesInTextBox(festival);
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
@@ -114,28 +116,75 @@ public class Arrangor_controller {
                         @Override
                         public void handle(MouseEvent event) {
                             String itemClicked = listViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
-                            
-                            System.out.println(itemClicked);
+                            int whichScene = iFinal;
+                            if (!itemClicked.equals("")) {
+                                showArbeidere(itemClicked, whichScene, festival);
+                            }
                         }
                     });
                 }
             }
         }
-
-
-
     }
 
-    private void showArbeidere() {
-//        choiceBoxArtists.setVisible(true);
-//        ArrayList<String> artists = Filter.filterList(wholeList,"?_");
-//        ObservableList<String> observableListToAdd = FXCollections.observableArrayList(artists);
-//        choiceBoxArtists.setItems(observableListToAdd);
+    private void showArbeidere(String concert, int whichScene, String festival) {
+        // TODO: lag popupen finere.
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (Concert c : f.getScene().get(whichScene).getKonsert()) {
+                    // Her går den gjennom alle konserter på riktig festival på riktig scene.
+                    if (c.getArtist().equals(concert)) {
+                        Stage stage = new Stage(StageStyle.DECORATED);
+                        stage.setX(400);
+                        stage.setY(400);
+                        // Hvilke kordinater det nye vinduet skal åpnes i.
+
+                        Pane layout = new AnchorPane();
+                        layout.setPrefSize(500, 250);
+                        stage.setScene(new Scene(layout));
+                        // lager ny layout og scene som er 500px bred og 270px høy.
+
+                        ListView listViewSoundTechs = new ListView();
+                        listViewSoundTechs.setPrefSize(250, 250);
+                        listViewSoundTechs.setEditable(true);
+
+                        List<String> soundTechs = new ArrayList<>();
+                        soundTechs.add("SoundTechs: ");
+                        for (SoundTech st : c.getLyd()) {
+                            soundTechs.add(st.getNavn());
+                        }
+                        ObservableList<String> observableListSoundTechs = FXCollections.observableArrayList(soundTechs);
+                        listViewSoundTechs.setItems(observableListSoundTechs);
+                        // Lager ny listview og går gjennom alle SoundTechsene og legger de til i listen.
+
+
+                        ListView listViewLightTechs = new ListView();
+                        listViewLightTechs.setPrefSize(250, 250);
+                        listViewLightTechs.setLayoutX(250);
+                        listViewLightTechs.setEditable(true);
+
+                        List<String> LightTechs = new ArrayList<>();
+                        LightTechs.add("LightTechs: ");
+                        for (LightTech lt : c.getLys()) {
+                            LightTechs.add(lt.getNavn());
+                        }
+                        ObservableList<String> observableListLightTechs = FXCollections.observableArrayList(LightTechs);
+                        listViewLightTechs.setItems(observableListLightTechs);
+                        // Lager ny listview og går gjennom alle LightTechsene og legger de til i listen.
+
+                        layout.getChildren().add(listViewSoundTechs);
+                        layout.getChildren().add(listViewLightTechs);
+                        // Legger til listene i layouten og viser den.
+                        stage.show();
+                    }
+                }
+            }
+        }
     }
 
     @FXML
     private void goBack(){
-        String fxmlFileName = "main";
+        String fxmlFileName = "Main";
         Main main = new Main();
         main.changeView(rootPane, fxmlFileName);
     }
