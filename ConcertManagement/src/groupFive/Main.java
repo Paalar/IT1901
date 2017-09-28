@@ -1,6 +1,7 @@
 package groupFive;
 
 import Json.Festival;
+import Json.JsonEncode;
 import util.Constants;
 import Json.JsonDecode;
 import javafx.application.Application;
