@@ -5,14 +5,23 @@ import java.util.List;
 public class Concert {
 
     String artist;
-    String scene;
+    int billetterSolgt;
+    List<LightTech> lys;
+    List<SoundTech> lyd;
+    int billettPris;
+    String dato;
+    String sjanger;
+    int populæritet;
+    int salg;
+    int pris;
+    List<tekniskeBehov> tekniskeBehov;
 
     public String getArtist() {
         return artist;
     }
 
-    public String getScene() {
-        return scene;
+    public int getBilletterSolgt() {
+        return billetterSolgt;
     }
 
     public List<LightTech> getLys() {
@@ -23,8 +32,8 @@ public class Concert {
         return lyd;
     }
 
-    public int getPris() {
-        return pris;
+    public int getBillettPris() {
+        return billettPris;
     }
 
     public String getDato() {
@@ -35,10 +44,19 @@ public class Concert {
         return sjanger;
     }
 
-    List<LightTech> lys;
-    List<SoundTech> lyd;
-    int pris;
-    String dato;
-    String sjanger;
+    public int getPopulæritet() {
+        return populæritet;
+    }
 
+    public int getSalg() {
+        return salg;
+    }
+
+    public int getPris() {
+        return pris;
+    }
+
+    public List<Json.tekniskeBehov> getTekniskeBehov() {
+        return tekniskeBehov;
+    }
 }
