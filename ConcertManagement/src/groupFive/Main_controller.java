@@ -47,10 +47,14 @@ public class Main_controller {
         loginListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
-                System.out.println("clicked on " + itemClicked);
-                Main main = new Main();
-                main.changeView(rootPane, itemClicked);
+                try {
+                    String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
+                    Main main = new Main();
+                    main.changeView(rootPane, itemClicked);
+                }
+                catch (Exception e) {
+                    System.out.println("Du må velge en jobb.");
+                }
             }
         });
     }
