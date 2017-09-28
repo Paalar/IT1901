@@ -150,27 +150,14 @@ public class Arrangor_controller {
             if (f.getFestival().equals(festival)) {
                 // Når du har funnet riktig festival.
                 for (int i = 0; i < 3; i++) {
-                    final int iFinal = i;
-                    // Denne må være final for å kunne bruke i en anonym klasse.
-
-                    dateListViews.get(i).setEditable(true);
                     List<String> concertDates = new ArrayList<>();
                     for (Concert c : f.getScene().get(i).getKonsert()) {
                         concertDates.add(c.getDato());
                     }
                     ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concertDates);
                     dateListViews.get(i).setItems(observableListToAdd);
-                    dateListViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            String itemClicked = dateListViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
-
-                            System.out.println(itemClicked);
-                        }
-                    });
                 }
             }
-
         }
     }
 
