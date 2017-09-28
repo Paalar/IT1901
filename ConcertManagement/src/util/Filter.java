@@ -1,7 +1,7 @@
 package util;
 
-import Json.Concert;
-import Json.Festival;
+import Json.*;
+import groupFive.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,13 +9,19 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Filter {
-    public static List<Concert> getAllConcerts(List<Festival> festivals) {
-        // Denne funksjonen går gjennom alle festivaler og gir ut en liste over konserter.
-        List<Concert> filtered = new ArrayList<>();
-        for (Festival f : festivals) {
-            //filtered.addAll(f.getKonsert());
+    public static List<Concert> getAllConcerts(String festival) {
+        List<Concert> concerts = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                // Nå har du funnet riktig festival.
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        concerts.add(c);
+                    }
+                }
+            }
         }
-        return filtered;
+        return concerts;
     }
 
     public static ObservableList<String> getAllFestivalsObservableList(List<Festival> festivals) {
@@ -25,6 +31,12 @@ public class Filter {
             festivalsString.add(f.getFestival());
         }
         return FXCollections.observableArrayList(festivalsString);
+    }
+
+    public static ObservableList<String>getAllTeknikers(String festival) {
+        List<String> teknikerStrings = new ArrayList<>();
+        
+        return FXCollections.observableArrayList(teknikerStrings);
     }
 
 //    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {

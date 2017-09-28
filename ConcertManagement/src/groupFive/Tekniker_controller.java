@@ -1,8 +1,10 @@
 package groupFive;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import util.Constants;
+import util.Filter;
 
 import IO.ReadWriteConfig;
 import Json.*;
@@ -29,19 +31,36 @@ import static util.Filter.getAllFestivalsObservableList;
 public class Tekniker_controller {
 
     @FXML
+    private ListView listViewTeknikere;
+
+    @FXML
     private AnchorPane rootPane;
 
     public void initialize() {
-        private void putItemsInLists();
+        putItemsInLists();
     }
 
     private void putItemsInLists() {
-        putTeknikersInList(); // Tinus
+        putTeknikersInList("Uka 2017"); // Tinus
         putFestivalNameInLabel(); // Sondre
-        putKonsertInfoInLists();  // Sondre
     }
 
-    private void putTeknikersInList() {
+    private void putTeknikersInList(String festival) {
+        ObservableList<String> observableListToAdd = Filter.getAllTeknikers(festival);
+        listViewTeknikere.setItems(observableListToAdd);
+        listViewTeknikere.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    String itemClicked = listViewTeknikere.getSelectionModel().getSelectedItem().toString();
+                    putKonsertInfoInLists(festival, itemClicked);
+                } catch (Exception e) {
+                    System.out.println("Du har ikke valgt en Arbeider.");
+                }
+
+
+            }
+        });
 
     }
 
@@ -49,7 +68,7 @@ public class Tekniker_controller {
 
     }
 
-    private void putKonsertInfoInLists() {
+    private void putKonsertInfoInLists(String festival, String Arbeider) {
 
     }
 
