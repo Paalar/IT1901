@@ -11,7 +11,7 @@ import Json.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.scene.Scene;
+import Json.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -99,23 +99,33 @@ public class Tekniker_controller {
         List<String> artister = new ArrayList<>();
         List<String> tekniker = new ArrayList<>();
 
-        List<Json.Scene> scenes = Filter.getAllScenes(festival);
-        for (Json.Scene s : scenes) {
+        List<Scene> scenes = Filter.getAllScenes(festival);
+        for (Scene s : scenes) {
             for (Concert c : s.getKonsert()) {
-                if (c.getLyd().equals(arbeider)) {
-                    datoer.add(c.getDato());
-                    scener.add(s.getNavn());
-                    artister.add(c.getArtist());
-                    tekniker.add("Lydteknikker");
+                for (SoundTech st : c.getLyd()) {
+                    if (st.getNavn().equals(arbeider)) {
+                        datoer.add(c.getDato());
+                        scener.add(s.getNavn());
+                        artister.add(c.getArtist());
+                        tekniker.add("Lydteknikker");
+                    }
                 }
-                if (c.getLys().equals(arbeider)) {
-                    datoer.add(c.getDato());
-                    scener.add(s.getNavn());
-                    artister.add(c.getArtist());
-                    tekniker.add("Lysteknikker");
+
+                for (LightTech lt : c.getLys()) {
+                    if (lt.getNavn().equals(arbeider)) {
+                        datoer.add(c.getDato());
+                        scener.add(s.getNavn());
+                        artister.add(c.getArtist());
+                        tekniker.add("Lysteknikker");
+                    }
                 }
             }
         }
+        listViewDato.setEditable(true);
+        listViewArtist.setEditable(true);
+        listViewScene.setEditable(true);
+        listViewOppgave.setEditable(true);
+
         listViewDato.setItems(FXCollections.observableArrayList(datoer));
         listViewArtist.setItems(FXCollections.observableArrayList(artister));
         listViewScene.setItems(FXCollections.observableArrayList(scener));
