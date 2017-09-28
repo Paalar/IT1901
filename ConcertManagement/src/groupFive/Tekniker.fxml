@@ -19,7 +19,7 @@
       <Label layoutX="575.0" layoutY="115.0" text="Artist" />
       <Label layoutX="774.0" layoutY="115.0" text="Scene" />
       <Label layoutX="963.0" layoutY="115.0" text="Oppgave" />
-      <TextField fx:id="textFieldSearch" layoutX="69.0" layoutY="110.0" onKeyReleased="#onKeyPressSearchBar" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="textFieldSearch" layoutX="69.0" layoutY="110.0" onKeyReleased="#onKeyPressSearchBar" prefHeight="26.0" prefWidth="200.0" promptText="Søk.." />
       <Label fx:id="labelFestival" layoutX="583.0" layoutY="43.0" text="Festival" />
    </children>
 </AnchorPane>
