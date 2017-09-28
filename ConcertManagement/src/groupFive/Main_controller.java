@@ -50,7 +50,6 @@ public class Main_controller {
                 String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
                 System.out.println("clicked on " + itemClicked);
                 Main main = new Main();
-                System.out.println(itemClicked);
                 main.changeView(rootPane, itemClicked);
             }
         });

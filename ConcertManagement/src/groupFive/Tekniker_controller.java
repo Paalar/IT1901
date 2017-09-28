@@ -32,6 +32,24 @@ public class Tekniker_controller {
     private AnchorPane rootPane;
 
     public void initialize() {
+        private void putItemsInLists();
+    }
+
+    private void putItemsInLists() {
+        putTeknikersInList(); // Tinus
+        putFestivalNameInLabel(); // Sondre
+        putKonsertInfoInLists();  // Sondre
+    }
+
+    private void putTeknikersInList() {
+
+    }
+
+    private void putFestivalNameInLabel() {
+
+    }
+
+    private void putKonsertInfoInLists() {
 
     }
 
