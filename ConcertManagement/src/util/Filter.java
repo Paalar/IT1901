@@ -45,10 +45,24 @@ public class Filter {
         }
         return FXCollections.observableArrayList(festivalsString);
     }
-
-    public static ObservableList<String>getAllTeknikers(String festival) {
+    
+    public static ObservableList<String>getAllTeknikers(String festival, String searchText) {
+        // Denne går gjennom alle konserter for en festival og legger til alle unike som inneholder søketeksten i navnet.
         List<String> teknikerStrings = new ArrayList<>();
-        
+        List<Concert> concerts = getAllConcerts(festival);
+        for (Concert c : concerts) {
+            for (SoundTech st : c.getLyd()) {
+                if ((!teknikerStrings.contains(st.getNavn())) && st.getNavn().toLowerCase().contains(searchText.toLowerCase())) {
+                    teknikerStrings.add(st.getNavn());
+                }
+            }
+
+            for (LightTech lt : c.getLys()) {
+                if ((!teknikerStrings.contains(lt.getNavn())) && lt.getNavn().toLowerCase().contains(searchText.toLowerCase())) {
+                    teknikerStrings.add(lt.getNavn());
+                }
+            }
+        }
         return FXCollections.observableArrayList(teknikerStrings);
     }
 

@@ -30,6 +30,9 @@ import static util.Filter.getAllConcerts;
 import static util.Filter.getAllFestivalsObservableList;
 
 public class Tekniker_controller {
+    private final String UKA = "UKA 2017";
+    @FXML
+    private TextField textFieldSearch;
 
 
 
@@ -56,12 +59,13 @@ public class Tekniker_controller {
     }
 
     private void putItemsInLists() {
-        putTeknikersInList("Uka 2017"); // Tinus
+        putTeknikersInList(UKA, ""); // Tinus
         putFestivalNameInLabel(); // Sondre
     }
 
-    private void putTeknikersInList(String festival) {
-        ObservableList<String> observableListToAdd = Filter.getAllTeknikers(festival);
+    private void putTeknikersInList(String festival, String searchText) {
+        ObservableList<String> observableListToAdd = Filter.getAllTeknikers(festival, searchText);
+        listViewTeknikere.setEditable(true);
         listViewTeknikere.setItems(observableListToAdd);
         listViewTeknikere.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -77,6 +81,12 @@ public class Tekniker_controller {
             }
         });
 
+    }
+
+    @FXML
+    private void onKeyPressSearchBar() {
+        String searchText = textFieldSearch.getText();
+        putTeknikersInList(UKA, searchText);
     }
 
     private void putFestivalNameInLabel() {
