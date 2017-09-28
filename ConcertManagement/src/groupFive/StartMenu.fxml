@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="203.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="540.0" prefWidth="624.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="202.0" layoutY="52.0" prefHeight="561.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" text="Arrangør" textFill="#ba202c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" text="Bookingansvarlig" textFill="#ba202c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" text="Bookingsjef" textFill="#ba202c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" text="Tekniker" textFill="#ba202c">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="126.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="94.0" fitWidth="94.0" layoutX="468.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <!--<Image url="@../../../../../../../Desktop/samfundet.png" /> -->
+               </image>
+            </ImageView>
+            <Text fill="#ba202c" layoutX="252.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Studenter">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Text>
+            <Text fill="#ba202c" layoutX="596.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Samfundet">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="47.0" prefWidth="600.0" style="-fx-background-color: #111111;" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

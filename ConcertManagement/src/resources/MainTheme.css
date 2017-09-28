@@ -1,25 +1,37 @@
 .background {
-    -fx-background-color: #ffe6cc;
+    -fx-background-color: #D6CFCB;
 }
 
-.listView -list-cell:even {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
-
+#jobButt {
+   -fx-background-color: #A6808C;
+   -fx-text-fill: #D6C5BC;
+   -fx-font-size: 22;
+   -fx-margin: 100;
+   -fx-background-radius: 40;
 }
 
-.listView -list-cell:odd {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
-
-}
-
-#listText .list-cell {
+#jobsList {
     -fx-alignment: center;
+    -fx-spacing: 10;
+
+
 }
 
-#listViewWrap {
+#titleLabel {
+    -fx-font-size: 35;
+    -fx-text-fill: #A6808C;
+}
 
+#arrScenes1 {
+     -fx-background-color: #A6808C;
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+}
+
+#arrScenes2 {
+    -fx-background-color: #A6808C;
+   -fx-text-fill: #D6C5BC;
+   -fx-font-size: 22;
+   -fx-margin: 100;
 }

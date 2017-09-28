@@ -2,6 +2,8 @@ package groupFive;
 
 import Json.Festival;
 import Json.JsonEncode;
+import javafx.scene.layout.BorderPane;
+import sun.plugin.javascript.navig.Anchor;
 import util.Constants;
 import Json.JsonDecode;
 import javafx.application.Application;
@@ -43,6 +45,7 @@ public class Main extends Application {
         constants.setPrev(constants.getCurrent());
         constants.setCurrent(fxmlFile);
         try {
+            System.out.println(fxmlFile);
             AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlFile + ".fxml"));
             rootPane.getChildren().setAll(pane);
 
