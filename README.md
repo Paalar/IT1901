@@ -6,6 +6,7 @@ Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ans
 ### Bugs
 #### Known bugs
 * Kan endre teksten til scenene, dette burde ikke skje.
+* Funnet bug når man ikke trykker på en bruker på startside
 * Hvis ikke en konsert er trykket på så stopper programmet.
 #### Fixed bugs
 
