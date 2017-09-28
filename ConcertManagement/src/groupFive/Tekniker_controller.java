@@ -2,6 +2,7 @@ package groupFive;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import util.Constants;
 import util.Filter;
@@ -34,7 +35,11 @@ public class Tekniker_controller {
     @FXML
     private TextField textFieldSearch;
 
+    @FXML
+    private Label labelNavn;
 
+    @FXML
+    private Label labelFestival;
 
     @FXML
     private ListView listViewTeknikere;
@@ -89,8 +94,9 @@ public class Tekniker_controller {
         putTeknikersInList(UKA, searchText);
     }
 
-    private void putFestivalNameInLabel() {
 
+    private void putFestivalNameInLabel() {
+        labelFestival.setText(UKA);
     }
 
     private void putKonsertInfoInLists(String festival, String arbeider) {
@@ -98,6 +104,8 @@ public class Tekniker_controller {
         List<String> scener = new ArrayList<>();
         List<String> artister = new ArrayList<>();
         List<String> tekniker = new ArrayList<>();
+
+        labelNavn.setText(arbeider);
 
         List<Scene> scenes = Filter.getAllScenes(festival);
         for (Scene s : scenes) {
