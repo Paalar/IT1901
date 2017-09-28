@@ -26,12 +26,27 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static util.Filter.getAllConcerts;
 import static util.Filter.getAllFestivalsObservableList;
 
 public class Tekniker_controller {
 
+
+
     @FXML
     private ListView listViewTeknikere;
+
+    @FXML
+    private ListView listViewDato;
+
+    @FXML
+    private ListView listViewArtist;
+
+    @FXML
+    private ListView listViewScene;
+
+    @FXML
+    private ListView listViewOppgave;
 
     @FXML
     private AnchorPane rootPane;
@@ -68,7 +83,34 @@ public class Tekniker_controller {
 
     }
 
-    private void putKonsertInfoInLists(String festival, String Arbeider) {
+    private void putKonsertInfoInLists(String festival, String arbeider) {
+        List<String> datoer = new ArrayList<>();
+        List<String> scener = new ArrayList<>();
+        List<String> artister = new ArrayList<>();
+        List<String> tekniker = new ArrayList<>();
+
+        List<Json.Scene> scenes = Filter.getAllScenes(festival);
+        for (Json.Scene s : scenes) {
+            for (Concert c : s.getKonsert()) {
+                if (c.getLyd().equals(arbeider)) {
+                    datoer.add(c.getDato());
+                    scener.add(s.getNavn());
+                    artister.add(c.getArtist());
+                    tekniker.add("Lydteknikker");
+                }
+                if (c.getLys().equals(arbeider)) {
+                    datoer.add(c.getDato());
+                    scener.add(s.getNavn());
+                    artister.add(c.getArtist());
+                    tekniker.add("Lysteknikker");
+                }
+            }
+        }
+        listViewDato.setItems(FXCollections.observableArrayList(datoer));
+        listViewArtist.setItems(FXCollections.observableArrayList(artister));
+        listViewScene.setItems(FXCollections.observableArrayList(scener));
+        listViewOppgave.setItems(FXCollections.observableArrayList(tekniker));
+
 
     }
 

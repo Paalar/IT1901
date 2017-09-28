@@ -24,6 +24,19 @@ public class Filter {
         return concerts;
     }
 
+    public static List<Scene> getAllScenes(String festival) {
+        List<Scene> scenes = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (Scene s : f.getScene()) {
+                    scenes.add(s);
+                }
+            }
+        }
+        return  scenes;
+    }
+
+
     public static ObservableList<String> getAllFestivalsObservableList(List<Festival> festivals) {
         // Denne gjør en liste over festivaler over til en observablelist med bare strings som er navnet til festivalen.
         List<String> festivalsString = new ArrayList<>();
