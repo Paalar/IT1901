@@ -5,6 +5,7 @@ import Json.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -34,6 +35,12 @@ public class Manager_controller {
     private  TextField listOfNeedsAddedLabel;
 
     @FXML
+    private TextField listOfNeedsAdded;
+
+    @FXML
+    private  TextField textFieldScene1;
+
+    @FXML
     private ListView listOfNeeds;
 
     private List<ListView> listViews;
@@ -46,6 +53,9 @@ public class Manager_controller {
 
     @FXML
     private Button sendButton;
+
+    @FXML
+    private  Button addButton;
 
     @FXML
     private TextField need;
@@ -67,6 +77,7 @@ public class Manager_controller {
         listViews = Arrays.asList(listOfOfferView, listOfNeeds);
         textFields = Arrays.asList(sceneName, artistName);
         putOfferInChoiceBox();
+        hideStuffOnStart();
     }
 
     /**private void createChoiceBoxListener() {
@@ -78,6 +89,7 @@ public class Manager_controller {
             }
         });
     }**/
+
 
     private void addItemsToList() {
         putOfferInChoiceBox();
@@ -195,6 +207,33 @@ public class Manager_controller {
     }
 
     @FXML
+    private void hideStuffOnStart(){
+        addButton.setVisible(false);
+        need.setVisible(false);
+        artistName.setVisible(false);
+        sceneName.setVisible(false);
+        listOfNeeds.setVisible(false);
+        listOfNeedsAddedLabel.setVisible(false);
+        sendButton.setVisible(false);
+    }
+
+    @FXML
+    private void whenClikedOnArtist(String artistName, String sceneName){
+        updateInfo(artistName,sceneName);
+        showStuff();
+    }
+
+    @FXML
+    private void showStuff(){
+        addButton.setVisible(true);
+        need.setVisible(true);
+        artistName.setVisible(true);
+        sceneName.setVisible(true);
+        listOfNeeds.setVisible(true);
+        listOfNeedsAddedLabel.setVisible(true);
+        sendButton.setVisible(true);
+    }
+    @FXML
     private void goBack(){
         String fxmlFileName = "Main";
         Main main = new Main();
@@ -246,4 +285,10 @@ public class Manager_controller {
         loadNeedsThatisFromBefore(artistName, sceneName);
     }
 
+    public void whenClikdOnArtist(ActionEvent actionEvent) {
+        String artistName = "Astrid S";
+        String sceneName = "Storsalen";
+        updateInfo(artistName,sceneName);
+        showStuff();
+    }
 }
