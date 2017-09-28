@@ -10,20 +10,20 @@ public class Offer {
         return artist;
     }
 
-    public String getDato() {
-        return dato;
-    }
-
-    public int getPris() {
-        return pris;
-    }
-
     public void setArtist(String artist) {
         this.artist = artist;
     }
 
+    public String getDato() {
+        return dato;
+    }
+
     public void setDato(String dato) {
         this.dato = dato;
+    }
+
+    public int getPris() {
+        return pris;
     }
 
     public void setPris(int pris) {

@@ -12,20 +12,20 @@ public class Scene {
         return navn;
     }
 
-    public int getPlasser() {
-        return plasser;
-    }
-
-    public List<Concert> getKonsert() {
-        return konsert;
-    }
-
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
+    public int getPlasser() {
+        return plasser;
+    }
+
     public void setPlasser(int plasser) {
         this.plasser = plasser;
+    }
+
+    public List<Concert> getKonsert() {
+        return konsert;
     }
 
     public void setKonsert(List<Concert> konsert) {
