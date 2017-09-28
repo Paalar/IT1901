@@ -16,7 +16,7 @@ public class JsonDecode {
 
     public static List<Festival> parseJSON() {
         try {
-            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/test.json"));
+            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/concertManagement.json"));
 
             Gson gson = new Gson();
             Type foundListType = new TypeToken<ArrayList<Festival>>(){}.getType();
