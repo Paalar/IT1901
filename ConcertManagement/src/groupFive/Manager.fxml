@@ -17,7 +17,7 @@
       <TextField fx:id="need" layoutX="555.0" layoutY="151.0" text="Behov:" />
       <TextField fx:id="sceneName" layoutX="563.0" layoutY="112.0" text="Scene:" />
       <Button fx:id="addButton" layoutX="744.0" layoutY="149.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
-      <TextField fx:id="listOfNeedsAdded" layoutX="495.0" layoutY="188.0" prefHeight="25.0" prefWidth="336.0" text="Behov som er lagt til, klar til å sendes:" />
+      <TextField fx:id="listOfNeedsAddedLabel" layoutX="495.0" layoutY="188.0" prefHeight="25.0" prefWidth="336.0" text="Behov som er lagt til, klar til å sendes:" />
       <Button fx:id="sendButton" layoutX="845.0" layoutY="580.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
    </children>
 </AnchorPane>
