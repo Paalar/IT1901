@@ -31,11 +31,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
         festivals = JsonDecode.parseJSON();
-
-
-        //TODO
-        JsonEncode.JsonInsert();
-
     }
 
     public static void main(String[] args) {

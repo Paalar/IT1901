@@ -12,8 +12,10 @@ import java.util.List;
 public class JsonEncode {
 
     public static void JsonInsert(List<Festival> festivals) {
-        /*
-        List<Festival> festivals = JsonDecode.parseJSON();
+
+        /*   Dette viser hvordan man legger til en ny artist, Jay Z og Day Z.
+             Først må man gå inn i konserten man skal lage, så lage et nytt Concert objekt.
+
         List<Concert> concert = festivals.get(0).getScene().get(0).getKonsert();
         Concert konsert = new Concert();
         konsert.setArtist("Jay Z");
@@ -28,6 +30,7 @@ public class JsonEncode {
         konsert1.setPris(10001);
         concert.add(konsert1);
         festivals.get(0).getScene().get(0).setKonsert(concert);
+        
         */
 
         try (FileWriter writer = new FileWriter("src/resources/test.json")){
