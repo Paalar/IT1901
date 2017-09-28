@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,25 +28,29 @@ import static util.Filter.getAllFestivalsObservableList;
 
 public class Manager_controller {
     @FXML
-    private ListView listViewScene1;
-    @FXML
-    private ListView listViewScene2;
-    @FXML
-    private ListView listViewScene3;
+    private ListView listOfOfferView;
 
-    // De 3 listviewsene i en liste.
+    @FXML
+    private  TextField listOfNeedsAddedLabel;
+
+    @FXML
+    private ListView listOfNeeds;
+
     private List<ListView> listViews;
 
     @FXML
-    private TextField textFieldScene1;
+    private TextField artistName;
 
     @FXML
-    private TextField textFieldScene2;
+    private TextField sceneName;
 
     @FXML
-    private TextField textFieldScene3;
+    private Button sendButton;
 
-    //3 textfields i en liste
+    @FXML
+    private TextField need;
+
+    @FXML
     private List<TextField> textFields;
 
     @FXML
@@ -55,13 +60,16 @@ public class Manager_controller {
     private AnchorPane rootPane;
 
     @FXML
+    private List<String> artistNeeds;
+
+    @FXML
     public void initialize() {
-        listViews = Arrays.asList(listViewScene1, listViewScene2, listViewScene3);
-        textFields = Arrays.asList(textFieldScene1, textFieldScene2, textFieldScene3);
-        addItemsToList();
+        listViews = Arrays.asList(listOfOfferView, listOfNeeds);
+        textFields = Arrays.asList(sceneName, artistName);
+        putOfferInChoiceBox();
     }
 
-    private void createChoiceBoxListener() {
+    /**private void createChoiceBoxListener() {
         choiceBoxFestivals.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -69,24 +77,24 @@ public class Manager_controller {
                 System.out.println(choiceBoxFestivals.getItems().get((Integer) newValue));
             }
         });
-    }
+    }**/
 
     private void addItemsToList() {
-        putFestivalsInChoiceBox();
-        createChoiceBoxListener();
-        putConcertsInSceneLists("UKA 2017"); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
+        putOfferInChoiceBox();
+        //createChoiceBoxListener();
+        //putsInSceneLists("Lorde"); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
     }
 
-    private void putFestivalsInChoiceBox() {
-        ObservableList<String> observableListToAdd = getAllFestivalsObservableList(Main.festivals);
-        choiceBoxFestivals.setItems(observableListToAdd);
-        choiceBoxFestivals.getSelectionModel().selectFirst();
+    private void putOfferInChoiceBox() {
+        //ObservableList<String> observableListToAdd = getAllFestivalsObservableList(Main.offers);
+        //choiceBoxFestivals.setItems(observableListToAdd);
+        //choiceBoxFestivals.getSelectionModel().selectFirst();
         // Denne linjen gjør bare at det første itemet i listen blir vist og selected.
         // TODO: gjør listen klikkbar og endre ting i scene boksen videre.
     }
 
-    private void putSceneNamesInTextBox(String festival) {
+   /** private void putSceneNamesInTextBox(String festival) {
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
                 for (int i = 0; i < 3; i++) {
@@ -129,7 +137,7 @@ public class Manager_controller {
                 }
             }
         }
-    }
+    }**/
 
     private void showArbeidere(String concert, int whichScene, String festival) {
         // TODO: lag popupen finere.
@@ -198,6 +206,44 @@ public class Manager_controller {
         Main main = new Main();
         //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
         main.changeView(rootPane, Constants.getHome());
+    }
+    @FXML
+    private  void sendTheNeeds(){
+        //json.encode.needs(artistNeeds);
+        sendButton.setText("Behov sendt");
+    }
+
+    @FXML
+    private  void addNeedsToList(){
+        String aNeed = need.getText();
+        artistNeeds.add(aNeed);
+        need.setText("Behov: ");
+    }
+
+    @FXML
+    private void updateScene(String sceneName){
+        this.sceneName.setText("Scene: " + sceneName);
+    }
+
+    @FXML
+    private void updateArtistNAme(String artistName){
+        this.artistName.setText("Artist: " + artistName);
+    }
+
+    @FXML
+    private  void loadNeedsThatisFromBefore(String artistName, String sceneName){
+       /** if(artistName == "Something" && sceneName == "Something"){
+            for(int i = 0; i < "someList"; i++){
+                listOfNeeds.add(someList.aNeed);
+            }
+        }**/
+    }
+
+    @FXML
+    private  void updateInfo(String artistName, String sceneName){
+        updateArtistNAme(artistName);
+        updateScene(sceneName);
+        loadNeedsThatisFromBefore(artistName, sceneName);
     }
 
 }

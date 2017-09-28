@@ -18,6 +18,7 @@ import java.util.List;
 public class Main extends Application {
     Constants constants = new Constants();
     public static List<Festival> festivals;
+    //public static List<Offer> offers;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
