@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Scene {
 
-    String navn;
-    int plasser;
-    List<Concert> konsert;
+    private String navn;
+    private int plasser;
+    private List<Concert> konsert;
 
     public String getNavn() {
         return navn;
@@ -18,5 +18,17 @@ public class Scene {
 
     public List<Concert> getKonsert() {
         return konsert;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+    public void setPlasser(int plasser) {
+        this.plasser = plasser;
+    }
+
+    public void setKonsert(List<Concert> konsert) {
+        this.konsert = konsert;
     }
 }

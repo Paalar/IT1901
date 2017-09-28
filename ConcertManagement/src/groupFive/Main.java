@@ -1,6 +1,7 @@
 package groupFive;
 
 import Json.Festival;
+import Json.JsonEncode;
 import util.Constants;
 import Json.JsonDecode;
 import javafx.application.Application;
@@ -30,6 +31,11 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
         festivals = JsonDecode.parseJSON();
+
+
+        //TODO
+        JsonEncode.JsonInsert();
+
     }
 
     public static void main(String[] args) {
