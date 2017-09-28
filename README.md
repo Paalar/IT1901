@@ -3,6 +3,13 @@
 #### Description
 Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ansvar for å arrangere konserter på flere scener, som involverer rigging av scene, teknisk gjennomføring av konserter, samt booking av band. Brukerhistoriene er oppgitt i alfabetisk rekkefølge.
 
+### Bugs
+#### Known bugs
+* Kan endre teksten til scenene, dette burde ikke skje.
+* Hvis ikke en konsert er trykket på så stopper programmet.
+#### Fixed bugs
+
+
 ### Bruk av JSON
 * Ikke lastet opp til master enda.
 * All informasjonen blir lagret i en liste. Akkurat nå heter den festivals og starter i main.
@@ -48,10 +55,7 @@ Det ser litt krunglete ut, men er ikke vanskelig å forstå hva som faktisk skje
 
 ### Changelog
 #### Sprint 1
+Brukerhistorier 1,2 ikke 13. er Lagt til, grunnmuren for prosjektet er laget. Mangler et ordentlig design, noen bugs er der. Lite brukervennlig. 
 #### Sprint 2
 #### Sprint 3
 #### Sprint 4
-
-### Bugs
-#### Known bugs
-#### Fixed bugs
