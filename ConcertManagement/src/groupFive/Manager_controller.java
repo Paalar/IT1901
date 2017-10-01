@@ -23,6 +23,7 @@ import javafx.event.EventHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
@@ -35,21 +36,24 @@ public class Manager_controller {
     private  TextField listOfNeedsAddedLabel;
 
     @FXML
-    private TextField listOfNeedsAdded;
+    private TextField artistName;
 
     @FXML
-    private  TextField textFieldScene1;
+    private TextField sceneName;
+
+    @FXML
+    private TextField need;
+
+    @FXML
+    private TextField dato;
+
+    @FXML
+    private TextField listOfNeedsAdded;
 
     @FXML
     private ListView listOfNeeds;
 
     private List<ListView> listViews;
-
-    @FXML
-    private TextField artistName;
-
-    @FXML
-    private TextField sceneName;
 
     @FXML
     private Button sendButton;
@@ -58,13 +62,7 @@ public class Manager_controller {
     private  Button addButton;
 
     @FXML
-    private TextField need;
-
-    @FXML
     private List<TextField> textFields;
-
-    @FXML
-    private ChoiceBox choiceBoxFestivals;
 
     @FXML
     private AnchorPane rootPane;
@@ -215,12 +213,7 @@ public class Manager_controller {
         listOfNeeds.setVisible(false);
         listOfNeedsAddedLabel.setVisible(false);
         sendButton.setVisible(false);
-    }
-
-    @FXML
-    private void whenClikedOnArtist(String artistName, String sceneName){
-        updateInfo(artistName,sceneName);
-        showStuff();
+        dato.setVisible(false);
     }
 
     @FXML
@@ -232,6 +225,7 @@ public class Manager_controller {
         listOfNeeds.setVisible(true);
         listOfNeedsAddedLabel.setVisible(true);
         sendButton.setVisible(true);
+        dato.setVisible(true);
     }
     @FXML
     private void goBack(){
@@ -243,7 +237,6 @@ public class Manager_controller {
     @FXML
     private void goHome(){
         Main main = new Main();
-        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
         main.changeView(rootPane, Constants.getHome());
     }
     @FXML
@@ -265,13 +258,18 @@ public class Manager_controller {
     }
 
     @FXML
-    private void updateArtistNAme(String artistName){
+    private void updateArtistName(String artistName){
         this.artistName.setText("Artist: " + artistName);
     }
 
     @FXML
-    private  void loadNeedsThatisFromBefore(String artistName, String sceneName){
-       /** if(artistName == "Something" && sceneName == "Something"){
+    private  void updateDate(String dato){
+        this.dato.setText("Dato: " + dato);
+    }
+
+    @FXML
+    private  void loadNeedsThatisFromBefore(String artistName, String sceneName, String dato){
+       /** if(artistName == "Something" && sceneName == "Something" && dato == "Something){
             for(int i = 0; i < "someList"; i++){
                 listOfNeeds.add(someList.aNeed);
             }
@@ -279,16 +277,18 @@ public class Manager_controller {
     }
 
     @FXML
-    private  void updateInfo(String artistName, String sceneName){
-        updateArtistNAme(artistName);
+    private  void updateInfo(String artistName, String sceneName, String dato){
+        updateArtistName(artistName);
         updateScene(sceneName);
-        loadNeedsThatisFromBefore(artistName, sceneName);
+        updateDate(dato);
+        loadNeedsThatisFromBefore(artistName, sceneName, dato);
     }
 
     public void whenClikdOnArtist(ActionEvent actionEvent) {
         String artistName = "Astrid S";
         String sceneName = "Storsalen";
-        updateInfo(artistName,sceneName);
+        String dato = "25-10-2017";
+        updateInfo(artistName,sceneName, dato);
         showStuff();
     }
 }
