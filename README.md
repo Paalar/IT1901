@@ -4,11 +4,11 @@
 Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ansvar for å arrangere konserter på flere scener, som involverer rigging av scene, teknisk gjennomføring av konserter, samt booking av band. Brukerhistoriene er oppgitt i alfabetisk rekkefølge.
 
 ### Bugs
-#### Known bugs
 * Kan endre teksten til scenene, dette burde ikke skje.
 * Funnet bug når man ikke trykker på en bruker på startside
 * Hvis ikke en konsert er trykket på så stopper programmet.
-#### Fixed bugs
+* ScrollPane bakgrunn ikke faktisk ble fargen som ønsket
+* Når man maksimerer vinduet på hovedsiden blir det ikke sentrert
 
 
 ### Bruk av JSON
