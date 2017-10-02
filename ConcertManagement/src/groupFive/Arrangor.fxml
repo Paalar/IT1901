@@ -32,21 +32,27 @@
          <left>
             <VBox prefWidth="335.0" styleClass="background" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Festival">
+                  <Label alignment="TOP_CENTER" text="Festival">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                      <graphic>
                         <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
                      </graphic>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </VBox.margin>
                   </Label>
-                  <Label text="Scene">
+                  <Label alignment="TOP_CENTER" text="Scene">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
                      <graphic>
                         <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" />
                      </graphic>
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" />
-                     </VBox.margin>
                   </Label>
                   <ScrollPane fx:id="scrollPane" prefWidth="200.0">
                     <content>
