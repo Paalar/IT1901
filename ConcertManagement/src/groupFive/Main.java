@@ -1,9 +1,6 @@
 package groupFive;
 
 import Json.Festival;
-import Json.JsonEncode;
-import javafx.scene.layout.BorderPane;
-import sun.plugin.javascript.navig.Anchor;
 import util.Constants;
 import Json.JsonDecode;
 import javafx.application.Application;
@@ -14,8 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main extends Application {

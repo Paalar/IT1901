@@ -5,6 +5,7 @@ import Json.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -47,6 +48,9 @@ public class Arrangor_controller {
     private int festivalSelected, sceneSelected = 0;
 
     @FXML
+    private VBox arrButts;
+
+    @FXML
     public void initialize() {
         addItemsToList();
     }
@@ -87,6 +91,8 @@ public class Arrangor_controller {
         createChoiceBoxListener();
         createSceneBoxListener();
         putSceneNamesInTextBox(Main.festivals.get(0).getFestival(), Main.festivals.get(0).getScene().get(0).getNavn());
+        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+
     }
 
     private void putScenesInChoiceBox(String festival) {
@@ -112,8 +118,7 @@ public class Arrangor_controller {
     }
 
     private void putSceneNamesInTextBox(String festival, String scene) {
-        Main_controller mc = new Main_controller();
-        VBox vbox = new VBox();
+        arrButts.getChildren().clear();
 
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
@@ -123,13 +128,13 @@ public class Arrangor_controller {
                         for (int n = 0; n < concerts.size(); n++) {
                             Button btn = createButton(concerts.get(n).getArtist());
                             btn.setId("arrScenes");
-                            vbox.getChildren().add(btn);
+                            arrButts.getChildren().add(btn);
                         }
                     }
                 }
             }
         }
-        scrollPane.setContent(vbox);
+        scrollPane.setContent(arrButts);
     }
 
     private void showArbeidere(String concert, int whichScene, String festival) {
@@ -138,15 +143,15 @@ public class Arrangor_controller {
                 for (Concert c : f.getScene().get(whichScene).getKonsert()) {
                     // Her går den gjennom alle konserter på riktig festival på riktig scene.
                     if (c.getArtist().equals(concert)) {
-                        String lystekniker = "Lysteknikere\n";
-                        String lydtekniker = "Lydteknikere\n";
+                        String lystekniker = "Lysteknikere:\n\n";
+                        String lydtekniker = "Lydteknikere:\n\n";
 
                         for (SoundTech st : c.getLyd()) {
-                            lystekniker += st.getNavn() + "\n";
+                            lystekniker += " - " + st.getNavn() + "\n";
                         }
 
                         for (LightTech lt : c.getLys()) {
-                            lydtekniker += lt.getNavn() + "\n";
+                            lydtekniker += " - " + lt.getNavn() + "\n";
                         }
 
                         labelLightTech.setText(lystekniker);
@@ -160,7 +165,7 @@ public class Arrangor_controller {
     public Button createButton(String name) {
         final Button button = new Button(name);
         button.setId("arrScenes");
-        button.setPrefSize(200,50);
+        button.setPrefSize(300,50);
         button.setOnMouseClicked(event -> {
             try {
                 String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
@@ -171,13 +176,6 @@ public class Arrangor_controller {
             }
         });
         return button;
-    }
-
-    @FXML
-    private void goBack(){
-        String fxmlFileName = "Main";
-        Main main = new Main();
-        main.changeView(rootPane, fxmlFileName);
     }
 
     @FXML
