@@ -41,9 +41,8 @@ public class Main_controller {
 
     public void addLoginElementsInList() {
         //Legge til default login knappene.
-        ArrayList<String> jobs = new ArrayList<>(Arrays.asList("Arrangør", "Bookinansvarlig", "Bookingsjef", "Manager", "Lydtekniker", "Lystekniker"));
-        //addToList(jobs, loginListView);
-        addButtons(jobs, jobsList);
+        ArrayList<String> jobs = new ArrayList<>(Arrays.asList("Arrangør", "Bookinansvarlig", "Bookingsjef", "Manager", "Tekniker"));
+        addToList(jobs, loginListView);
     }
 
 

@@ -1,7 +1,7 @@
 package util;
 
-import Json.Concert;
-import Json.Festival;
+import Json.*;
+import groupFive.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,14 +9,33 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Filter {
-    public static List<Concert> getAllConcerts(List<Festival> festivals) {
-        // Denne funksjonen går gjennom alle festivaler og gir ut en liste over konserter.
-        List<Concert> filtered = new ArrayList<>();
-        for (Festival f : festivals) {
-            //filtered.addAll(f.getKonsert());
+    public static List<Concert> getAllConcerts(String festival) {
+        List<Concert> concerts = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                // Nå har du funnet riktig festival.
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        concerts.add(c);
+                    }
+                }
+            }
         }
-        return filtered;
+        return concerts;
     }
+
+    public static List<Scene> getAllScenes(String festival) {
+        List<Scene> scenes = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (Scene s : f.getScene()) {
+                    scenes.add(s);
+                }
+            }
+        }
+        return  scenes;
+    }
+
 
     public static ObservableList<String> getAllFestivalsObservableList(List<Festival> festivals) {
         // Denne gjør en liste over festivaler over til en observablelist med bare strings som er navnet til festivalen.
@@ -25,6 +44,26 @@ public class Filter {
             festivalsString.add(f.getFestival());
         }
         return FXCollections.observableArrayList(festivalsString);
+    }
+    
+    public static ObservableList<String>getAllTeknikers(String festival, String searchText) {
+        // Denne går gjennom alle konserter for en festival og legger til alle unike som inneholder søketeksten i navnet.
+        List<String> teknikerStrings = new ArrayList<>();
+        List<Concert> concerts = getAllConcerts(festival);
+        for (Concert c : concerts) {
+            for (SoundTech st : c.getLyd()) {
+                if ((!teknikerStrings.contains(st.getNavn())) && st.getNavn().toLowerCase().contains(searchText.toLowerCase())) {
+                    teknikerStrings.add(st.getNavn());
+                }
+            }
+
+            for (LightTech lt : c.getLys()) {
+                if ((!teknikerStrings.contains(lt.getNavn())) && lt.getNavn().toLowerCase().contains(searchText.toLowerCase())) {
+                    teknikerStrings.add(lt.getNavn());
+                }
+            }
+        }
+        return FXCollections.observableArrayList(teknikerStrings);
     }
 
 //    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
