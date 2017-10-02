@@ -4,6 +4,7 @@ import Json.Concert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,10 +27,11 @@ public class Bookingansvarlig_controller {
     ListView listViewEarlierConcerts;
 
     @FXML
-    TextArea textAreaBandInfo;
+    Label labelBandInfo;
 
     public void initialize() {
         putItemsInLists();
+        putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
     }
 
     public Button createButton(String name) {
@@ -53,7 +55,7 @@ public class Bookingansvarlig_controller {
     }
 
     private void putBandInfoInLists(String band) {
-        String stringToPutInTextArea = "";
+        String stringToPutInTextArea = band + ":\n";
         // Lager en string hvor jeg putter inn all informasjonen før jeg setter labelen sin tekst til hele stringen.
 
         int popularity = getPopularity(band);
@@ -65,7 +67,7 @@ public class Bookingansvarlig_controller {
         int earlierSales = getSales(band);
         stringToPutInTextArea += "Tidligere salg: " + String.valueOf(earlierSales) + "%\n";
 
-        textAreaBandInfo.setText(stringToPutInTextArea);
+        labelBandInfo.setText(stringToPutInTextArea);
 
         listViewEarlierConcerts.setEditable(true);
         listViewEarlierConcerts.setItems(getConcertsAndScenesForBand(band));

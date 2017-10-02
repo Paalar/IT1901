@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -17,9 +16,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
+                        <VBox layoutX="363.0" layoutY="88.0" prefHeight="200.0" prefWidth="201.0">
+                           <children>
+                              <Label fx:id="labelBandInfo" />
+                           </children>
+                        </VBox>
                         <Label layoutX="146.0" layoutY="52.0" text="Velg band" />
-                        <TextArea fx:id="textAreaBandInfo" editable="false" layoutX="363.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Label layoutX="438.0" layoutY="52.0" text="Band Info" />
                         <ListView fx:id="listViewEarlierConcerts" layoutX="640.0" layoutY="88.0" prefHeight="484.0" prefWidth="200.0" />
                         <Label layoutX="669.0" layoutY="52.0" text="Tidligere konserter i Norge" />
                         <VBox fx:id="vBoxBands" layoutX="53.0" layoutY="80.0" prefHeight="510.0" prefWidth="239.0" />
