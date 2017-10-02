@@ -3,7 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -27,20 +29,36 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <Button onAction="#goBack" mnemonicParsing="false" text="Back" />
+                  <Button mnemonicParsing="false" onAction="#goBack" text="Back" />
                   <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
-                <Button onAction="#goHome" mnemonicParsing="false" prefHeight="27.0" prefWidth="762.0" text="Start" />
+                <Button mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Start" />
               </buttons>
             </ButtonBar>
          </top>
          <left>
             <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                <children>
-                  <ChoiceBox fx:id= "choiceBoxScenes" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" />
                   <ScrollPane fx:id="scrollPane" prefHeight="653.0" prefWidth="100.0" />
                </children>
             </VBox>
          </left>
+         <center>
+            <SplitPane dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="labelLightTech" text="Lydteknikere" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="labelSoundTech" text="Lysteknikere" />
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

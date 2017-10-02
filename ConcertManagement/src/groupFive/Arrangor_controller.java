@@ -69,6 +69,12 @@ public class Arrangor_controller {
     @FXML
     private AnchorPane rootPane;
 
+    @FXML
+    private Label labelSoundTech;
+
+    @FXML
+    private Label labelLightTech;
+
     private int festivalSelected, sceneSelected = 0;
 
     @FXML
@@ -156,7 +162,7 @@ public class Arrangor_controller {
                         List<Concert> concerts = f.getScene().get(i).getKonsert();
                         for (int n = 0; n < concerts.size(); n++) {
                             System.out.println(concerts.get(n).getArtist());
-                            Button btn = mc.createButton(concerts.get(n).getArtist());
+                            Button btn = createButton(concerts.get(n).getArtist());
                             btn.setId("arrScenes");
                             vbox.getChildren().add(btn);
                         }
@@ -229,7 +235,11 @@ public class Arrangor_controller {
                 for (Concert c : f.getScene().get(whichScene).getKonsert()) {
                     // Her går den gjennom alle konserter på riktig festival på riktig scene.
                     if (c.getArtist().equals(concert)) {
-                        Stage stage = new Stage(StageStyle.DECORATED);
+                        String lystekniker = "Lysteknikere\n";
+                        String lydtekniker = "Lydteknikere\n";
+
+
+                        /*Stage stage = new Stage(StageStyle.DECORATED);
                         stage.setX(400);
                         stage.setY(400);
                         // Hvilke kordinater det nye vinduet skal åpnes i.
@@ -241,40 +251,60 @@ public class Arrangor_controller {
 
                         ListView listViewSoundTechs = new ListView();
                         listViewSoundTechs.setPrefSize(250, 250);
-                        listViewSoundTechs.setEditable(true);
+                        listViewSoundTechs.setEditable(true);*/
 
-                        List<String> soundTechs = new ArrayList<>();
-                        soundTechs.add("SoundTechs: ");
+                        //List<String> soundTechs = new ArrayList<>();
+                        //soundTechs.add("SoundTechs: ");
                         for (SoundTech st : c.getLyd()) {
-                            soundTechs.add(st.getNavn());
+                            lystekniker += st.getNavn() + "\n";
+                            //soundTechs.add(st.getNavn());
                         }
-                        ObservableList<String> observableListSoundTechs = FXCollections.observableArrayList(soundTechs);
-                        listViewSoundTechs.setItems(observableListSoundTechs);
+                        //ObservableList<String> observableListSoundTechs = FXCollections.observableArrayList(soundTechs);
+                        //listViewSoundTechs.setItems(observableListSoundTechs);
                         // Lager ny listview og går gjennom alle SoundTechsene og legger de til i listen.
 
 
-                        ListView listViewLightTechs = new ListView();
+                        /*ListView listViewLightTechs = new ListView();
                         listViewLightTechs.setPrefSize(250, 250);
                         listViewLightTechs.setLayoutX(250);
                         listViewLightTechs.setEditable(true);
 
-                        List<String> LightTechs = new ArrayList<>();
-                        LightTechs.add("LightTechs: ");
+                        List<String> LightTechs = new ArrayList<>();*/
+                        //LightTechs.add("LightTechs: ");
                         for (LightTech lt : c.getLys()) {
-                            LightTechs.add(lt.getNavn());
+                            lydtekniker += lt.getNavn() + "\n";
                         }
-                        ObservableList<String> observableListLightTechs = FXCollections.observableArrayList(LightTechs);
+                        labelLightTech.setText(lystekniker);
+                        labelSoundTech.setText(lydtekniker);
+                        /*ObservableList<String> observableListLightTechs = FXCollections.observableArrayList(LightTechs);
                         listViewLightTechs.setItems(observableListLightTechs);
                         // Lager ny listview og går gjennom alle LightTechsene og legger de til i listen.
 
                         layout.getChildren().add(listViewSoundTechs);
                         layout.getChildren().add(listViewLightTechs);
                         // Legger til listene i layouten og viser den.
-                        stage.show();
+                        stage.show();*/
                     }
                 }
             }
         }
+    }
+
+    public Button createButton(String name) {
+        final Button button = new Button(name);
+        button.setId("arrScenes");
+        button.setPrefSize(200,50);
+        button.setOnMouseClicked(event -> {
+            try {
+                String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+                String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
+                showArbeidere(name, sceneSelected, festival );
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Du må velge en jobb");
+            }
+        });
+        return button;
     }
 
     @FXML
