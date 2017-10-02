@@ -8,25 +8,12 @@ import javafx.scene.layout.VBox;
 import util.Constants;
 import util.Filter;
 
-import IO.ReadWriteConfig;
 import Json.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import Json.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import util.Constants;
-import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static util.Filter.getAllConcerts;
-import static util.Filter.getAllFestivalsObservableList;
 
 public class Tekniker_controller {
     private final String UKA = "UKA 2017";
