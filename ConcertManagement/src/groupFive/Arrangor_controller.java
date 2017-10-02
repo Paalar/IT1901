@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,24 +24,20 @@ public class Arrangor_controller {
     private ScrollPane scrollPane;
 
     @FXML
-    private ChoiceBox choiceBoxFestivals;
-
-    @FXML
-    private ChoiceBox choiceBoxScenes;
+    private ChoiceBox choiceBoxFestivals, choiceBoxScenes;
 
     @FXML
     private AnchorPane rootPane;
 
     @FXML
-    private Label labelSoundTech;
-
-    @FXML
-    private Label labelLightTech;
+    private Label labelSoundTech, labelLightTech;
 
     private int festivalSelected, sceneSelected = 0;
 
     @FXML
-    private VBox arrButts;
+    private VBox vboxLightTech, vboxSoundTech, arrButts;
+
+    private String lydtekniker, lystekniker;
 
     @FXML
     public void initialize() {
@@ -144,13 +141,15 @@ public class Arrangor_controller {
     }
 
     private void showArbeidere(String concert, int whichScene, String festival) {
+        vboxLightTech.getChildren().clear();
+        vboxSoundTech.getChildren().clear();
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
                 for (Concert c : f.getScene().get(whichScene).getKonsert()) {
                     // Her går den gjennom alle konserter på riktig festival på riktig scene.
                     if (c.getArtist().equals(concert)) {
-                        String lystekniker = "Lysteknikere:\n\n";
-                        String lydtekniker = "Lydteknikere:\n\n";
+                        lystekniker = "Lysteknikere:\n\n";
+                        lydtekniker = "Lydteknikere:\n\n";
 
                         for (SoundTech st : c.getLyd()) {
                             lystekniker += " - " + st.getNavn() + "\n";
@@ -162,6 +161,8 @@ public class Arrangor_controller {
 
                         labelLightTech.setText(lystekniker);
                         labelSoundTech.setText(lydtekniker);
+                        vboxSoundTech.getChildren().add(labelSoundTech);
+                        vboxLightTech.getChildren().add(labelLightTech);
                     }
                 }
             }
@@ -183,6 +184,27 @@ public class Arrangor_controller {
             }
         });
         return button;
+    }
+
+    @FXML
+    private void totalView() {
+        ArrayList<String> totalOversikt = new ArrayList<>();
+        ListView lv = new ListView();
+        vboxLightTech.getChildren().clear();
+        vboxSoundTech.getChildren().clear();
+
+        for (Festival f : Main.festivals) {
+            totalOversikt.add("\t" + f.getFestival() + "\n");
+            for (int i = 0; i < f.getScene().size(); i++) {
+                totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
+                for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
+                    totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+                }
+            }
+        }
+        ObservableList<String> obsList = FXCollections.observableArrayList(totalOversikt);
+        lv.setItems(obsList);
+        vboxLightTech.getChildren().add(lv);
     }
 
     @FXML

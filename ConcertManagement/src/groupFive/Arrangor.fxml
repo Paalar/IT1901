@@ -19,7 +19,7 @@
               <buttons>
                 <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Bytt arbeidsrolle" />
                   <Label fx:id="labelArrTitle" alignment="TOP_CENTER" text="Arrangør" />
-                  <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
+                  <Button fx:id="goHome" mnemonicParsing="false" onAction="#totalView" text="Totaloversikt" />
               </buttons>
                <BorderPane.margin>
                   <Insets />
@@ -32,10 +32,22 @@
          <left>
             <VBox prefWidth="335.0" styleClass="background" BorderPane.alignment="CENTER">
                <children>
-                  <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" VBox.vgrow="SOMETIMES">
+                  <Label text="Festival">
+                     <graphic>
+                        <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
+                     </graphic>
                      <VBox.margin>
-                        <Insets bottom="30.0" left="10.0" top="10.0" />
-                     </VBox.margin></ChoiceBox>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Scene">
+                     <graphic>
+                        <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" />
+                     </VBox.margin>
+                  </Label>
                   <ScrollPane fx:id="scrollPane" prefWidth="200.0">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
@@ -51,6 +63,9 @@
                            </padding>
                         </AnchorPane>
                     </content>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </ScrollPane>
                </children>
                <BorderPane.margin>
@@ -78,6 +93,9 @@
                      </children>
                   </VBox>
                </items>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
             </SplitPane>
          </center>
       </BorderPane>

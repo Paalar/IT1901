@@ -21,25 +21,13 @@ public class Tekniker_controller {
     private TextField textFieldSearch;
 
     @FXML
-    private Label labelNavn;
-
-    @FXML
-    private Label labelFestival;
+    private Label labelNavn, labelFestival;
 
     @FXML
     private VBox vBoxTekniker;
 
     @FXML
-    private ListView listViewDato;
-
-    @FXML
-    private ListView listViewArtist;
-
-    @FXML
-    private ListView listViewScene;
-
-    @FXML
-    private ListView listViewOppgave;
+    private ListView listViewDato, listViewArtist, listViewScene, listViewOppgave;
 
     @FXML
     private AnchorPane rootPane;
