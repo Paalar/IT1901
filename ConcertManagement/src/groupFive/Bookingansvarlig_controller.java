@@ -3,9 +3,11 @@ package groupFive;
 import Json.Concert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import util.Constants;
 import javafx.scene.control.ListView;
 
@@ -18,7 +20,7 @@ public class Bookingansvarlig_controller {
     AnchorPane rootPane;
 
     @FXML
-    ListView listViewAllBands;
+    VBox vBoxBands;
 
     @FXML
     ListView listViewEarlierConcerts;
@@ -30,24 +32,29 @@ public class Bookingansvarlig_controller {
         putItemsInLists();
     }
 
-    private void putItemsInLists() {
-        listViewAllBands.setEditable(true);
-        listViewAllBands.setItems(getAllBandsObservableList());
-        listViewAllBands.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    String itemClicked = listViewAllBands.getSelectionModel().getSelectedItem().toString();
-                    putBandInfoInLists(itemClicked);
-                } catch (Exception e) {
-                    System.out.println("Du har ikke valgt et band.");
-                }
-            }
+    public Button createButton(String name) {
+        // Denne lager og returnerer en Button.
+        final Button button = new Button(name);
+        button.setId("arrScenes");
+        button.setPrefSize(200,50);
+        button.setOnMouseClicked(event -> {
+            // Når du trykker på knappen så kjøres putBandInfoInLists med bandets navn som argument.
+            putBandInfoInLists(name);
         });
+        return button;
+    }
+
+    private void putItemsInLists() {
+        for (String band : getAllBandsObservableList()) {
+            Button btn = createButton(band);
+            btn.setId("btn" + band);
+            vBoxBands.getChildren().add(btn);
+        }
     }
 
     private void putBandInfoInLists(String band) {
         String stringToPutInTextArea = "";
+        // Lager en string hvor jeg putter inn all informasjonen før jeg setter labelen sin tekst til hele stringen.
 
         int popularity = getPopularity(band);
         stringToPutInTextArea += "Populæritet: " + String.valueOf(popularity) + "%\n";
