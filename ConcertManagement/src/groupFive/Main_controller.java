@@ -42,28 +42,8 @@ public class Main_controller {
     public void addLoginElementsInList() {
         //Legge til default login knappene.
         ArrayList<String> jobs = new ArrayList<>(Arrays.asList("Arrangør", "Bookinansvarlig", "Bookingsjef", "Manager", "Tekniker"));
-        addToList(jobs, loginListView);
+        addButtons(jobs, jobsList);
     }
-
-
-    /*public void addToList(ArrayList<String> listToAdd, ListView whichList) {
-        ObservableList<String> observableListToAdd = FXCollections.observableArrayList(listToAdd);
-        loginListView.setEditable(true);
-        loginListView.setItems(observableListToAdd);
-        loginListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    String itemClicked = loginListView.getSelectionModel().getSelectedItem().toString();
-                    Main main = new Main();
-                    main.changeView(rootPane, itemClicked);
-                }
-                catch (Exception e) {
-                    System.out.println("Du må velge en jobb.");
-                }
-            }
-        });
-    }*/
 
     public void addButtons(ArrayList<String> jobs, VBox jobsList) {
         for (int i = 0; i < jobs.size(); i++) {
