@@ -69,6 +69,8 @@ public class Arrangor_controller {
     @FXML
     private AnchorPane rootPane;
 
+    private int festivalSelected, sceneSelected = 0;
+
     @FXML
     public void initialize() {
         listViews = Arrays.asList(listViewScene1, listViewScene2, listViewScene3);
@@ -81,9 +83,8 @@ public class Arrangor_controller {
         choiceBoxFestivals.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                putConcertsInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
-                putConcertDatesInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
-                System.out.println(choiceBoxFestivals.getItems().get((Integer) newValue));
+                festivalSelected = (Integer) newValue;
+                changedFestOrScene();
             }
         });
     }
@@ -92,15 +93,26 @@ public class Arrangor_controller {
         choiceBoxScenes.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-
+                sceneSelected = (Integer) newValue;
+                changedFestOrScene();
             }
         });
+    }
+
+    private void changedFestOrScene() {
+        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+        String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
+
+        putConcertsInSceneLists(festival);
+        putConcertDatesInSceneLists(festival);
+        putSceneNamesInTextBox(festival, scene);
     }
 
     private void addItemsToList() {
         putFestivalsInChoiceBox();
         putScenesInChoiceBox(Main.festivals.get(0).getFestival());
         createChoiceBoxListener();
+        createSceneBoxListener();
         putConcertsInSceneLists(Main.festivals.get(0).getFestival()); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
         //putConcertDatesInSceneLists("UKA 2017");
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
@@ -147,7 +159,7 @@ public class Arrangor_controller {
                             Button btn = mc.createButton(concerts.get(n).getArtist());
                             btn.setId("arrScenes");
                             vbox.getChildren().add(btn);
-                    }
+                        }
                     }
                 }
                 /*for (int i = 0; i < 3; i++) {
@@ -204,7 +216,7 @@ public class Arrangor_controller {
                         concertDates.add(c.getDato());
                     }
                     ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concertDates);
-                    dateListViews.get(i).setItems(observableListToAdd);
+                    //dateListViews.get(i).setItems(observableListToAdd);
                 }
             }
         }
