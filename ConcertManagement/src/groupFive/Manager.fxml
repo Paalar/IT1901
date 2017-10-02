@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
    <children>
       <ListView fx:id="listOfNeeds" layoutX="457.0" layoutY="234.0" prefHeight="394.0" prefWidth="336.0" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
@@ -23,5 +20,7 @@
       <TextField fx:id="listOfNeedsAddedLabel" layoutX="457.0" layoutY="209.0" prefHeight="25.0" prefWidth="336.0" text="Behov som er lagt til, klar til å sendes:" />
       <Button fx:id="sendButton" layoutX="793.0" layoutY="603.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
       <TextField fx:id="dato" layoutX="550.0" layoutY="159.0" text="Dato:" />
+      <ListView fx:id="listOfNeedSendt" layoutX="1058.0" layoutY="129.0" prefHeight="475.0" prefWidth="149.0" />
+      <TextField fx:id="listOfNeedSendtLabel" layoutX="1053.0" layoutY="104.0" prefHeight="25.0" prefWidth="150.0" text="Tilbud, down arrow" />
    </children>
 </AnchorPane>

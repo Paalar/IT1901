@@ -33,6 +33,9 @@ public class Manager_controller {
     private ListView listOfOfferView;
 
     @FXML
+    private  ListView listOfNeedSendt;
+
+    @FXML
     private  TextField listOfNeedsAddedLabel;
 
     @FXML
@@ -49,6 +52,9 @@ public class Manager_controller {
 
     @FXML
     private TextField listOfNeedsAdded;
+
+    @FXML
+    private  TextField listOfNeedSendtLabel;
 
     @FXML
     private ListView listOfNeeds;
