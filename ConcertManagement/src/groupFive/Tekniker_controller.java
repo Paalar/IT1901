@@ -70,8 +70,8 @@ public class Tekniker_controller {
     public Button createButton(String name) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
-        button.setId("arrScenes");
-        button.setPrefSize(200,50);
+        button.setId("tekButts");
+        button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
         // Når du trykker på knappen så kjøres putKonsertInfoInLists med teknikerns navn som argument.
             putKonsertInfoInLists(name);
@@ -84,7 +84,6 @@ public class Tekniker_controller {
         vBoxTekniker.getChildren().clear(); // fjerner de gamle knappene før vi legger til de nye.
         for (String tekniker : observableListToAdd) {
             Button btn = createButton(tekniker);
-            btn.setId("btn" + tekniker);
             vBoxTekniker.getChildren().add(btn);
         } // en knapp per tekniker.
     }

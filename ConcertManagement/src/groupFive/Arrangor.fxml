@@ -18,30 +18,40 @@
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
                 <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Bytt arbeidsrolle" />
+                  <Label fx:id="labelArrTitle" alignment="TOP_CENTER" text="Arrangør" />
                   <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
               </buttons>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
                <padding>
-                  <Insets right="20.0" />
+                  <Insets bottom="5.0" right="20.0" top="5.0" />
                </padding>
             </ButtonBar>
          </top>
          <left>
-            <VBox prefHeight="200.0" prefWidth="330.0" styleClass="background" BorderPane.alignment="CENTER">
+            <VBox prefWidth="335.0" styleClass="background" BorderPane.alignment="CENTER">
                <children>
                   <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" VBox.vgrow="SOMETIMES">
                      <VBox.margin>
                         <Insets bottom="30.0" left="10.0" top="10.0" />
                      </VBox.margin></ChoiceBox>
-                  <ScrollPane fx:id="scrollPane" minHeight="570.0" minWidth="200.0" prefWidth="100.0">
-                     <content>
-                        <VBox fx:id="arrButts" maxWidth="310.0" minWidth="200.0" prefHeight="570.0" prefWidth="310.0">
+                  <ScrollPane fx:id="scrollPane" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <VBox fx:id="arrButts">
+                                 <padding>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
                            <padding>
-                              <Insets left="5.0" top="10.0" />
-                           </padding></VBox>
-                     </content></ScrollPane>
+                              <Insets bottom="10.0" left="5.0" />
+                           </padding>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
             </VBox>
          </left>

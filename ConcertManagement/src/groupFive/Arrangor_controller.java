@@ -1,27 +1,19 @@
 package groupFive;
 
-import IO.ReadWriteConfig;
 import Json.*;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
@@ -53,6 +45,16 @@ public class Arrangor_controller {
     @FXML
     public void initialize() {
         addItemsToList();
+    }
+
+    // Setter fokous på første elementet når man åpner siden.
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+                repeatFocus(node);
+            }
+        });
     }
 
     private void createChoiceBoxListener() {
@@ -91,11 +93,15 @@ public class Arrangor_controller {
         createChoiceBoxListener();
         createSceneBoxListener();
         putSceneNamesInTextBox(Main.festivals.get(0).getFestival(), Main.festivals.get(0).getScene().get(0).getNavn());
-        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
 
+        // Fokuserer og viser navnene til de som jobber for første konsert.
+        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+        showArbeidere(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist(), sceneSelected, festival);
+        repeatFocus(arrButts.getChildren().get(0));
     }
 
     private void putScenesInChoiceBox(String festival) {
+        //Putter scenene i dropdown boksen.
         ArrayList<String> sceneNames = new ArrayList<>();
 
         for (Festival f : Main.festivals) {
@@ -163,13 +169,14 @@ public class Arrangor_controller {
     }
 
     public Button createButton(String name) {
+        //Lager knapper
         final Button button = new Button(name);
         button.setId("arrScenes");
         button.setPrefSize(300,50);
         button.setOnMouseClicked(event -> {
             try {
                 String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
-                showArbeidere(name, sceneSelected, festival );
+                showArbeidere(name, sceneSelected, festival);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Du må velge en jobb");
