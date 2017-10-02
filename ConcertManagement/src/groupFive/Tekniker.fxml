@@ -5,10 +5,10 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Tekniker_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Tekniker_controller">
    <children>
-      <ListView fx:id="listViewTeknikere" layoutX="70.0" layoutY="154.0" prefHeight="501.0" prefWidth="200.0" />
       <Button layoutX="44.0" layoutY="38.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
       <Button layoutX="170.0" layoutY="38.0" mnemonicParsing="false" onAction="#goHome" text="Bytt bruker" />
       <ListView fx:id="listViewDato" layoutX="388.0" layoutY="154.0" prefHeight="501.0" prefWidth="104.0" />
@@ -22,5 +22,6 @@
       <Label fx:id="labelFestival" layoutX="583.0" layoutY="43.0" text="Festival" />
       <Label layoutX="968.0" layoutY="127.0" text="Oppgave" />
       <Label fx:id="labelNavn" layoutX="492.0" layoutY="82.0" text="Trykk på en teknikker for å vise arbeidsinformasjon" />
+      <VBox fx:id="vBoxTekniker" layoutX="69.0" layoutY="154.0" prefHeight="501.0" prefWidth="253.0" />
    </children>
 </AnchorPane>

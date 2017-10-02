@@ -2,8 +2,9 @@ package groupFive;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import util.Constants;
 import util.Filter;
 
@@ -13,13 +14,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import Json.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import util.Constants;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.event.EventHandler;
 
@@ -42,7 +40,7 @@ public class Tekniker_controller {
     private Label labelFestival;
 
     @FXML
-    private ListView listViewTeknikere;
+    private VBox vBoxTekniker;
 
     @FXML
     private ListView listViewDato;
@@ -64,28 +62,31 @@ public class Tekniker_controller {
     }
 
     private void putItemsInLists() {
-        putTeknikersInList(UKA, ""); // Tinus
-        putFestivalNameInLabel(); // Sondre
+        // Denne er hardcodet til å bruke UKA fordi vi skal bare finne teknikkere for uka 2017.
+        putTeknikersInList(UKA, "");
+        putFestivalNameInLabel();
+    }
+
+    public Button createButton(String name) {
+        // Denne lager og returnerer en Button.
+        final Button button = new Button(name);
+        button.setId("arrScenes");
+        button.setPrefSize(200,50);
+        button.setOnMouseClicked(event -> {
+        // Når du trykker på knappen så kjøres putKonsertInfoInLists med teknikerns navn som argument.
+            putKonsertInfoInLists(name);
+        });
+        return button;
     }
 
     private void putTeknikersInList(String festival, String searchText) {
         ObservableList<String> observableListToAdd = Filter.getAllTeknikers(festival, searchText);
-        listViewTeknikere.setEditable(true);
-        listViewTeknikere.setItems(observableListToAdd);
-        listViewTeknikere.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                try {
-                    String itemClicked = listViewTeknikere.getSelectionModel().getSelectedItem().toString();
-                    putKonsertInfoInLists(festival, itemClicked);
-                } catch (Exception e) {
-                    System.out.println("Du har ikke valgt en Arbeider.");
-                }
-
-
-            }
-        });
-
+        vBoxTekniker.getChildren().clear(); // fjerner de gamle knappene før vi legger til de nye.
+        for (String tekniker : observableListToAdd) {
+            Button btn = createButton(tekniker);
+            btn.setId("btn" + tekniker);
+            vBoxTekniker.getChildren().add(btn);
+        } // en knapp per tekniker.
     }
 
     @FXML
@@ -99,7 +100,7 @@ public class Tekniker_controller {
         labelFestival.setText(UKA);
     }
 
-    private void putKonsertInfoInLists(String festival, String arbeider) {
+    private void putKonsertInfoInLists(String arbeider) {
         List<String> datoer = new ArrayList<>();
         List<String> scener = new ArrayList<>();
         List<String> artister = new ArrayList<>();
@@ -107,7 +108,7 @@ public class Tekniker_controller {
 
         labelNavn.setText(arbeider);
 
-        List<Scene> scenes = Filter.getAllScenes(festival);
+        List<Scene> scenes = Filter.getAllScenes(UKA);
         for (Scene s : scenes) {
             for (Concert c : s.getKonsert()) {
                 for (SoundTech st : c.getLyd()) {
@@ -138,12 +139,7 @@ public class Tekniker_controller {
         listViewArtist.setItems(FXCollections.observableArrayList(artister));
         listViewScene.setItems(FXCollections.observableArrayList(scener));
         listViewOppgave.setItems(FXCollections.observableArrayList(tekniker));
-
-
     }
-
-
-
 
     @FXML
     private void goBack(){
@@ -158,5 +154,4 @@ public class Tekniker_controller {
         //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
         main.changeView(rootPane, Constants.getHome());
     }
-
 }
