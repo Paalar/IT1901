@@ -1,27 +1,16 @@
 package groupFive;
 
-import IO.ReadWriteConfig;
 import Json.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
