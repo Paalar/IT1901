@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
+   <children>
+      <ListView fx:id="listOfNeeds" layoutX="457.0" layoutY="234.0" prefHeight="394.0" prefWidth="336.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Button layoutX="604.0" layoutY="11.0" mnemonicParsing="false" onAction="#whenClikdOnArtist" text="Start" />
+      <ListView fx:id="listOfOfferView" layoutX="40.0" layoutY="123.0" prefHeight="475.0" prefWidth="149.0" />
+      <TextField layoutX="551.0" layoutY="84.0" prefHeight="25.0" prefWidth="149.0" text="Manager" />
+      <TextField fx:id="textFieldScene1" layoutX="40.0" layoutY="96.0" prefHeight="25.0" prefWidth="150.0" text="Tilbud, down arrow" />
+      <TextField fx:id="artistName" layoutX="550.0" layoutY="111.0" text="Artist: LORDE!! " />
+      <TextField fx:id="need" layoutX="550.0" layoutY="184.0" text="Behov:" />
+      <TextField fx:id="sceneName" layoutX="550.0" layoutY="134.0" text="Scene:" />
+      <Button fx:id="addButton" layoutX="699.0" layoutY="184.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
+      <TextField fx:id="listOfNeedsAddedLabel" layoutX="457.0" layoutY="209.0" prefHeight="25.0" prefWidth="336.0" text="Behov som er lagt til, klar til å sendes:" />
+      <Button fx:id="sendButton" layoutX="793.0" layoutY="603.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
+      <TextField fx:id="dato" layoutX="550.0" layoutY="159.0" text="Dato:" />
+      <ListView fx:id="listOfNeedSendt" layoutX="1058.0" layoutY="129.0" prefHeight="475.0" prefWidth="149.0" />
+      <TextField fx:id="listOfNeedSendtLabel" layoutX="1053.0" layoutY="104.0" prefHeight="25.0" prefWidth="150.0" text="Tilbud, down arrow" />
+   </children>
+</AnchorPane>

@@ -75,6 +75,9 @@ public class Manager_controller {
     private AnchorPane rootPane;
 
     @FXML
+    private VBox needsNotSent1;
+
+    @FXML
     private List<String> artistNeeds;
 
     private static ArrayList<String> needList;
@@ -92,9 +95,9 @@ public class Manager_controller {
     public void initialize() {
         listViews = Arrays.asList(listOfOfferView, listOfNeeds);
         textFields = Arrays.asList(sceneName, artistName);
-        putOfferInChoiceBox();
-        hideStuffOnStart();
-        addButtons(listOfOffers, listOfNeeds);
+        //putOfferInChoiceBox();
+        //hideStuffOnStart();
+        addButtons(listOfOffers, needsNotSent1);
     }
 
     /**private void createChoiceBoxListener() {
@@ -115,10 +118,11 @@ public class Manager_controller {
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
     }
 
-    public void addButtons(ArrayList<Offer> offers, ListView jobsList) {
+    public void addButtons(ArrayList<Offer> offers, VBox needsList) {
         for (int i = 0; i < offers.size(); i++) {
             Button btnNumber = createButton(offers.get(i));
-            jobsList.getChildren().add(btnNumber);
+            System.out.println(offers.get(i).getArtist());
+            needsList.getChildren().add(btnNumber);
         }
     }
 
@@ -128,7 +132,7 @@ public class Manager_controller {
         button.setPrefSize(200,50);
         button.setOnMouseClicked(event -> {
             try {
-                updateInfo(name.getArtist(), name.getScene(), name.getDato())
+                updateInfo(name.getArtist(), name.getScene(), name.getDato());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Du må velge en jobb");

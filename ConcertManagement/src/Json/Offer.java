@@ -20,8 +20,8 @@ public class Offer {
 
 
 
-    public static String getArtist() {
-        return artist;
+    public String getArtist() {
+        return this.artist;
     }
 
     public String getDato() {
