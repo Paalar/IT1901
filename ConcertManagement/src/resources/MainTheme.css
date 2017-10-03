@@ -15,7 +15,7 @@
     -fx-spacing: 10;
 }
 
-#vboxLightTech, #vboxSoundTech {
+#vboxLightTech, #vboxSoundTech, #1,#2,#3,#4  { /* 1,2,3,4 finnes i Manager.fxml VBoxene i splittplane */
     -fx-background-color: #D6CFCB;
 }
 
@@ -34,7 +34,37 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
-#labelLightTech, #labelSoundTech {
+#sendButton{
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #A6808C,
+    linear-gradient(#AE8B96, #6A525A);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#addButton{
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #A6808C,
+    linear-gradient(#AE8B96, #6A525A);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#offerButt{
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #A6808C,
+    linear-gradient(#AE8B96, #6A525A);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#labelLightTech, #labelSoundTech, #artist, #scene, #date, #behovFelt {
    -fx-font-size: 22;
    -fx-margin: 100;
 }

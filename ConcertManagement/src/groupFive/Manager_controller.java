@@ -1,9 +1,6 @@
 package groupFive;
 
-import IO.ReadWriteConfig;
 import Json.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -16,18 +13,11 @@ import javafx.stage.StageStyle;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
-
-import static util.Filter.getAllFestivalsObservableList;
 
 public class Manager_controller {
     @FXML
@@ -50,6 +40,11 @@ public class Manager_controller {
 
     @FXML
     private TextField dato;
+
+    private String artistNameString;
+    private String sceneNameString;
+    private String needString;
+    private String datoString;
 
     @FXML
     private TextField listOfNeedsAdded;
@@ -81,15 +76,11 @@ public class Manager_controller {
     private List<String> artistNeeds;
 
     private static ArrayList<String> needList;
-    static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, needList);
-    static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, needList);
-    static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, needList);
-    static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, needList);
-
+    private static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, needList);
+    private static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, needList);
+    private static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, needList);
+    private static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, needList);
     private  static  ArrayList<Offer> listOfOffers = new ArrayList<>(Arrays.asList(offers,offers1,offers2,offers3));
-
-
-
 
     @FXML
     public void initialize() {
@@ -110,23 +101,15 @@ public class Manager_controller {
         });
     }**/
 
-
-    private void addItemsToList() {
-        putOfferInChoiceBox();
-        //createChoiceBoxListener();
-        //putsInSceneLists("Lorde"); //Dette er default festivalen som blir først markert, kan kanskje endre denne til bare første i listen.
-        //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
-    }
-
-    public void addButtons(ArrayList<Offer> offers, VBox needsList) {
-        for (int i = 0; i < offers.size(); i++) {
-            Button btnNumber = createButton(offers.get(i));
-            System.out.println(offers.get(i).getArtist());
+    private void addButtons(ArrayList<Offer> offers, VBox needsList) {
+        for (Offer offer : offers) {
+            Button btnNumber = createButton(offer);
+            System.out.println(offer.getArtist());
             needsList.getChildren().add(btnNumber);
         }
     }
 
-    public Button createButton(Offer name) {
+    private Button createButton(Offer name) {
         final Button button = new Button(name.getArtist());
         button.setId("offerButt");
         button.setPrefSize(200,50);
@@ -140,13 +123,7 @@ public class Manager_controller {
         });
         return button;
     }
-    private void putOfferInChoiceBox() {
-        //ObservableList<String> observableListToAdd = getAllFestivalsObservableList(Main.offers);
-        //choiceBoxFestivals.setItems(observableListToAdd);
-        //choiceBoxFestivals.getSelectionModel().selectFirst();
-        // Denne linjen gjør bare at det første itemet i listen blir vist og selected.
-        // TODO: gjør listen klikkbar og endre ting i scene boksen videre.
-    }
+
 
    /** private void putSceneNamesInTextBox(String festival) {
         for (Festival f : Main.festivals) {
@@ -192,61 +169,6 @@ public class Manager_controller {
             }
         }
     }**/
-
-    private void showArbeidere(String concert, int whichScene, String festival) {
-        // TODO: lag popupen finere.
-        for (Festival f : Main.festivals) {
-            if (f.getFestival().equals(festival)) {
-                for (Concert c : f.getScene().get(whichScene).getKonsert()) {
-                    // Her går den gjennom alle konserter på riktig festival på riktig scene.
-                    if (c.getArtist().equals(concert)) {
-                        Stage stage = new Stage(StageStyle.DECORATED);
-                        stage.setX(400);
-                        stage.setY(400);
-                        // Hvilke kordinater det nye vinduet skal åpnes i.
-
-                        Pane layout = new AnchorPane();
-                        layout.setPrefSize(500, 250);
-                        stage.setScene(new Scene(layout));
-                        // lager ny layout og scene som er 500px bred og 270px høy.
-
-                        ListView listViewSoundTechs = new ListView();
-                        listViewSoundTechs.setPrefSize(250, 250);
-                        listViewSoundTechs.setEditable(true);
-
-                        List<String> soundTechs = new ArrayList<>();
-                        soundTechs.add("SoundTechs: ");
-                        for (SoundTech st : c.getLyd()) {
-                            soundTechs.add(st.getNavn());
-                        }
-                        ObservableList<String> observableListSoundTechs = FXCollections.observableArrayList(soundTechs);
-                        listViewSoundTechs.setItems(observableListSoundTechs);
-                        // Lager ny listview og går gjennom alle SoundTechsene og legger de til i listen.
-
-
-                        ListView listViewLightTechs = new ListView();
-                        listViewLightTechs.setPrefSize(250, 250);
-                        listViewLightTechs.setLayoutX(250);
-                        listViewLightTechs.setEditable(true);
-
-                        List<String> LightTechs = new ArrayList<>();
-                        LightTechs.add("LightTechs: ");
-                        for (LightTech lt : c.getLys()) {
-                            LightTechs.add(lt.getNavn());
-                        }
-                        ObservableList<String> observableListLightTechs = FXCollections.observableArrayList(LightTechs);
-                        listViewLightTechs.setItems(observableListLightTechs);
-                        // Lager ny listview og går gjennom alle LightTechsene og legger de til i listen.
-
-                        layout.getChildren().add(listViewSoundTechs);
-                        layout.getChildren().add(listViewLightTechs);
-                        // Legger til listene i layouten og viser den.
-                        stage.show();
-                    }
-                }
-            }
-        }
-    }
 
     @FXML
     private void hideStuffOnStart(){
@@ -299,16 +221,19 @@ public class Manager_controller {
     @FXML
     private void updateScene(String sceneName){
         this.sceneName.setText("Scene: " + sceneName);
+        this.sceneNameString = sceneName;
     }
 
     @FXML
     private void updateArtistName(String artistName){
         this.artistName.setText("Artist: " + artistName);
+        this.sceneNameString = artistName;
     }
 
     @FXML
     private  void updateDate(String dato){
         this.dato.setText("Dato: " + dato);
+        this.datoString = dato;
     }
 
     @FXML
