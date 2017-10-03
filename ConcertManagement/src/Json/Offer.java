@@ -3,7 +3,6 @@ package Json;
 import java.util.ArrayList;
 
 public class Offer {
-
     String artist;
     String scene;
     String dato;
@@ -18,14 +17,20 @@ public class Offer {
         this.listOfNeeds = listOfNeeds;
     }
 
-
-
     public String getArtist() {
         return this.artist;
     }
 
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
     public String getDato() {
         return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
     }
 
     public int getPris() {
@@ -36,7 +41,11 @@ public class Offer {
         return scene;
     }
 
-    public ArrayList<String> getNeeds(){
+    public ArrayList<String> getNeeds() {
         return listOfNeeds;
+    }
+
+    public void setPris(int pris) {
+        this.pris = pris;
     }
 }

@@ -1,25 +1,74 @@
 .background {
-    -fx-background-color: #ffe6cc;
+    -fx-background-color: #D6CFCB;
 }
 
-.listView -list-cell:even {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
-
+#jobButt {
+   -fx-background-color: #A6808C;
+   -fx-text-fill: #D6C5BC;
+   -fx-font-size: 22;
+   -fx-margin: 100;
+   -fx-background-radius: 40;
 }
 
-.listView -list-cell:odd {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
-
-}
-
-#listText .list-cell {
+#jobsList {
     -fx-alignment: center;
+    -fx-spacing: 10;
 }
 
-#listViewWrap {
+#vboxLightTech, #vboxSoundTech {
+    -fx-background-color: #D6CFCB;
+}
 
+#titleLabel {
+    -fx-font-size: 35;
+    -fx-text-fill: #A6808C;
+}
+
+#arrScenes {
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #A6808C,
+    linear-gradient(#AE8B96, #6A525A);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#labelLightTech, #labelSoundTech {
+   -fx-font-size: 22;
+   -fx-margin: 100;
+}
+
+#choiceBoxFestivals, #choiceBoxScenes {
+    -fx-background-color: #A6808C;
+}
+
+#scrollPane {
+ -fx-padding: 10;
+ -fx-background-color: #C9B991;
+ -fx-border-radius: 10 10 0 0;
+}
+
+#arrScenes:focused {
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: C4B287,
+    linear-gradient(#A6808C, #C4B287);
+}
+
+#arrButts {
+    -fx-background-color: #D6CFCB;
+    -fx-spacing: 20;
+}
+
+.split-pane-divider {
+-fx-background-color: transparent;
+-fx-padding: 0;
+}
+
+#goHome {
+        -fx-background-color: #A6808C;
+       -fx-text-fill: #D6C5BC;
+       -fx-font-size: 16;
+       -fx-margin: 100;
+       -fx-background-radius: 40;
 }

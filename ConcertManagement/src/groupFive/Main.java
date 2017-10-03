@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Main extends Application {
@@ -43,6 +41,7 @@ public class Main extends Application {
         constants.setPrev(constants.getCurrent());
         constants.setCurrent(fxmlFile);
         try {
+            System.out.println(fxmlFile);
             AnchorPane pane = FXMLLoader.load(getClass().getResource(fxmlFile + ".fxml"));
             rootPane.getChildren().setAll(pane);
 
