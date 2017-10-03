@@ -1,12 +1,26 @@
 package Json;
 
+import java.util.ArrayList;
+
 public class Offer {
 
     String artist;
+    String scene;
     String dato;
     int pris;
+    ArrayList<String> listOfNeeds;
 
-    public String getArtist() {
+    public Offer(String artist, String scene, String dato, int pris, ArrayList<String> listOfNeeds) {
+        this.artist = artist;
+        this.scene = scene;
+        this.dato = dato;
+        this.pris = pris;
+        this.listOfNeeds = listOfNeeds;
+    }
+
+
+
+    public static String getArtist() {
         return artist;
     }
 
@@ -16,5 +30,13 @@ public class Offer {
 
     public int getPris() {
         return pris;
+    }
+
+    public String getScene(){
+        return scene;
+    }
+
+    public ArrayList<String> getNeeds(){
+        return listOfNeeds;
     }
 }

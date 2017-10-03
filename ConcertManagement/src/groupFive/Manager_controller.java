@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import util.Constants;
@@ -76,12 +77,24 @@ public class Manager_controller {
     @FXML
     private List<String> artistNeeds;
 
+    private static ArrayList<String> needList;
+    static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, needList);
+    static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, needList);
+    static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, needList);
+    static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, needList);
+
+    private  static  ArrayList<Offer> listOfOffers = new ArrayList<>(Arrays.asList(offers,offers1,offers2,offers3));
+
+
+
+
     @FXML
     public void initialize() {
         listViews = Arrays.asList(listOfOfferView, listOfNeeds);
         textFields = Arrays.asList(sceneName, artistName);
         putOfferInChoiceBox();
         hideStuffOnStart();
+        addButtons(listOfOffers, listOfNeeds);
     }
 
     /**private void createChoiceBoxListener() {
@@ -102,6 +115,27 @@ public class Manager_controller {
         //TODO: add alle andre ting vi må putte i lister her som de forksjellige scenene etc.
     }
 
+    public void addButtons(ArrayList<Offer> offers, ListView jobsList) {
+        for (int i = 0; i < offers.size(); i++) {
+            Button btnNumber = createButton(offers.get(i));
+            jobsList.getChildren().add(btnNumber);
+        }
+    }
+
+    public Button createButton(Offer name) {
+        final Button button = new Button(name.getArtist());
+        button.setId("offerButt");
+        button.setPrefSize(200,50);
+        button.setOnMouseClicked(event -> {
+            try {
+                updateInfo(name.getArtist(), name.getScene(), name.getDato())
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Du må velge en jobb");
+            }
+        });
+        return button;
+    }
     private void putOfferInChoiceBox() {
         //ObservableList<String> observableListToAdd = getAllFestivalsObservableList(Main.offers);
         //choiceBoxFestivals.setItems(observableListToAdd);
