@@ -5,7 +5,9 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+
 import javafx.scene.Node;
+
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import util.Constants;

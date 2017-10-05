@@ -1,5 +1,6 @@
 package Json;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Concert {
@@ -14,7 +15,7 @@ public class Concert {
     private int populæritet;
     private int salg;
     private int pris;
-    private List<tekniskeBehov> tekniskeBehov;
+    private ArrayList<tekniskeBehov> tekniskeBehov;
 
     public String getArtist() {
         return artist;
@@ -96,11 +97,11 @@ public class Concert {
         this.pris = pris;
     }
 
-    public List<Json.tekniskeBehov> getTekniskeBehov() {
+    public ArrayList<Json.tekniskeBehov> getTekniskeBehov() {
         return tekniskeBehov;
     }
 
-    public void setTekniskeBehov(List<Json.tekniskeBehov> tekniskeBehov) {
+    public void setTekniskeBehov(ArrayList<Json.tekniskeBehov> tekniskeBehov) {
         this.tekniskeBehov = tekniskeBehov;
     }
 }
