@@ -207,13 +207,16 @@ public class Arrangor_controller {
             ListView lv = new ListView();
             vboxLightTech.getChildren().clear();
             vboxSoundTech.getChildren().clear();
+            String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
 
             for (Festival f : Main.festivals) {
-                totalOversikt.add("\t" + f.getFestival() + "\n");
-                for (int i = 0; i < f.getScene().size(); i++) {
-                    totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
-                    for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
-                        totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+                if (f.getFestival().equals(festival)) {
+                    totalOversikt.add("\t" + f.getFestival() + "\n");
+                    for (int i = 0; i < f.getScene().size(); i++) {
+                        totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
+                        for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
+                            totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+                        }
                     }
                 }
             }
