@@ -18,9 +18,6 @@
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <top>
-                  <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </top>
                <left>
                   <VBox prefHeight="680.0" prefWidth="230.0" BorderPane.alignment="CENTER">
                      <children>
@@ -81,12 +78,12 @@
                               <VBox prefWidth="150.0">
                                  <children>
                                     <Label text="Dato">
-                                       <padding>
-                                          <Insets bottom="15.0" />
-                                       </padding>
                                        <font>
                                           <Font name="Arial Bold" size="13.0" />
                                        </font>
+                                       <VBox.margin>
+                                          <Insets bottom="15.0" />
+                                       </VBox.margin>
                                     </Label>
                                     <ListView fx:id="listViewDato" prefWidth="104.0" />
                                  </children>
@@ -144,6 +141,9 @@
                      </BorderPane.margin>
                   </VBox>
                </center>
+               <BorderPane.margin>
+                  <Insets top="40.0" />
+               </BorderPane.margin>
             </BorderPane>
          </center>
          <top>

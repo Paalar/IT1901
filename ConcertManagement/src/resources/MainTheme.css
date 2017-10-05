@@ -1,6 +1,6 @@
 /* Background colors */
 
-.background, #vboxLightTech, #vboxSoundTech, #arrButts, #vBoxTekniker {
+.background, #vboxLightTech, #vboxSoundTech, #arrButts, #vBoxTekniker, VBox, HBox, Anchorpane {
     -fx-background-color: #D6CFCB;
 }
 
@@ -20,7 +20,7 @@
     -fx-spacing: 20;
 }
 
-#arrButts, #vBoxTekniker {
+#arrButts, #vBoxTekniker, #vBoxBands, #vBoxBandsTab2 {
     -fx-spacing: 5;
 }
 
@@ -50,6 +50,12 @@
     -fx-text-fill: #565264;
     -fx-font-size: 12;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#tabButt {
+    -fx-color: #D6C5BC;
+    -fx-background-color: #D9CAC2,
+           linear-gradient(#D6C5CA, #B697A0);
 }
 
 /*
@@ -93,6 +99,11 @@
 #arrScenes:hover, #tekButts:hover {
      -fx-background-color: #D9CAC2,
         linear-gradient(#D9CAC2, #FBF9F8);
+}
+
+#tabButt:selected {
+    -fx-background-color: #A6808C,
+        linear-gradient(#B697A0, #AE8B96);
 }
 
 
