@@ -24,7 +24,7 @@ public class Main_controller {
     public void addLoginElementsInList() {
         //Legge til default login knappene.
         ArrayList<String> jobs = new ArrayList<>(Arrays.asList("Arrangør", "Bookingansvarlig", "Bookingsjef", "Manager", "Tekniker"));
-        addToList(jobs, loginListView);
+        addButtons(jobs, jobsList);
     }
 
     public void addButtons(ArrayList<String> jobs, VBox jobsList) {
