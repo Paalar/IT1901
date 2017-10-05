@@ -4,8 +4,11 @@ import Json.Concert;
 import Json.Festival;
 import Json.JsonEncode;
 import Json.Scene;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,22 +30,16 @@ public class Bookingansvarlig_controller {
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands;
+    private VBox vBoxBands, vBoxBandsTab2;
 
     @FXML
-    private VBox vBoxBandsTab2;
-
-    @FXML
-    private ListView listViewEarlierConcerts;
+    private ListView listViewEarlierConcerts, listviewPop;
 
     @FXML
     private Label labelBandInfo;
 
     @FXML
-    private TextField textFieldArtist;
-
-    @FXML
-    private TextField textFieldPris;
+    private TextField textFieldArtist, textFieldPris;
 
     @FXML
     private DatePicker datePicker;
@@ -50,13 +47,23 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
+        repeatFocus(vBoxBands.getChildren().get(0));
+    }
+
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+                repeatFocus(node);
+            }
+        });
     }
 
     public Button createButton(String name, boolean tab1) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
-        button.setPrefSize(200,50);
+        button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
             if (tab1) {
                 // Når du trykker på knappen så kjøres putBandInfoInLists med bandets navn som argument.
@@ -72,7 +79,6 @@ public class Bookingansvarlig_controller {
         //Denne legger til alle unike band i listen på første tab.
         for (String band : getAllBandsObservableList()) {
             Button btn = createButton(band, true);
-            btn.setId("btn" + band);
             vBoxBands.getChildren().add(btn);
         }
         //Denne legger til alle band som var i uka 2015,2013 men ikke i 2017.
@@ -97,26 +103,24 @@ public class Bookingansvarlig_controller {
         artistsOlder.removeAll(artistsUka17);
         for (String band : artistsOlder) {
             Button btn = createButton(band, false);
-            btn.setId("btn" + band);
             vBoxBandsTab2.getChildren().add(btn);
         }
     }
 
     private void putBandInfoInLists(String band) {
-        String stringToPutInTextArea = band + ":\n";
+        ArrayList<String> bandInfo = new ArrayList<>();
+        String stringToPutInTextArea = band;
         // Lager en string hvor jeg putter inn all informasjonen før jeg setter labelen sin tekst til hele stringen.
 
         int popularity = getPopularity(band);
-        stringToPutInTextArea += "Populæritet: " + String.valueOf(popularity) + "%\n";
-
+        bandInfo.add("Populæritet: " + String.valueOf(popularity));
         String genre = getGenre(band);
-        stringToPutInTextArea += "Sjanger: " + genre + "\n";
-
+        bandInfo.add("Sjanger: " + genre);
         int earlierSales = getSales(band);
-        stringToPutInTextArea += "Tidligere salg: " + String.valueOf(earlierSales) + "%\n";
+        bandInfo.add("Tidligere salg: " + String.valueOf(earlierSales));
 
         labelBandInfo.setText(stringToPutInTextArea);
-
+        listviewPop.setItems(FXCollections.observableArrayList(bandInfo));
         listViewEarlierConcerts.setEditable(true);
         listViewEarlierConcerts.setItems(getConcertsAndScenesForBand(band));
 
@@ -141,12 +145,6 @@ public class Bookingansvarlig_controller {
         // Fjerner informasjon i textfieldene etter den har blitt lagret.
     }
 
-    @FXML
-    private void goBack(){
-        String fxmlFileName = "Main";
-        Main main = new Main();
-        main.changeView(rootPane, fxmlFileName);
-    }
 
     @FXML
     private void goHome(){
