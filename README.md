@@ -4,6 +4,7 @@
 Tenk deg at du skal lage et system for en gjeng i en studentfestival som har ansvar for å arrangere konserter på flere scener, som involverer rigging av scene, teknisk gjennomføring av konserter, samt booking av band. Brukerhistoriene er oppgitt i alfabetisk rekkefølge.
 
 ### Bugs
+* På arrangør, når man velger en festival eller scene forandrer ikke teknikerene seg.'
 * Kan endre teksten til scenene, dette burde ikke skje.
 * Funnet bug når man ikke trykker på en bruker på startside
 * Hvis ikke en konsert er trykket på så stopper programmet.
