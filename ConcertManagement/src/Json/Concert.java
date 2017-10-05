@@ -15,7 +15,7 @@ public class Concert {
     private int populæritet;
     private int salg;
     private int pris;
-    private ArrayList<tekniskeBehov> tekniskeBehov;
+    private List<tekniskeBehov> tekniskeBehov;
 
     public String getArtist() {
         return artist;
@@ -97,11 +97,11 @@ public class Concert {
         this.pris = pris;
     }
 
-    public ArrayList<Json.tekniskeBehov> getTekniskeBehov() {
+    public List<Json.tekniskeBehov> getTekniskeBehov() {
         return tekniskeBehov;
     }
 
-    public void setTekniskeBehov(ArrayList<Json.tekniskeBehov> tekniskeBehov) {
+    public void setTekniskeBehov(List<Json.tekniskeBehov> tekniskeBehov) {
         this.tekniskeBehov = tekniskeBehov;
     }
 }

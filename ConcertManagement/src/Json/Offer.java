@@ -3,11 +3,11 @@ package Json;
 import java.util.ArrayList;
 
 public class Offer {
-    String artist;
-    String scene;
-    String dato;
-    int pris;
-    ArrayList<String> listOfNeeds;
+    private String artist;
+    private String scene;
+    private String dato;
+    private int pris;
+    private ArrayList<String> listOfNeeds;
 
     private String status;
 

@@ -62,16 +62,16 @@ public class Manager_controller {
 
     List<Festival> festivals = Main.festivals;
 
-    ArrayList<String> needsList = new ArrayList<>();
+    List<String> needsList = new ArrayList<>();
 
-    ArrayList<Offer> offers = new ArrayList<>();
+    List<Offer> offers = new ArrayList<>();
 
     @FXML
     public void initialize() {
        // listViews = Arrays.asList(listOfOfferView, needListAdded);
         for (int i = 0; i < festivals.get(0).getScene().size(); i++) {
             for (int j = 0; j < festivals.get(0).getScene().get(i).getKonsert().size(); j++){
-                ArrayList<Json.tekniskeBehov> behov = festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
+                List<Json.tekniskeBehov> behov = festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
                 ArrayList<String> behovs = new ArrayList<>();
                 for (int n = 0; n < behov.size(); n++){
                    behovs.add(behov.get(n).getBehov());
@@ -83,7 +83,7 @@ public class Manager_controller {
         addButtons(offers, needsNotSent1);
     }
 
-    private void addButtons(ArrayList<Offer> offers, VBox needsList) {
+    private void addButtons(List<Offer> offers, VBox needsList) {
         for (Offer offer : offers) {
             Button btnNumber = createButton(offer);
             needsList.getChildren().add(btnNumber);
@@ -147,7 +147,7 @@ public class Manager_controller {
             if (festivals.get(0).getScene().get(i).getNavn() == sceneNameString){
                 for (int j = 0; j < festivals.get(0).getScene().get(j).getKonsert().size(); j++){
                     if(festivals.get(0).getScene().get(j).getKonsert().get(j).getArtist() == artistNameString){
-                        ArrayList<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
+                        List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
                         for(int n = 0; n < needsList.size(); n++){
                             tekniskeBehov nyttBehov = new tekniskeBehov(needsList.get(n));
                             nyeTekniskeBehov.add(nyttBehov);
@@ -161,7 +161,7 @@ public class Manager_controller {
         sendButton.setText("Behov sendt");
     }
 
-    private void popListView (ArrayList<String> needList, ListView listArea){
+    private void popListView (List<String> needList, ListView listArea){
         ObservableList<String> obsList = FXCollections.observableArrayList(needList);
         listArea.setItems(obsList);
     }
