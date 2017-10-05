@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -28,9 +30,29 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Untitled Tab 2">
+          <Tab text="Send tilbud">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox fx:id="vBoxBandsTab2" layoutX="64.0" layoutY="81.0" prefHeight="491.0" prefWidth="246.0">
+                           <children>
+                              <Label fx:id="labelBandInfo1" />
+                           </children>
+                        </VBox>
+                        <Button layoutX="464.0" layoutY="333.0" mnemonicParsing="false" onAction="#sendOffer" text="Send Tilbud" />
+                        <Label layoutX="343.0" layoutY="168.0" text="Artist">
+                           <graphic>
+                              <TextField fx:id="textFieldArtist" prefHeight="26.0" prefWidth="311.0" promptText="Skriv inn artist, eller velg fra listen til venstre" />
+                           </graphic></Label>
+                        <Label layoutX="343.0" layoutY="255.0" text="Pris">
+                           <graphic>
+                              <TextField fx:id="textFieldPris" prefHeight="26.0" prefWidth="309.0" promptText="Skriv inn pris" />
+                           </graphic></Label>
+                        <Label layoutX="346.0" layoutY="81.0" text="Dato">
+                           <graphic>
+                              <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="308.0" promptText="Velg en dato" />
+                           </graphic></Label>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>

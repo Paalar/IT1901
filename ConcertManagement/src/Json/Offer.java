@@ -5,6 +5,11 @@ public class Offer {
     private String artist;
     private String dato;
     private int pris;
+    private String status;
+
+    public String getStatus() { return status; };
+
+    public void setStatus(String status) { this.status = status; };
 
     public String getArtist() {
         return artist;
