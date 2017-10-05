@@ -77,7 +77,7 @@
          </center>
       </BorderPane>
        <Button fx:id="sendButton" layoutX="1000.0" layoutY="600.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
-       <Button fx:id="addButton" layoutX="998.0" layoutY="170.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
+       <Button fx:id="addButton" layoutX="998.0" layoutY="170.0" mnemonicParsing="false" onAction="#addNeedsToList" text="Legg til bandes behov" />
       <TextField fx:id="inputFieldNeed" layoutX="448.0" layoutY="185.0" prefHeight="25.0" prefWidth="532.0">
 
       </TextField>

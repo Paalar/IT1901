@@ -40,6 +40,9 @@ public class Manager_controller {
     private  TextField listOfNeedSendtLabel;
 
     @FXML
+    private TextField inputFieldNeed;
+
+    @FXML
     private Pane needListArea;
     
     @FXML
@@ -77,12 +80,15 @@ public class Manager_controller {
     private VBox needsNotSent1;
 
     ArrayList<String> needsList = new ArrayList<>();
+    static ArrayList<String> hardNeed1 = new ArrayList<>();
+    static ArrayList<String> hardNeed2 = new ArrayList<>();
+    static ArrayList<String> hardNeed3 = new ArrayList<>();
+    static ArrayList<String> hardNeed4 = new ArrayList<>();
 
-    private static ArrayList<String> needList;
-    private static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, needList);
-    private static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, needList);
-    private static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, needList);
-    private static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, needList);
+    private static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, hardNeed1);
+    private static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, hardNeed2);
+    private static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, hardNeed3);
+    private static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, hardNeed4);
     private  static  ArrayList<Offer> listOfOffers = new ArrayList<>(Arrays.asList(offers,offers1,offers2,offers3));
 
     @FXML
@@ -112,9 +118,8 @@ public class Manager_controller {
     }
 
     private void popListView (ArrayList<String> needList, ListView listArea){
-        for (int i = 0; i < needList.size(); i++){
-            listArea.getChildren().add
-        }
+        ObservableList<String> obsList = FXCollections.observableArrayList(needList);
+        listArea.setItems(obsList);
     }
 
     private Button createButton(Offer name) {
@@ -175,8 +180,9 @@ public class Manager_controller {
 
     @FXML
     private  void addNeedsToList(){
-        String aNeed = need.getText();
+        String aNeed = inputFieldNeed.getText();
         needsList.add(aNeed);
+        popListView(needsList, needListAdded);
     }
 
     @FXML
