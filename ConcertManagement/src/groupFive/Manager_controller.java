@@ -2,15 +2,10 @@ package groupFive;
 
 import Json.*;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,12 +15,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static Json.JsonEncode.JsonInsert;
+
 public class Manager_controller {
     @FXML
     private ListView listOfOfferView;
 
     @FXML
-    private  ListView listOfNeedSendt;
+    private ListView needListAdded;
 
     @FXML
     private  TextField listOfNeedsAddedLabel;
@@ -34,16 +31,7 @@ public class Manager_controller {
     private TextField need;
 
     @FXML
-    private TextField listOfNeedsAdded;
-
-    @FXML
-    private  TextField listOfNeedSendtLabel;
-
-    @FXML
     private TextField inputFieldNeed;
-
-    @FXML
-    private Pane needListArea;
     
     @FXML
     private Label artist;
@@ -58,10 +46,6 @@ public class Manager_controller {
     private String sceneNameString;
     private String needString;
     private String datoString;
-
-    @FXML
-    private ListView needListAdded;
-
     private List<ListView> listViews;
 
     @FXML
@@ -71,55 +55,39 @@ public class Manager_controller {
     private Button addButton;
 
     @FXML
-    private List<TextField> textFields;
-
-    @FXML
     private AnchorPane rootPane;
 
     @FXML
     private VBox needsNotSent1;
 
-    ArrayList<String> needsList = new ArrayList<>();
-    static ArrayList<String> hardNeed1 = new ArrayList<>();
-    static ArrayList<String> hardNeed2 = new ArrayList<>();
-    static ArrayList<String> hardNeed3 = new ArrayList<>();
-    static ArrayList<String> hardNeed4 = new ArrayList<>();
+    List<Festival> festivals = Main.festivals;
 
-    private static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, hardNeed1);
-    private static Offer offers1 = new Offer("Martin Garrix", "Dødens dal", "24.10.2017", 500, hardNeed2);
-    private static Offer offers2 = new Offer("Snoopy", "Storsalen", "23.10.2017", 100, hardNeed3);
-    private static Offer offers3 = new Offer("Dagny", "Storsalen", "22.10.2017", 10000, hardNeed4);
-    private  static  ArrayList<Offer> listOfOffers = new ArrayList<>(Arrays.asList(offers,offers1,offers2,offers3));
+    ArrayList<String> needsList = new ArrayList<>();
+
+    ArrayList<Offer> offers = new ArrayList<>();
 
     @FXML
     public void initialize() {
-        listViews = Arrays.asList(listOfOfferView, needListAdded);
-        //putOfferInChoiceBox();
-        //hideStuffOnStart();
-        addButtons(listOfOffers, needsNotSent1);
-    }
-
-    /**private void createChoiceBoxListener() {
-        choiceBoxFestivals.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                putConcertsInSceneLists(choiceBoxFestivals.getItems().get((Integer) newValue).toString());
-                System.out.println(choiceBoxFestivals.getItems().get((Integer) newValue));
+       // listViews = Arrays.asList(listOfOfferView, needListAdded);
+        for (int i = 0; i < festivals.get(0).getScene().size(); i++) {
+            for (int j = 0; j < festivals.get(0).getScene().get(i).getKonsert().size(); j++){
+                ArrayList<Json.tekniskeBehov> behov = festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
+                ArrayList<String> behovs = new ArrayList<>();
+                for (int n = 0; n < behov.size(); n++){
+                   behovs.add(behov.get(n).getBehov());
+                }
+                offers.add(new Offer(festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), festivals.get(0).getScene().get(i).getNavn(), festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
             }
-        });
-    }**/
+        }
+        //hideStuffOnStart();
+        addButtons(offers, needsNotSent1);
+    }
 
     private void addButtons(ArrayList<Offer> offers, VBox needsList) {
         for (Offer offer : offers) {
             Button btnNumber = createButton(offer);
-            System.out.println(offer.getArtist());
             needsList.getChildren().add(btnNumber);
         }
-    }
-
-    private void popListView (ArrayList<String> needList, ListView listArea){
-        ObservableList<String> obsList = FXCollections.observableArrayList(needList);
-        listArea.setItems(obsList);
     }
 
     private Button createButton(Offer name) {
@@ -128,7 +96,8 @@ public class Manager_controller {
         button.setPrefSize(200,50);
         button.setOnMouseClicked(event -> {
             try {
-                updateInfo(name.getArtist(), name.getScene(), name.getDato());
+                needListAdded.getItems().clear();
+                updateInfo(name.getArtist(), name.getScene(), name.getDato(), name.getNeeds());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Du må velge en jobb");
@@ -174,8 +143,29 @@ public class Manager_controller {
     }
     @FXML
     private  void sendTheNeeds(){
-        //json.encode.needs(artistNeeds);
+        for (int i = 0; i < festivals.get(0).getScene().size(); i ++){
+            if (festivals.get(0).getScene().get(i).getNavn() == sceneNameString){
+                for (int j = 0; j < festivals.get(0).getScene().get(j).getKonsert().size(); j++){
+                    if(festivals.get(0).getScene().get(j).getKonsert().get(j).getArtist() == artistNameString){
+                        ArrayList<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
+                        System.out.println("HER");
+                        for(int n = 0; n < needsList.size(); n++){
+                            tekniskeBehov nyttBehov = new tekniskeBehov(needsList.get(n));
+                            nyeTekniskeBehov.add(nyttBehov);
+                        }
+                        festivals.get(0).getScene().get(j).getKonsert().get(j).setTekniskeBehov(nyeTekniskeBehov);
+                        System.out.println(festivals.get(0).getScene().get(j).getKonsert().get(j).getTekniskeBehov());
+                    }
+                }
+            }
+        }
+        JsonInsert(festivals);
         sendButton.setText("Behov sendt");
+    }
+
+    private void popListView (ArrayList<String> needList, ListView listArea){
+        ObservableList<String> obsList = FXCollections.observableArrayList(needList);
+        listArea.setItems(obsList);
     }
 
     @FXML
@@ -187,7 +177,6 @@ public class Manager_controller {
 
     @FXML
     private void updateScene(String sceneName){
-        System.out.println("Scene: " + sceneName);
         this.scene.setText("Scene: " + sceneName);
         this.sceneNameString = sceneName;
     }
@@ -205,30 +194,16 @@ public class Manager_controller {
     }
 
     @FXML
-    private  void loadNeedsThatisFromBefore(String artistName, String sceneName, String dato){
-       /** if(artistName == "Something" && sceneName == "Something" && dato == "Something){
-            for(int i = 0; i < "someList"; i++){
-                listOfNeeds.add(someList.aNeed);
-            }
-        }**/
-    }
-
-    @FXML
-    private  void updateInfo(String artistName, String sceneName, String dato){
+    private  void updateInfo(String artistName, String sceneName, String dato, ArrayList<String> artistsNeeds){
         this.artistNameString = artistName;
         this.sceneNameString = sceneName;
         this.datoString = dato;
+        this.needsList = artistsNeeds;
+        if(!artistsNeeds.isEmpty()){
+            popListView(artistsNeeds, needListAdded);
+        }
         updateArtistName(artistName);
         updateScene(sceneName);
         updateDate(dato);
-        loadNeedsThatisFromBefore(artistName, sceneName, dato);
-    }
-
-    public void whenClikdOnArtist(ActionEvent actionEvent) {
-        String artistName = "Astrid S";
-        String sceneName = "Storsalen";
-        String dato = "25-10-2017";
-        updateInfo(artistName,sceneName, dato);
-        showStuff();
     }
 }
