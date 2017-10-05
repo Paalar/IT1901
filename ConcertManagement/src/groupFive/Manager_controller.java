@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -30,27 +31,30 @@ public class Manager_controller {
     private  TextField listOfNeedsAddedLabel;
 
     @FXML
-    private TextField artistName;
-
-    @FXML
-    private TextField sceneName;
-
-    @FXML
     private TextField need;
-
-    @FXML
-    private TextField dato;
-
-    private String artistNameString;
-    private String sceneNameString;
-    private String needString;
-    private String datoString;
 
     @FXML
     private TextField listOfNeedsAdded;
 
     @FXML
     private  TextField listOfNeedSendtLabel;
+
+    @FXML
+    private Pane needListArea;
+    
+    @FXML
+    private Label artist;
+
+    @FXML
+    private Label scene;
+
+    @FXML
+    private Label date;
+
+    private String artistNameString;
+    private String sceneNameString;
+    private String needString;
+    private String datoString;
 
     @FXML
     private ListView listOfNeeds;
@@ -85,7 +89,6 @@ public class Manager_controller {
     @FXML
     public void initialize() {
         listViews = Arrays.asList(listOfOfferView, listOfNeeds);
-        textFields = Arrays.asList(sceneName, artistName);
         //putOfferInChoiceBox();
         //hideStuffOnStart();
         addButtons(listOfOffers, needsNotSent1);
@@ -174,24 +177,24 @@ public class Manager_controller {
     private void hideStuffOnStart(){
         addButton.setVisible(false);
         need.setVisible(false);
-        artistName.setVisible(false);
-        sceneName.setVisible(false);
+        artist.setVisible(false);
+        scene.setVisible(false);
         listOfNeeds.setVisible(false);
         listOfNeedsAddedLabel.setVisible(false);
         sendButton.setVisible(false);
-        dato.setVisible(false);
+        date.setVisible(false);
     }
 
     @FXML
     private void showStuff(){
         addButton.setVisible(true);
         need.setVisible(true);
-        artistName.setVisible(true);
-        sceneName.setVisible(true);
+        artist.setVisible(true);
+        scene.setVisible(true);
         listOfNeeds.setVisible(true);
         listOfNeedsAddedLabel.setVisible(true);
         sendButton.setVisible(true);
-        dato.setVisible(true);
+        date.setVisible(true);
     }
     @FXML
     private void goBack(){
@@ -220,19 +223,20 @@ public class Manager_controller {
 
     @FXML
     private void updateScene(String sceneName){
-        this.sceneName.setText("Scene: " + sceneName);
+        System.out.println("Scene: " + sceneName);
+        this.scene.setText("Scene: " + sceneName);
         this.sceneNameString = sceneName;
     }
 
     @FXML
     private void updateArtistName(String artistName){
-        this.artistName.setText("Artist: " + artistName);
+        this.artist.setText("Artist: " + artistName);
         this.sceneNameString = artistName;
     }
 
     @FXML
     private  void updateDate(String dato){
-        this.dato.setText("Dato: " + dato);
+        this.date.setText("Dato: " + dato);
         this.datoString = dato;
     }
 
@@ -247,6 +251,9 @@ public class Manager_controller {
 
     @FXML
     private  void updateInfo(String artistName, String sceneName, String dato){
+        this.artistNameString = artistName;
+        this.sceneNameString = sceneName;
+        this.datoString = dato;
         updateArtistName(artistName);
         updateScene(sceneName);
         updateDate(dato);

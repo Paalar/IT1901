@@ -39,7 +39,7 @@
     -fx-background-color: #A6808C,
     linear-gradient(#AE8B96, #6A525A);
     -fx-text-fill: #D6C5BC;
-    -fx-font-size: 22;
+    -fx-font-size: 14;
     -fx-margin: 100;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
@@ -49,7 +49,7 @@
     -fx-background-color: #A6808C,
     linear-gradient(#AE8B96, #6A525A);
     -fx-text-fill: #D6C5BC;
-    -fx-font-size: 22;
+    -fx-font-size: 14;
     -fx-margin: 100;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }

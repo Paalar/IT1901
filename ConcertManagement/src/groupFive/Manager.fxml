@@ -5,8 +5,10 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
@@ -40,7 +42,7 @@
                         </VBox>
                         <VBox fx:id="2" prefHeight="103.0" prefWidth="1078.0">
                          <children>
-                             <Label fx:id="scene" prefHeight="32.0" prefWidth="69.0" text="Scene: ">
+                             <Label fx:id="scene" prefHeight="32.0" prefWidth="180.0" text="Scene: ">
                                  <VBox.margin>
                                      <Insets left="20.0" top="20.0" />
                                  </VBox.margin></Label>
@@ -67,7 +69,13 @@
                </children></VBox>
          </center>
       </BorderPane>
-       <Button fx:id="sendButton" layoutX="793.0" layoutY="603.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
-       <Button fx:id="addButton" layoutX="699.0" layoutY="184.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
+       <Button fx:id="sendButton" layoutX="1000.0" layoutY="650.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
+       <Button fx:id="addButton" layoutX="998.0" layoutY="279.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
+      <TextField layoutX="395.0" layoutY="295.0" prefHeight="25.0" prefWidth="600.0">
+
+      </TextField>
+      <Pane fx:id="needListArea" layoutX="393.0" layoutY="326.0" prefHeight="364.0" prefWidth="600.0">
+
+      </Pane>
    </children>
 </AnchorPane>
