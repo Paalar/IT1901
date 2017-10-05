@@ -14,7 +14,7 @@ import java.util.List;
 
 public class JsonDecode {
 
-    public static List<Festival> parseJSON() {
+    public static List<Festival> parseJSONFestivals() {
         try {
             JsonReader jsonReader = new JsonReader(new FileReader("src/resources/concertManagement.json"));
 
@@ -29,6 +29,22 @@ public class JsonDecode {
             return null;
         }
 
+    }
+
+    public static List<Offer> parseJSONOffers() {
+        try {
+            JsonReader jsonReader = new JsonReader(new FileReader("src/resources/offers.json"));
+
+            Gson gson = new Gson();
+            Type foundListType = new TypeToken<ArrayList<Offer>>(){}.getType();
+
+            List<Offer> offers = gson.fromJson(jsonReader, foundListType);
+            return offers;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

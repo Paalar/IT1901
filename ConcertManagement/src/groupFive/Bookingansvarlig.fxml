@@ -2,11 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.ButtonBar?>
+=======
+<?import javafx.scene.control.DatePicker?>
+>>>>>>> 40d18974c6b1e4c2a62beddad2313d4cf582d571
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -31,6 +36,7 @@
                               <Label layoutX="669.0" layoutY="52.0" text="Tidligere konserter i Norge" />
                               <VBox fx:id="vBoxBands" layoutX="53.0" layoutY="80.0" prefHeight="510.0" prefWidth="239.0" />
                            </children>
+<<<<<<< HEAD
                         </AnchorPane>
                   </content>
                 </Tab>
@@ -58,5 +64,44 @@
             </ButtonBar>
          </top>
       </BorderPane>
+=======
+                        </VBox>
+                        <Label layoutX="146.0" layoutY="52.0" text="Velg band" />
+                        <ListView fx:id="listViewEarlierConcerts" layoutX="640.0" layoutY="88.0" prefHeight="484.0" prefWidth="200.0" />
+                        <Label layoutX="669.0" layoutY="52.0" text="Tidligere konserter i Norge" />
+                        <VBox fx:id="vBoxBands" layoutX="53.0" layoutY="80.0" prefHeight="510.0" prefWidth="239.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Send tilbud">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox fx:id="vBoxBandsTab2" layoutX="64.0" layoutY="81.0" prefHeight="491.0" prefWidth="246.0">
+                           <children>
+                              <Label fx:id="labelBandInfo1" />
+                           </children>
+                        </VBox>
+                        <Button layoutX="464.0" layoutY="333.0" mnemonicParsing="false" onAction="#sendOffer" text="Send Tilbud" />
+                        <Label layoutX="343.0" layoutY="168.0" text="Artist">
+                           <graphic>
+                              <TextField fx:id="textFieldArtist" prefHeight="26.0" prefWidth="311.0" promptText="Skriv inn artist, eller velg fra listen til venstre" />
+                           </graphic></Label>
+                        <Label layoutX="343.0" layoutY="255.0" text="Pris">
+                           <graphic>
+                              <TextField fx:id="textFieldPris" prefHeight="26.0" prefWidth="309.0" promptText="Skriv inn pris" />
+                           </graphic></Label>
+                        <Label layoutX="346.0" layoutY="81.0" text="Dato">
+                           <graphic>
+                              <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="308.0" promptText="Velg en dato" />
+                           </graphic></Label>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button layoutX="51.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Button layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Bytt bruker" />
+>>>>>>> 40d18974c6b1e4c2a62beddad2313d4cf582d571
    </children>
 </AnchorPane>
