@@ -1,6 +1,7 @@
 package groupFive;
 
 import Json.Festival;
+import Json.Offer;
 import util.Constants;
 import Json.JsonDecode;
 import javafx.application.Application;
@@ -16,6 +17,7 @@ import java.util.List;
 public class Main extends Application {
     Constants constants = new Constants();
     public static List<Festival> festivals;
+    public static List<Offer> offers;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,7 +29,8 @@ public class Main extends Application {
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
-        festivals = JsonDecode.parseJSON();
+        festivals = JsonDecode.parseJSONFestivals();
+        offers = JsonDecode.parseJSONOffers();
     }
 
     public static void main(String[] args) {
