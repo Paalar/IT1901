@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
    <children>
-      <TabPane layoutY="43.0" prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Nøkkelinformasjon om Band">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox layoutX="363.0" layoutY="88.0" prefHeight="200.0" prefWidth="201.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TabPane prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Nøkkelinformasjon om Band">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label fx:id="labelBandInfo" />
+                              <VBox layoutX="363.0" layoutY="88.0" prefHeight="200.0" prefWidth="201.0">
+                                 <children>
+                                    <Label fx:id="labelBandInfo" />
+                                 </children>
+                              </VBox>
+                              <Label layoutX="146.0" layoutY="52.0" text="Velg band" />
+                              <ListView fx:id="listViewEarlierConcerts" layoutX="640.0" layoutY="88.0" prefHeight="484.0" prefWidth="200.0" />
+                              <Label layoutX="669.0" layoutY="52.0" text="Tidligere konserter i Norge" />
+                              <VBox fx:id="vBoxBands" layoutX="53.0" layoutY="80.0" prefHeight="510.0" prefWidth="239.0" />
                            </children>
-                        </VBox>
-                        <Label layoutX="146.0" layoutY="52.0" text="Velg band" />
-                        <ListView fx:id="listViewEarlierConcerts" layoutX="640.0" layoutY="88.0" prefHeight="484.0" prefWidth="200.0" />
-                        <Label layoutX="669.0" layoutY="52.0" text="Tidligere konserter i Norge" />
-                        <VBox fx:id="vBoxBands" layoutX="53.0" layoutY="80.0" prefHeight="510.0" prefWidth="239.0" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Untitled Tab 2">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-      <Button layoutX="51.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button layoutX="177.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Bytt bruker" />
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Untitled Tab 2">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+         <top>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <buttons>
+                <Button fx:id="goHome" mnemonicParsing="false" text="Bytt arbeidsrolle" />
+                  <Label fx:id="labelArrTitle" text="Bookingansvarlig" />
+                  <Label />
+              </buttons>
+               <BorderPane.margin>
+                  <Insets bottom="40.0" top="10.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="5.0" right="20.0" top="5.0" />
+               </padding>
+            </ButtonBar>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

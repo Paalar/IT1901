@@ -16,11 +16,11 @@
     -fx-alignment: center;
 }
 
-#arrButts, #jobsList {
+#jobsList {
     -fx-spacing: 20;
 }
 
-#vBoxTekniker {
+#arrButts, #vBoxTekniker {
     -fx-spacing: 5;
 }
 
@@ -42,7 +42,7 @@
     -fx-font-size: 18;
 }
 
-#tekButts {
+#tekButts, #arrScenes {
     -fx-background-radius: 10;
     -fx-padding: 10, 10, 10, 10;
     -fx-background-color: #D9CAC2,
@@ -52,6 +52,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
+/*
 #arrScenes {
     -fx-background-radius: 10;
     -fx-padding: 10, 10, 10, 10;
@@ -62,14 +63,16 @@
     -fx-margin: 100;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
+*/
 
 #choiceBoxFestivals, #choiceBoxScenes {
     -fx-background-radius: 40;
     -fx-background-color: #A6808C,
-        linear-gradient(#AE8B96, #6A525A);
+    linear-gradient(#AE8B96, #6A525A);
     -fx-text-fill: #D6C5BC;
     -fx-font-size: 12;
     -fx-margin: 100;
+
 }
 
 /* Button effects */
@@ -123,8 +126,7 @@
 
 #scrollPane {
  -fx-background: #D6CFCB;
- -fx-padding: 10;
- -fx-background-color: #C9B991;
+ -fx-background-color: #D6CFCB;
  -fx-border-radius: 10 10 0 0;
  -fx-background-radius: 10;
 }

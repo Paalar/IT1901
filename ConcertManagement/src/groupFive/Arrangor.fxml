@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Arrangor_controller">
+<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Arrangor_controller">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -22,7 +22,7 @@
                   <Button fx:id="goHome" mnemonicParsing="false" onAction="#totalView" text="Totaloversikt" />
               </buttons>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets bottom="40.0" top="10.0" />
                </BorderPane.margin>
                <padding>
                   <Insets bottom="5.0" right="20.0" top="5.0" />
@@ -34,24 +34,24 @@
                <children>
                   <Label alignment="TOP_CENTER" text="Festival">
                      <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="30.0" top="10.0" />
                      </VBox.margin>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
                      <graphic>
-                        <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
+                        <ChoiceBox fx:id="choiceBoxFestivals" prefHeight="30.0" prefWidth="220.0" />
                      </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                   </Label>
                   <Label alignment="TOP_CENTER" text="Scene">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="10.0" left="30.0" />
                      </VBox.margin>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
                      <graphic>
-                        <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" />
+                        <ChoiceBox fx:id="choiceBoxScenes" prefHeight="30.0" prefWidth="220.0">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></ChoiceBox>
                      </graphic>
                   </Label>
                   <ScrollPane fx:id="scrollPane" prefWidth="200.0">
@@ -70,13 +70,16 @@
                         </AnchorPane>
                     </content>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets left="30.0" top="20.0" />
                      </VBox.margin>
                   </ScrollPane>
                </children>
                <BorderPane.margin>
-                  <Insets left="10.0" />
+                  <Insets left="25.0" top="10.0" />
                </BorderPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </VBox>
          </left>
          <center>

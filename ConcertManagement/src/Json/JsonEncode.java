@@ -33,7 +33,7 @@ public class JsonEncode {
         
         */
 
-        try (FileWriter writer = new FileWriter("src/resources/test.json")){
+        try (FileWriter writer = new FileWriter("src/resources/concertManagement.json")){
             Gson newGson = new GsonBuilder().create();
             newGson.toJson(festivals, writer);
 

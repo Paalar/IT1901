@@ -11,120 +11,139 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Tekniker_controller">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <VBox prefHeight="680.0" prefWidth="230.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField fx:id="textFieldSearch" onKeyReleased="#onKeyPressSearchBar" prefHeight="26.0" prefWidth="200.0" promptText="Søk..">
-                     <VBox.margin>
-                        <Insets bottom="10.0" top="5.0" />
-                     </VBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TextField>
-                  <ScrollPane fx:id="scrollPane" prefWidth="200.0">
-                    <content>
-                      <AnchorPane fx:id="vboxLightTech">
-                           <children>
-                              <VBox fx:id="vBoxTekniker" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                        </AnchorPane>
-                    </content>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </ScrollPane>
-               </children>
-               <BorderPane.margin>
-                  <Insets left="10.0" />
-               </BorderPane.margin>
-            </VBox>
-         </left>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <center>
-                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </top>
+               <left>
+                  <VBox prefHeight="680.0" prefWidth="230.0" BorderPane.alignment="CENTER">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="150.0">
-                           <children>
-                              <Label text="Dato">
-                                 <padding>
-                                    <Insets bottom="15.0" />
-                                 </padding>
-                              </Label>
-                              <ListView fx:id="listViewDato" prefHeight="501.0" prefWidth="104.0" />
-                           </children>
-                           <HBox.margin>
+                        <Label fx:id="labelFestival" alignment="CENTER" contentDisplay="TOP" text="Festival">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="textFieldSearch" alignment="CENTER" maxWidth="210.0" onKeyReleased="#onKeyPressSearchBar" prefHeight="26.0" prefWidth="200.0" promptText="Søk..">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" top="5.0" />
+                           </VBox.margin>
+                           <opaqueInsets>
                               <Insets />
-                           </HBox.margin>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="150.0">
-                           <children>
-                              <Label text="Artist">
+                           </opaqueInsets>
+                        </TextField>
+                        <ScrollPane fx:id="scrollPane" prefWidth="200.0">
+                          <content>
+                            <AnchorPane fx:id="vboxLightTech">
+                                 <children>
+                                    <VBox fx:id="vBoxTekniker" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
                                  <padding>
-                                    <Insets bottom="15.0" />
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
-                              </Label>
-                              <ListView fx:id="listViewArtist" prefHeight="501.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="150.0">
-                           <children>
-                              <Label text="Scene">
-                                 <padding>
-                                    <Insets bottom="15.0" />
-                                 </padding>
-                              </Label>
-                              <ListView fx:id="listViewScene" prefHeight="501.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="150.0">
-                           <children>
-                              <Label text="Oppgave">
-                                 <padding>
-                                    <Insets bottom="15.0" />
-                                 </padding>
-                              </Label>
-                              <ListView fx:id="listViewOppgave" prefHeight="501.0" prefWidth="200.0" />
-                           </children>
-                        </VBox>
+                              </AnchorPane>
+                          </content>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
                      </children>
-                     <padding>
-                        <Insets right="225.0" />
-                     </padding>
+                     <BorderPane.margin>
+                        <Insets left="25.0" top="25.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </left>
+               <center>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="labelNavn" alignment="TOP_CENTER" contentDisplay="TOP" text="Trykk på en teknikker for å vise arbeidsinformasjon">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" left="255.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefWidth="200.0">
+                           <children>
+                              <VBox prefWidth="150.0">
+                                 <children>
+                                    <Label text="Dato">
+                                       <padding>
+                                          <Insets bottom="15.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="listViewDato" prefWidth="104.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="150.0">
+                                 <children>
+                                    <Label text="Artist">
+                                       <padding>
+                                          <Insets bottom="15.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="listViewArtist" prefHeight="501.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="150.0">
+                                 <children>
+                                    <Label text="Scene">
+                                       <padding>
+                                          <Insets bottom="15.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="listViewScene" prefHeight="501.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="150.0">
+                                 <children>
+                                    <Label text="Oppgave">
+                                       <padding>
+                                          <Insets bottom="15.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <ListView fx:id="listViewOppgave" prefHeight="501.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="225.0" />
+                           </padding>
+                        </HBox>
+                     </children>
                      <BorderPane.margin>
                         <Insets top="25.0" />
                      </BorderPane.margin>
-                  </HBox>
+                  </VBox>
                </center>
-               <left>
-                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </left>
-               <top>
-                  <BorderPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <right>
-                        <Label fx:id="labelNavn" alignment="TOP_CENTER" contentDisplay="TOP" text="Trykk på en teknikker for å vise arbeidsinformasjon" BorderPane.alignment="CENTER">
-                           <padding>
-                              <Insets right="100.0" />
-                           </padding>
-                        </Label>
-                     </right>
-                     <left>
-                        <Label fx:id="labelFestival" alignment="TOP_CENTER" contentDisplay="TOP" text="Festival" BorderPane.alignment="CENTER">
-                           <padding>
-                              <Insets left="100.0" />
-                           </padding>
-                        </Label>
-                     </left>
-                  </BorderPane>
-               </top>
             </BorderPane>
          </center>
          <top>
@@ -135,7 +154,7 @@
                   <Label />
               </buttons>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets top="10.0" />
                </BorderPane.margin>
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />

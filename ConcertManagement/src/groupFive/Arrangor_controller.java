@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +19,10 @@ import java.util.List;
 import static util.Filter.getAllFestivalsObservableList;
 
 public class Arrangor_controller {
+
+    private boolean totalClicked = false;
+    private Button lastButtPress = null;
+
     @FXML
     private ScrollPane scrollPane;
 
@@ -130,7 +133,8 @@ public class Arrangor_controller {
                         List<Concert> concerts = f.getScene().get(i).getKonsert();
                         for (int n = 0; n < concerts.size(); n++) {
                             Button btn = createButton(concerts.get(n).getArtist());
-                            btn.setId("arrScenes");
+                            btn.setId("tekButts");
+                            btn.setPrefSize(200,20);
                             arrButts.getChildren().add(btn);
                         }
                     }
@@ -176,6 +180,7 @@ public class Arrangor_controller {
         button.setPrefSize(300,50);
         button.setOnMouseClicked(event -> {
             try {
+                lastButtPress = button;
                 String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
                 showArbeidere(name, sceneSelected, festival);
             } catch (Exception e) {
@@ -188,23 +193,34 @@ public class Arrangor_controller {
 
     @FXML
     private void totalView() {
-        ArrayList<String> totalOversikt = new ArrayList<>();
-        ListView lv = new ListView();
-        vboxLightTech.getChildren().clear();
-        vboxSoundTech.getChildren().clear();
+        if (totalClicked) {
+            String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+            if (lastButtPress == null) {lastButtPress = (Button) arrButts.getChildren().get(0);
+                repeatFocus(lastButtPress);
+            }
+                showArbeidere(lastButtPress.getText().toString(), sceneSelected, festival);
+                repeatFocus(lastButtPress);
+                totalClicked = false;
+        } else {
+            totalClicked = true;
+            ArrayList<String> totalOversikt = new ArrayList<>();
+            ListView lv = new ListView();
+            vboxLightTech.getChildren().clear();
+            vboxSoundTech.getChildren().clear();
 
-        for (Festival f : Main.festivals) {
-            totalOversikt.add("\t" + f.getFestival() + "\n");
-            for (int i = 0; i < f.getScene().size(); i++) {
-                totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
-                for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
-                    totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+            for (Festival f : Main.festivals) {
+                totalOversikt.add("\t" + f.getFestival() + "\n");
+                for (int i = 0; i < f.getScene().size(); i++) {
+                    totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
+                    for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
+                        totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+                    }
                 }
             }
+            ObservableList<String> obsList = FXCollections.observableArrayList(totalOversikt);
+            lv.setItems(obsList);
+            vboxLightTech.getChildren().add(lv);
         }
-        ObservableList<String> obsList = FXCollections.observableArrayList(totalOversikt);
-        lv.setItems(obsList);
-        vboxLightTech.getChildren().add(lv);
     }
 
     @FXML
