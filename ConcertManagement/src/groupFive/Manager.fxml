@@ -2,27 +2,26 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Manager_controller">
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1280.0">
          <top>
-             <ButtonBar prefHeight="40.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <buttons>
                      <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="37.0" prefWidth="1290.0" text="Bytt arbeidsrolle" />
-               </buttons>
-             </ButtonBar>
          </top>
          <left>
-            <VBox fx:id="needsNotSent1" prefHeight="680.0" prefWidth="196.0" BorderPane.alignment="CENTER" />
+            <VBox fx:id="needsNotSent1" layoutX="200.0" layoutY="326.0" prefHeight="670.0" prefWidth="196.0" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets left="20.0" top="13.0" />
+                </BorderPane.margin>
+            </VBox>
          </left>
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
@@ -30,52 +29,58 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" styleClass="background" BorderPane.alignment="CENTER">
                <children>
-                  <SplitPane dividerPositions="0.23529411764705882, 0.4786096256684492, 0.7032085561497327" orientation="VERTICAL" prefHeight="328.0" prefWidth="1080.0">
+                  <SplitPane dividerPositions="0.23529411764705882, 0.4786096256684492, 0.7032085561497327, 0.5" orientation="VERTICAL" prefHeight="328.0" prefWidth="1080.0">
                      <items>
-                        <VBox fx:id="1" prefHeight="95.0" prefWidth="1078.0">
+                        <VBox fx:id="1" maxHeight="40.0" prefHeight="40.0" prefWidth="1078.0">
                          <children>
-                             <Label fx:id="artist" text="Artist: ">
+                             <Label fx:id="artist" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0" text="Artist: ">
                                  <VBox.margin>
-                                     <Insets left="20.0" top="20.0" />
+                                     <Insets bottom="0" left="20.0" top="20.0" />
                                  </VBox.margin></Label>
                          </children>
                         </VBox>
-                        <VBox fx:id="2" prefHeight="103.0" prefWidth="1078.0">
+                        <VBox fx:id="2" maxHeight="40.0" minHeight="40.0" prefHeight="40.0" prefWidth="1078.0">
                          <children>
-                             <Label fx:id="scene" prefHeight="32.0" prefWidth="180.0" text="Scene: ">
+                             <Label fx:id="scene" prefHeight="40.0" prefWidth="180.0" text="Scene: ">
                                  <VBox.margin>
-                                     <Insets left="20.0" top="20.0" />
+                                     <Insets bottom="0" left="20.0" top="10.0" />
                                  </VBox.margin></Label>
                          </children>
                         </VBox>
-                        <VBox fx:id="2" prefHeight="200.0" prefWidth="100.0">
+                        <VBox fx:id="3" maxHeight="40.0" prefHeight="40.0" prefWidth="180.0">
                          <children>
-                             <Label fx:id="date" text="Dato: ">
+                             <Label fx:id="date" prefHeight="40.0" prefWidth="180.0" text="Dato: ">
                                  <VBox.margin>
-                                     <Insets left="20.0" top="20.0" />
+                                     <Insets bottom="0" left="20.0" top="10.0" />
                                  </VBox.margin></Label>
                          </children>
                         </VBox>
-                        <VBox fx:id="3" prefHeight="200.0" prefWidth="100.0">
+                        <VBox fx:id="4" maxHeight="40.0" prefHeight="40.0" prefWidth="200.0">
                          <children>
-                             <Label fx:id="behovFelt" text="Legg til dit behov: ">
+                             <Label fx:id="behovFelt" prefHeight="50.0" prefWidth="200.0" text="Legg til ditt behov: ">
                                  <VBox.margin>
-                                     <Insets left="20.0" top="20.0" />
+                                     <Insets bottom="0" left="20.0" top="10.0" />
                                  </VBox.margin></Label>
                          </children>
                         </VBox>
+                         <VBox fx:id="5" prefHeight="50.0" prefWidth="200.0">
+                             <children>
+                                 <Label fx:id="behovFeltLagtTil" maxHeight="40.0" maxWidth="220.0" prefHeight="40.0" prefWidth="200.0" text="Behov som er lagt til: ">
+                                     <VBox.margin>
+                                         <Insets bottom="0" left="20.0" top="10.0" />
+                                     </VBox.margin></Label>
+                             </children>
+                         </VBox>
                      </items>
                   </SplitPane>
                </children></VBox>
          </center>
       </BorderPane>
-       <Button fx:id="sendButton" layoutX="1000.0" layoutY="650.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
-       <Button fx:id="addButton" layoutX="998.0" layoutY="279.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
-      <TextField layoutX="395.0" layoutY="295.0" prefHeight="25.0" prefWidth="600.0">
+       <Button fx:id="sendButton" layoutX="1000.0" layoutY="600.0" mnemonicParsing="false" onAction="#goHome" text="Send bandes behov" />
+       <Button fx:id="addButton" layoutX="998.0" layoutY="170.0" mnemonicParsing="false" onAction="#goHome" text="Legg til bandes behov" />
+      <TextField fx:id="inputFieldNeed" layoutX="448.0" layoutY="185.0" prefHeight="25.0" prefWidth="532.0">
 
       </TextField>
-      <Pane fx:id="needListArea" layoutX="393.0" layoutY="326.0" prefHeight="364.0" prefWidth="600.0">
-
-      </Pane>
+      <ListView fx:id="needListAdded" layoutX="462.0" layoutY="240.0" prefHeight="416.0" prefWidth="530.0" />
    </children>
 </AnchorPane>

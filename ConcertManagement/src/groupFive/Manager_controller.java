@@ -57,7 +57,7 @@ public class Manager_controller {
     private String datoString;
 
     @FXML
-    private ListView listOfNeeds;
+    private ListView needListAdded;
 
     private List<ListView> listViews;
 
@@ -65,7 +65,7 @@ public class Manager_controller {
     private Button sendButton;
 
     @FXML
-    private  Button addButton;
+    private Button addButton;
 
     @FXML
     private List<TextField> textFields;
@@ -76,8 +76,7 @@ public class Manager_controller {
     @FXML
     private VBox needsNotSent1;
 
-    @FXML
-    private List<String> artistNeeds;
+    ArrayList<String> needsList = new ArrayList<>();
 
     private static ArrayList<String> needList;
     private static Offer offers = new Offer("Astrid S", "Storsalen", "24.10.2017", 200, needList);
@@ -88,7 +87,7 @@ public class Manager_controller {
 
     @FXML
     public void initialize() {
-        listViews = Arrays.asList(listOfOfferView, listOfNeeds);
+        listViews = Arrays.asList(listOfOfferView, needListAdded);
         //putOfferInChoiceBox();
         //hideStuffOnStart();
         addButtons(listOfOffers, needsNotSent1);
@@ -112,6 +111,12 @@ public class Manager_controller {
         }
     }
 
+    private void popListView (ArrayList<String> needList, ListView listArea){
+        for (int i = 0; i < needList.size(); i++){
+            listArea.getChildren().add
+        }
+    }
+
     private Button createButton(Offer name) {
         final Button button = new Button(name.getArtist());
         button.setId("offerButt");
@@ -127,59 +132,13 @@ public class Manager_controller {
         return button;
     }
 
-
-   /** private void putSceneNamesInTextBox(String festival) {
-        for (Festival f : Main.festivals) {
-            if (f.getFestival().equals(festival)) {
-                for (int i = 0; i < 3; i++) {
-                    textFields.get(i).setText(f.getScene().get(i).getNavn());
-                }
-            }
-        }
-    }
-
-    private void putConcertsInSceneLists(final String festival) {
-        putSceneNamesInTextBox(festival);
-        for (Festival f : Main.festivals) {
-            if (f.getFestival().equals(festival)) {
-                // Når du har funnet riktig festival.
-                for (int i = 0; i < 3; i++) {
-                    final int iFinal = i;
-                    // Denne må være final for å kunne bruke i en anonym klasse.
-
-                    listViews.get(i).setEditable(true);
-                    List<String> concerts = new ArrayList<>();
-                    for (Concert c : f.getScene().get(i).getKonsert()) {
-                        concerts.add(c.getArtist());
-                    }
-                    ObservableList<String> observableListToAdd = FXCollections.observableArrayList(concerts);
-                    listViews.get(i).setItems(observableListToAdd);
-                    listViews.get(i).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent event) {
-                            try {
-                                String itemClicked = listViews.get(iFinal).getSelectionModel().getSelectedItem().toString();
-                                int whichScene = iFinal;
-                                showArbeidere(itemClicked, whichScene, festival);
-                            } catch (Exception e) {
-                                System.out.println("Du har ikke valgt en konsert.");
-                            }
-
-
-                        }
-                    });
-                }
-            }
-        }
-    }**/
-
     @FXML
     private void hideStuffOnStart(){
         addButton.setVisible(false);
         need.setVisible(false);
         artist.setVisible(false);
         scene.setVisible(false);
-        listOfNeeds.setVisible(false);
+        needListAdded.setVisible(false);
         listOfNeedsAddedLabel.setVisible(false);
         sendButton.setVisible(false);
         date.setVisible(false);
@@ -191,7 +150,7 @@ public class Manager_controller {
         need.setVisible(true);
         artist.setVisible(true);
         scene.setVisible(true);
-        listOfNeeds.setVisible(true);
+        needListAdded.setVisible(true);
         listOfNeedsAddedLabel.setVisible(true);
         sendButton.setVisible(true);
         date.setVisible(true);
@@ -217,8 +176,7 @@ public class Manager_controller {
     @FXML
     private  void addNeedsToList(){
         String aNeed = need.getText();
-        artistNeeds.add(aNeed);
-        need.setText("Behov: ");
+        needsList.add(aNeed);
     }
 
     @FXML
