@@ -1,25 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Arrangor_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Arrangor_controller">
    <children>
-      <ListView fx:id="listViewScene2" layoutX="499.0" layoutY="198.0" prefHeight="475.0" prefWidth="198.0" />
-      <ListView fx:id="listViewDatesScene2" layoutX="697.0" layoutY="198.0" prefHeight="475.0" prefWidth="138.0" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button layoutX="113.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" text="Start" />
-      <ListView fx:id="listViewScene1" layoutX="113.0" layoutY="198.0" prefHeight="475.0" prefWidth="198.0" />
-      <ListView fx:id="listViewDatesScene1" layoutX="311.0" layoutY="198.0" prefHeight="475.0" prefWidth="138.0" />
-      <ListView fx:id="listViewScene3" layoutX="885.0" layoutY="198.0" prefHeight="475.0" prefWidth="198.0" />
-      <ListView fx:id="listViewDatesScene3" layoutX="1083.0" layoutY="198.0" prefHeight="475.0" prefWidth="138.0" />
-      <ChoiceBox fx:id="choiceBoxFestivals" layoutX="207.0" layoutY="93.0" prefWidth="150.0" />
-      <TextField layoutX="208.0" layoutY="58.0" text="Festivals" />
-      <TextField fx:id="textFieldScene1" layoutX="113.0" layoutY="156.0" text="Scene 1" />
-      <TextField fx:id="textFieldScene2" layoutX="499.0" layoutY="156.0" text="Scene 2" />
-      <TextField fx:id="textFieldScene3" layoutX="885.0" layoutY="156.0" text="Scene 3" />
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <buttons>
+                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Bytt arbeidsrolle" />
+                  <Label fx:id="labelArrTitle" alignment="TOP_CENTER" text="Arrangør" />
+                  <Button fx:id="goHome" mnemonicParsing="false" onAction="#totalView" text="Totaloversikt" />
+              </buttons>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="5.0" right="20.0" top="5.0" />
+               </padding>
+            </ButtonBar>
+         </top>
+         <left>
+            <VBox prefWidth="335.0" styleClass="background" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="TOP_CENTER" text="Festival">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <graphic>
+                        <ChoiceBox fx:id="choiceBoxFestivals" prefWidth="150.0" />
+                     </graphic>
+                  </Label>
+                  <Label alignment="TOP_CENTER" text="Scene">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <graphic>
+                        <ChoiceBox fx:id="choiceBoxScenes" prefWidth="150.0" />
+                     </graphic>
+                  </Label>
+                  <ScrollPane fx:id="scrollPane" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0">
+                           <children>
+                              <VBox fx:id="arrButts">
+                                 <padding>
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="5.0" />
+                           </padding>
+                        </AnchorPane>
+                    </content>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </ScrollPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <center>
+            <SplitPane fx:id="arrSplitPane" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <VBox fx:id="vboxLightTech" prefHeight="200.0" prefWidth="429.0">
+                     <children>
+                        <Label fx:id="labelLightTech" text="Lydteknikere:">
+                           <VBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </VBox.margin></Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="vboxSoundTech" prefHeight="200.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="labelSoundTech" text="Lysteknikere:">
+                           <VBox.margin>
+                              <Insets left="20.0" top="20.0" />
+                           </VBox.margin></Label>
+                     </children>
+                  </VBox>
+               </items>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </SplitPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

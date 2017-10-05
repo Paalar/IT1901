@@ -1,25 +1,130 @@
-.background {
-    -fx-background-color: #ffe6cc;
+/* Background colors */
+
+.background, #vboxLightTech, #vboxSoundTech, #arrButts, #vBoxTekniker {
+    -fx-background-color: #D6CFCB;
 }
 
-.listView -list-cell:even {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
-
+#jobButt {
+    -fx-background-color: #A6808C;
 }
 
-.listView -list-cell:odd {
-    -fx-background-color: blue;
-    -fx-text-fill: black;
-    -fx-background-insets: 10, 10, 10, 10;
 
-}
 
-#listText .list-cell {
+/* List of buttons */
+
+#jobsList {
     -fx-alignment: center;
 }
 
-#listViewWrap {
+#arrButts, #jobsList {
+    -fx-spacing: 20;
+}
 
+#vBoxTekniker {
+    -fx-spacing: 5;
+}
+
+
+
+/* Buttons */
+
+#jobButt, #goHome {
+    -fx-background-radius: 40;
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #A6808C,
+        linear-gradient(#AE8B96, #795E66);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 22;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#goHome {
+    -fx-font-size: 18;
+}
+
+#tekButts {
+    -fx-background-radius: 10;
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #D9CAC2,
+        linear-gradient(#D6C5CA, #B697A0);
+    -fx-text-fill: #565264;
+    -fx-font-size: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#arrScenes {
+    -fx-background-radius: 10;
+    -fx-padding: 10, 10, 10, 10;
+    -fx-background-color: #D9CAC2,
+        linear-gradient(#D6C5CA, #B697A0);
+    -fx-text-fill: #565264;
+    -fx-font-size: 22;
+    -fx-margin: 100;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+#choiceBoxFestivals, #choiceBoxScenes {
+    -fx-background-radius: 40;
+    -fx-background-color: #A6808C,
+        linear-gradient(#AE8B96, #6A525A);
+    -fx-text-fill: #D6C5BC;
+    -fx-font-size: 12;
+    -fx-margin: 100;
+}
+
+/* Button effects */
+
+#jobButt:hover, #goHome:hover {
+    -fx-background-color: #A6808C,
+        linear-gradient(#A6808C, #B697A0);
+}
+
+#arrScenes:focused, #tekButts:focused {
+    -fx-background-color: #D9CAC2,
+        linear-gradient(#AE8B96, #795E66);
+}
+#arrScenes:focused:hover, #tekButts:focused:hover {
+     -fx-background-color: #D9CAC2,
+        linear-gradient(#D9CAC2, #FBF9F8);
+}
+#arrScenes:hover, #tekButts:hover {
+     -fx-background-color: #D9CAC2,
+        linear-gradient(#D9CAC2, #FBF9F8);
+}
+
+
+
+/* Title and other labels */
+
+#titleLabel {
+    -fx-font-size: 35;
+    -fx-text-fill: #A6808C;
+}
+
+#labelLightTech, #labelSoundTech {
+   -fx-font-size: 22;
+   -fx-margin: 100;
+}
+
+#labelArrTitle {
+    -fx-font-size: 30;
+    -fx-margin: 100;
+    -fx-text-fill: #A6808C;
+}
+
+
+
+/* Others */
+
+.split-pane-divider {
+-fx-background-color: transparent;
+-fx-padding: 0;
+}
+
+#scrollPane {
+ -fx-background: #D6CFCB;
+ -fx-padding: 10;
+ -fx-background-color: #C9B991;
+ -fx-border-radius: 10 10 0 0;
+ -fx-background-radius: 10;
 }
