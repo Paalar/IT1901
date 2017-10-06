@@ -19,6 +19,7 @@ public class Main extends Application {
     public static List<Festival> festivals;
     public static List<Offer> offers;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
