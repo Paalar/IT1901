@@ -1,36 +1,35 @@
 /* Background colors */
 
-.background, #vboxLightTech, #vboxSoundTech, #arrButts, #vBoxTekniker, VBox, HBox, Anchorpane  #1,#2,#3,#4,#5  {
+.background, #vboxLightTech, #vboxSoundTech, #arrButts, #vBoxTekniker, VBox, HBox, Anchorpane {
     -fx-background-color: #D6CFCB;
-    -fx-spacing: 5;
 }
 
 #jobButt {
     -fx-background-color: #A6808C;
-    -fx-background-radius: 40;
 }
+
+
 
 /* List of buttons */
 
 #jobsList {
     -fx-alignment: center;
+}
+
+#jobsList {
     -fx-spacing: 20;
 }
 
-
-#vBoxBands, #vBoxBandsTab2 {
+#arrButts, #vBoxTekniker, #vBoxBands, #vBoxBandsTab2 {
     -fx-spacing: 5;
 }
 
+
+
 /* Buttons */
 
-.split-pane {
-    -fx-background-color: -fx-box-border, -fx-control-inner-background;
-    -fx-background-insets: 0, 0;
-    -fx-padding: 0;
-}
-
-#arrScenes {
+#jobButt, #goHome {
+    -fx-background-radius: 40;
     -fx-padding: 10, 10, 10, 10;
     -fx-background-color: #A6808C,
         linear-gradient(#AE8B96, #795E66);
@@ -41,40 +40,6 @@
 
 #goHome {
     -fx-font-size: 18;
-}
-#sendButton{
-    -fx-padding: 10, 10, 10, 10;
-    -fx-background-color: #A6808C,
-    linear-gradient(#AE8B96, #6A525A);
-    -fx-text-fill: #D6C5BC;
-    -fx-font-size: 14;
-    -fx-margin: 100;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-}
-
-#addButton{
-    -fx-padding: 10, 10, 10, 10;
-    -fx-background-color: #A6808C,
-    linear-gradient(#AE8B96, #6A525A);
-    -fx-text-fill: #D6C5BC;
-    -fx-font-size: 14;
-    -fx-margin: 100;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-}
-
-#offerButt{
-    -fx-padding: 10, 10, 10, 10;
-    -fx-background-color: #A6808C,
-    linear-gradient(#AE8B96, #6A525A);
-    -fx-text-fill: #D6C5BC;
-    -fx-font-size: 22;
-    -fx-margin: 100;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-}
-
-#labelLightTech, #labelSoundTech, #artist, #scene, #date, #behovFelt, #behovFeltLagtTil {
-   -fx-font-size: 22;
-   -fx-margin: 100;
 }
 
 #tekButts, #arrScenes {
@@ -129,7 +94,7 @@
 }
 #arrScenes:focused:hover, #tekButts:focused:hover {
      -fx-background-color: #D9CAC2,
-        linear-gradient(#D9CAC2, #FBF9F8);
+         linear-gradient(#AE8B96, #795E66);
 }
 #arrScenes:hover, #tekButts:hover {
      -fx-background-color: #D9CAC2,
