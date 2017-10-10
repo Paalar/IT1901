@@ -116,11 +116,11 @@ public class Bookingansvarlig_controller {
         // Lager en string hvor jeg putter inn all informasjonen før jeg setter labelen sin tekst til hele stringen.
 
         int popularity = getPopularity(band);
-        bandInfo.add("Populæritet: " + String.valueOf(popularity));
+        bandInfo.add("Populæritet: " + String.valueOf(popularity) + "%");
         String genre = getGenre(band);
         bandInfo.add("Sjanger: " + genre);
         int earlierSales = getSales(band);
-        bandInfo.add("Tidligere salg: " + String.valueOf(earlierSales));
+        bandInfo.add("Tidligere salg av billetter: " + String.valueOf(earlierSales) + "%");
 
         labelBandInfo.setText(stringToPutInTextArea);
         listviewPop.setItems(FXCollections.observableArrayList(bandInfo));

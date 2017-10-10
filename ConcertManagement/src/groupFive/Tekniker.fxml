@@ -29,6 +29,11 @@
                               <Insets bottom="20.0" left="20.0" />
                            </VBox.margin>
                         </Label>
+                        <Label text="Søk blant teknikere">
+                           <VBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
                         <TextField fx:id="textFieldSearch" alignment="CENTER" maxWidth="210.0" onKeyReleased="#onKeyPressSearchBar" prefHeight="26.0" prefWidth="200.0" promptText="Søk..">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" top="5.0" />
@@ -75,7 +80,7 @@
                         </Label>
                         <HBox prefWidth="200.0">
                            <children>
-                              <VBox prefWidth="150.0">
+                              <VBox>
                                  <children>
                                     <Label text="Dato">
                                        <font>
@@ -85,7 +90,7 @@
                                           <Insets bottom="15.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ListView fx:id="listViewDato" prefWidth="104.0" />
+                                    <ListView fx:id="listViewDato" />
                                  </children>
                                  <HBox.margin>
                                     <Insets />
@@ -132,7 +137,7 @@
                               </VBox>
                            </children>
                            <padding>
-                              <Insets left="225.0" />
+                              <Insets left="150.0" />
                            </padding>
                         </HBox>
                      </children>
@@ -149,9 +154,9 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                  <Label fx:id="labelArrTitle" alignment="TOP_CENTER" contentDisplay="CENTER" text="Tekniker" />
-                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goBack" prefWidth="407.0" text="Bytt arbeidsrolle" ButtonBar.buttonData="LEFT" />
                   <Label />
+                  <Label fx:id="labelArrTitle" alignment="TOP_CENTER" contentDisplay="CENTER" text="Tekniker" />
+                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goBack" prefWidth="407.0" text="Logg ut" />
               </buttons>
                <BorderPane.margin>
                   <Insets top="10.0" />

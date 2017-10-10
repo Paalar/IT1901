@@ -87,7 +87,7 @@ public class Tekniker_controller {
             for (Concert c : s.getKonsert()) {
                 for (SoundTech st : c.getLyd()) {
                     if (st.getNavn().equals(arbeider)) {
-                        datoer.add(c.getDato());
+                        datoer.add(c.getDato() + " (19:00 - 24:00)");
                         scener.add(s.getNavn());
                         artister.add(c.getArtist());
                         tekniker.add("Lydteknikker");
@@ -96,7 +96,7 @@ public class Tekniker_controller {
 
                 for (LightTech lt : c.getLys()) {
                     if (lt.getNavn().equals(arbeider)) {
-                        datoer.add(c.getDato());
+                        datoer.add(c.getDato() + " (19:00 - 24:00)");
                         scener.add(s.getNavn());
                         artister.add(c.getArtist());
                         tekniker.add("Lysteknikker");

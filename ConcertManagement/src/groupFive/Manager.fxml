@@ -23,7 +23,7 @@
                     <Insets left="25.0" top="20.0" />
                 </BorderPane.margin>
                <children>
-                  <Label text="Artister uten behov">
+                  <Label text="Artister">
                      <VBox.margin>
                         <Insets bottom="10.0" left="30.0" top="10.0" />
                      </VBox.margin>
@@ -56,9 +56,9 @@
          <top>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                           <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="37.0" prefWidth="1290.0" text="Bytt arbeidsrolle" />
-                  <Label fx:id="labelArrTitle" alignment="CENTER" text="Manager" />
                   <Label />
+                  <Label fx:id="labelArrTitle" alignment="CENTER" text="Manager" />
+                           <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="37.0" prefWidth="1290.0" text="Logg ut" />
               </buttons>
                <BorderPane.margin>
                   <Insets top="10.0" />
