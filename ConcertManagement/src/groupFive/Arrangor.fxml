@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,8 +19,6 @@
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
                 <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Bytt arbeidsrolle" />
-                  <Label fx:id="labelArrTitle" alignment="TOP_CENTER" text="Arrangør" />
-                  <Button fx:id="goHome" mnemonicParsing="false" onAction="#totalView" text="Totaloversikt" />
               </buttons>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -85,7 +84,7 @@
          <center>
             <SplitPane fx:id="arrSplitPane" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <items>
-                  <VBox fx:id="vboxLightTech" prefHeight="200.0" prefWidth="429.0">
+                  <VBox fx:id="vboxLightTech" prefHeight="363.0" prefWidth="244.0">
                      <children>
                         <Label fx:id="labelLightTech" text="Lydteknikere:">
                            <VBox.margin>
@@ -107,6 +106,9 @@
                </BorderPane.margin>
             </SplitPane>
          </center>
+         <right>
+            <ListView fx:id="listViewTotal" prefHeight="653.0" prefWidth="380.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

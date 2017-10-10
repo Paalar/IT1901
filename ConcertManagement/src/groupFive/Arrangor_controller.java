@@ -6,9 +6,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import util.Constants;
 import javafx.collections.ObservableList;
@@ -22,7 +24,6 @@ import static util.Filter.getAllFestivalsObservableList;
 
 public class Arrangor_controller {
 
-    private boolean totalClicked = false;
     private Button lastButtPress = null;
 
     @FXML
@@ -41,6 +42,9 @@ public class Arrangor_controller {
 
     @FXML
     private VBox vboxLightTech, vboxSoundTech, arrButts;
+
+    @FXML
+    private ListView listViewTotal;
 
     private String lydtekniker, lystekniker;
 
@@ -86,6 +90,7 @@ public class Arrangor_controller {
         String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
 
         putSceneNamesInTextBox(festival, scene);
+        totalView();
     }
 
     private void addItemsToList() {
@@ -94,18 +99,19 @@ public class Arrangor_controller {
         putScenesInChoiceBox(Main.festivals.get(0).getFestival());
         createChoiceBoxListener();
         createSceneBoxListener();
-        putSceneNamesInTextBox(Main.festivals.get(0).getFestival(), Main.festivals.get(0).getScene().get(0).getNavn());
+        putSceneNamesInTextBox(Main.festivals.get(0).getFestival(), "All Scenes");
 
         // Fokuserer og viser navnene til de som jobber for første konsert.
         String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
-        showArbeidere(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist(), sceneSelected, festival);
+        showArbeidere(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist());
         repeatFocus(arrButts.getChildren().get(0));
+        totalView();
     }
 
     private void putScenesInChoiceBox(String festival) {
         //Putter scenene i dropdown boksen.
         ArrayList<String> sceneNames = new ArrayList<>();
-
+        sceneNames.add("All Scenes");
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
                 for (int i = 0; i < f.getScene().size(); i++) {
@@ -131,7 +137,7 @@ public class Arrangor_controller {
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
                 for (int i = 0; i < f.getScene().size(); i++) {
-                    if(scene.equals(f.getScene().get(i).getNavn())) {
+                    if(scene.equals(f.getScene().get(i).getNavn()) || scene.equals("All Scenes")) {
                         List<Concert> concerts = f.getScene().get(i).getKonsert();
                         for (int n = 0; n < concerts.size(); n++) {
                             Button btn = createButton(concerts.get(n).getArtist());
@@ -146,33 +152,41 @@ public class Arrangor_controller {
         scrollPane.setContent(arrButts);
     }
 
-    private void showArbeidere(String concert, int whichScene, String festival) {
+    private void showArbeidere(String concert) {
+        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+        String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
+
         vboxLightTech.getChildren().clear();
         vboxSoundTech.getChildren().clear();
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
-                for (Concert c : f.getScene().get(whichScene).getKonsert()) {
-                    // Her går den gjennom alle konserter på riktig festival på riktig scene.
-                    if (c.getArtist().equals(concert)) {
-                        lystekniker = "Lysteknikere:\n\n";
-                        lydtekniker = "Lydteknikere:\n\n";
+                for (Scene s : f.getScene()) {
+                    if (s.getNavn().equals(scene) || scene.equals("All Scenes")) {
+                        for (Concert c : s.getKonsert()) {
+                            // Her går den gjennom alle konserter på riktig festival på riktig scene.
+                            if (c.getArtist().equals(concert)) {
+                                lystekniker = "Lysteknikere:\n\n";
+                                lydtekniker = "Lydteknikere:\n\n";
 
-                        for (SoundTech st : c.getLyd()) {
-                            lystekniker += " - " + st.getNavn() + "\n";
+                                for (SoundTech st : c.getLyd()) {
+                                    lystekniker += " - " + st.getNavn() + "\n";
+                                }
+
+                                for (LightTech lt : c.getLys()) {
+                                    lydtekniker += " - " + lt.getNavn() + "\n";
+                                }
+
+                                labelLightTech.setText(lystekniker);
+                                labelSoundTech.setText(lydtekniker);
+                                vboxSoundTech.getChildren().add(labelSoundTech);
+                                vboxLightTech.getChildren().add(labelLightTech);
+                            }
                         }
-
-                        for (LightTech lt : c.getLys()) {
-                            lydtekniker += " - " + lt.getNavn() + "\n";
-                        }
-
-                        labelLightTech.setText(lystekniker);
-                        labelSoundTech.setText(lydtekniker);
-                        vboxSoundTech.getChildren().add(labelSoundTech);
-                        vboxLightTech.getChildren().add(labelLightTech);
                     }
                 }
             }
         }
+        totalView();
     }
 
     public Button createButton(String name) {
@@ -183,8 +197,7 @@ public class Arrangor_controller {
         button.setOnMouseClicked(event -> {
             try {
                 lastButtPress = button;
-                String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
-                showArbeidere(name, sceneSelected, festival);
+                showArbeidere(name);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Du må velge en jobb");
@@ -193,40 +206,43 @@ public class Arrangor_controller {
         return button;
     }
 
-    @FXML
     private void totalView() {
-        if (totalClicked) {
-            String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
-            if (lastButtPress == null) {lastButtPress = (Button) arrButts.getChildren().get(0);
-                repeatFocus(lastButtPress);
-            }
-                showArbeidere(lastButtPress.getText().toString(), sceneSelected, festival);
-                repeatFocus(lastButtPress);
-                totalClicked = false;
-        } else {
-            totalClicked = true;
-            ArrayList<String> totalOversikt = new ArrayList<>();
-            ListView lv = new ListView();
-            vboxLightTech.getChildren().clear();
-            vboxSoundTech.getChildren().clear();
-            String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+        String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
+        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
+        ArrayList<String> totalOversikt = new ArrayList<>();
+//        vboxLightTech.getChildren().clear();
+//        vboxSoundTech.getChildren().clear();
 
-            for (Festival f : Main.festivals) {
-                if (f.getFestival().equals(festival)) {
-                    totalOversikt.add("\t" + f.getFestival() + "\n");
-                    for (int i = 0; i < f.getScene().size(); i++) {
-                        totalOversikt.add("\t\t" + f.getScene().get(i).getNavn() + "\n");
-                        for (int j = 0; j < f.getScene().get(i).getKonsert().size(); j++) {
-                            totalOversikt.add("\t\t\t" + f.getScene().get(i).getKonsert().get(j).getArtist() + "\n");
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                totalOversikt.add("\t" + f.getFestival() + "\n");
+                for (Scene s : f.getScene()) {
+                    if (s.getNavn().equals(scene) || scene.equals("All Scenes")) {
+                        totalOversikt.add("\t\t" + s.getNavn() + "\n");
+                        for (int j = 0; j < s.getKonsert().size(); j++) {
+                            totalOversikt.add("\t\t\t" + s.getKonsert().get(j).getArtist() + " - " + s.getKonsert().get(j).getDato() + "\n");
                         }
                     }
                 }
             }
-            ObservableList<String> obsList = FXCollections.observableArrayList(totalOversikt);
-            lv.setItems(obsList);
-            vboxLightTech.getChildren().add(lv);
         }
+        ObservableList<String> obsList = FXCollections.observableArrayList(totalOversikt);
+        listViewTotal.setEditable(true);
+        listViewTotal.setItems(obsList);
+        listViewTotal.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String clicked = listViewTotal.getSelectionModel().getSelectedItem().toString();
+                if (clicked.startsWith("\t\t\t")) {
+                    clicked = clicked.split(" - ")[0];
+                    clicked = clicked.replaceAll("[\\t\\n]+", "");
+                    // fjerner alle tabs og new lines.
+                    showArbeidere(clicked);
+                }
+            }
+        });
     }
+
 
     @FXML
     private void goHome(){
