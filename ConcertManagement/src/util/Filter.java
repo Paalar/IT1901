@@ -140,6 +140,26 @@ public class Filter {
         return FXCollections.observableArrayList(outputList);
     }
 
+    public static ObservableList<String> getTekniskeBehov(String band) {
+        // Denne går gjennom alle festivaler og finner bandet og returnerer listen med tekniske behov.
+        List<String> allTekniskeBehov = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if(f.getFestival().equals("UKA 2017")){
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        for (tekniskeBehov t : c.getTekniskeBehov()){
+                            if (c.getArtist().equals(band)) {
+                                String addToStr = t.getBehov();
+                                allTekniskeBehov.add(addToStr);
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        return FXCollections.observableArrayList(allTekniskeBehov);
+    }
 //    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
 //        ArrayList<String> listToAdd = new ArrayList<>();
 //        for (int x  = 0; x < wholeList.size(); x++) {

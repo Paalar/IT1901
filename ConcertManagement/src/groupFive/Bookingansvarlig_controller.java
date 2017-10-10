@@ -44,6 +44,9 @@ public class Bookingansvarlig_controller {
     @FXML
     private DatePicker datePicker;
 
+    @FXML
+    ListView listViewTekniskeBehov;
+
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
@@ -124,7 +127,8 @@ public class Bookingansvarlig_controller {
         listViewEarlierConcerts.setEditable(true);
         listViewEarlierConcerts.setItems(getConcertsAndScenesForBand(band));
 
-
+        listViewTekniskeBehov.setEditable(true);
+        listViewTekniskeBehov.setItems(getTekniskeBehov(band));
     }
 
     @FXML
