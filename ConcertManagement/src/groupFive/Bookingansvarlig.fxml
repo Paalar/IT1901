@@ -175,14 +175,14 @@
                                        <children>
                                           <VBox layoutX="278.0" layoutY="187.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="187.0" AnchorPane.leftAnchor="277.0" AnchorPane.rightAnchor="578.0" AnchorPane.topAnchor="187.0">
                                              <children>
-                                                        <Label text="Pris">
-                                                            <graphic>
-                                                                <TextField fx:id="textFieldPris" prefHeight="26.0" prefWidth="300.0" promptText="Skriv inn pris" />
-                                                            </graphic>
-                                                </Label>
                                                         <Label text="Artist">
                                                             <graphic>
                                                                 <TextField fx:id="textFieldArtist" prefHeight="26.0" prefWidth="300.0" promptText="Skriv inn artist, eller velg fra listen til venstre" />
+                                                            </graphic>
+                                                </Label>
+                                                        <Label text="Pris">
+                                                            <graphic>
+                                                                <TextField fx:id="textFieldPris" prefHeight="26.0" prefWidth="300.0" promptText="Skriv inn pris" />
                                                             </graphic>
                                                 </Label>
                                                         <Label text="Dato">

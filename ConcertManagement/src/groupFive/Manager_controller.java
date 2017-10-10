@@ -93,7 +93,7 @@ public class Manager_controller {
     private Button createButton(Offer name) {
         final Button button = new Button(name.getArtist());
         button.setId("offerButt");
-        button.setPrefSize(200,50);
+        button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
             try {
                 needListAdded.getItems().clear();
