@@ -39,7 +39,7 @@ public class Main_controller {
     public Button createButton(String name) {
         final Button button = new Button(name);
         button.setId("jobButt");
-        button.setPrefSize(200,50);
+        button.setPrefSize(210,50);
         button.setOnMouseClicked(event -> {
             try {
                 Main main = new Main();
