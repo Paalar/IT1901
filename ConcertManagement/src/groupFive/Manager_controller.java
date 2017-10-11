@@ -141,8 +141,6 @@ public class Manager_controller {
     }
     @FXML
     private  void sendTheNeeds(){
-        System.out.println(sceneNameString);
-        System.out.println(artistNameString);
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
                 for (Scene s : f.getScene()) {
