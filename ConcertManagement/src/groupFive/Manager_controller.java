@@ -32,7 +32,7 @@ public class Manager_controller {
 
     @FXML
     private TextField inputFieldNeed;
-    
+
     @FXML
     private Label artist;
 
@@ -60,23 +60,21 @@ public class Manager_controller {
     @FXML
     private VBox needsNotSent1;
 
-    List<Festival> festivals = Main.festivals;
-
     List<String> needsList = new ArrayList<>();
 
     List<Offer> offers = new ArrayList<>();
 
     @FXML
     public void initialize() {
-       // listViews = Arrays.asList(listOfOfferView, needListAdded);
-        for (int i = 0; i < festivals.get(0).getScene().size(); i++) {
-            for (int j = 0; j < festivals.get(0).getScene().get(i).getKonsert().size(); j++){
-                List<Json.tekniskeBehov> behov = festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
+        // listViews = Arrays.asList(listOfOfferView, needListAdded);
+        for (int i = 0; i < Main.festivals.get(0).getScene().size(); i++) {
+            for (int j = 0; j < Main.festivals.get(0).getScene().get(i).getKonsert().size(); j++){
+                List<Json.tekniskeBehov> behov = Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
                 ArrayList<String> behovs = new ArrayList<>();
                 for (int n = 0; n < behov.size(); n++){
-                   behovs.add(behov.get(n).getBehov());
+                    behovs.add(behov.get(n).getBehov());
                 }
-                offers.add(new Offer(festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), festivals.get(0).getScene().get(i).getNavn(), festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
+                offers.add(new Offer(Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), Main.festivals.get(0).getScene().get(i).getNavn(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
             }
         }
         //hideStuffOnStart();
@@ -143,21 +141,25 @@ public class Manager_controller {
     }
     @FXML
     private  void sendTheNeeds(){
-        for (int i = 0; i < festivals.get(0).getScene().size(); i ++){
-            if (festivals.get(0).getScene().get(i).getNavn() == sceneNameString){
-                for (int j = 0; j < festivals.get(0).getScene().get(j).getKonsert().size(); j++){
-                    if(festivals.get(0).getScene().get(j).getKonsert().get(j).getArtist() == artistNameString){
-                        List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
-                        for(int n = 0; n < needsList.size(); n++){
-                            tekniskeBehov nyttBehov = new tekniskeBehov(needsList.get(n));
-                            nyeTekniskeBehov.add(nyttBehov);
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
+                for (Scene s : f.getScene()) {
+                    if (s.getNavn().equals(sceneNameString)) {
+                        for (Concert c : s.getKonsert()) {
+                            if (c.getArtist().equals(artistNameString)) {
+                                List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
+                                for (String needs : needsList) {
+                                    tekniskeBehov nyttBehov = new tekniskeBehov(needs);
+                                    nyeTekniskeBehov.add(nyttBehov);
+                                }
+                                c.setTekniskeBehov(nyeTekniskeBehov);
+                            }
                         }
-                        festivals.get(0).getScene().get(j).getKonsert().get(j).setTekniskeBehov(nyeTekniskeBehov);
                     }
                 }
             }
         }
-        JsonInsert(festivals);
+        JsonInsert(Main.festivals);
         sendButton.setText("Behov sendt");
     }
 
