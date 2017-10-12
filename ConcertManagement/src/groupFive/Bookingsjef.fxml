@@ -18,7 +18,7 @@
               <buttons>
                   <Label />
                   <Label fx:id="labelArrTitle" alignment="CENTER" text="Bookingsjef" />
-                <Button fx:id="goHome" mnemonicParsing="false" prefWidth="407.0" text="Logg ut" />
+                <Button fx:id="goHome" onAction="#goBack" mnemonicParsing="false" prefWidth="407.0" text="Logg ut" />
               </buttons>
                <BorderPane.margin>
                   <Insets top="10.0" />
