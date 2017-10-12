@@ -50,7 +50,7 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
-        repeatFocus(vBoxBands.getChildren().get(0));
+
     }
 
     private void repeatFocus(Node node) {
@@ -84,6 +84,8 @@ public class Bookingansvarlig_controller {
             Button btn = createButton(band, true);
             vBoxBands.getChildren().add(btn);
         }
+        repeatFocus(vBoxBands.getChildren().get(1));
+
         //Denne legger til alle band som var i uka 2015,2013 men ikke i 2017.
 
         List<String> artistsUka17 = new ArrayList<>();
