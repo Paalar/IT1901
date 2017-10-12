@@ -50,7 +50,6 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
-
     }
 
     private void repeatFocus(Node node) {
