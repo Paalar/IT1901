@@ -68,6 +68,21 @@ public class Filter {
         }
         return FXCollections.observableArrayList(artistStrings);
     }
+
+    public static ObservableList<String> getAllGenresObservableList() {
+        // Denne går gjennom alle festivalene og returnerer observablelist av alle unike bandene.
+        List<String> genreStrings = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            for (Scene s : f.getScene()) {
+                for (Concert c : s.getKonsert()) {
+                    if (!genreStrings.contains(c.getSjanger())) {
+                        genreStrings.add(c.getSjanger());
+                    }
+                }
+            }
+        }
+        return FXCollections.observableArrayList(genreStrings);
+    }
     
     public static ObservableList<String>getAllTeknikers(String festival, String searchText) {
         // Denne går gjennom alle konserter for en festival og legger til alle unike som inneholder søketeksten i navnet.
