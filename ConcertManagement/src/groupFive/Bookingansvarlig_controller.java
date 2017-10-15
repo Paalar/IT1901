@@ -81,9 +81,7 @@ public class Bookingansvarlig_controller {
         button.setOnMouseClicked(event -> {
             if (tab3) {
                 // Når du trykker på knappen så kjøres putGenreInList med sjanger som argument.
-                System.out.println("Før");
-                putGenderInfoInLists(genre);
-                System.out.println("Etter");
+                putGenreInfoInLists(genre);
             } else {
                 //textFieldArtist.setText(genre);
                 System.out.println(genre);
@@ -91,8 +89,6 @@ public class Bookingansvarlig_controller {
         });
         return button;
     }
-
-
 
     private void putGenreInList() {
         //Legger til alle sjangere i listen i tab3
@@ -136,7 +132,7 @@ public class Bookingansvarlig_controller {
         }
     }
 
-    private void putGenderInfoInLists(String genre) {
+    private void putGenreInfoInLists(String genre) {
         List<Concert> concerts = getAllConcertsForAllFestivals();
         List<String> artister = new ArrayList<>();
         List<String> festivaler = new ArrayList<>();
@@ -151,9 +147,6 @@ public class Bookingansvarlig_controller {
                 publikumstall.add(c.getBilletterSolgt());
             }
         }
-        System.out.print(artister);
-        System.out.print(festivaler);
-        System.out.print(publikumstall);
 
         listViewArtist.setEditable(true);
         listViewScene.setEditable(true);
