@@ -1,5 +1,10 @@
 package util;
 
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -8,7 +13,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.control.Label;
 
@@ -19,7 +23,7 @@ public class Alert extends Stage {
         public static final int ICON_INFO = 0;
         public static final int ICON_ERROR = 1;
 
-        public AlertDialog(Stage owner, String msg, int type) {
+        public Alert(Stage owner, String msg, int type) {
             setResizable(false);
             initModality(Modality.APPLICATION_MODAL);
             initStyle(StageStyle.TRANSPARENT);
@@ -30,10 +34,9 @@ public class Alert extends Stage {
             label.setGraphic(new ImageView(getImage(type)));
 
             Button button = new Button("OK");
-            button.setOnAction(new EventHandler(){
-                @Override
+            button.setOnAction(new EventHandler<ActionEvent>(){
                 public void handle(ActionEvent arg0) {
-                    AlertDialog.this.close();
+                    Alert.this.close();
                 }
             });
 
@@ -51,10 +54,6 @@ public class Alert extends Stage {
             text.snapshot(null, null);
             // + 20 because there is padding 10 left and right
             int width = (int) text.getLayoutBounds().getWidth() + 40;
-
-            if (width &lt; WIDTH_DEFAULT)
-            width = WIDTH_DEFAULT;
-
             int height = 100;
 
             final Scene scene = new Scene(borderPane, width, height);

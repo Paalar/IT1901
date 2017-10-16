@@ -2,14 +2,12 @@ package groupFive;
 
 import Json.*;
 import javafx.collections.FXCollections;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,7 +72,7 @@ public class Manager_controller {
                 for (int n = 0; n < behov.size(); n++){
                     behovs.add(behov.get(n).getBehov());
                 }
-                offers.add(new Offer(Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), Main.festivals.get(0).getScene().get(i).getNavn(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
+                    offers.add(new Offer(Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), Main.festivals.get(0).getScene().get(i).getNavn(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
             }
         }
         //hideStuffOnStart();
@@ -102,6 +100,15 @@ public class Manager_controller {
             }
         });
         return button;
+    }
+
+    @FXML
+    private void alertShow(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("I have a great message for you! \nBehovene ble sendt!");
+        alert.showAndWait();
     }
 
     @FXML
@@ -160,6 +167,7 @@ public class Manager_controller {
             }
         }
         JsonInsert(Main.festivals);
+        alertShow();
     }
 
     @FXML
