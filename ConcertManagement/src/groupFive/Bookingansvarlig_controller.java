@@ -133,18 +133,19 @@ public class Bookingansvarlig_controller {
     }
 
     private void putGenreInfoInLists(String genre) {
-        List<Concert> concerts = getAllConcertsForAllFestivals();
         List<String> artister = new ArrayList<>();
         List<String> festivaler = new ArrayList<>();
-        List<Integer> publikumstall = new ArrayList<>();
+        List<String> publikumstall = new ArrayList<>();
 
-
-
-        for(Concert c : concerts) {
-            if(c.getSjanger().equals(genre)){
-                artister.add(c.getArtist());
-                festivaler.add(c.getSjanger());
-                publikumstall.add(c.getBilletterSolgt());
+        for (Festival f : Main.festivals) {
+            for (Scene s :f.getScene()) {
+                for (Concert c : s.getKonsert()) {
+                    if (c.getSjanger().equals(genre)){
+                        artister.add(c.getArtist());
+                        festivaler.add(f.getFestival() + " : " + s.getNavn());
+                        publikumstall.add(c.getBilletterSolgt() + " av " + s.getPlasser());
+                    }
+                }
             }
         }
 
