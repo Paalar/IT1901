@@ -71,7 +71,7 @@
                                                             <Insets bottom="5.0" />
                                                          </VBox.margin>
                                                       </Label>
-                                                      <TextArea fx:id="textAreaScene3" editable="false" maxHeight="-Infinity" />
+                                                      <TextArea fx:id="textAreaScene2" editable="false" maxHeight="-Infinity" />
                                                    </children>
                                                 </VBox>
                                                 <VBox>
@@ -81,7 +81,7 @@
                                                             <Insets bottom="5.0" />
                                                          </VBox.margin>
                                                       </Label>
-                                                      <TextArea fx:id="textAreaScene2" editable="false" maxHeight="-Infinity" />
+                                                      <TextArea fx:id="textAreaScene3" editable="false" maxHeight="-Infinity" />
                                                    </children>
                                                 </VBox>
                                              </children>
