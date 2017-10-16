@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
     <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -105,7 +105,7 @@
                                        <children>
                                           <VBox>
                                              <children>
-                                                <CheckBox mnemonicParsing="false" text="Band som ikke spiller i år">
+                                                <CheckBox fx:id="remove2017" mnemonicParsing="false" onAction="#checkRemove2017" text="Band som ikke spiller i år">
                                                    <padding>
                                                       <Insets bottom="20.0" />
                                                    </padding>
@@ -115,7 +115,7 @@
                                                       <Insets bottom="5.0" top="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <TextField alignment="CENTER" promptText="Søk.." />
+                                                <TextField fx:id="searchBand" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk.." />
                                              </children>
                                              <VBox.margin>
                                                 <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
@@ -130,14 +130,14 @@
                                                             <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                                                          </padding>
                                                          <children>
-                                                                    <Label text="Velg band">
+                                                                   <!-- <Label fx:id="txt_velg_band" text="Velg band" visible="false">
                                                                <VBox.margin>
                                                                   <Insets bottom="10.0" left="30.0" top="10.0" />
                                                                </VBox.margin>
                                                                <font>
                                                                   <Font size="18.0" />
                                                                </font>
-                                                            </Label>
+                                                            </Label>-->
                                                          </children>
                                                       </VBox>
                                                    </children>
