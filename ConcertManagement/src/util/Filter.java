@@ -77,14 +77,56 @@ public class Filter {
                 for (Concert c : s.getKonsert()) {
                     if (!genreStrings.contains(c.getSjanger())) {
                         genreStrings.add(c.getSjanger());
+
                     }
                 }
             }
         }
         return FXCollections.observableArrayList(genreStrings);
     }
-    
-    public static ObservableList<String>getAllTeknikers(String festival, String searchText) {
+
+    //Denne brukes til å søke etter band i bookingansvarlig
+    public static ObservableList<String> searchAllBandsObservableList(String festival, String searchText) {
+        // Denne går gjennom alle festivalene og returnerer observablelist av alle unike bandene dersom det blir søkt etter
+        List<String> artistStrings = new ArrayList<>();
+
+        //henter først ut alle artister, fra alle år
+        for (Festival f : Main.festivals) {
+            for (Scene s : f.getScene()) {
+                for (Concert c : s.getKonsert()) {
+                    if (!artistStrings.contains(c.getArtist()) && c.getArtist().toLowerCase().contains(searchText.toLowerCase())) {
+                        artistStrings.add(c.getArtist());
+                    }
+                }
+            }
+        }
+
+
+        //Hvis funksjonen blir kalt med stringen "previous", så fjernes alle artistene fra return-listen.
+        // Deretter legges artistene fra UKA 2013 og 2015 til i listen, men kun dersom de ikke spiller på UKA 2017
+        if (festival == "previous") {
+            artistStrings.clear();
+            List<Concert> concerts2017 = getAllConcerts("UKA 2017");
+            List<String> allArtists2017 = new ArrayList<>();
+            List<Concert> allConcerts = getAllConcerts("UKA 2015");
+            allConcerts.addAll(getAllConcerts("UKA 2013"));
+
+            for (Concert c : concerts2017) {
+                if (!allArtists2017.contains(c.getArtist()) && c.getArtist().toLowerCase().contains(searchText.toLowerCase())) {
+                    allArtists2017.add(c.getArtist());
+                }
+            }
+            for (Concert c : allConcerts) {
+                if (!artistStrings.contains(c.getArtist()) && !allArtists2017.contains(c.getArtist()) && c.getArtist().toLowerCase().contains(searchText.toLowerCase())) {
+                    artistStrings.add(c.getArtist());
+                }
+            }
+        }
+        return FXCollections.observableArrayList(artistStrings);
+    }
+
+
+    public static ObservableList<String> getAllTeknikers (String festival, String searchText){
         // Denne går gjennom alle konserter for en festival og legger til alle unike som inneholder søketeksten i navnet.
         List<String> teknikerStrings = new ArrayList<>();
         List<Concert> concerts = getAllConcerts(festival);
@@ -103,6 +145,7 @@ public class Filter {
         }
         return FXCollections.observableArrayList(teknikerStrings);
     }
+
 
     public static int getPopularity(String band) {
         // Denne går gjennom alle festivaler og finner bandet og returnerer den nyeste popularitetsverdier for bandet.
