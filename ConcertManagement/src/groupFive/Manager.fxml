@@ -97,6 +97,11 @@
                                           <Insets top="377.0" />
                                        </HBox.margin>
                                     </Button>
+                                    <Button mnemonicParsing="false" text="Slett behov" onAction="#delNeed">
+                                     <HBox.margin>
+                                         <Insets top="350.0" left="-121"/>
+                                     </HBox.margin>
+                                    </Button>
                                  </children>
                                  <VBox.margin>
                                     <Insets top="10.0" />
@@ -120,7 +125,7 @@
                          <children>
                              <Label fx:id="artist" text="Artist: ">
                                  <VBox.margin>
-                                     <Insets bottom="0" left="20.0" top="20.0" />
+                                     <Insets bottom="0" left="20.0" top="-30.0" />
                                  </VBox.margin></Label>
                              <Label fx:id="scene" text="Scene: ">
                                  <VBox.margin>
@@ -130,6 +135,38 @@
                                  <VBox.margin>
                                      <Insets bottom="0" left="20.0" top="10.0" />
                                  </VBox.margin></Label>
+                              <Button fx:id="addHoy" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høytaller">
+                                      <VBox.margin>
+                                          <Insets bottom="0" left="5.0" top="10.0" />
+                                      </VBox.margin></Button>
+                              <Button fx:id="addMic" mnemonicParsing="false" onAction="#addMic" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x mikrofon">
+                                  <VBox.margin>
+                                      <Insets bottom="0" left="5.0" top="5.0" />
+                                  </VBox.margin></Button>
+                              <Button fx:id="addMon" mnemonicParsing="false" onAction="#addMon" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x monitor">
+                                  <VBox.margin>
+                                      <Insets bottom="0" left="5.0" top="5.0" />
+                                  </VBox.margin></Button>
+                              <Button fx:id="addSing" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x synger">
+                                  <VBox.margin>
+                                      <Insets bottom="0" left="5.0" top="5.0" />
+                                  </VBox.margin></Button>
+                             <Button fx:id="delHoy" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høytaller">
+                                 <VBox.margin>
+                                     <Insets bottom="0" left="5.0" top="15.0" />
+                                 </VBox.margin></Button>
+                             <Button fx:id="delMic" mnemonicParsing="false" onAction="#delMic" prefHeight="20.0" prefWidth="150.0" text="Slett 1x mikrofon">
+                                 <VBox.margin>
+                                     <Insets bottom="0" left="5.0" top="5.0" />
+                                 </VBox.margin></Button>
+                             <Button fx:id="delMon" mnemonicParsing="false" onAction="#delMon" prefHeight="20.0" prefWidth="150.0" text="Slett 1x monitor">
+                                 <VBox.margin>
+                                     <Insets bottom="0" left="5.0" top="5.0" />
+                                 </VBox.margin></Button>
+                             <Button fx:id="delSing" mnemonicParsing="false" onAction="#delSing" prefHeight="20.0" prefWidth="150.0" text="Slett 1x synger">
+                                 <VBox.margin>
+                                     <Insets bottom="0" left="5.0" top="5.0" />
+                                 </VBox.margin></Button>
                          </children>
                            <padding>
                               <Insets top="60.0" />

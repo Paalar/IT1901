@@ -42,7 +42,7 @@
     -fx-font-size: 18;
 }
 
-#tekButts, #arrScenes, #offerButt, #genres {
+#tekButts, #arrScenes, #offerButt, #genres, #addHoy, #addMic, #addMon, #addSing, #delHoy, #delMic, #delMon, #delSing {
     -fx-background-radius: 10;
     -fx-padding: 10, 10, 10, 10;
     -fx-background-color: #D9CAC2,
@@ -88,15 +88,15 @@
         linear-gradient(#A6808C, #B697A0);
 }
 
-#arrScenes:focused, #tekButts:focused, #offerButt:focused, #genres:focused {
+#arrScenes:focused, #tekButts:focused, #offerButt:focused, #genres:focused, #addHoy:focused, #addMic:focused, #addMon:focused, #addSing:focused, #delHoy:focused, #delMic:focused, #delMon:focused, #delSing:focused {
     -fx-background-color: #D9CAC2,
         linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover, #genres:focused:hover {
+#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover, #genres:focused:hover, #addHoy:hover, #addMic:hover, #addMon:hover, #addSing:hover #delHoy:hover, #delMic:hover, #delMon:hover, #delSing:hover {
      -fx-background-color: #D9CAC2,
          linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:hover, #tekButts:hover, #offerButt:hover, #genres:hover {
+#arrScenes:hover, #tekButts:hover, #offerButt:hover, #genres:hover, #addHoy:hover, #addMic:hover, #addMon:hover, #addSing:hover, #delHoy:hover, #delMic:hover, #delMon:hover, #delSing:hover  {
      -fx-background-color: #D9CAC2,
         linear-gradient(#D9CAC2, #FBF9F8);
 }
@@ -130,9 +130,9 @@
 
 /* Others */
 
-.split-pane-divider {
+.split-pane, *.split-pane-divider {
 -fx-background-color: transparent;
--fx-padding: 0;
+-fx-padding: 0 1 0 1;
 }
 
 #scrollPane {
