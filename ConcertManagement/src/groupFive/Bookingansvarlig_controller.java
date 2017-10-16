@@ -6,12 +6,17 @@ import Json.JsonEncode;
 import Json.Scene;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Constants;
+import util.Filter;
 import util.Popup;
 
 import java.time.format.DateTimeFormatter;
@@ -21,6 +26,12 @@ import java.util.List;
 import static util.Filter.*;
 
 public class Bookingansvarlig_controller {
+    @FXML
+    private CheckBox remove2017;
+
+    @FXML
+    private TextField searchBand;
+
     @FXML
     private AnchorPane rootPane;
 
@@ -92,7 +103,7 @@ public class Bookingansvarlig_controller {
             Button btn = createButtonTab(band,"tab1");
             vBoxBands.getChildren().add(btn);
         }
-        repeatFocus(vBoxBands.getChildren().get(1));
+        repeatFocus(vBoxBands.getChildren().get(0));
 
         //Denne legger til alle band som var i uka 2015,2013 men ikke i 2017.
 
@@ -118,6 +129,40 @@ public class Bookingansvarlig_controller {
             Button btn = createButtonTab(band, "tab2");
             vBoxBandsTab2.getChildren().add(btn);
         }
+    }
+
+
+    @FXML
+    private void onKeyPressSearchBar() {
+        String searchText = searchBand.getText();
+        String festival = "all";
+        if(remove2017.isSelected()){
+            festival = "previous";
+        }
+        putBandsInList(festival, searchText);
+    }
+
+    @FXML
+    private void checkRemove2017(){
+        String searchText = "";
+        if(!remove2017.isSelected()){
+            putBandsInList("all", searchText);
+        }
+        else if(remove2017.isSelected()){
+            putBandsInList("previous", searchText);
+        }
+
+    }
+
+
+    private void putBandsInList(String festival, String searchText) {
+        ObservableList<String> observableListToAdd = Filter.searchAllBandsObservableList(festival, searchText);
+        //System.out.println(observableListToAdd); //for å sjekke om vi faktisk klarer å hente bandene
+        vBoxBands.getChildren().clear(); // fjerner de gamle knappene før vi legger til de nye.
+        for (String band : observableListToAdd) {
+            Button btn = createButtonTab(band, "tab1");
+            vBoxBands.getChildren().add(btn);
+        } // en knapp per band.
     }
 
     private void putGenreInfoInLists(String genre) {
@@ -146,6 +191,7 @@ public class Bookingansvarlig_controller {
         listViewPublikumsantall.setItems(FXCollections.observableArrayList(publikumstall));
         listViewScene.setItems(FXCollections.observableArrayList(festivaler));
         listViewArtist.setItems(FXCollections.observableArrayList(artister));
+
     }
 
     private void putBandInfoInLists(String band) {
