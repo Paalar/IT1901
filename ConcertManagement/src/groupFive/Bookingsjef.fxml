@@ -36,7 +36,7 @@
          <center>
             <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
-                <Tab fx:id="tabButt" text="ID 12/11">
+                <Tab fx:id="tabButt" text="Forslag til billettpris">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -44,7 +44,7 @@
                                  <center>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Label text="Forslag til billettpris">
+                                          <Label fx:id="labelBillettPris" text="Forslag til billettpris">
                                              <padding>
                                                 <Insets bottom="30.0" />
                                              </padding>
@@ -54,18 +54,40 @@
                                           </Label>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <TextArea maxHeight="-Infinity" prefWidth="200.0">
-                                                   <HBox.margin>
-                                                      <Insets right="20.0" />
-                                                   </HBox.margin>
-                                                </TextArea>
-                                                <TextArea maxHeight="-Infinity" prefWidth="200.0">
-                                                   <HBox.margin>
-                                                      <Insets right="20.0" />
-                                                   </HBox.margin>
-                                                </TextArea>
-                                                <TextArea maxHeight="-Infinity" prefWidth="200.0" />
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelScene1" text="Label">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextArea fx:id="textAreaScene1" editable="false" maxHeight="-Infinity" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelScene2" text="Label">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextArea fx:id="textAreaScene3" editable="false" maxHeight="-Infinity" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelScene3" text="Label">
+                                                         <VBox.margin>
+                                                            <Insets bottom="5.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                      <TextArea fx:id="textAreaScene2" editable="false" maxHeight="-Infinity" />
+                                                   </children>
+                                                </VBox>
                                              </children>
+                                             <VBox.margin>
+                                                <Insets left="100.0" right="100.0" />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                        <padding>
@@ -83,7 +105,7 @@
                                                       <Insets bottom="5.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <TextField>
+                                                <TextField fx:id="textFieldSearchBar" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk..">
                                                    <VBox.margin>
                                                       <Insets bottom="20.0" />
                                                    </VBox.margin>
