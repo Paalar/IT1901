@@ -139,12 +139,14 @@ public class Bookingansvarlig_controller {
         List<String> publikumstall = new ArrayList<>();
 
         for (Festival f : Main.festivals) {
-            for (Scene s :f.getScene()) {
-                for (Concert c : s.getKonsert()) {
-                    if (c.getSjanger().equals(genre)){
-                        artister.add(c.getArtist());
-                        festivaler.add(f.getFestival() + " : " + s.getNavn());
-                        publikumstall.add(c.getBilletterSolgt() + " av " + s.getPlasser());
+            if (!(f.getFestival().equals("UKA 2017"))) {
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        if (c.getSjanger().equals(genre)) {
+                            artister.add(c.getArtist());
+                            festivaler.add(f.getFestival() + " : " + s.getNavn());
+                            publikumstall.add(c.getBilletterSolgt() + " av " + s.getPlasser());
+                        }
                     }
                 }
             }
