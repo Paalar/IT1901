@@ -4,11 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingsjef_controller">
    <children>
@@ -18,7 +19,7 @@
               <buttons>
                   <Label />
                   <Label fx:id="labelArrTitle" alignment="CENTER" text="Bookingsjef" />
-                <Button fx:id="goHome" onAction="#goBack" mnemonicParsing="false" prefWidth="407.0" text="Logg ut" />
+                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goBack" prefWidth="407.0" text="Logg ut" />
               </buttons>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -35,7 +36,14 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <left>
+                                    <ScrollPane prefHeight="611.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+                                       <content>
+                                          <VBox fx:id="vBoxBands" />
+                                       </content>
+                                    </ScrollPane>
+                                 </left></BorderPane>
                            </children>
                         </AnchorPane>
                   </content>
