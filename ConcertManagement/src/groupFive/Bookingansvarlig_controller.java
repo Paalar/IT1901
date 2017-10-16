@@ -45,7 +45,6 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
-
         putGenreInList();
     }
 
@@ -58,34 +57,22 @@ public class Bookingansvarlig_controller {
         });
     }
 
-    public Button createButtonTab1(String name, boolean tab1) {
+    public Button createButtonTab(String buttonInput, String tab) {
         // Denne lager og returnerer en Button.
-        final Button button = new Button(name);
+        final Button button = new Button(buttonInput);
         button.setId("arrScenes");
         button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
-            if (tab1) {
+            if (tab.equals("tab1")) {
                 // Når du trykker på knappen så kjøres putBandInfoInLists med bandets navn som argument.
-                putBandInfoInLists(name);
-            } else {
-                textFieldArtist.setText(name);
+                putBandInfoInLists(buttonInput);
+            } else if (tab.equals("tab2")) {
+                textFieldArtist.setText(buttonInput);
             }
-        });
-        return button;
-    }
-
-    public Button createButtonTab3(String genre, boolean tab3) {
-        // Denne lager og returnerer en Button.
-        final Button button = new Button(genre);
-        button.setId("genres");
-        button.setPrefSize(200,20);
-        button.setOnMouseClicked(event -> {
-            if (tab3) {
-                // Når du trykker på knappen så kjøres putGenreInList med sjanger som argument.
-                putGenreInfoInLists(genre);
+            else if (tab.equals("tab3")) {
+                putGenreInfoInLists(buttonInput);
             } else {
-                //textFieldArtist.setText(genre);
-                System.out.println(genre);
+                textFieldArtist.setText(buttonInput);
             }
         });
         return button;
@@ -94,7 +81,7 @@ public class Bookingansvarlig_controller {
     private void putGenreInList() {
         //Legger til alle sjangere i listen i tab3
         for (String genre : getAllGenresObservableList()) {
-            Button btn = createButtonTab3(genre, true);
+            Button btn = createButtonTab(genre, "tab3");
             vBoxGenre.getChildren().add(btn);
         }
     }
@@ -102,7 +89,7 @@ public class Bookingansvarlig_controller {
     private void putItemsInLists() {
         //Denne legger til alle unike band i listen på første tab.
         for (String band : getAllBandsObservableList()) {
-            Button btn = createButtonTab1(band, true);
+            Button btn = createButtonTab(band,"tab1");
             vBoxBands.getChildren().add(btn);
         }
         repeatFocus(vBoxBands.getChildren().get(1));
@@ -128,7 +115,7 @@ public class Bookingansvarlig_controller {
         }
         artistsOlder.removeAll(artistsUka17);
         for (String band : artistsOlder) {
-            Button btn = createButtonTab1(band, false);
+            Button btn = createButtonTab(band, "tab2");
             vBoxBandsTab2.getChildren().add(btn);
         }
     }
