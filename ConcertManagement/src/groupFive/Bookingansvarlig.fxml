@@ -17,18 +17,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.Bookingansvarlig_controller">
     <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ButtonBar fx:id="buttonBar" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
                   <Label />
                   <Label fx:id="labelArrTitle" alignment="CENTER" text="Bookingansvarlig" />
                 <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Logg ut" />
               </buttons>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </BorderPane.margin>
                <padding>
                   <Insets bottom="5.0" right="20.0" top="5.0" />
@@ -36,11 +36,11 @@
             </ButtonBar>
          </top>
          <center>
-              <TabPane prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <TabPane fx:id="tabPane" prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                   <tabs>
                       <Tab fx:id="tabButt" text="Nøkkelinformasjon om band">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane fx:id="tabAnchor" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <center>
@@ -101,9 +101,9 @@
                                     </HBox>
                                  </center>
                                  <left>
-                                    <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                    <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                        <children>
-                                          <VBox>
+                                          <VBox fx:id="vboxSearch">
                                              <children>
                                                 <CheckBox fx:id="remove2017" mnemonicParsing="false" onAction="#checkRemove2017" text="Band som ikke spiller i år">
                                                    <padding>
@@ -118,12 +118,12 @@
                                                 <TextField fx:id="searchBand" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk.." />
                                              </children>
                                              <VBox.margin>
-                                                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </VBox>
                                           <ScrollPane fx:id="scrollPane" prefWidth="180.0">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0">
+                                              <AnchorPane fx:id="scrollPaneAnchor" minHeight="0.0" minWidth="0.0">
                                                    <children>
                                                               <VBox fx:id="vBoxBands">
                                                          <padding>
@@ -141,18 +141,15 @@
                                                          </children>
                                                       </VBox>
                                                    </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="5.0" />
-                                                   </padding>
                                                 </AnchorPane>
                                             </content>
                                              <VBox.margin>
-                                                <Insets left="30.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </ScrollPane>
                                        </children>
                                        <BorderPane.margin>
-                                          <Insets left="25.0" top="20.0" />
+                                          <Insets />
                                        </BorderPane.margin>
                                     </VBox>
                                  </left>
@@ -166,23 +163,23 @@
                       </Tab>
                       <Tab fx:id="tabButt" text="Lag tilbud">
                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane fx:id="tabAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                   <children>
                               <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <left>
-                                    <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                    <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                        <children>
                                                     <Label fx:id="labelBandInfo1" text="Tidligere artister">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets bottom="10.0" left="50.0" top="10.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </Label>
                                           <ScrollPane fx:id="scrollPane" prefWidth="180.0">
                                             <content>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0">
+                                              <AnchorPane fx:id="scrollPaneAnchor" minHeight="0.0" minWidth="0.0">
                                                    <children>
                                                               <VBox fx:id="vBoxBandsTab2">
                                                          <padding>
@@ -196,12 +193,12 @@
                                                 </AnchorPane>
                                             </content>
                                              <VBox.margin>
-                                                <Insets left="30.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </ScrollPane>
                                        </children>
                                        <BorderPane.margin>
-                                          <Insets left="25.0" top="20.0" />
+                                          <Insets />
                                        </BorderPane.margin>
                                     </VBox>
                                  </left>
@@ -250,7 +247,7 @@
                       </Tab>
                   <Tab fx:id="tabButt" text="Sjanger informasjon">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane fx:id="tabAnchor" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <center>
@@ -315,26 +312,24 @@
                                     </HBox>
                                  </center>
                                  <left>
-                                    <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                    <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                        <children>
+                                          <Label fx:id="labelBandInfo1" prefHeight="24.0" text="Velg sjanger">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
                                           <ScrollPane fx:id="scrollPane" prefWidth="180.0">
                                              <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                <AnchorPane fx:id="scrollPaneAnchor" minHeight="0.0" minWidth="0.0">
                                                    <children>
                                                       <VBox fx:id="vBoxGenre" layoutY="1.0" prefHeight="63.0" prefWidth="198.0">
                                                          <padding>
                                                             <Insets bottom="10.0" left="5.0" right="5.0" />
                                                          </padding>
-                                                         <children>
-                                                            <Label prefHeight="24.0" prefWidth="130.0" text="Velg sjanger">
-                                                               <VBox.margin>
-                                                                  <Insets bottom="10.0" left="40.0" top="5.0" />
-                                                               </VBox.margin>
-                                                               <font>
-                                                                  <Font size="18.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
                                                       </VBox>
                                                    </children>
                                                    <padding>
@@ -343,12 +338,12 @@
                                                 </AnchorPane>
                                              </content>
                                              <VBox.margin>
-                                                <Insets left="30.0" />
+                                                <Insets />
                                              </VBox.margin>
                                           </ScrollPane>
                                        </children>
                                        <BorderPane.margin>
-                                          <Insets left="25.0" top="20.0" />
+                                          <Insets />
                                        </BorderPane.margin>
                                     </VBox>
                                  </left>
@@ -362,7 +357,7 @@
                   </Tab>
                   </tabs>
                <BorderPane.margin>
-                  <Insets top="15.0" />
+                  <Insets />
                </BorderPane.margin>
               </TabPane>
          </center>
