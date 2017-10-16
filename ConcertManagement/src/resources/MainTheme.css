@@ -20,7 +20,7 @@
     -fx-spacing: 20;
 }
 
-#arrButts, #vBoxTekniker, #vBoxBands, #vBoxBandsTab2, #needsNotSent1 {
+#arrButts, #vBoxTekniker, #vBoxBands, #vBoxGenre, #vBoxBandsTab2, #needsNotSent1 {
     -fx-spacing: 5;
 }
 
@@ -42,7 +42,7 @@
     -fx-font-size: 18;
 }
 
-#tekButts, #arrScenes, #offerButt {
+#tekButts, #arrScenes, #offerButt, #genres {
     -fx-background-radius: 10;
     -fx-padding: 10, 10, 10, 10;
     -fx-background-color: #D9CAC2,
@@ -88,15 +88,15 @@
         linear-gradient(#A6808C, #B697A0);
 }
 
-#arrScenes:focused, #tekButts:focused, #offerButt:focused {
+#arrScenes:focused, #tekButts:focused, #offerButt:focused, #genres:focused {
     -fx-background-color: #D9CAC2,
         linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover {
+#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover, #genres:focused:hover {
      -fx-background-color: #D9CAC2,
          linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:hover, #tekButts:hover, #offerButt:hover {
+#arrScenes:hover, #tekButts:hover, #offerButt:hover, #genres:hover {
      -fx-background-color: #D9CAC2,
         linear-gradient(#D9CAC2, #FBF9F8);
 }

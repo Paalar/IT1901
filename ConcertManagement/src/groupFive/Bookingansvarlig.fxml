@@ -38,7 +38,7 @@
          <center>
               <TabPane prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                   <tabs>
-                      <Tab fx:id="tabButt" text="Nøkkelinformasjon om Band">
+                      <Tab fx:id="tabButt" text="Nøkkelinformasjon om band">
                      <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -132,7 +132,7 @@
                                                          <children>
                                                                    <!-- <Label fx:id="txt_velg_band" text="Velg band" visible="false">
                                                                <VBox.margin>
-                                                                  <Insets bottom="10.0" left="30.0" top="10.0" />
+                                                                  <Insets bottom="10.0" left="15.0" top="10.0" />
                                                                </VBox.margin>
                                                                <font>
                                                                   <Font size="18.0" />
@@ -177,7 +177,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets bottom="10.0" left="30.0" top="10.0" />
+                                                <Insets bottom="10.0" left="50.0" top="10.0" />
                                              </VBox.margin>
                                           </Label>
                                           <ScrollPane fx:id="scrollPane" prefWidth="180.0">
@@ -212,7 +212,7 @@
                                              <children>
                                                         <Label text="Artist">
                                                             <graphic>
-                                                                <TextField fx:id="textFieldArtist" prefHeight="26.0" prefWidth="300.0" promptText="Skriv inn artist, eller velg fra listen til venstre" />
+                                                                <TextField fx:id="textFieldArtist" prefHeight="27.0" prefWidth="299.0" promptText="Skriv inn artist, eller velg fra listen til venstre" />
                                                             </graphic>
                                                 </Label>
                                                         <Label text="Pris">
@@ -232,6 +232,11 @@
                                                 </Button>
                                              </children>
                                           </VBox>
+                                          <Label layoutX="274.0" layoutY="132.0" prefHeight="29.0" prefWidth="111.0" text="Lag tilbud">
+                                             <font>
+                                                <Font name="System Bold" size="23.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </AnchorPane>
                                  </center>
@@ -243,6 +248,118 @@
                         </AnchorPane>
                           </content>
                       </Tab>
+                  <Tab fx:id="tabButt" text="Sjanger informasjon">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <VBox>
+                                             <children>
+                                                <Label text="Artist">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="13.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <ListView fx:id="listViewArtist">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin></ListView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="130.0" top="10.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox>
+                                             <children>
+                                                <Label text="Festival: Scene">
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="Arial Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView fx:id="listViewScene">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                </ListView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="10.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox prefHeight="200.0">
+                                             <children>
+                                                <Label text="Publikumsantall">
+                                                   <VBox.margin>
+                                                      <Insets bottom="15.0" top="10.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="Arial Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView fx:id="listViewPublikumsantall" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets right="10.0" top="20.0" />
+                                       </BorderPane.margin>
+                                    </HBox>
+                                 </center>
+                                 <left>
+                                    <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <ScrollPane fx:id="scrollPane" prefWidth="180.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                   <children>
+                                                      <VBox fx:id="vBoxGenre" layoutY="1.0" prefHeight="63.0" prefWidth="198.0">
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="5.0" right="5.0" />
+                                                         </padding>
+                                                         <children>
+                                                            <Label prefHeight="24.0" prefWidth="130.0" text="Velg sjanger">
+                                                               <VBox.margin>
+                                                                  <Insets bottom="10.0" left="40.0" top="5.0" />
+                                                               </VBox.margin>
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="5.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                             </content>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
+                                          </ScrollPane>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets left="25.0" top="20.0" />
+                                       </BorderPane.margin>
+                                    </VBox>
+                                 </left>
+                              </BorderPane>
+                           </children>
+                           <padding>
+                              <Insets top="35.0" />
+                           </padding>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
                   </tabs>
                <BorderPane.margin>
                   <Insets top="15.0" />

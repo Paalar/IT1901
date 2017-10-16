@@ -6,17 +6,15 @@ import Json.JsonEncode;
 import Json.Scene;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import util.Constants;
 import util.Filter;
 import util.Popup;
@@ -38,10 +36,10 @@ public class Bookingansvarlig_controller {
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands, vBoxBandsTab2;
+    private VBox vBoxBands, vBoxBandsTab2, vBoxGenre;
 
     @FXML
-    private ListView listViewEarlierConcerts, listviewPop;
+    private ListView listViewEarlierConcerts, listviewPop, listViewArtist, listViewPublikumsantall, listViewScene;
 
     @FXML
     private Label labelBandInfo;
@@ -58,7 +56,7 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
-
+        putGenreInList();
     }
 
     private void repeatFocus(Node node) {
@@ -70,26 +68,39 @@ public class Bookingansvarlig_controller {
         });
     }
 
-    public Button createButton(String name, boolean tab1) {
+    public Button createButtonTab(String buttonInput, String tab) {
         // Denne lager og returnerer en Button.
-        final Button button = new Button(name);
+        final Button button = new Button(buttonInput);
         button.setId("arrScenes");
         button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
-            if (tab1) {
+            if (tab.equals("tab1")) {
                 // Når du trykker på knappen så kjøres putBandInfoInLists med bandets navn som argument.
-                putBandInfoInLists(name);
+                putBandInfoInLists(buttonInput);
+            } else if (tab.equals("tab2")) {
+                textFieldArtist.setText(buttonInput);
+            }
+            else if (tab.equals("tab3")) {
+                putGenreInfoInLists(buttonInput);
             } else {
-                textFieldArtist.setText(name);
+                textFieldArtist.setText(buttonInput);
             }
         });
         return button;
     }
 
+    private void putGenreInList() {
+        //Legger til alle sjangere i listen i tab3
+        for (String genre : getAllGenresObservableList()) {
+            Button btn = createButtonTab(genre, "tab3");
+            vBoxGenre.getChildren().add(btn);
+        }
+    }
+
     private void putItemsInLists() {
         //Denne legger til alle unike band i listen på første tab.
         for (String band : getAllBandsObservableList()) {
-            Button btn = createButton(band, true);
+            Button btn = createButtonTab(band,"tab1");
             vBoxBands.getChildren().add(btn);
         }
         repeatFocus(vBoxBands.getChildren().get(0));
@@ -115,10 +126,11 @@ public class Bookingansvarlig_controller {
         }
         artistsOlder.removeAll(artistsUka17);
         for (String band : artistsOlder) {
-            Button btn = createButton(band, false);
+            Button btn = createButtonTab(band, "tab2");
             vBoxBandsTab2.getChildren().add(btn);
         }
     }
+
 
     @FXML
     private void onKeyPressSearchBar() {
@@ -143,15 +155,43 @@ public class Bookingansvarlig_controller {
     }
 
 
-
     private void putBandsInList(String festival, String searchText) {
         ObservableList<String> observableListToAdd = Filter.searchAllBandsObservableList(festival, searchText);
         //System.out.println(observableListToAdd); //for å sjekke om vi faktisk klarer å hente bandene
         vBoxBands.getChildren().clear(); // fjerner de gamle knappene før vi legger til de nye.
         for (String band : observableListToAdd) {
-            Button btn = createButton(band, true);
+            Button btn = createButtonTab(band, "tab1");
             vBoxBands.getChildren().add(btn);
         } // en knapp per band.
+    }
+
+    private void putGenreInfoInLists(String genre) {
+        List<String> artister = new ArrayList<>();
+        List<String> festivaler = new ArrayList<>();
+        List<String> publikumstall = new ArrayList<>();
+
+        for (Festival f : Main.festivals) {
+            if (!(f.getFestival().equals("UKA 2017"))) {
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        if (c.getSjanger().equals(genre)) {
+                            artister.add(c.getArtist());
+                            festivaler.add(f.getFestival() + " : " + s.getNavn());
+                            publikumstall.add(c.getBilletterSolgt() + " av " + s.getPlasser());
+                        }
+                    }
+                }
+            }
+        }
+
+        listViewArtist.setEditable(true);
+        listViewScene.setEditable(true);
+        listViewPublikumsantall.setEditable(true);
+
+        listViewPublikumsantall.setItems(FXCollections.observableArrayList(publikumstall));
+        listViewScene.setItems(FXCollections.observableArrayList(festivaler));
+        listViewArtist.setItems(FXCollections.observableArrayList(artister));
+
     }
 
     private void putBandInfoInLists(String band) {
