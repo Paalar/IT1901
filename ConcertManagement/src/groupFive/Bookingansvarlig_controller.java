@@ -6,16 +6,11 @@ import Json.JsonEncode;
 import Json.Scene;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import util.Constants;
 import util.Popup;
 
@@ -30,10 +25,10 @@ public class Bookingansvarlig_controller {
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands, vBoxBandsTab2;
+    private VBox vBoxBands, vBoxBandsTab2, vBoxGenre;
 
     @FXML
-    private ListView listViewEarlierConcerts, listviewPop;
+    private ListView listViewEarlierConcerts, listviewPop, listViewArtist, listViewPublikumsantall, listViewScene;
 
     @FXML
     private Label labelBandInfo;
@@ -50,6 +45,8 @@ public class Bookingansvarlig_controller {
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
+
+        putGenreInList();
     }
 
     private void repeatFocus(Node node) {
@@ -61,7 +58,7 @@ public class Bookingansvarlig_controller {
         });
     }
 
-    public Button createButton(String name, boolean tab1) {
+    public Button createButtonTab1(String name, boolean tab1) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
@@ -77,10 +74,35 @@ public class Bookingansvarlig_controller {
         return button;
     }
 
+    public Button createButtonTab3(String genre, boolean tab3) {
+        // Denne lager og returnerer en Button.
+        final Button button = new Button(genre);
+        button.setId("genres");
+        button.setPrefSize(200,20);
+        button.setOnMouseClicked(event -> {
+            if (tab3) {
+                // Når du trykker på knappen så kjøres putGenreInList med sjanger som argument.
+                putGenreInfoInLists(genre);
+            } else {
+                //textFieldArtist.setText(genre);
+                System.out.println(genre);
+            }
+        });
+        return button;
+    }
+
+    private void putGenreInList() {
+        //Legger til alle sjangere i listen i tab3
+        for (String genre : getAllGenresObservableList()) {
+            Button btn = createButtonTab3(genre, true);
+            vBoxGenre.getChildren().add(btn);
+        }
+    }
+
     private void putItemsInLists() {
         //Denne legger til alle unike band i listen på første tab.
         for (String band : getAllBandsObservableList()) {
-            Button btn = createButton(band, true);
+            Button btn = createButtonTab1(band, true);
             vBoxBands.getChildren().add(btn);
         }
         repeatFocus(vBoxBands.getChildren().get(1));
@@ -106,9 +128,37 @@ public class Bookingansvarlig_controller {
         }
         artistsOlder.removeAll(artistsUka17);
         for (String band : artistsOlder) {
-            Button btn = createButton(band, false);
+            Button btn = createButtonTab1(band, false);
             vBoxBandsTab2.getChildren().add(btn);
         }
+    }
+
+    private void putGenreInfoInLists(String genre) {
+        List<String> artister = new ArrayList<>();
+        List<String> festivaler = new ArrayList<>();
+        List<String> publikumstall = new ArrayList<>();
+
+        for (Festival f : Main.festivals) {
+            if (!(f.getFestival().equals("UKA 2017"))) {
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        if (c.getSjanger().equals(genre)) {
+                            artister.add(c.getArtist());
+                            festivaler.add(f.getFestival() + " : " + s.getNavn());
+                            publikumstall.add(c.getBilletterSolgt() + " av " + s.getPlasser());
+                        }
+                    }
+                }
+            }
+        }
+
+        listViewArtist.setEditable(true);
+        listViewScene.setEditable(true);
+        listViewPublikumsantall.setEditable(true);
+
+        listViewPublikumsantall.setItems(FXCollections.observableArrayList(publikumstall));
+        listViewScene.setItems(FXCollections.observableArrayList(festivaler));
+        listViewArtist.setItems(FXCollections.observableArrayList(artister));
     }
 
     private void putBandInfoInLists(String band) {
