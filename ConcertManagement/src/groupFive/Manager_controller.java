@@ -4,13 +4,11 @@ import Json.*;
 import javafx.collections.FXCollections;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static Json.JsonEncode.JsonInsert;
@@ -80,7 +78,7 @@ public class Manager_controller {
                     offers.add(newOffer);
             }
         }
-        //hideStuffOnStart();
+        //hideStuffOrShow(false);
         addButtons(offers, needsNotSent1);
     }
 
