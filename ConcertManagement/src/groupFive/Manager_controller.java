@@ -65,14 +65,19 @@ public class Manager_controller {
     @FXML
     public void initialize() {
         // listViews = Arrays.asList(listOfOfferView, needListAdded);
-        for (int i = 0; i < Main.festivals.get(0).getScene().size(); i++) {
-            for (int j = 0; j < Main.festivals.get(0).getScene().get(i).getKonsert().size(); j++){
-                List<Json.tekniskeBehov> behov = Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getTekniskeBehov();
+        for (Scene scene : Main.festivals.get(0).getScene()) {
+            for (Concert conert : scene.getKonsert()){
+                List<Json.tekniskeBehov> behov = conert.getTekniskeBehov();
                 ArrayList<String> behovs = new ArrayList<>();
                 for (int n = 0; n < behov.size(); n++){
                     behovs.add(behov.get(n).getBehov());
                 }
-                    offers.add(new Offer(Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getArtist(), Main.festivals.get(0).getScene().get(i).getNavn(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getDato(), Main.festivals.get(0).getScene().get(i).getKonsert().get(j).getPris(), behovs));
+                    String artist = conert.getArtist();
+                    String sceneName = scene.getNavn();
+                    String dato = conert.getDato();
+                    int pris = conert.getPris();
+                    Offer newOffer = new Offer(artist, sceneName, dato, pris, behovs);
+                    offers.add(newOffer);
             }
         }
         //hideStuffOnStart();
@@ -112,28 +117,22 @@ public class Manager_controller {
     }
 
     @FXML
-    private void hideStuffOnStart(){
-        addButton.setVisible(false);
-        need.setVisible(false);
-        artist.setVisible(false);
-        scene.setVisible(false);
-        needListAdded.setVisible(false);
-        listOfNeedsAddedLabel.setVisible(false);
-        sendButton.setVisible(false);
-        date.setVisible(false);
+    private void showWithMouseClick(){
+        hideStuffOrShow(true);
     }
 
     @FXML
-    private void showStuff(){
-        addButton.setVisible(true);
-        need.setVisible(true);
-        artist.setVisible(true);
-        scene.setVisible(true);
-        needListAdded.setVisible(true);
-        listOfNeedsAddedLabel.setVisible(true);
-        sendButton.setVisible(true);
-        date.setVisible(true);
+    private void hideStuffOrShow(boolean what){
+        addButton.setVisible(what);
+        need.setVisible(what);
+        artist.setVisible(what);
+        scene.setVisible(what);
+        needListAdded.setVisible(what);
+        listOfNeedsAddedLabel.setVisible(what);
+        sendButton.setVisible(what);
+        date.setVisible(what);
     }
+
     @FXML
     private void goBack(){
         String fxmlFileName = "Main";
@@ -172,173 +171,84 @@ public class Manager_controller {
 
     @FXML
     private void addHoy(){
-        boolean check = false;
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Høytaller".toLowerCase())){
-                check = true;
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                nr++;
-                needsList.set(needsList.indexOf(s), nr + " Høytallere");
-                popListView(needsList,needListAdded);
-            }
-        }
-        if (!check){
-            needsList.add("1 Høytaller");
-            popListView(needsList, needListAdded);
-        }
+        addItem("Høytallere", "Høytaller");
     }
 
     @FXML
     private void addMic(){
-        boolean check = false;
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Mikrofon".toLowerCase())){
-                check = true;
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                nr++;
-                needsList.set(needsList.indexOf(s), nr + " Mikrofoner");
-                popListView(needsList,needListAdded);
-            }
-        }
-        if (!check){
-            needsList.add("1 Mikrofon");
-            popListView(needsList, needListAdded);
-        }
+        addItem("Mikrofoner", "Mikrofon");
     }
 
     @FXML
     private void addMon(){
-        boolean check = false;
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Monitor".toLowerCase())){
-                check = true;
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                nr++;
-                needsList.set(needsList.indexOf(s), nr + " Monitorer");
-                popListView(needsList,needListAdded);
-            }
-        }
-        if (!check){
-            needsList.add("1 Monitor");
-            popListView(needsList, needListAdded);
-        }
-    }
-
-    @FXML
-    private void delHoy(){
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Høytallere".toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Høytallere");
-                    popListView(needsList,needListAdded);
-                }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Høytaller");
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains("Høytaller".toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
-            }
-        }
-    }
-
-    @FXML
-    private void delMic(){
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Mikrofoner".toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Mikrofoner");
-                    popListView(needsList,needListAdded);
-                }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Mikrofon");
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains("Mikrofon".toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
-            }
-        }
-    }
-
-    @FXML
-    private void delMon(){
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Monitorer".toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Monitorer");
-                    popListView(needsList,needListAdded);
-                }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Monitor");
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains("Monitor".toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
-            }
-        }
-    }
-
-    @FXML
-    private void delSing(){
-        for (String s : needsList){
-            if (s.toLowerCase().contains("Sangere".toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Sangere");
-                    popListView(needsList,needListAdded);
-                }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " Sanger");
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains("Sanger".toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
-            }
-        }
+        addItem("Monitorer", "Monitor");
     }
 
     @FXML
     private void addSing(){
+        addItem("Syngere", "Synger");
+    }
+
+    @FXML
+    private void delHoy() {
+        delItem("Høytallere", "Høytaller");
+    }
+
+    @FXML
+    private void delMic(){
+        delItem("Mikrofoner", "Mikrofon");
+    }
+
+    @FXML
+    private void delMon(){
+        delItem("Monitorer", "Monitor");
+    }
+
+    @FXML
+    private void delSing(){
+        delItem("Syngere", "Synger");
+    }
+
+    @FXML
+    private void addItem(String itemMulti, String itemSingel){
         boolean check = false;
         for (String s : needsList){
-            if (s.toLowerCase().contains("Sanger".toLowerCase())){
+            if (s.toLowerCase().contains(itemSingel.toLowerCase())){
                 check = true;
                 String[] P = s.split("\\s+");
                 int nr = Integer.parseInt(P[0]);
                 nr++;
-                needsList.set(needsList.indexOf(s), nr + " Sangere");
+                needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
                 popListView(needsList,needListAdded);
             }
         }
         if (!check){
-            needsList.add("1 Sanger");
+            needsList.add("1 " + itemSingel);
             popListView(needsList, needListAdded);
+        }
+    }
+
+    @FXML
+    private void delItem(String itemMulti, String itemSingel){
+        for (String s : needsList){
+            if (s.toLowerCase().contains(itemMulti.toLowerCase())){
+                String[] P = s.split("\\s+");
+                int nr = Integer.parseInt(P[0]);
+                if(nr > 2){
+                    nr--;
+                    needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
+                    popListView(needsList,needListAdded);
+                }
+                else{
+                    nr--;
+                    needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
+                    popListView(needsList,needListAdded);
+                }
+            }
+            else if (s.toLowerCase().contains(itemSingel.toLowerCase())){
+                needsList.remove(needsList.indexOf(s));
+                popListView(needsList,needListAdded);
+            }
         }
     }
 
