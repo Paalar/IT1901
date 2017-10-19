@@ -170,7 +170,7 @@
                                             <content>
                                               <AnchorPane fx:id="scrollPaneAnchor">
                                                    <children>
-                                                      <VBox fx:id="velgScene" />
+                                                      <VBox fx:id="velgScene" spacing="5.0" />
                                                    </children>
                                                 </AnchorPane>
                                             </content>

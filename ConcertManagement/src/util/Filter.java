@@ -41,7 +41,19 @@ public class Filter {
                 }
             }
         }
-        return  scenes;
+        return scenes;
+    }
+
+    public static List<String> getAllScenesString(String festival) {
+        List<String> scenes = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (Scene s : f.getScene()) {
+                    scenes.add(s.getNavn());
+                }
+            }
+        }
+        return scenes;
     }
 
 

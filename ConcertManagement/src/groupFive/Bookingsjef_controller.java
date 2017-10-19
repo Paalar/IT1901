@@ -12,11 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Filter;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static util.Filter.getAllBandsObservableList;
 
 public class Bookingsjef_controller {
 
@@ -24,7 +21,7 @@ public class Bookingsjef_controller {
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands;
+    private VBox vBoxBands, velgScene;
 
     @FXML
     private TextField textFieldSearchBar;
@@ -41,7 +38,8 @@ public class Bookingsjef_controller {
     private List<String> scenes = Arrays.asList("Dødens dal", "Storsalen", "Knaus");
 
     public void initialize() {
-        putBandsInVbox("");
+        putBandsInVboxTab1("");
+        putScenesInVboxTab2();
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
     }
@@ -53,22 +51,38 @@ public class Bookingsjef_controller {
         main.changeView(rootPane, fxmlFileName);
     }
 
-    public Button createButton(String name) {
+    public Button createButton(String name, int whichTab) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
         button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
-            generatePricesAndPutInTextAreas(name);
+            if (whichTab == 1) {
+                generatePricesAndPutInTextAreas(name);
+            } else if (whichTab == 2) {
+                scenePressed(name);
+            }
         });
         return button;
     }
 
-    private void putBandsInVbox(String bandSearch) {
+    private void scenePressed(String scene) {
+        
+    }
+
+    private void putScenesInVboxTab2() {
+        List<String> scenes = Filter.getAllScenesString("UKA 2017");
+        for (String s : scenes) {
+            Button btn = createButton(s, 2);
+            velgScene.getChildren().add(btn);
+        }
+    }
+
+    private void putBandsInVboxTab1(String bandSearch) {
         vBoxBands.getChildren().clear();
         for (String band : Filter.getAllBandsFestivalsExcept("UKA 2017")) {
             if (band.toLowerCase().contains(bandSearch.toLowerCase())) {
-                Button btn = createButton(band);
+                Button btn = createButton(band, 1);
                 vBoxBands.getChildren().add(btn);
             }
         }
@@ -112,6 +126,6 @@ public class Bookingsjef_controller {
 
     @FXML
     private void onKeyPressSearchBar() {
-        putBandsInVbox(textFieldSearchBar.getText().toString());
+        putBandsInVboxTab1(textFieldSearchBar.getText().toString());
     }
 }
