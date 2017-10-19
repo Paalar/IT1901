@@ -41,7 +41,7 @@ public class Arrangor_controller {
     private int festivalSelected, sceneSelected = 0;
 
     @FXML
-    private VBox vboxLightTech, vboxSoundTech, arrButts;
+    private VBox vboxLightTech, vboxSoundTech, vboxArtists;
 
     @FXML
     private ListView listViewTotal;
@@ -104,7 +104,7 @@ public class Arrangor_controller {
         // Fokuserer og viser navnene til de som jobber for første konsert.
         String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
         showArbeidere(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist());
-        repeatFocus(arrButts.getChildren().get(0));
+        repeatFocus(vboxArtists.getChildren().get(0));
         totalView();
     }
 
@@ -132,7 +132,7 @@ public class Arrangor_controller {
     }
 
     private void putSceneNamesInTextBox(String festival, String scene) {
-        arrButts.getChildren().clear();
+        vboxArtists.getChildren().clear();
 
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
@@ -143,13 +143,13 @@ public class Arrangor_controller {
                             Button btn = createButton(concerts.get(n).getArtist());
                             btn.setId("tekButts");
                             btn.setPrefSize(200,20);
-                            arrButts.getChildren().add(btn);
+                            vboxArtists.getChildren().add(btn);
                         }
                     }
                 }
             }
         }
-        scrollPane.setContent(arrButts);
+        scrollPane.setContent(vboxArtists);
     }
 
     private void showArbeidere(String concert) {
