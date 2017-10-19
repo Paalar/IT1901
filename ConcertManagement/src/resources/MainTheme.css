@@ -146,6 +146,12 @@
  Must be done with padding since margin doesn't exist in the css
  */
 
+#tableReport {
+    -fx-padding: 50 25 25 25;
+    -fx-border-insets: 50 25 25 25;
+    -fx-background-insets: 50 25 25 25;
+}
+
 #vboxBorderLeft {
     -fx-padding: 50 0 0 25;
     -fx-border-insets: 50 0 0 25;
@@ -182,7 +188,7 @@
     -fx-background-insets: 0 0 10 5;
 }
 
-#vboxArtists, #vBoxBands, #vBoxBandsTab2, #vBoxGenre , #vBoxTekniker, #needsNotSent1 {
+#vboxArtists, #vBoxBands, #vBoxBandsTab2, #vBoxGenre , #vBoxTekniker, #needsNotSent1, #velgScene {
     -fx-padding: 10 5 10 5;
     -fx-border-insets:  10 5 10 5;
     -fx-background-insets:  10 5 10 5;
