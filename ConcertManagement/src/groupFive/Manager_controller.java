@@ -145,26 +145,31 @@ public class Manager_controller {
     }
     @FXML
     private  void sendTheNeeds(){
-        for (Festival f : Main.festivals) {
-            if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
-                for (Scene s : f.getScene()) {
-                    if (s.getNavn().equals(sceneNameString)) {
-                        for (Concert c : s.getKonsert()) {
-                            if (c.getArtist().equals(artistNameString)) {
-                                List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
-                                for (String needs : needsList) {
-                                    tekniskeBehov nyttBehov = new tekniskeBehov(needs);
-                                    nyeTekniskeBehov.add(nyttBehov);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+        }
+        else {
+            for (Festival f : Main.festivals) {
+                if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
+                    for (Scene s : f.getScene()) {
+                        if (s.getNavn().equals(sceneNameString)) {
+                            for (Concert c : s.getKonsert()) {
+                                if (c.getArtist().equals(artistNameString)) {
+                                    List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
+                                    for (String needs : needsList) {
+                                        tekniskeBehov nyttBehov = new tekniskeBehov(needs);
+                                        nyeTekniskeBehov.add(nyttBehov);
+                                    }
+                                    c.setTekniskeBehov(nyeTekniskeBehov);
                                 }
-                                c.setTekniskeBehov(nyeTekniskeBehov);
                             }
                         }
                     }
                 }
             }
+            JsonInsert(Main.festivals);
+            alertShow("Information Dialog", "I have a great message for you! \nBehovene ble sendt!");
         }
-        JsonInsert(Main.festivals);
-        alertShow("Information Dialog", "I have a great message for you! \nBehovene ble sendt!");
     }
 
     @FXML
@@ -269,9 +274,14 @@ public class Manager_controller {
 
     @FXML
     private void delNeed(){
-        int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
-        needsList.remove(nrOfNeed);
-        popListView(needsList, needListAdded);
+        if (artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+        }
+        else {
+            int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
+            needsList.remove(nrOfNeed);
+            popListView(needsList, needListAdded);
+        }
     }
 
     private void popListView (List<String> needList, ListView listArea){
