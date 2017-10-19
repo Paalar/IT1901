@@ -105,26 +105,7 @@ public class Bookingansvarlig_controller {
         }
         repeatFocus(vBoxBands.getChildren().get(0));
 
-        //Denne legger til alle band som var i uka 2015,2013 men ikke i 2017.
-
-        List<String> artistsUka17 = new ArrayList<>();
-        List<String> artistsOlder = new ArrayList<>();
-        for (Festival f : Main.festivals) {
-            for (Scene s : f.getScene()) {
-                for (Concert c : s.getKonsert()) {
-                    if (f.getFestival().equals("UKA 2017")) {
-                        if (!artistsUka17.contains(c.getArtist())) {
-                            artistsUka17.add(c.getArtist());
-                        }
-                    } else {
-                        if (!artistsOlder.contains(c.getArtist())) {
-                            artistsOlder.add(c.getArtist());
-                        }
-                    }
-                }
-            }
-        }
-        artistsOlder.removeAll(artistsUka17);
+        List<String> artistsOlder = Filter.getAllBandsFestivalsExcept("UKA 2017");
         for (String band : artistsOlder) {
             Button btn = createButtonTab(band, "tab2");
             vBoxBandsTab2.getChildren().add(btn);
