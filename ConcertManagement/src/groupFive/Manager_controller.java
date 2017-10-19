@@ -279,8 +279,13 @@ public class Manager_controller {
         }
         else {
             int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
-            needsList.remove(nrOfNeed);
-            popListView(needsList, needListAdded);
+            if(nrOfNeed == -1){
+                alertShow("I have a bad message", "Du må velge et behov først");
+            }
+            else {
+                needsList.remove(nrOfNeed);
+                popListView(needsList, needListAdded);
+            }
         }
     }
 
