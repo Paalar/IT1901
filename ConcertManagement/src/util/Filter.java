@@ -183,6 +183,31 @@ public class Filter {
         return 0;
     }
 
+    public static int getSceneSize(String scene) {
+        // Denne går gjennom alle festivaler og finner bandet og returnerer salg.
+        // Hvis den ikke finner bandet returnerer den 0.
+        for (Festival f : Main.festivals) {
+            for (Scene s : f.getScene()) {
+                if (s.getNavn().equals(scene)) {
+                    return s.getPlasser();
+                }
+            }
+        }
+        return 0;
+    }
+
+    public static int getPrice(String band) {
+        // Denne går gjennom alle festivaler og finner bandet og returnerer pris.
+        // Hvis den ikke finner bandet returnerer den 0.
+        List<Concert> concerts = getAllConcertsForAllFestivals();
+        for (Concert c : concerts) {
+            if (c.getArtist().equals(band)) {
+                return c.getPris();
+            }
+        }
+        return 0;
+    }
+
     public static ObservableList<String> getConcertsAndScenesForBand(String band) {
         List<String> outputList = new ArrayList<>();
         for (Festival f : Main.festivals) {
@@ -217,6 +242,28 @@ public class Filter {
 
         }
         return FXCollections.observableArrayList(allTekniskeBehov);
+    }
+
+    public static List<String> getAllBandsFestivalsExcept(String exceptionFestival) {
+        List<String> artistsUkaException = new ArrayList<>();
+        List<String> artistsOlder = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            for (Scene s : f.getScene()) {
+                for (Concert c : s.getKonsert()) {
+                    if (f.getFestival().equals(exceptionFestival)) {
+                        if (!artistsUkaException.contains(c.getArtist())) {
+                            artistsUkaException.add(c.getArtist());
+                        }
+                    } else {
+                        if (!artistsOlder.contains(c.getArtist())) {
+                            artistsOlder.add(c.getArtist());
+                        }
+                    }
+                }
+            }
+        }
+        artistsOlder.removeAll(artistsUkaException);
+        return artistsOlder;
     }
 //    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
 //        ArrayList<String> listToAdd = new ArrayList<>();
