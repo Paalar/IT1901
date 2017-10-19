@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -82,7 +81,7 @@
                                           <Insets right="25.0" />
                                        </HBox.margin>
                                     </TextField>
-                                     <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNeedsToList" text="Legg til bandes behov" />
+                                     <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNeedsToList" prefWidth="160.0" text="Legg til bandes behov" />
                                  </children>
                               </HBox>
                               <HBox>
@@ -92,14 +91,9 @@
                                           <Insets right="25.0" />
                                        </HBox.margin>
                                     </ListView>
-                                     <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" text="Send bandets behov">
-                                       <HBox.margin>
-                                          <Insets top="377.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Button mnemonicParsing="false" text="Slett behov" onAction="#delNeed">
+                                    <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delNeed" prefWidth="160.0" text="Slett behov">
                                      <HBox.margin>
-                                         <Insets top="350.0" left="-121"/>
+                                         <Insets />
                                      </HBox.margin>
                                     </Button>
                                  </children>
@@ -107,77 +101,106 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
+                               <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" prefWidth="250.0" text="Send bandes behov">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Button>
                            </children>
-                           <padding>
-                              <Insets left="25.0" top="60.0" />
-                           </padding>
                         </VBox>
                      </children>
                      <BorderPane.margin>
-                        <Insets left="25.0" top="20.0" />
+                        <Insets left="25.0" />
                      </BorderPane.margin>
                   </AnchorPane>
                </center>
                <left>
-                  <SplitPane orientation="VERTICAL" prefWidth="300.0" BorderPane.alignment="CENTER">
-                     <items>
-                        <VBox fx:id="1">
-                         <children>
-                             <Label fx:id="artist" text="Artist: ">
-                                 <VBox.margin>
-                                     <Insets bottom="0" left="20.0" top="-30.0" />
-                                 </VBox.margin></Label>
-                             <Label fx:id="scene" text="Scene: ">
-                                 <VBox.margin>
-                                     <Insets bottom="0" left="20.0" top="10.0" />
-                                 </VBox.margin></Label>
+                  <VBox fx:id="1" prefWidth="300.0" spacing="5.0" BorderPane.alignment="CENTER">
+                   <children>
+                        <VBox prefWidth="100.0">
+                           <children>
                              <Label fx:id="date" text="Dato: ">
                                  <VBox.margin>
-                                     <Insets bottom="0" left="20.0" top="10.0" />
-                                 </VBox.margin></Label>
-                              <Button fx:id="addHoy" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høyttaler">
-                                      <VBox.margin>
-                                          <Insets bottom="0" left="5.0" top="10.0" />
-                                      </VBox.margin></Button>
-                              <Button fx:id="addMic" mnemonicParsing="false" onAction="#addMic" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x mikrofon">
-                                  <VBox.margin>
-                                      <Insets bottom="0" left="5.0" top="5.0" />
-                                  </VBox.margin></Button>
-                              <Button fx:id="addMon" mnemonicParsing="false" onAction="#addMon" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x monitor">
-                                  <VBox.margin>
-                                      <Insets bottom="0" left="5.0" top="5.0" />
-                                  </VBox.margin></Button>
-                              <Button fx:id="addSing" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x synger">
-                                  <VBox.margin>
-                                      <Insets bottom="0" left="5.0" top="5.0" />
-                                  </VBox.margin></Button>
-                             <Button fx:id="delHoy" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høyttaler">
+                                     <Insets />
+                                 </VBox.margin>
+                              </Label>
+                             <Label fx:id="scene" text="Scene: ">
                                  <VBox.margin>
-                                     <Insets bottom="0" left="5.0" top="15.0" />
-                                 </VBox.margin></Button>
-                             <Button fx:id="delMic" mnemonicParsing="false" onAction="#delMic" prefHeight="20.0" prefWidth="150.0" text="Slett 1x mikrofon">
+                                     <Insets />
+                                 </VBox.margin>
+                              </Label>
+                             <Label fx:id="artist" text="Artist: ">
                                  <VBox.margin>
-                                     <Insets bottom="0" left="5.0" top="5.0" />
-                                 </VBox.margin></Button>
-                             <Button fx:id="delMon" mnemonicParsing="false" onAction="#delMon" prefHeight="20.0" prefWidth="150.0" text="Slett 1x monitor">
-                                 <VBox.margin>
-                                     <Insets bottom="0" left="5.0" top="5.0" />
-                                 </VBox.margin></Button>
-                             <Button fx:id="delSing" mnemonicParsing="false" onAction="#delSing" prefHeight="20.0" prefWidth="150.0" text="Slett 1x synger">
-                                 <VBox.margin>
-                                     <Insets bottom="0" left="5.0" top="5.0" />
-                                 </VBox.margin></Button>
-                         </children>
-                           <padding>
-                              <Insets top="60.0" />
-                           </padding>
+                                     <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
                         </VBox>
-                     </items>
-                     <BorderPane.margin>
-                        <Insets left="25.0" top="20.0" />
-                     </BorderPane.margin>
-                  </SplitPane>
+                        <VBox prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="150.0" text="Legg til:" />
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x synger">
+                                  <VBox.margin>
+                                      <Insets />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMon" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x monitor">
+                                  <VBox.margin>
+                                      <Insets />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMic" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x mikrofon">
+                                  <VBox.margin>
+                                      <Insets />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høytaller">
+                                      <VBox.margin>
+                                          <Insets />
+                                      </VBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="150.0" text="Slett:" />
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delSing" prefHeight="20.0" prefWidth="150.0" text="Slett 1x synger">
+                                 <VBox.margin>
+                                     <Insets />
+                                 </VBox.margin>
+                              </Button>
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMon" prefHeight="20.0" prefWidth="150.0" text="Slett 1x monitor">
+                                 <VBox.margin>
+                                     <Insets />
+                                 </VBox.margin>
+                              </Button>
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMic" prefHeight="20.0" prefWidth="150.0" text="Slett 1x mikrofon">
+                                 <VBox.margin>
+                                     <Insets />
+                                 </VBox.margin>
+                              </Button>
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høytaller">
+                                 <VBox.margin>
+                                     <Insets />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </VBox>
+                   </children>
+                  </VBox>
                </left>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
             </BorderPane>
          </center>
       </BorderPane>
