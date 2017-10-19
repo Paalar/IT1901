@@ -58,18 +58,11 @@
            linear-gradient(#D6C5CA, #B697A0);
 }
 
-/*
-#arrScenes {
-    -fx-background-radius: 10;
-    -fx-padding: 10, 10, 10, 10;
-    -fx-background-color: #D9CAC2,
-        linear-gradient(#D6C5CA, #B697A0);
-    -fx-text-fill: #565264;
-    -fx-font-size: 22;
-    -fx-margin: 100;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+#addButton, #deleteButton, #sendButton, #addNeed {
+    -fx-background-color: #A6808C,
+        linear-gradient(#AE8B96, #795E66);
+    -fx-text-fill: #D6C5BC;
 }
-*/
 
 #choiceBoxFestivals, #choiceBoxScenes {
     -fx-background-radius: 40;
@@ -88,15 +81,15 @@
         linear-gradient(#A6808C, #B697A0);
 }
 
-#arrScenes:focused, #tekButts:focused, #offerButt:focused, #genres:focused, #addHoy:focused, #addMic:focused, #addMon:focused, #addSing:focused, #delHoy:focused, #delMic:focused, #delMon:focused, #delSing:focused {
+#arrScenes:focused, #tekButts:focused, #offerButt:focused, #genres:focused, #addNeed {
     -fx-background-color: #D9CAC2,
         linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover, #genres:focused:hover, #addHoy:hover, #addMic:hover, #addMon:hover, #addSing:hover #delHoy:hover, #delMic:hover, #delMon:hover, #delSing:hover {
+#arrScenes:focused:hover, #tekButts:focused:hover, #offerButt:focused:hover, #genres:focused:hover, #addNeed:focused:hover {
      -fx-background-color: #D9CAC2,
          linear-gradient(#AE8B96, #795E66);
 }
-#arrScenes:hover, #tekButts:hover, #offerButt:hover, #genres:hover, #addHoy:hover, #addMic:hover, #addMon:hover, #addSing:hover, #delHoy:hover, #delMic:hover, #delMon:hover, #delSing:hover  {
+#arrScenes:hover, #tekButts:hover, #offerButt:hover, #genres:hover, #addNeed:hover  {
      -fx-background-color: #D9CAC2,
         linear-gradient(#D9CAC2, #FBF9F8);
 }
