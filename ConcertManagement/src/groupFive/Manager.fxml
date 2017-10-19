@@ -81,7 +81,7 @@
                                           <Insets right="25.0" />
                                        </HBox.margin>
                                     </TextField>
-                                     <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNeedsToList" prefWidth="160.0" text="Legg til bandes behov" />
+                                     <Button fx:id="addButton" mnemonicParsing="false" onAction="#addNeedsToList" prefWidth="160.0" text="Legg til behov" />
                                  </children>
                               </HBox>
                               <HBox>
@@ -101,7 +101,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
-                               <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" prefWidth="250.0" text="Send bandes behov">
+                               <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" prefWidth="250.0" text="Send behov">
                                  <VBox.margin>
                                     <Insets top="10.0" />
                                  </VBox.margin>
@@ -142,22 +142,22 @@
                         <VBox prefWidth="100.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER" prefWidth="150.0" text="Legg til:" />
-                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x synger">
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="1x bakgrunnssanger">
                                   <VBox.margin>
                                       <Insets />
                                   </VBox.margin>
                               </Button>
-                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMon" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x monitor">
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMon" prefHeight="20.0" prefWidth="150.0" text="1x Monitor">
                                   <VBox.margin>
                                       <Insets />
                                   </VBox.margin>
                               </Button>
-                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMic" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x mikrofon">
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addMic" prefHeight="20.0" prefWidth="150.0" text="1x Mikrofon">
                                   <VBox.margin>
                                       <Insets />
                                   </VBox.margin>
                               </Button>
-                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høytaller">
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="1x Høyttaler">
                                       <VBox.margin>
                                           <Insets />
                                       </VBox.margin>
@@ -170,22 +170,22 @@
                         <VBox spacing="5.0">
                            <children>
                               <Label alignment="CENTER" prefWidth="150.0" text="Slett:" />
-                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delSing" prefHeight="20.0" prefWidth="150.0" text="Slett 1x synger">
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delSing" prefHeight="20.0" prefWidth="150.0" text="1x Sanger">
                                  <VBox.margin>
                                      <Insets />
                                  </VBox.margin>
                               </Button>
-                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMon" prefHeight="20.0" prefWidth="150.0" text="Slett 1x monitor">
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMon" prefHeight="20.0" prefWidth="150.0" text="1x Monitor">
                                  <VBox.margin>
                                      <Insets />
                                  </VBox.margin>
                               </Button>
-                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMic" prefHeight="20.0" prefWidth="150.0" text="Slett 1x mikrofon">
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delMic" prefHeight="20.0" prefWidth="150.0" text="1x Mikrofon">
                                  <VBox.margin>
                                      <Insets />
                                  </VBox.margin>
                               </Button>
-                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høytaller">
+                             <Button fx:id="addNeed" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="1x Høyttaler">
                                  <VBox.margin>
                                      <Insets />
                                  </VBox.margin>
@@ -199,7 +199,7 @@
                   </VBox>
                </left>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </BorderPane.margin>
             </BorderPane>
          </center>
