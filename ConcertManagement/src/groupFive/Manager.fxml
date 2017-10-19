@@ -92,7 +92,7 @@
                                           <Insets right="25.0" />
                                        </HBox.margin>
                                     </ListView>
-                                     <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" text="Send bandes behov">
+                                     <Button fx:id="sendButton" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#sendTheNeeds" text="Send bandets behov">
                                        <HBox.margin>
                                           <Insets top="377.0" />
                                        </HBox.margin>
@@ -135,7 +135,7 @@
                                  <VBox.margin>
                                      <Insets bottom="0" left="20.0" top="10.0" />
                                  </VBox.margin></Label>
-                              <Button fx:id="addHoy" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høytaller">
+                              <Button fx:id="addHoy" mnemonicParsing="false" onAction="#addHoy" prefHeight="20.0" prefWidth="150.0" text="Legg til 1x høyttaler">
                                       <VBox.margin>
                                           <Insets bottom="0" left="5.0" top="10.0" />
                                       </VBox.margin></Button>
@@ -151,7 +151,7 @@
                                   <VBox.margin>
                                       <Insets bottom="0" left="5.0" top="5.0" />
                                   </VBox.margin></Button>
-                             <Button fx:id="delHoy" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høytaller">
+                             <Button fx:id="delHoy" mnemonicParsing="false" onAction="#delHoy" prefHeight="20.0" prefWidth="150.0" text="Slett 1x høyttaler">
                                  <VBox.margin>
                                      <Insets bottom="0" left="5.0" top="15.0" />
                                  </VBox.margin></Button>

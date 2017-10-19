@@ -38,7 +38,7 @@ public class Manager_controller {
     @FXML
     private Label date;
 
-    private String artistNameString;
+    private String artistNameString = "";
     private String sceneNameString;
     private String needString;
     private String datoString;
@@ -106,11 +106,11 @@ public class Manager_controller {
     }
 
     @FXML
-    private void alertShow(){
+    private void alertShow(String title, String contentText){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText("I have a great message for you! \nBehovene ble sendt!");
+        alert.setContentText(contentText);
         alert.showAndWait();
     }
 
@@ -145,31 +145,36 @@ public class Manager_controller {
     }
     @FXML
     private  void sendTheNeeds(){
-        for (Festival f : Main.festivals) {
-            if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
-                for (Scene s : f.getScene()) {
-                    if (s.getNavn().equals(sceneNameString)) {
-                        for (Concert c : s.getKonsert()) {
-                            if (c.getArtist().equals(artistNameString)) {
-                                List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
-                                for (String needs : needsList) {
-                                    tekniskeBehov nyttBehov = new tekniskeBehov(needs);
-                                    nyeTekniskeBehov.add(nyttBehov);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+        }
+        else {
+            for (Festival f : Main.festivals) {
+                if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
+                    for (Scene s : f.getScene()) {
+                        if (s.getNavn().equals(sceneNameString)) {
+                            for (Concert c : s.getKonsert()) {
+                                if (c.getArtist().equals(artistNameString)) {
+                                    List<tekniskeBehov> nyeTekniskeBehov = new ArrayList<>();
+                                    for (String needs : needsList) {
+                                        tekniskeBehov nyttBehov = new tekniskeBehov(needs);
+                                        nyeTekniskeBehov.add(nyttBehov);
+                                    }
+                                    c.setTekniskeBehov(nyeTekniskeBehov);
                                 }
-                                c.setTekniskeBehov(nyeTekniskeBehov);
                             }
                         }
                     }
                 }
             }
+            JsonInsert(Main.festivals);
+            alertShow("Information Dialog", "I have a great message for you! \nBehovene ble sendt!");
         }
-        JsonInsert(Main.festivals);
-        alertShow();
     }
 
     @FXML
     private void addHoy(){
-        addItem("Høytallere", "Høytaller");
+        addItem("Høyttalere", "Høyttaler");
     }
 
     @FXML
@@ -184,12 +189,12 @@ public class Manager_controller {
 
     @FXML
     private void addSing(){
-        addItem("Syngere", "Synger");
+        addItem("Sangere", "Sanger");
     }
 
     @FXML
     private void delHoy() {
-        delItem("Høytallere", "Høytaller");
+        delItem("Høyttalere", "Høyttaler");
     }
 
     @FXML
@@ -204,57 +209,79 @@ public class Manager_controller {
 
     @FXML
     private void delSing(){
-        delItem("Syngere", "Synger");
+        delItem("Sangere", "Sanger");
     }
 
     @FXML
     private void addItem(String itemMulti, String itemSingel){
-        boolean check = false;
-        for (String s : needsList){
-            if (s.toLowerCase().contains(itemSingel.toLowerCase())){
-                check = true;
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                nr++;
-                needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
-                popListView(needsList,needListAdded);
-            }
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
         }
-        if (!check){
-            needsList.add("1 " + itemSingel);
-            popListView(needsList, needListAdded);
+        else {
+            boolean check = false;
+            for (String s : needsList) {
+                if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
+                    check = true;
+                    String[] P = s.split("\\s+");
+                    int nr = Integer.parseInt(P[0]);
+                    nr++;
+                    needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
+                    popListView(needsList, needListAdded);
+                }
+            }
+            if (!check) {
+                needsList.add("1 " + itemSingel);
+                popListView(needsList, needListAdded);
+            }
         }
     }
 
     @FXML
     private void delItem(String itemMulti, String itemSingel){
-        for (String s : needsList){
-            if (s.toLowerCase().contains(itemMulti.toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
-                    popListView(needsList,needListAdded);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
+        }
+        else {
+            try {
+                for (String s : needsList) {
+                    if (s.toLowerCase().contains(itemMulti.toLowerCase())) {
+                        String[] P = s.split("\\s+");
+                        int nr = Integer.parseInt(P[0]);
+                        if (nr > 2) {
+                            nr--;
+                            needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
+                            popListView(needsList, needListAdded);
+                        } else {
+                            nr--;
+                            needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
+                            popListView(needsList, needListAdded);
+                        }
+                    }
+                    else if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
+                        needsList.remove(needsList.indexOf(s));
+                        popListView(needsList, needListAdded);
+                        break;
+                    }
                 }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains(itemSingel.toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
+            } catch (Exception e) {
+                alertShow("I have a bad message for you", "Du kan ikke slette noe som ikke er der");
+                System.err.println(e.getMessage());
             }
         }
     }
 
     @FXML
     private void delNeed(){
-        int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
-        needsList.remove(nrOfNeed);
-        popListView(needsList, needListAdded);
+        if (artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+        }
+        else {
+            int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
+            needsList.remove(nrOfNeed);
+            popListView(needsList, needListAdded);
+        }
     }
 
     private void popListView (List<String> needList, ListView listArea){
@@ -264,9 +291,16 @@ public class Manager_controller {
 
     @FXML
     private  void addNeedsToList(){
-        String aNeed = inputFieldNeed.getText();
-        needsList.add(aNeed);
-        popListView(needsList, needListAdded);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
+        }
+        else {
+            String aNeed = inputFieldNeed.getText();
+            needsList.add(aNeed);
+            popListView(needsList, needListAdded);
+            inputFieldNeed.setText("");
+        }
     }
 
     @FXML
