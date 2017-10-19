@@ -38,7 +38,7 @@ public class Manager_controller {
     @FXML
     private Label date;
 
-    private String artistNameString;
+    private String artistNameString = "";
     private String sceneNameString;
     private String needString;
     private String datoString;
@@ -106,11 +106,11 @@ public class Manager_controller {
     }
 
     @FXML
-    private void alertShow(){
+    private void alertShow(String title, String contentText){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText("I have a great message for you! \nBehovene ble sendt!");
+        alert.setContentText(contentText);
         alert.showAndWait();
     }
 
@@ -164,12 +164,12 @@ public class Manager_controller {
             }
         }
         JsonInsert(Main.festivals);
-        alertShow();
+        alertShow("Information Dialog", "I have a great message for you! \nBehovene ble sendt!");
     }
 
     @FXML
     private void addHoy(){
-        addItem("Høytallere", "Høytaller");
+        addItem("Høyttalere", "Høyttaler");
     }
 
     @FXML
@@ -184,12 +184,12 @@ public class Manager_controller {
 
     @FXML
     private void addSing(){
-        addItem("Syngere", "Synger");
+        addItem("Sangere", "Sanger");
     }
 
     @FXML
     private void delHoy() {
-        delItem("Høytallere", "Høytaller");
+        delItem("Høyttalere", "Høyttaler");
     }
 
     @FXML
@@ -204,48 +204,65 @@ public class Manager_controller {
 
     @FXML
     private void delSing(){
-        delItem("Syngere", "Synger");
+        delItem("Sangere", "Sanger");
     }
 
     @FXML
     private void addItem(String itemMulti, String itemSingel){
-        boolean check = false;
-        for (String s : needsList){
-            if (s.toLowerCase().contains(itemSingel.toLowerCase())){
-                check = true;
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                nr++;
-                needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
-                popListView(needsList,needListAdded);
-            }
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
         }
-        if (!check){
-            needsList.add("1 " + itemSingel);
-            popListView(needsList, needListAdded);
+        else {
+            boolean check = false;
+            for (String s : needsList) {
+                if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
+                    check = true;
+                    String[] P = s.split("\\s+");
+                    int nr = Integer.parseInt(P[0]);
+                    nr++;
+                    needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
+                    popListView(needsList, needListAdded);
+                }
+            }
+            if (!check) {
+                needsList.add("1 " + itemSingel);
+                popListView(needsList, needListAdded);
+            }
         }
     }
 
     @FXML
     private void delItem(String itemMulti, String itemSingel){
-        for (String s : needsList){
-            if (s.toLowerCase().contains(itemMulti.toLowerCase())){
-                String[] P = s.split("\\s+");
-                int nr = Integer.parseInt(P[0]);
-                if(nr > 2){
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
-                    popListView(needsList,needListAdded);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
+        }
+        else {
+            try {
+                for (String s : needsList) {
+                    if (s.toLowerCase().contains(itemMulti.toLowerCase())) {
+                        String[] P = s.split("\\s+");
+                        int nr = Integer.parseInt(P[0]);
+                        if (nr > 2) {
+                            nr--;
+                            needsList.set(needsList.indexOf(s), nr + " " + itemMulti);
+                            popListView(needsList, needListAdded);
+                        } else {
+                            nr--;
+                            needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
+                            popListView(needsList, needListAdded);
+                        }
+                    }
+                    else if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
+                        needsList.remove(needsList.indexOf(s));
+                        popListView(needsList, needListAdded);
+                        break;
+                    }
                 }
-                else{
-                    nr--;
-                    needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
-                    popListView(needsList,needListAdded);
-                }
-            }
-            else if (s.toLowerCase().contains(itemSingel.toLowerCase())){
-                needsList.remove(needsList.indexOf(s));
-                popListView(needsList,needListAdded);
+            } catch (Exception e) {
+                alertShow("I have a bad message for you", "Du kan ikke slette noe som ikke er der");
+                System.err.println(e.getMessage());
             }
         }
     }
@@ -264,9 +281,16 @@ public class Manager_controller {
 
     @FXML
     private  void addNeedsToList(){
-        String aNeed = inputFieldNeed.getText();
-        needsList.add(aNeed);
-        popListView(needsList, needListAdded);
+        if(artistNameString.equals("")){
+            alertShow("I have a bad message for you", "Du må velge en artist først");
+            inputFieldNeed.setText("");
+        }
+        else {
+            String aNeed = inputFieldNeed.getText();
+            needsList.add(aNeed);
+            popListView(needsList, needListAdded);
+            inputFieldNeed.setText("");
+        }
     }
 
     @FXML
