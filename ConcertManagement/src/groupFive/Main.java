@@ -30,6 +30,7 @@ public class Main extends Application {
         primaryStage.setTitle("Concert Management");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.show();
+        primaryStage.setResizable(false);
         festivals = JsonDecode.parseJSONFestivals();
         offers = JsonDecode.parseJSONOffers();
     }
