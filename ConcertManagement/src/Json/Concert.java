@@ -6,6 +6,7 @@ import java.util.List;
 public class Concert {
 
     private String artist;
+    private String omtale;
     private int billetterSolgt;
     private List<LightTech> lys;
     private List<SoundTech> lyd;
@@ -16,6 +17,10 @@ public class Concert {
     private int salg;
     private int pris;
     private List<tekniskeBehov> tekniskeBehov;
+
+    public String getOmtale() { return omtale; }
+
+    public void setOmtale(String omtale) { this.omtale = omtale; }
 
     public String getArtist() {
         return artist;
