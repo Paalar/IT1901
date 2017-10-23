@@ -200,7 +200,7 @@
                                                         </VBox>
                                                         <VBox layoutX="506.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Solgte Billetter/ plasser" />
+                                                                <Label text="Solgte Billetter" />
                                                                 <ListView fx:id="listViewPlasser" />
                                                             </children>
                                                         </VBox>
