@@ -3,11 +3,13 @@ package groupFive;
 import Json.Concert;
 import Json.Festival;
 import Json.Scene;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Filter;
@@ -16,15 +18,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static util.Filter.getAllBandsObservableList;
-
 public class Bookingsjef_controller {
 
     @FXML
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands;
+    private VBox vBoxBands, velgScene;
 
     @FXML
     private TextField textFieldSearchBar;
@@ -37,11 +37,15 @@ public class Bookingsjef_controller {
     @FXML
     private Label labelScene1, labelScene2, labelScene3, labelBillettPris;
 
+    @FXML
+    private ListView listViewFestival, listViewArtist, listViewSjanger, listViewPlasser, listViewBillettpris, listViewArtistpris, listViewEconomy;
+
     private List<Label> labels;
     private List<String> scenes = Arrays.asList("Dødens dal", "Storsalen", "Knaus");
 
     public void initialize() {
-        putBandsInVbox("");
+        putBandsInVboxTab1("");
+        putScenesInVboxTab2();
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
     }
@@ -53,22 +57,82 @@ public class Bookingsjef_controller {
         main.changeView(rootPane, fxmlFileName);
     }
 
-    public Button createButton(String name) {
+    public Button createButton(String name, int whichTab) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
         button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
-            generatePricesAndPutInTextAreas(name);
+            if (whichTab == 1) {
+                generatePricesAndPutInTextAreas(name);
+            } else if (whichTab == 2) {
+                generateReportAndPutInTable(name);
+            }
         });
         return button;
     }
 
-    private void putBandsInVbox(String bandSearch) {
+    private void generateReportAndPutInTable(String scene) {
+        // Alle de forskjellige listene har hver sin ObservableList.
+        ObservableList<String> festivals = FXCollections.observableArrayList();
+        ObservableList<String> artists = FXCollections.observableArrayList();
+        ObservableList<String> genres = FXCollections.observableArrayList();
+        ObservableList<String> tickets = FXCollections.observableArrayList();
+        ObservableList<Integer> ticketPrice = FXCollections.observableArrayList();
+        ObservableList<Integer> artistPrice = FXCollections.observableArrayList();
+        ObservableList<Integer> economyResult = FXCollections.observableArrayList();
+
+        for (Festival f : Main.festivals) {
+            if (!f.getFestival().equals("UKA 2017")) {
+                for (Scene s : f.getScene()) {
+                    if (s.getNavn().equals(scene)) {
+                        // Bare eldre festival og på scene du har valgt.
+                        for (Concert c : s.getKonsert()) {
+                            festivals.add(f.getFestival());
+                            artists.add(c.getArtist());
+                            genres.add(c.getSjanger());
+                            tickets.add(c.getBilletterSolgt() + "/" + String.valueOf(s.getPlasser()));
+                            ticketPrice.add(c.getBillettPris());
+                            artistPrice.add(c.getPris()); //TODO gjør om 1000000000 til 1 000 000 000
+                            int economicResult = calculateEconomicResult(c.getBillettPris(), c.getBilletterSolgt(), c.getPris());
+                            economyResult.add(economicResult);
+                        }
+                    }
+                }
+            }
+        }
+        listViewFestival.setItems(festivals);
+        listViewArtist.setItems(artists);
+        listViewSjanger.setItems(genres);
+        listViewPlasser.setItems(tickets);
+        listViewBillettpris.setItems(ticketPrice);
+        listViewArtistpris.setItems(artistPrice);
+        listViewEconomy.setItems(economyResult);
+    }
+
+    private int calculateEconomicResult(int ticketPrice, int ticketsSold, int artistPrice) {
+        return (ticketPrice * ticketsSold) - artistPrice;
+    }
+
+    private ObservableList<Festival> getFestival() {
+        ObservableList<Festival> festivals = FXCollections.observableArrayList();
+        festivals.add(Main.festivals.get(1));
+        return festivals;
+    }
+
+    private void putScenesInVboxTab2() {
+        List<String> scenes = Filter.getAllScenesString("UKA 2017");
+        for (String s : scenes) {
+            Button btn = createButton(s, 2);
+            velgScene.getChildren().add(btn);
+        }
+    }
+
+    private void putBandsInVboxTab1(String bandSearch) {
         vBoxBands.getChildren().clear();
         for (String band : Filter.getAllBandsFestivalsExcept("UKA 2017")) {
             if (band.toLowerCase().contains(bandSearch.toLowerCase())) {
-                Button btn = createButton(band);
+                Button btn = createButton(band, 1);
                 vBoxBands.getChildren().add(btn);
             }
         }
@@ -112,6 +176,6 @@ public class Bookingsjef_controller {
 
     @FXML
     private void onKeyPressSearchBar() {
-        putBandsInVbox(textFieldSearchBar.getText().toString());
+        putBandsInVboxTab1(textFieldSearchBar.getText().toString());
     }
 }
