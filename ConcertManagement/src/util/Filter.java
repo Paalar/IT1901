@@ -277,6 +277,19 @@ public class Filter {
         artistsOlder.removeAll(artistsUkaException);
         return artistsOlder;
     }
+
+    public static String getOmtale(String band) {
+        for (Festival f : Main.festivals) {
+            for (Scene s : f.getScene()) {
+                for (Concert c : s.getKonsert()) {
+                    if (c.getArtist().equals(band)) {
+                        return c.getOmtale();
+                    }
+                }
+            }
+        }
+        return ("");
+    }
 //    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
 //        ArrayList<String> listToAdd = new ArrayList<>();
 //        for (int x  = 0; x < wholeList.size(); x++) {
