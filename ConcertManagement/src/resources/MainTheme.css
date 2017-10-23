@@ -8,7 +8,10 @@
     -fx-background-color: #A6808C;
 }
 
-
+/* root fonts */
+.root {
+    -fx-family-font: "Helvetica";
+}
 
 /* List of buttons */
 
