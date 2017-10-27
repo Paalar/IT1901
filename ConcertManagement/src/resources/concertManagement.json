@@ -1,7 +1,7 @@
 [
   {
-    "festival": "UKA 2017",
     "datoStart": "1-10-2017",
+    "festival": "UKA 2017",
     "datoSlutt": "1-11-2017",
     "scene": [
       {
@@ -10,7 +10,7 @@
         "konsert": [
           {
             "artist": "Lorde",
-            "omtale" : "Ella Maria Lani Yelich-O'Connor (født 7. november 1996), best kjent under artistnavnet Lorde, er en newzealandsk sanger og låtskriver. Hun er mest kjent for sangen «Royals». Sangen har ligget på førsteplass på hitlistene i både Storbritannia og USA.",
+            "omtale" : "Lorde  imponerte heftig i Dødens Dal. Ut ifra stemningen i salen virket det som om artisten satte spor i mesteparten av det edruelige og mindre edruelige publikum. Lorde sin stemme og personlighet bar i bunn og grunn hele konserten. Det eneste som ikke fungerte med konserten var usmakelig dårlig lyd, og unødvendige dansere.",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -48,7 +48,7 @@
           },
           {
             "artist": "Martin Garrix",
-            "omtale" : "Martin Garrix (født 14. mai 1996 i Amstelveen) er en nederlandsk DJ (DJ). ",
+            "omtale" : "21-åringen åpner den virkelige festen veldig overbevisende. Dj-en tar straks russebussen Dødens dal 2017 med på en episk rulling bakover mot «Animals»-året 2013. «Let me see your fucking hands!» forblir kveldens sitat, og kan høres både av Garrix selv og mp3-filer han har med seg. Allsang, fistpumping og lasere utgjør minnene fra kvelden. Det dynamiske showet evner å holde på publikums energi hele veien, og tar faktisk av på de siste to låtene.",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -95,7 +95,7 @@
         "konsert": [
           {
             "artist": "Astrid S",
-            "omtale" : "Astrid Smeplass (født 29. oktober 1996 i Rennebu, Sør-Trøndelag), også kjent under artistnavnet Astrid S, er en norsk musiker og låtskriver som kom på femteplass i Idol 2013.",
+            "omtale" : "Astrid S innfridde alle popstjerne-krav i Storsalen. eg har hørt alle hittene hennes, Astrid har fridd til hjemfylket sitt, hun har danset, publikum har danset, og en fyr danset seg til og med hele veien opp på scenen. Check!",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -133,7 +133,7 @@
           },
           {
             "artist": "Kjartan Lauritzen",
-            "omtale" : "Kjartan Lauritzen er den nye kongen av Storsalen, punktum finale.",
+            "omtale" : "Kjartan Lauritzen er den nye kongen av Storsalen, punktum finale. Med fiskehatt og fartssolbriller hoppar han rundt på scena, og gjer heile Fresvik til sin leikeplass.",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -177,7 +177,7 @@
         "konsert": [
           {
             "artist": "Knauskoret",
-            "omtale" : "nauskoret er et blandet kor bestående av tyve sangere fra Trondhjems studentersangforening (TSS) og Trondhjems kvinnelige studentersangforening (TKS). Koret har tilholdssted Studentersamfundet i Trondhjem.",
+            "omtale" : "Da det hele åpner med en typisk Knauskoret-medley (med tema «natt»), for deretter å avløses av «I Gotta Feeling» av Black Eyed Peas settes stemningen: Om natten skal man feste, ikke sove. Mellom sangene går koristene frem to og to for å småprate litt og fortelle kryptiske non-sequiturs som gjerne inkluderer hint til hva neste nummer er.",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -209,7 +209,7 @@
           },
           {
             "artist": "Hkeem",
-            "omtale": "Abdulhakim «Hkeem» Hassane (født 29. juni 1997) er en norsk rapper, sanger og låtskriver fra Stovner i Oslo. Våren 2017 fikk han og ungdomsvennen Temur Baig sitt gjennombrudd med låten «Fy faen».",
+            "omtale": "Abdulhakim «Hkeem» Hassane sin sang Fy faan er det beste som finnes og må høres",
             "billetterSolgt": 0,
             "lys": [
               {
@@ -254,7 +254,6 @@
         "konsert": [
           {
             "artist": "Lorde",
-            "omtale" : "Ella Maria Lani Yelich-O'Connor (født 7. november 1996), best kjent under artistnavnet Lorde, er en newzealandsk sanger og låtskriver. Hun er mest kjent for sangen «Royals». Sangen har ligget på førsteplass på hitlistene i både Storbritannia og USA.",
             "billetterSolgt": 4566,
             "lys": [
               {
@@ -289,7 +288,6 @@
           },
           {
             "artist": "Martin Garrix",
-            "omtale" : "Martin Garrix (født 14. mai 1996 i Amstelveen) er en nederlandsk DJ (DJ). ",
             "billetterSolgt": 3423,
             "lys": [
               {
@@ -330,7 +328,6 @@
         "konsert": [
           {
             "artist": "Avenged Sevenfold",
-            "omtale" : "Avenged Sevenfold (også kjent som A7X) er et amerikansk hardrock/metalcore-band fra Huntington Beach, California. Bandets nåværende medlemmer er hovedvokalist M. Shadows, bakgrunnsvokalist og rytmegitarist Zacky Vengeance, bakgrunnsvokalist og hovedgitarist Synyster Gates, bakgrunnsvokalist og bassgitarist Johnny Christ, og trommeslager Brooks Wackerman. ",
             "billetterSolgt": 999,
             "lys": [
               {
@@ -365,7 +362,6 @@
           },
           {
             "artist": "Weezer",
-            "omtale": "Weezer er et amerikansk powerpop band grunnlagt i Los Angeles i 1992.",
             "billetterSolgt": 960,
             "lys": [
               {
@@ -406,7 +402,6 @@
         "konsert": [
           {
             "artist": "Rise Against",
-            "omtale": "Rise Against er et amerikansk punk rock-band fra Chicago, Illinois som ble stiftet i 1999. Nåværende medlemmer er Tim McIlrath (vokalist, gitar), Joe Principe (bass), Brandon Barnes (trommer) og Zach Blair (gitar).",
             "billetterSolgt": 200,
             "lys": [
               {
@@ -441,7 +436,6 @@
           },
           {
             "artist": "Astrid S",
-            "omtale": "Astrid Smeplass (født 29. oktober 1996 i Rennebu, Sør-Trøndelag), også kjent under artistnavnet Astrid S, er en norsk musiker og låtskriver som kom på femteplass i Idol 2013.",
             "billetterSolgt": 150,
             "lys": [
               {
@@ -489,7 +483,6 @@
         "konsert": [
           {
             "artist": "Macklemore",
-            "omtale": "Ben Haggerty (født 19. juni 1983 i Seattle, Washington), bedre kjent som Macklemore, er en amerikansk rapper. Macklemore jobber med Ryan Lewis som er producer, Andrew Joslyn som spiller fiolin og Owour Arunga som spiller trompet.",
             "billetterSolgt": 5500,
             "lys": [
               {
@@ -524,7 +517,6 @@
           },
           {
             "artist": "Calvin Harris",
-            "omtale": "Calvin Harris (født Adam Richard Wiles 17. januar 1984) er en skotsk sanger og låtskriver, plateprodusent og DJ. Hans gull-selgende debutalbum I Created Disco ble utgitt i 2007 og inneholdt topp-ti singlene Acceptable in the 80s og The Girls. Hans andre studioalbum, Ready for the Weekend (2009), nådde nummer én på UK Albums Chart[trenger referanse] og inkluderer I'm Not Alone, Storbritannias topp fem hit Ready for the Weekend, og singlene Flashback og You Used to Hold Me.",
             "billetterSolgt": 7000,
             "lys": [
               {
@@ -565,7 +557,6 @@
         "konsert": [
           {
             "artist": "Robyn",
-            "omtale": "Robin Miriam Carlsson (født 12. juni 1979), kjent under artistnavnet Robyn, er en svensk sangerinne og låtskriver.",
             "billetterSolgt": 950,
             "lys": [
               {
@@ -600,7 +591,6 @@
           },
           {
             "artist": "White Lies",
-            "omtale": "White Lies er en britisk trio som spiller postpunk/new wave. Gruppen startet opp i 2007 og i januar 2009 ga de ut To Lose My Life.",
             "billetterSolgt": 750,
             "lys": [
               {
@@ -641,7 +631,6 @@
         "konsert": [
           {
             "artist": "Lamark",
-            "omtale": "Sigurd Lamark (født 8. februar[trenger referanse] 1992) er en norsk musiker og låtskriver fra Bodø. Som artist bruker han gjerne bare etternavnet. Lamark vokste opp som en del av det gryende musikkmiljøet i Bodø, og spilte som ungdom i bandet I has a bucket! Han har vært tett knyttet til miljøet rundt Kulturhuset Gimle og X Rockeklubb. Lamark albumdebuterte som soloartist i 2014 med God nok grunn, et album som fikk gode kritikker.",
             "billetterSolgt": 150,
             "lys": [
               {
@@ -673,7 +662,6 @@
           },
           {
             "artist": "Arif",
-            "omtale": "omtale",
             "billetterSolgt": 160,
             "lys": [
               {
