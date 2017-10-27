@@ -53,10 +53,13 @@ public class Bookingansvarlig_controller {
     @FXML
     ListView listViewTekniskeBehov;
 
+    private boolean hasInitialized = false;
+
     public void initialize() {
         putItemsInLists();
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
         putGenreInList();
+        hasInitialized = true;
     }
 
     private void repeatFocus(Node node) {
@@ -70,8 +73,10 @@ public class Bookingansvarlig_controller {
 
     @FXML
     private void focusTabOne() {
-        repeatFocus(vBoxBands.getChildren().get(0));
-        putBandInfoInLists("Lorde");
+        if (hasInitialized) {
+            repeatFocus(vBoxBands.getChildren().get(0));
+            putBandInfoInLists("Lorde");
+        }
     }
 
     @FXML

@@ -38,7 +38,7 @@
          <center>
               <TabPane fx:id="tabPane" prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                   <tabs>
-                      <Tab fx:id="tabButt" onSelectionChanged="#focusTabOne" text="Nøkkelinformasjon om band">
+                      <Tab fx:id="tabButt" onSelectionChanged="#focusTabOne" text="Info om band">
                      <content>
                         <AnchorPane fx:id="tabAnchor" prefHeight="200.0" prefWidth="200.0">
                            <children>
