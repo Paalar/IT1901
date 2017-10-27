@@ -46,7 +46,6 @@ public class Main_controller {
                 main.changeView(rootPane, name);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Du må velge en jobb");
             }
         });
         return button;
