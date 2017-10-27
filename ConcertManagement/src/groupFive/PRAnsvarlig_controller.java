@@ -1,6 +1,8 @@
 package groupFive;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -30,6 +32,16 @@ public class PRAnsvarlig_controller {
     public void initialize() {
         putBandsInVbox("");
         putInfoInTextAreas(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist()); // Velger automatisk den først i listen til å vise.
+        repeatFocus(vBoxBands.getChildren().get(0));
+    }
+
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+                repeatFocus(node);
+            }
+        });
     }
 
     private void putInfoInTextAreas(String band) {
