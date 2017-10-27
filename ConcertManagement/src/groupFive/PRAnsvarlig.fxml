@@ -79,12 +79,12 @@
                      <children>
                         <Label text="E-post">
                            <graphic>
-                              <TextField fx:id="textFieldEmail" />
+                              <TextField fx:id="textFieldEmail" editable="false" />
                            </graphic>
                         </Label>
                         <Label text="Salgstall">
                            <graphic>
-                              <TextField fx:id="textFieldSales" />
+                              <TextField fx:id="textFieldSales" editable="false" />
                            </graphic>
                         </Label>
                      </children>
@@ -95,7 +95,7 @@
                            <children>
                               <HBox>
                                  <children>
-                                    <TextArea fx:id="textAreaOmtale" maxHeight="-Infinity" maxWidth="-Infinity" wrapText="true">
+                                    <TextArea fx:id="textAreaOmtale" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" wrapText="true">
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>
@@ -109,12 +109,12 @@
                               </HBox>
                               <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
                                  <graphic>
-                                    <TextField fx:id="textFieldLink1" prefWidth="483.0" />
+                                    <TextField fx:id="textFieldLink1" editable="false" prefWidth="483.0" />
                                  </graphic>
                               </Label>
                               <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
                                  <graphic>
-                                    <TextField fx:id="textFieldLink2" prefWidth="483.0" />
+                                    <TextField fx:id="textFieldLink2" editable="false" prefWidth="483.0" />
                                  </graphic>
                               </Label>
                            </children>
