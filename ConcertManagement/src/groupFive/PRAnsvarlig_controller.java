@@ -2,6 +2,7 @@ package groupFive;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -22,18 +23,27 @@ public class PRAnsvarlig_controller {
     @FXML
     private TextArea textAreaOmtale;
 
+    @FXML
+    private Label labelBandInfo;
+
 
     public void initialize() {
         putBandsInVbox("");
+        putInfoInTextAreas(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist()); // Velger automatisk den først i listen til å vise.
     }
 
     private void putInfoInTextAreas(String band) {
         String prevBand = band;
         String bandNoIllegalChars = removeIllegalCharsBan(band);
+        putArtistNameInLabel(prevBand);
         generateEmailAndPutInTextField(bandNoIllegalChars);
         generateSalesAndPutInTextField(prevBand);
         generateLinksAndPutInTextField(bandNoIllegalChars);
         putOmtaleInTextField(prevBand);
+    }
+
+    private void putArtistNameInLabel(String band) {
+        labelBandInfo.setText(band);
     }
 
     private String removeIllegalCharsBan(String band) {
