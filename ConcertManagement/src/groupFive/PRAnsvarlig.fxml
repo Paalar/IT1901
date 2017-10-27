@@ -20,7 +20,7 @@
               <buttons>
                   <Label />
                   <Label fx:id="labelArrTitle" alignment="CENTER" text="PR-Ansvarlig" />
-                <Button fx:id="goHome" onAction="#goHome" mnemonicParsing="false" prefHeight="27.0" prefWidth="762.0" text="Logg ut" />
+                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Logg ut" />
               </buttons>
             </ButtonBar>
          </top>
@@ -34,7 +34,7 @@
                                      <Insets bottom="5.0" top="10.0" />
                                  </VBox.margin>
                              </Label>
-                             <TextField fx:id="searchBand" alignment="CENTER" promptText="Søk.." />
+                             <TextField fx:id="searchBand" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk.." />
                          </children>
                          <VBox.margin>
                              <Insets />
@@ -79,12 +79,12 @@
                      <children>
                         <Label text="E-post">
                            <graphic>
-                              <TextField />
+                              <TextField fx:id="textFieldEmail" />
                            </graphic>
                         </Label>
                         <Label text="Salgstall">
                            <graphic>
-                              <TextField />
+                              <TextField fx:id="textFieldSales" />
                            </graphic>
                         </Label>
                      </children>
@@ -95,7 +95,7 @@
                            <children>
                               <HBox>
                                  <children>
-                                    <TextArea maxHeight="-Infinity" maxWidth="-Infinity">
+                                    <TextArea fx:id="textAreaOmtale" maxHeight="-Infinity" maxWidth="-Infinity">
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>
@@ -109,12 +109,12 @@
                               </HBox>
                               <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
                                  <graphic>
-                                    <TextField prefWidth="483.0" />
+                                    <TextField fx:id="textFieldLink1" prefWidth="483.0" />
                                  </graphic>
                               </Label>
                               <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
                                  <graphic>
-                                    <TextField prefWidth="483.0" />
+                                    <TextField fx:id="textFieldLink2" prefWidth="483.0" />
                                  </graphic>
                               </Label>
                            </children>
