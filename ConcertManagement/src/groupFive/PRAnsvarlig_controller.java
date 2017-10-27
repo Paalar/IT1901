@@ -30,10 +30,10 @@ public class PRAnsvarlig_controller {
     private void putInfoInTextAreas(String band) {
         String prevBand = band;
         String bandNoIllegalChars = removeIllegalCharsBan(band);
-        generateEmailAndPutInTextField(band);
-        generateSalesAndPutInTextField(band);
-        //putOmtaleInTextField(band);
-        //generateLinksAndPutInTextField(band);
+        generateEmailAndPutInTextField(bandNoIllegalChars);
+        generateSalesAndPutInTextField(prevBand);
+        generateLinksAndPutInTextField(bandNoIllegalChars);
+        putOmtaleInTextField(prevBand);
     }
 
     private String removeIllegalCharsBan(String band) {
@@ -45,6 +45,16 @@ public class PRAnsvarlig_controller {
         band = band.replace("æ", "ae");
         band = band.replace("ø", "o");
         return band;
+    }
+
+    private void putOmtaleInTextField(String band) {
+        String omtale = Filter.getOmtale(band);
+        textAreaOmtale.setText(omtale);
+    }
+
+    private void generateLinksAndPutInTextField(String band) {
+        textFieldLink1.setText("www.aftenpusten.no/" + band);
+        textFieldLink2.setText("www.vg.no/" + band);
     }
 
     private void generateSalesAndPutInTextField(String band) {

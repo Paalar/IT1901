@@ -95,7 +95,7 @@
                            <children>
                               <HBox>
                                  <children>
-                                    <TextArea fx:id="textAreaOmtale" maxHeight="-Infinity" maxWidth="-Infinity">
+                                    <TextArea fx:id="textAreaOmtale" maxHeight="-Infinity" maxWidth="-Infinity" wrapText="true">
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>
