@@ -43,6 +43,7 @@ public class Main extends Application {
     public void changeView(AnchorPane rootPane, String fxmlFile) {
         // Denne burde også legge til hva du har endret til i en stack så vi kan lett lage fram og tilbake knapper.
         fxmlFile = fxmlFile.replace("ø","o");
+        fxmlFile = fxmlFile.replace("-", "");
         constants.setPrev(constants.getCurrent());
         constants.setCurrent(fxmlFile);
         try {
