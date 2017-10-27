@@ -38,68 +38,11 @@
          <center>
               <TabPane fx:id="tabPane" prefHeight="677.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                   <tabs>
-                      <Tab fx:id="tabButt" text="Nøkkelinformasjon om band">
+                      <Tab fx:id="tabButt" onSelectionChanged="#focusTabOne" text="Nøkkelinformasjon om band">
                      <content>
                         <AnchorPane fx:id="tabAnchor" prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <center>
-                                    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <VBox>
-                                             <children>
-                                                <Label fx:id="labelBandInfo2" text="Behov">
-                                                   <font>
-                                                      <Font name="Arial Bold" size="13.0" />
-                                                   </font>
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" />
-                                                   </VBox.margin>
-                                                </Label>
-                                                         <ListView fx:id="listViewTekniskeBehov" />
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets left="130.0" top="10.0" />
-                                             </HBox.margin>
-                                          </VBox>
-                                                  <VBox>
-                                                      <children>
-                                                          <Label fx:id="labelBandInfo" text="Artist informasjon">
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font name="Arial Bold" size="13.0" />
-                                                   </font></Label>
-                                                <ListView fx:id="listviewPop">
-                                                   <VBox.margin>
-                                                      <Insets />
-                                                   </VBox.margin>
-                                                </ListView>
-                                                      </children>
-                                             <HBox.margin>
-                                                <Insets top="10.0" />
-                                             </HBox.margin>
-                                                  </VBox>
-                                          <VBox prefHeight="200.0">
-                                             <children>
-                                                        <Label text="Tidligere konserter i Norge">
-                                                   <VBox.margin>
-                                                      <Insets bottom="15.0" top="10.0" />
-                                                   </VBox.margin>
-                                                   <font>
-                                                      <Font name="Arial Bold" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                        <ListView fx:id="listViewEarlierConcerts" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <BorderPane.margin>
-                                          <Insets right="10.0" top="20.0" />
-                                       </BorderPane.margin>
-                                    </HBox>
-                                 </center>
                                  <left>
                                     <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                        <children>
@@ -153,6 +96,71 @@
                                        </BorderPane.margin>
                                     </VBox>
                                  </left>
+                                 <center>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <center>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Informasjon">
+                                                         <VBox.margin>
+                                                            <Insets bottom="15.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <ListView fx:id="listviewPop">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </ListView>
+                                                            </children>
+                                                   <HBox.margin>
+                                                      <Insets left="130.0" top="10.0" />
+                                                   </HBox.margin>
+                                                        </VBox>
+                                                <VBox prefHeight="200.0">
+                                                   <children>
+                                                              <Label text="Tidligere konserter i Norge">
+                                                         <VBox.margin>
+                                                            <Insets bottom="15.0" top="10.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font name="Arial Bold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                              <ListView fx:id="listViewEarlierConcerts" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <children>
+                                                      <Label fx:id="labelBandInfo2" text="Behov">
+                                                         <font>
+                                                            <Font name="Arial Bold" size="13.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets bottom="15.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                               <ListView fx:id="listViewTekniskeBehov" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <BorderPane.margin>
+                                                <Insets right="10.0" top="20.0" />
+                                             </BorderPane.margin>
+                                          </HBox>
+                                       </center>
+                                       <top>
+                                          <Label fx:id="labelBandInfo" text="Artist navn" BorderPane.alignment="CENTER" />
+                                       </top>
+                                    </BorderPane>
+                                 </center>
                               </BorderPane>
                            </children>
                            <padding>
@@ -245,7 +253,7 @@
                         </AnchorPane>
                           </content>
                       </Tab>
-                  <Tab fx:id="tabButt" text="Sjanger informasjon">
+                  <Tab fx:id="tabButt" onSelectionChanged="#focusTabThree" text="Tidligere konserter">
                      <content>
                         <AnchorPane fx:id="tabAnchor" prefHeight="200.0" prefWidth="200.0">
                            <children>

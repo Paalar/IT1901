@@ -200,7 +200,6 @@ public class Arrangor_controller {
                 showArbeidere(name);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Du må velge en jobb");
             }
         });
         return button;

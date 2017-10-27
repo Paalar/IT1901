@@ -3,11 +3,13 @@ package groupFive;
 import Json.Concert;
 import Json.Festival;
 import Json.Scene;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -48,6 +50,30 @@ public class Bookingsjef_controller {
         putScenesInVboxTab2();
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
+        repeatFocus(vBoxBands.getChildren().get(0));
+        generatePricesAndPutInTextAreas("Avenged Sevenfold");
+    }
+
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+                repeatFocus(node);
+            }
+        });
+    }
+
+
+    @FXML
+    private void focusTabOne() {
+        repeatFocus(vBoxBands.getChildren().get(0));
+        generatePricesAndPutInTextAreas("Avenged Sevenfold");
+    }
+
+    @FXML
+    private void foxusTabThree() {
+        repeatFocus(velgScene.getChildren().get(0));
+        generateReportAndPutInTable("Dødens dal");
     }
 
     @FXML

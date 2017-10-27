@@ -37,7 +37,7 @@
             <center>
                 <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                     <tabs>
-                        <Tab fx:id="tabButt" text="Forslag til billettpris">
+                        <Tab fx:id="tabButt" onSelectionChanged="#focusTabOne" text="Forslag til billettpris">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -152,7 +152,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="tabButt" text="Rapport">
+                        <Tab fx:id="tabButt" onSelectionChanged="#foxusTabThree" text="Rapport">
                             <content>
                                 <AnchorPane>
                                     <children>

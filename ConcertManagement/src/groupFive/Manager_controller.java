@@ -56,9 +56,10 @@ public class Manager_controller {
     @FXML
     private VBox needsNotSent1;
 
-    List<String> needsList = new ArrayList<>();
+    private List<String> needsList = new ArrayList<>();
 
-    List<Offer> offers = new ArrayList<>();
+    private List<Offer> offers = new ArrayList<>();
+    private String err = "error";
 
     @FXML
     public void initialize() {
@@ -99,7 +100,6 @@ public class Manager_controller {
                 updateInfo(name.getArtist(), name.getScene(), name.getDato(), name.getNeeds());
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Du må velge en jobb");
             }
         });
         return button;
@@ -146,7 +146,7 @@ public class Manager_controller {
     @FXML
     private  void sendTheNeeds(){
         if(artistNameString.equals("")){
-            alertShow("I have a bad message for you", "Du må velge en artist først");
+            alertShow(err, "Du må velge en artist først");
         }
         else {
             for (Festival f : Main.festivals) {
@@ -168,7 +168,7 @@ public class Manager_controller {
                 }
             }
             JsonInsert(Main.festivals);
-            alertShow("Information Dialog", "I have a great message for you! \nBehovene ble sendt!");
+            alertShow("Information Dialog", "Behovene ble sendt!");
         }
     }
 
@@ -215,7 +215,7 @@ public class Manager_controller {
     @FXML
     private void addItem(String itemMulti, String itemSingel){
         if(artistNameString.equals("")){
-            alertShow("I have a bad message for you", "Du må velge en artist først");
+            alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
         }
         else {
@@ -240,7 +240,7 @@ public class Manager_controller {
     @FXML
     private void delItem(String itemMulti, String itemSingel){
         if(artistNameString.equals("")){
-            alertShow("I have a bad message for you", "Du må velge en artist først");
+            alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
         }
         else {
@@ -266,7 +266,7 @@ public class Manager_controller {
                     }
                 }
             } catch (Exception e) {
-                alertShow("I have a bad message for you", "Du kan ikke slette noe som ikke er der");
+                alertShow(err, "Du kan ikke slette noe som ikke er der");
                 System.err.println(e.getMessage());
             }
         }
@@ -275,12 +275,12 @@ public class Manager_controller {
     @FXML
     private void delNeed(){
         if (artistNameString.equals("")){
-            alertShow("I have a bad message for you", "Du må velge en artist først");
+            alertShow(err, "Du må velge en artist først");
         }
         else {
             int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
             if(nrOfNeed == -1){
-                alertShow("I have a bad message", "Du må velge et behov først");
+                alertShow(err, "Du må velge et behov først");
             }
             else {
                 needsList.remove(nrOfNeed);
@@ -297,7 +297,7 @@ public class Manager_controller {
     @FXML
     private  void addNeedsToList(){
         if(artistNameString.equals("")){
-            alertShow("I have a bad message for you", "Du må velge en artist først");
+            alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
         }
         else {

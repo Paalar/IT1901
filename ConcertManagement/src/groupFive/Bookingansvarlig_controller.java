@@ -68,6 +68,18 @@ public class Bookingansvarlig_controller {
         });
     }
 
+    @FXML
+    private void focusTabOne() {
+        repeatFocus(vBoxBands.getChildren().get(0));
+        putBandInfoInLists("Lorde");
+    }
+
+    @FXML
+    private void focusTabThree() {
+        repeatFocus(vBoxGenre.getChildren().get(0));
+        putGenreInfoInLists("Pop");
+    }
+
     public Button createButtonTab(String buttonInput, String tab) {
         // Denne lager og returnerer en Button.
         final Button button = new Button(buttonInput);
@@ -206,7 +218,7 @@ public class Bookingansvarlig_controller {
             int pris = Integer.valueOf(textFieldPris.getText());
             JsonEncode.writeNewOffer(date, artist, pris);
         } catch (Exception e) {
-            System.out.println("Velg dato.");
+            //System.out.println("Velg dato.");
         }
         Popup.showPopup("Tilbud","Tilbud er nå sendt til godkjenning.", "");
         textFieldArtist.setText("");
