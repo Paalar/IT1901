@@ -44,6 +44,7 @@ public class Bookingsjef_controller {
 
     private List<Label> labels;
     private List<String> scenes = Arrays.asList("Dødens dal", "Storsalen", "Knaus");
+    private boolean hasInitialized = false;
 
     public void initialize() {
         putBandsInVboxTab1("");
@@ -52,6 +53,7 @@ public class Bookingsjef_controller {
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
         repeatFocus(vBoxBands.getChildren().get(0));
         generatePricesAndPutInTextAreas("Avenged Sevenfold");
+        hasInitialized = true;
     }
 
     private void repeatFocus(Node node) {
@@ -66,8 +68,10 @@ public class Bookingsjef_controller {
 
     @FXML
     private void focusTabOne() {
-        repeatFocus(vBoxBands.getChildren().get(0));
-        generatePricesAndPutInTextAreas("Avenged Sevenfold");
+        if(hasInitialized) {
+            repeatFocus(vBoxBands.getChildren().get(0));
+            generatePricesAndPutInTextAreas("Avenged Sevenfold");
+        }
     }
 
     @FXML
