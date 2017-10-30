@@ -232,77 +232,77 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                  <Tab fx:id="tabButt" text="Tilbud">
-                    <content>
-                      <AnchorPane>
-                           <children>
-                              <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <center>
-                                    <HBox prefHeight="300.0" prefWidth="980.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <VBox prefHeight="498.0" prefWidth="200.0">
-                                             <children>
-                                                <Label text="Ikke vurdert">
-                                                   <VBox.margin>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </VBox.margin>
+                        <Tab fx:id="tabButt" text="Tilbud">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <center>
+                                                <HBox prefHeight="300.0" prefWidth="980.0" BorderPane.alignment="CENTER">
+                                                    <children>
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Ikke vurdert">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                    </VBox.margin>
+                                                                </Label>
+                                                                <ListView fx:id="listNotEvaluated" />
+                                                                <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                                                    <buttons>
+                                                                        <Button fx:id="approveOfferButton" mnemonicParsing="false" onAction="#approveOffer" prefHeight="23.0" prefWidth="121.0" text="Godkjenn" translateX="-12.0" />
+                                                                        <Button fx:id="rejectOfferButton" mnemonicParsing="false" onAction="#declineOffer" prefWidth="121.0" text="Avslå" translateX="-10.0" />
+                                                                    </buttons>
+                                                                </ButtonBar>
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Godkjent">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                    </VBox.margin>
+                                                                </Label>
+                                                                <ListView fx:id="listAccepted" />
+                                                            </children>
+                                                        </VBox>
+                                                        <VBox>
+                                                            <children>
+                                                                <Label text="Avslått">
+                                                                    <VBox.margin>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                    </VBox.margin>
+                                                                </Label>
+                                                                <ListView fx:id="listDeclined" />
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                    <BorderPane.margin>
+                                                        <Insets left="250.0" top="30.0" />
+                                                    </BorderPane.margin>
+                                                </HBox>
+                                            </center>
+                                            <top>
+                                                <Label fx:id="labelBillettPris1" text="Oversikt over tilbud" BorderPane.alignment="CENTER">
+                                                    <padding>
+                                                        <Insets bottom="30.0" />
+                                                    </padding>
+                                                    <font>
+                                                        <Font name="Arial Bold" size="24.0" />
+                                                    </font>
+                                                    <BorderPane.margin>
+                                                        <Insets top="35.0" />
+                                                    </BorderPane.margin>
                                                 </Label>
-                                                <ListView prefHeight="200.0" prefWidth="200.0" />
-                                                <ButtonBar prefHeight="40.0" prefWidth="200.0">
-                                                  <buttons>
-                                                    <Button fx:id="approveOfferButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="121.0" text="Godkjenn" translateX="-12.0" />
-                                                      <Button fx:id="rejectOfferButton" mnemonicParsing="false" prefWidth="121.0" text="Avslå" translateX="-10.0" />
-                                                  </buttons>
-                                                </ButtonBar>
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="498.0" prefWidth="200.0">
-                                             <children>
-                                                <Label text="Godkjent">
-                                                   <VBox.margin>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </VBox.margin>
-                                                </Label>
-                                                <ListView prefHeight="200.0" prefWidth="200.0" />
-                                             </children>
-                                          </VBox>
-                                          <VBox prefHeight="498.0" prefWidth="200.0">
-                                             <children>
-                                                <Label text="Avslått">
-                                                   <VBox.margin>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                   </VBox.margin>
-                                                </Label>
-                                                <ListView prefHeight="200.0" prefWidth="200.0" />
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                       <BorderPane.margin>
-                                          <Insets left="320.0" top="30.0" />
-                                       </BorderPane.margin>
-                                    </HBox>
-                                 </center>
-                                 <top>
-                                    <Label fx:id="labelBillettPris1" text="Oversikt over tilbud" BorderPane.alignment="CENTER">
-                                       <padding>
-                                          <Insets bottom="30.0" />
-                                       </padding>
-                                       <font>
-                                          <Font name="Arial Bold" size="24.0" />
-                                       </font>
-                                       <BorderPane.margin>
-                                          <Insets top="35.0" />
-                                       </BorderPane.margin>
-                                    </Label>
-                                 </top>
-                                 <right>
-                                    <AnchorPane prefHeight="475.0" prefWidth="293.0" BorderPane.alignment="CENTER" />
-                                 </right>
-                              </BorderPane>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </Tab>
+                                            </top>
+                                            <right>
+                                                <AnchorPane prefHeight="475.0" prefWidth="293.0" BorderPane.alignment="CENTER" />
+                                            </right>
+                                        </BorderPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
                     </tabs>
                     <BorderPane.margin>
                         <Insets top="15.0" />

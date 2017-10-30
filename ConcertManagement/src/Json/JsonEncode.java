@@ -34,7 +34,7 @@ public class JsonEncode {
         konsert1.setPris(10001);
         concert.add(konsert1);
         festivals.get(0).getScene().get(0).setKonsert(concert);
-        
+
         */
 
         try (FileWriter writer = new FileWriter("src/resources/concertManagement.json")){
@@ -62,5 +62,22 @@ public class JsonEncode {
             e.printStackTrace();
         }
     }
-    
+
+    public static void acceptOrRejectOffer(String date, String artist, int price, String status) {
+        Offer offer = new Offer();
+        offer.setArtist(artist);
+        offer.setDato(date);
+        offer.setPris(price);
+        offer.setStatus(status);
+        Main.offers.add(offer);
+
+        try (FileWriter writer = new FileWriter("src/resources/offers.json")){
+            Gson newGson = new GsonBuilder().create();
+            newGson.toJson(offers, writer);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
