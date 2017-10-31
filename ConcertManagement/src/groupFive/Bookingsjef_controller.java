@@ -59,12 +59,13 @@ public class Bookingsjef_controller {
     }
 
     private void repeatFocus(Node node) {
-        Platform.runLater(() -> {
+        try {
             if (!node.isFocused()) {
                 node.requestFocus();
-                repeatFocus(node);
             }
-        });
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 
