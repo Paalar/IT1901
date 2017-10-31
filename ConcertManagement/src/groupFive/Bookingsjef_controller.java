@@ -188,9 +188,10 @@ public class Bookingsjef_controller {
                 }
             }
         }
+        int[] plasserArray = {7000, 1000, 200};
         for (int i = 0; i < 3; i++) {
             labels.get(i).setText(scenes.get(i));
-            int plasser = Filter.getSceneSize(scenes.get(i));
+            int plasser = plasserArray[i];
             double multipliers = prevConcertMultiplier * sales * popularity;
             if (multipliers < 1.0) {
                 multipliers += 1.0;
