@@ -36,12 +36,13 @@ public class PRAnsvarlig_controller {
     }
 
     private void repeatFocus(Node node) {
-        Platform.runLater(() -> {
+        try {
             if (!node.isFocused()) {
                 node.requestFocus();
-                repeatFocus(node);
             }
-        });
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private void putInfoInTextAreas(String band) {
