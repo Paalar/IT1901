@@ -233,11 +233,15 @@ public class Bookingsjef_controller {
         listNotEvaluated.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                String clicked = listNotEvaluated.getSelectionModel().getSelectedItem().toString();
-                clicked = clicked.split(" - ")[0];
-                clicked = clicked.replaceAll("[\\t\\n]+", "");
-                // fjerner alle tabs og new lines.
-                offerBandSelected = clicked;
+                try {
+                    String clicked = listNotEvaluated.getSelectionModel().getSelectedItem().toString();
+                    clicked = clicked.split(" - ")[0];
+                    clicked = clicked.replaceAll("[\\t\\n]+", "");
+                    // fjerner alle tabs og new lines.
+                    offerBandSelected = clicked;
+                } catch (Exception e) {
+                    System.out.println("Du har ingen i listen.");
+                }
             }
         });
     }
