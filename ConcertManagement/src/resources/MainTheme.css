@@ -66,7 +66,7 @@
            linear-gradient(#D6C5CA, #B697A0);
 }
 
-#addButton, #deleteButton, #sendButton, #addNeed {
+#addButton, #deleteButton, #sendButton, #addNeed, #approveOfferButton, #rejectOfferButton {
     -fx-background-color: #A6808C,
         linear-gradient(#AE8B96, #795E66);
     -fx-text-fill: #D6C5BC;

@@ -1,17 +1,17 @@
 package groupFive;
 
-import Json.Concert;
-import Json.Festival;
-import Json.Scene;
+import Json.*;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Filter;
@@ -40,28 +40,27 @@ public class Bookingsjef_controller {
     private Label labelScene1, labelScene2, labelScene3, labelBillettPris;
 
     @FXML
-    private ListView listViewFestival, listViewArtist, listViewSjanger, listViewPlasser, listViewBillettpris, listViewArtistpris, listViewEconomy;
+    private ListView listViewFestival, listViewArtist, listViewSjanger, listViewPlasser, listViewBillettpris, listViewArtistpris, listViewEconomy, listNotEvaluated, listAccepted, listDeclined;
 
     private List<Label> labels;
     private List<String> scenes = Arrays.asList("Dødens dal", "Storsalen", "Knaus");
     private boolean hasInitialized = false;
+    private String offerBandSelected;
 
     public void initialize() {
         putBandsInVboxTab1("");
         putScenesInVboxTab2();
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
-        repeatFocus(vBoxBands.getChildren().get(0));
         generatePricesAndPutInTextAreas("Avenged Sevenfold");
         hasInitialized = true;
+        putOffersInLists();
+        focusTabOne();
     }
 
     private void repeatFocus(Node node) {
         Platform.runLater(() -> {
-            if (!node.isFocused()) {
-                node.requestFocus();
-                repeatFocus(node);
-            }
+            node.requestFocus();
         });
     }
 
@@ -185,9 +184,10 @@ public class Bookingsjef_controller {
                 }
             }
         }
+        int[] plasserArray = {7000, 1000, 200};
         for (int i = 0; i < 3; i++) {
             labels.get(i).setText(scenes.get(i));
-            int plasser = Filter.getSceneSize(scenes.get(i));
+            int plasser = plasserArray[i];
             double multipliers = prevConcertMultiplier * sales * popularity;
             if (multipliers < 1.0) {
                 multipliers += 1.0;
@@ -207,5 +207,66 @@ public class Bookingsjef_controller {
     @FXML
     private void onKeyPressSearchBar() {
         putBandsInVboxTab1(textFieldSearchBar.getText().toString());
+    }
+
+
+    private void putOffersInLists() {
+        ObservableList<String> offersNotEval = FXCollections.observableArrayList();
+        ObservableList<String> offersRejected = FXCollections.observableArrayList();
+        ObservableList<String> offersAccepted = FXCollections.observableArrayList();
+        for (Offer o : Main.offers) {
+            if (o.getStatus().equals("ikke vurdert")) {
+                offersNotEval.add(o.getArtist() + " - " +  o.getDato() + " - " + o.getPris());
+            } else if (o.getStatus().equals("ikke godkjent")) {
+                offersRejected.add(o.getArtist() + " - " + o.getDato() + " - " + o.getPris());
+            } else {
+                offersAccepted.add(o.getArtist() + " - " + o.getDato() + " - " + o.getPris());
+            }
+        }
+        listAccepted.setItems(offersAccepted);
+        listDeclined.setItems(offersRejected);
+        listNotEvaluated.setItems(offersNotEval);
+
+        listNotEvaluated.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    String clicked = listNotEvaluated.getSelectionModel().getSelectedItem().toString();
+                    clicked = clicked.split(" - ")[0];
+                    clicked = clicked.replaceAll("[\\t\\n]+", "");
+                    // fjerner alle tabs og new lines.
+                    offerBandSelected = clicked;
+                } catch (Exception e) {
+                    System.out.println("Du har ingen i listen.");
+                }
+            }
+        });
+    }
+
+    private void approveOrDecline(String status) {
+        if (offerBandSelected != null) {
+            for (Offer o : Main.offers) {
+                if (o.getArtist().equals(offerBandSelected)) {
+                    String dato = o.getDato();
+                    String artist = o.getArtist();
+                    int pris = o.getPris();
+                    Main.offers.remove(o);
+                    JsonEncode.acceptOrRejectOffer(dato, artist, pris, status);
+                    putOffersInLists();
+                    offerBandSelected = null;
+                    break;
+                }
+            }
+        }
+    }
+
+    @FXML
+    private void approveOffer() {
+        approveOrDecline("godkjent");
+    }
+
+    @FXML
+    private void declineOffer() {
+        approveOrDecline("ikke godkjent");
     }
 }
