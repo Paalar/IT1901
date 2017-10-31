@@ -52,20 +52,16 @@ public class Bookingsjef_controller {
         putScenesInVboxTab2();
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
-        repeatFocus(vBoxBands.getChildren().get(0));
         generatePricesAndPutInTextAreas("Avenged Sevenfold");
         hasInitialized = true;
         putOffersInLists();
+        focusTabOne();
     }
 
     private void repeatFocus(Node node) {
-        try {
-            if (!node.isFocused()) {
-                node.requestFocus();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        Platform.runLater(() -> {
+            node.requestFocus();
+        });
     }
 
 
