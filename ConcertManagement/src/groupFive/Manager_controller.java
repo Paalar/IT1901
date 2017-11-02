@@ -1,7 +1,9 @@
 package groupFive;
 
 import Json.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import util.Constants;
@@ -43,6 +45,8 @@ public class Manager_controller {
     private String needString;
     private String datoString;
     private List<ListView> listViews;
+
+    private Button buttonName;
 
     @FXML
     private Button sendButton;
@@ -96,6 +100,7 @@ public class Manager_controller {
         button.setPrefSize(200,20);
         button.setOnMouseClicked(event -> {
             try {
+                buttonName = button;
                 needListAdded.getItems().clear();
                 updateInfo(name.getArtist(), name.getScene(), name.getDato(), name.getNeeds());
             } catch (Exception e) {
@@ -175,41 +180,57 @@ public class Manager_controller {
     @FXML
     private void addHoy(){
         addItem("Høyttalere", "Høyttaler");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void addMic(){
         addItem("Mikrofoner", "Mikrofon");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void addMon(){
         addItem("Monitorer", "Monitor");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void addSing(){
-        addItem("Sangere", "Sanger");
+        addItem("Sangere", "Bakgrunnssanger");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void delHoy() {
         delItem("Høyttalere", "Høyttaler");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void delMic(){
         delItem("Mikrofoner", "Mikrofon");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void delMon(){
         delItem("Monitorer", "Monitor");
+        repeatFocus(buttonName);
     }
 
     @FXML
     private void delSing(){
         delItem("Sangere", "Sanger");
+        repeatFocus(buttonName);
+    }
+
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+            }
+        });
     }
 
     @FXML

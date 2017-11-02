@@ -31,19 +31,8 @@ public class PRAnsvarlig_controller {
 
     public void initialize() {
         putBandsInVbox("");
-        putInfoInTextAreas(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist()); // Velger automatisk den først i listen til å vise.
-        repeatFocus(vBoxBands.getChildren().get(0));
     }
 
-    private void repeatFocus(Node node) {
-        try {
-            if (!node.isFocused()) {
-                node.requestFocus();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
 
     private void putInfoInTextAreas(String band) {
         String prevBand = band;

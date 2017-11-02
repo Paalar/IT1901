@@ -93,7 +93,7 @@
                      <children>
                         <VBox spacing="10.0">
                            <children>
-                              <Label fx:id="labelBandInfo" text="Label" />
+                              <Label fx:id="labelBandInfo" text="Velg en artist" />
                               <HBox>
                                  <children>
                                     <TextArea fx:id="textAreaOmtale" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" wrapText="true">

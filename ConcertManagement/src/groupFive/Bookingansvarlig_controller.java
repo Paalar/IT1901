@@ -60,13 +60,13 @@ public class Bookingansvarlig_controller {
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
         putGenreInList();
         hasInitialized = true;
+        focusTabOne();
     }
 
     private void repeatFocus(Node node) {
         Platform.runLater(() -> {
             if (!node.isFocused()) {
                 node.requestFocus();
-                repeatFocus(node);
             }
         });
     }

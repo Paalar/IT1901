@@ -230,7 +230,7 @@
                                                                 <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="300.0" promptText="Velg en dato" />
                                                             </graphic>
                                                 </Label>
-                                                        <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#sendOffer" prefWidth="100.0" text="Send Tilbud">
+                                                        <Button fx:id="approveOfferButton" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendOffer" prefWidth="100.0" text="Send Tilbud">
                                                    <VBox.margin>
                                                       <Insets left="100.0" />
                                                    </VBox.margin>
