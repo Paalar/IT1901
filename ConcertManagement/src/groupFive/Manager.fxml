@@ -142,7 +142,7 @@
                         <VBox prefWidth="100.0" spacing="5.0">
                            <children>
                               <Label alignment="CENTER" prefWidth="150.0" text="Legg til:" />
-                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="1x bakgrunnssanger">
+                              <Button fx:id="addNeed" mnemonicParsing="false" onAction="#addSing" prefHeight="20.0" prefWidth="150.0" text="1x Sanger">
                                   <VBox.margin>
                                       <Insets />
                                   </VBox.margin>

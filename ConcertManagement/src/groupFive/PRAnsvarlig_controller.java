@@ -31,6 +31,16 @@ public class PRAnsvarlig_controller {
 
     public void initialize() {
         putBandsInVbox("");
+        putInfoInTextAreas(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist());
+        repeatFocus(vBoxBands.getChildren().get(0));
+    }
+
+    private void repeatFocus(Node node) {
+        Platform.runLater(() -> {
+            if (!node.isFocused()) {
+                node.requestFocus();
+            }
+        });
     }
 
 

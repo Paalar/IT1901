@@ -197,7 +197,7 @@ public class Manager_controller {
 
     @FXML
     private void addSing(){
-        addItem("Sangere", "Bakgrunnssanger");
+        addItem("Sangere", "Sanger");
         repeatFocus(buttonName);
     }
 
