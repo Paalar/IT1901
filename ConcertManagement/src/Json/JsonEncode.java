@@ -4,8 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import groupFive.Main;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 import static groupFive.Main.offers;
@@ -13,7 +12,7 @@ import static groupFive.Main.offers;
 public class JsonEncode {
 
     public static void JsonInsert(List<Festival> festivals) {
-        try (FileWriter writer = new FileWriter("src/resources/concertManagement.json")) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream("src/resources/concertManagement.json") , "UTF-8")) {
             Gson newGson = new GsonBuilder().create();
             newGson.toJson(festivals, writer);
 
@@ -29,8 +28,7 @@ public class JsonEncode {
         offer.setPris(price);
         offer.setStatus("ikke vurdert");
         Main.offers.add(offer);
-
-        try (FileWriter writer = new FileWriter("src/resources/offers.json")) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream("src/resources/offers.json") , "UTF-8")) {
             Gson newGson = new GsonBuilder().create();
             newGson.toJson(offers, writer);
 
@@ -47,7 +45,7 @@ public class JsonEncode {
         offer.setStatus(status);
         Main.offers.add(offer);
 
-        try (FileWriter writer = new FileWriter("src/resources/offers.json")) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream("src/resources/offers.json") , "UTF-8")) {
             Gson newGson = new GsonBuilder().create();
             newGson.toJson(offers, writer);
 
