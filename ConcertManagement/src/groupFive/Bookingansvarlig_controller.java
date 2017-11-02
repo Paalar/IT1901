@@ -15,10 +15,12 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import util.Constants;
 import util.Filter;
 import util.Popup;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +63,33 @@ public class Bookingansvarlig_controller {
         putGenreInList();
         hasInitialized = true;
         focusTabOne();
+        fixDatePicker();
+    }
+
+    private void fixDatePicker() {
+        String[] festivalStart = Main.festivals.get(0).getDatoStart().split("-");
+        Callback<DatePicker, DateCell> dayCellFactor = new Callback<DatePicker, DateCell>() {
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        String[] festivalStart = Main.festivals.get(0).getDatoStart().split("-");
+                        String[] festivalSlutt = Main.festivals.get(0).getDatoSlutt().split("-");
+                        if (item.isBefore(LocalDate.of(Integer.parseInt(festivalStart[2]),Integer.parseInt(festivalStart[1]),Integer.parseInt(festivalStart[0])))) {
+                            setEditable(false);
+                            setDisable(true);
+                            setStyle("-fx-background-color: rgba(255,134,90,0);");
+                        }
+                        if (item.isAfter(LocalDate.of(Integer.parseInt(festivalSlutt[2]),Integer.parseInt(festivalSlutt[1]),Integer.parseInt(festivalSlutt[0])))){
+                            setEditable(false);
+                            setDisable(true);
+                            setStyle("-fx-background-color: rgba(255,134,90,0);");
+                        }
+                    }
+                };
+            }
+        };
+        datePicker.setDayCellFactory(dayCellFactor);
     }
 
     private void repeatFocus(Node node) {
