@@ -6,25 +6,17 @@ import Json.JsonEncode;
 import Json.Scene;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
-import util.Constants;
 import util.Filter;
 import util.Popup;
-
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import static util.Filter.*;
 
 public class BookingansvarligController {
@@ -250,9 +242,8 @@ public class BookingansvarligController {
 
 
     @FXML
-    private void goHome(){
+    private void goHome() {
         Main main = new Main();
-        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
 }

@@ -6,21 +6,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.MainController">
- <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-           <Label fx:id="titleLabel" text="Concert Management" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets top="50.0" />
-               </padding></Label>
-         </top>
-         <center>
-           <VBox id="jobsList" fx:id="jobsList" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
-         </center>
-      </BorderPane>
- </children>
+<AnchorPane fx:id="rootPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0"
+            minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="background"
+            stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.MainController">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <Label fx:id="titleLabel" text="Concert Management" textAlignment="CENTER"
+                       BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets/>
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets top="50.0"/>
+                    </padding>
+                </Label>
+            </top>
+            <center>
+                <VBox id="jobsList" fx:id="jobsList" prefHeight="200.0" prefWidth="100.0"
+                      BorderPane.alignment="CENTER"/>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>

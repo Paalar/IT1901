@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import util.Constants;
 import util.Filter;
 
 import Json.*;
@@ -116,16 +115,8 @@ public class TeknikerController {
     }
 
     @FXML
-    private void goBack(){
-        String fxmlFileName = "Main";
+    private void goHome() {
         Main main = new Main();
-        main.changeView(rootPane, fxmlFileName);
-    }
-
-    @FXML
-    private void goHome(){
-        Main main = new Main();
-        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
 }

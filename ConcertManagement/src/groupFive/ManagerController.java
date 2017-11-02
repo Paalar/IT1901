@@ -6,10 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ManagerController {
     private ListView needListAdded;
 
     @FXML
-    private  TextField listOfNeedsAddedLabel;
+    private TextField listOfNeedsAddedLabel;
 
     @FXML
     private TextField need;
@@ -42,9 +42,7 @@ public class ManagerController {
 
     private String artistNameString = "";
     private String sceneNameString;
-    private String needString;
     private String datoString;
-    private List<ListView> listViews;
 
     private Button buttonName;
 
@@ -69,18 +67,18 @@ public class ManagerController {
     public void initialize() {
         // listViews = Arrays.asList(listOfOfferView, needListAdded);
         for (Scene scene : Main.festivals.get(0).getScene()) {
-            for (Concert conert : scene.getKonsert()){
+            for (Concert conert : scene.getKonsert()) {
                 List<Json.tekniskeBehov> behov = conert.getTekniskeBehov();
                 ArrayList<String> behovs = new ArrayList<>();
-                for (int n = 0; n < behov.size(); n++){
+                for (int n = 0; n < behov.size(); n++) {
                     behovs.add(behov.get(n).getBehov());
                 }
-                    String artist = conert.getArtist();
-                    String sceneName = scene.getNavn();
-                    String dato = conert.getDato();
-                    int pris = conert.getPris();
-                    Offer newOffer = new Offer(artist, sceneName, dato, pris, behovs);
-                    offers.add(newOffer);
+                String artist = conert.getArtist();
+                String sceneName = scene.getNavn();
+                String dato = conert.getDato();
+                int pris = conert.getPris();
+                Offer newOffer = new Offer(artist, sceneName, dato, pris, behovs);
+                offers.add(newOffer);
             }
         }
         //hideStuffOrShow(false);
@@ -97,7 +95,7 @@ public class ManagerController {
     private Button createButton(Offer name) {
         final Button button = new Button(name.getArtist());
         button.setId("offerButt");
-        button.setPrefSize(200,20);
+        button.setPrefSize(200, 20);
         button.setOnMouseClicked(event -> {
             try {
                 buttonName = button;
@@ -111,7 +109,7 @@ public class ManagerController {
     }
 
     @FXML
-    private void alertShow(String title, String contentText){
+    private void alertShow(String title, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -120,12 +118,12 @@ public class ManagerController {
     }
 
     @FXML
-    private void showWithMouseClick(){
+    private void showWithMouseClick() {
         hideStuffOrShow(true);
     }
 
     @FXML
-    private void hideStuffOrShow(boolean what){
+    private void hideStuffOrShow(boolean what) {
         addButton.setVisible(what);
         need.setVisible(what);
         artist.setVisible(what);
@@ -137,23 +135,23 @@ public class ManagerController {
     }
 
     @FXML
-    private void goBack(){
+    private void goBack() {
         String fxmlFileName = "Main";
         Main main = new Main();
         main.changeView(rootPane, fxmlFileName);
     }
 
     @FXML
-    private void goHome(){
+    private void goHome() {
         Main main = new Main();
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
+
     @FXML
-    private  void sendTheNeeds(){
-        if(artistNameString.equals("")){
+    private void sendTheNeeds() {
+        if (artistNameString.equals("")) {
             alertShow(err, "Du må velge en artist først");
-        }
-        else {
+        } else {
             for (Festival f : Main.festivals) {
                 if (f.getFestival().equals("UKA 2017")) { //Endrer bare behov på UKA 2017 og ikke de andre gamle.
                     for (Scene s : f.getScene()) {
@@ -178,25 +176,25 @@ public class ManagerController {
     }
 
     @FXML
-    private void addHoy(){
+    private void addHoy() {
         addItem("Høyttalere", "Høyttaler");
         repeatFocus(buttonName);
     }
 
     @FXML
-    private void addMic(){
+    private void addMic() {
         addItem("Mikrofoner", "Mikrofon");
         repeatFocus(buttonName);
     }
 
     @FXML
-    private void addMon(){
+    private void addMon() {
         addItem("Monitorer", "Monitor");
         repeatFocus(buttonName);
     }
 
     @FXML
-    private void addSing(){
+    private void addSing() {
         addItem("Sangere", "Sanger");
         repeatFocus(buttonName);
     }
@@ -208,19 +206,19 @@ public class ManagerController {
     }
 
     @FXML
-    private void delMic(){
+    private void delMic() {
         delItem("Mikrofoner", "Mikrofon");
         repeatFocus(buttonName);
     }
 
     @FXML
-    private void delMon(){
+    private void delMon() {
         delItem("Monitorer", "Monitor");
         repeatFocus(buttonName);
     }
 
     @FXML
-    private void delSing(){
+    private void delSing() {
         delItem("Sangere", "Sanger");
         repeatFocus(buttonName);
     }
@@ -234,12 +232,11 @@ public class ManagerController {
     }
 
     @FXML
-    private void addItem(String itemMulti, String itemSingel){
-        if(artistNameString.equals("")){
+    private void addItem(String itemMulti, String itemSingel) {
+        if (artistNameString.equals("")) {
             alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
-        }
-        else {
+        } else {
             boolean check = false;
             for (String s : needsList) {
                 if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
@@ -259,12 +256,11 @@ public class ManagerController {
     }
 
     @FXML
-    private void delItem(String itemMulti, String itemSingel){
-        if(artistNameString.equals("")){
+    private void delItem(String itemMulti, String itemSingel) {
+        if (artistNameString.equals("")) {
             alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
-        }
-        else {
+        } else {
             try {
                 for (String s : needsList) {
                     if (s.toLowerCase().contains(itemMulti.toLowerCase())) {
@@ -279,8 +275,7 @@ public class ManagerController {
                             needsList.set(needsList.indexOf(s), nr + " " + itemSingel);
                             popListView(needsList, needListAdded);
                         }
-                    }
-                    else if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
+                    } else if (s.toLowerCase().contains(itemSingel.toLowerCase())) {
                         needsList.remove(needsList.indexOf(s));
                         popListView(needsList, needListAdded);
                         break;
@@ -294,34 +289,31 @@ public class ManagerController {
     }
 
     @FXML
-    private void delNeed(){
-        if (artistNameString.equals("")){
+    private void delNeed() {
+        if (artistNameString.equals("")) {
             alertShow(err, "Du må velge en artist først");
-        }
-        else {
+        } else {
             int nrOfNeed = needListAdded.getSelectionModel().getSelectedIndex();
-            if(nrOfNeed == -1){
+            if (nrOfNeed == -1) {
                 alertShow(err, "Du må velge et behov først");
-            }
-            else {
+            } else {
                 needsList.remove(nrOfNeed);
                 popListView(needsList, needListAdded);
             }
         }
     }
 
-    private void popListView (List<String> needList, ListView listArea){
+    private void popListView(List<String> needList, ListView listArea) {
         ObservableList<String> obsList = FXCollections.observableArrayList(needList);
         listArea.setItems(obsList);
     }
 
     @FXML
-    private  void addNeedsToList(){
-        if(artistNameString.equals("")){
+    private void addNeedsToList() {
+        if (artistNameString.equals("")) {
             alertShow(err, "Du må velge en artist først");
             inputFieldNeed.setText("");
-        }
-        else {
+        } else {
             String aNeed = inputFieldNeed.getText();
             needsList.add(aNeed);
             popListView(needsList, needListAdded);
@@ -330,30 +322,30 @@ public class ManagerController {
     }
 
     @FXML
-    private void updateScene(String sceneName){
+    private void updateScene(String sceneName) {
         this.scene.setText("Scene: " + sceneName);
         this.sceneNameString = sceneName;
     }
 
     @FXML
-    private void updateArtistName(String artistName){
+    private void updateArtistName(String artistName) {
         this.artist.setText("Artist: " + artistName);
         this.sceneNameString = artistName;
     }
 
     @FXML
-    private  void updateDate(String dato){
+    private void updateDate(String dato) {
         this.date.setText("Dato: " + dato);
         this.datoString = dato;
     }
 
     @FXML
-    private  void updateInfo(String artistName, String sceneName, String dato, ArrayList<String> artistsNeeds){
+    private void updateInfo(String artistName, String sceneName, String dato, ArrayList<String> artistsNeeds) {
         this.artistNameString = artistName;
         this.sceneNameString = sceneName;
         this.datoString = dato;
         this.needsList = artistsNeeds;
-        if(!artistsNeeds.isEmpty()){
+        if (!artistsNeeds.isEmpty()) {
             popListView(artistsNeeds, needListAdded);
         }
         updateArtistName(artistName);
