@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import util.Constants;
 import util.Filter;
 
 import Json.*;
@@ -15,7 +14,7 @@ import Json.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekniker_controller {
+public class TeknikerController {
     private final String UKA = "UKA 2017";
     @FXML
     private TextField textFieldSearch;
@@ -116,16 +115,8 @@ public class Tekniker_controller {
     }
 
     @FXML
-    private void goBack(){
-        String fxmlFileName = "Main";
+    private void goHome() {
         Main main = new Main();
-        main.changeView(rootPane, fxmlFileName);
-    }
-
-    @FXML
-    private void goHome(){
-        Main main = new Main();
-        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
 }

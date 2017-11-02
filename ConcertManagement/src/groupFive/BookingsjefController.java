@@ -2,28 +2,22 @@ package groupFive;
 
 import Json.*;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import util.Filter;
-
-import javax.xml.soap.Text;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Bookingsjef_controller {
+public class BookingsjefController {
 
     @FXML
     private AnchorPane rootPane;
@@ -71,7 +65,7 @@ public class Bookingsjef_controller {
 
     @FXML
     private void focusTabOne() {
-        if(hasInitialized) {
+        if (hasInitialized) {
             repeatFocus(vBoxBands.getChildren().get(0));
             generatePricesAndPutInTextAreas("Avenged Sevenfold");
         }
@@ -84,7 +78,7 @@ public class Bookingsjef_controller {
     }
 
     @FXML
-    private void goBack(){
+    private void goBack() {
         String fxmlFileName = "Main";
         Main main = new Main();
         main.changeView(rootPane, fxmlFileName);
@@ -94,7 +88,7 @@ public class Bookingsjef_controller {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
-        button.setPrefSize(200,20);
+        button.setPrefSize(200, 20);
         button.setOnMouseClicked(event -> {
             if (whichTab == 1) {
                 generatePricesAndPutInTextAreas(name);
@@ -173,8 +167,8 @@ public class Bookingsjef_controller {
 
     private void generatePricesAndPutInTextAreas(String band) {
         labelBillettPris.setText("Forslag til billettpris : " + band);
-        double popularity = (double)(Filter.getPopularity(band)) / 100.0;
-        double sales = (double)(Filter.getSales(band)) / 100.0;
+        double popularity = (double) (Filter.getPopularity(band)) / 100.0;
+        double sales = (double) (Filter.getSales(band)) / 100.0;
         int pris = Filter.getPrice(band);
         double prevConcertMultiplier = 0.0;
         for (Festival f : Main.festivals) {
@@ -182,7 +176,7 @@ public class Bookingsjef_controller {
                 for (Concert c : s.getKonsert()) {
                     if (c.getArtist().equals(band)) {
                         // Sist spilte konserten.
-                        prevConcertMultiplier = 2.0 * ((float)(c.getBilletterSolgt()) / (float)(s.getPlasser()));
+                        prevConcertMultiplier = 2.0 * ((float) (c.getBilletterSolgt()) / (float) (s.getPlasser()));
                         break;
                     }
                 }
@@ -196,12 +190,12 @@ public class Bookingsjef_controller {
             if (multipliers < 1.0) {
                 multipliers += 1.0;
             }
-            int generatedPrice =(int)(pris / plasser * multipliers);
+            int generatedPrice = (int) (pris / plasser * multipliers);
             //int generatedPrice = (int)(prevConcertMultiplier * ((sales*popularity*10+ pris)/ plasser));
             String toAdd = "";
             toAdd += "Forslag billettpris kr " + Integer.toString(generatedPrice) + "\n";
             toAdd += "Artisten koster kr " + pris + "\n";
-            toAdd += "Om du selger " + plasser + " billetter,\ntjener du kr " + String.valueOf((plasser * generatedPrice)- pris);
+            toAdd += "Om du selger " + plasser + " billetter,\ntjener du kr " + String.valueOf((plasser * generatedPrice) - pris);
             textAreas.get(i).setEditable(true);
             textAreas.get(i).setText(toAdd);
         }
@@ -220,7 +214,7 @@ public class Bookingsjef_controller {
         ObservableList<String> offersAccepted = FXCollections.observableArrayList();
         for (Offer o : Main.offers) {
             if (o.getStatus().equals("ikke vurdert")) {
-                offersNotEval.add(o.getArtist() + " - " +  o.getDato() + " - " + o.getPris());
+                offersNotEval.add(o.getArtist() + " - " + o.getDato() + " - " + o.getPris());
             } else if (o.getStatus().equals("ikke godkjent")) {
                 offersRejected.add(o.getArtist() + " - " + o.getDato() + " - " + o.getPris());
             } else {
@@ -301,16 +295,16 @@ public class Bookingsjef_controller {
             }
             vBoxDatoer.getChildren().add(hbox);
         }
-        totaltDod.setText("Totalt: " + String.valueOf(sumBusyScenes[0]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
-        totalStor.setText("Totalt: " + String.valueOf(sumBusyScenes[1]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
-        totalKnaus.setText("Totalt: " + String.valueOf(sumBusyScenes[2]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
+        totaltDod.setText("Totalt: " + String.valueOf(sumBusyScenes[0]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalStor.setText("Totalt: " + String.valueOf(sumBusyScenes[1]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalKnaus.setText("Totalt: " + String.valueOf(sumBusyScenes[2]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
 
     }
 
     public TextField createTextField(String name, String color) {
         final TextField textField = new TextField(name);
         textField.setId("");
-        textField.setPrefSize(275,20);
+        textField.setPrefSize(275, 20);
         textField.setFont(Font.font("Arial", 15));
         textField.setStyle("-fx-background-color:" + color);
         return textField;

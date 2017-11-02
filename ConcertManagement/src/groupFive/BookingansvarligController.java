@@ -6,26 +6,20 @@ import Json.JsonEncode;
 import Json.Scene;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import util.Constants;
 import util.Filter;
 import util.Popup;
-
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import static util.Filter.*;
 
-public class Bookingansvarlig_controller {
+public class BookingansvarligController {
     @FXML
     private CheckBox remove2017;
 
@@ -60,13 +54,13 @@ public class Bookingansvarlig_controller {
         putBandInfoInLists("Lorde"); // Hardcoded Lorde fordi det var den første i listen.
         putGenreInList();
         hasInitialized = true;
+        focusTabOne();
     }
 
     private void repeatFocus(Node node) {
         Platform.runLater(() -> {
             if (!node.isFocused()) {
                 node.requestFocus();
-                repeatFocus(node);
             }
         });
     }
@@ -219,6 +213,21 @@ public class Bookingansvarlig_controller {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try {
             String date = datePicker.getValue().format(formatter);
+            int[] dateSplitted = new int[3];
+            int[] festivalStart = new int[3];
+            int[] festivalSlutt = new int[3];
+            for (int i = 0; i < 3; i++) {
+                dateSplitted[i] = Integer.valueOf(date.split("-")[i]);
+                festivalStart[i] = Integer.valueOf(Main.festivals.get(0).getDatoStart().split("-")[i]);
+                festivalSlutt[i] = Integer.valueOf(Main.festivals.get(0).getDatoSlutt().split("-")[i]);
+            }
+
+
+            if (!(dateSplitted[2] == festivalStart[2] && dateSplitted[1] == festivalStart[1] && dateSplitted[0] >= festivalStart[0] && dateSplitted[0] <= festivalSlutt[0])) {
+                Popup.showPopup("Tilbud","Dato er ikke innenfor festivalen.", "");
+                return;
+            }
+
             String artist = textFieldArtist.getText();
             int pris = Integer.valueOf(textFieldPris.getText());
             JsonEncode.writeNewOffer(date, artist, pris);
@@ -233,9 +242,8 @@ public class Bookingansvarlig_controller {
 
 
     @FXML
-    private void goHome(){
+    private void goHome() {
         Main main = new Main();
-        //Constants.emptyStack(); Jeg kommenterte ut linjen som ikke virker.
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
 }

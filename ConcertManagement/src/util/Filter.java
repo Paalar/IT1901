@@ -5,7 +5,6 @@ import groupFive.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,6 +16,7 @@ public class Filter {
         }
         return concerts;
     }
+
     public static List<Concert> getAllConcerts(String festival) {
         List<Concert> concerts = new ArrayList<>();
         for (Festival f : Main.festivals) {
@@ -138,7 +138,7 @@ public class Filter {
     }
 
 
-    public static ObservableList<String> getAllTeknikers (String festival, String searchText){
+    public static ObservableList<String> getAllTeknikers(String festival, String searchText) {
         // Denne går gjennom alle konserter for en festival og legger til alle unike som inneholder søketeksten i navnet.
         List<String> teknikerStrings = new ArrayList<>();
         List<Concert> concerts = getAllConcerts(festival);
@@ -224,7 +224,7 @@ public class Filter {
         List<String> outputList = new ArrayList<>();
         for (Festival f : Main.festivals) {
             for (Scene s : f.getScene()) {
-                for (Concert c  : s.getKonsert()) {
+                for (Concert c : s.getKonsert()) {
                     if (c.getArtist().equals(band)) {
                         String toAddStr = f.getFestival() + " : " + s.getNavn();
                         outputList.add(toAddStr);
@@ -239,10 +239,10 @@ public class Filter {
         // Denne går gjennom alle festivaler og finner bandet og returnerer listen med tekniske behov.
         List<String> allTekniskeBehov = new ArrayList<>();
         for (Festival f : Main.festivals) {
-            if(f.getFestival().equals("UKA 2017")){
+            if (f.getFestival().equals("UKA 2017")) {
                 for (Scene s : f.getScene()) {
                     for (Concert c : s.getKonsert()) {
-                        for (tekniskeBehov t : c.getTekniskeBehov()){
+                        for (tekniskeBehov t : c.getTekniskeBehov()) {
                             if (c.getArtist().equals(band)) {
                                 String addToStr = t.getBehov();
                                 allTekniskeBehov.add(addToStr);
