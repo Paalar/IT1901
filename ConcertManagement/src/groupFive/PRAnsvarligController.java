@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Filter;
 
-public class PRAnsvarlig_controller {
+public class PRAnsvarligController {
 
     @FXML
     private AnchorPane rootPane;

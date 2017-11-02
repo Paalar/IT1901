@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Bookingsjef_controller {
+public class BookingsjefController {
 
     @FXML
     private AnchorPane rootPane;

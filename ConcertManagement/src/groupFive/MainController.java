@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Main_controller {
+public class MainController {
     @FXML
     private VBox jobsList;
 

@@ -15,7 +15,7 @@ import Json.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tekniker_controller {
+public class TeknikerController {
     private final String UKA = "UKA 2017";
     @FXML
     private TextField textFieldSearch;

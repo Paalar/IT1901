@@ -27,7 +27,7 @@ import java.util.List;
 
 import static util.Filter.*;
 
-public class Bookingansvarlig_controller {
+public class BookingansvarligController {
     @FXML
     private CheckBox remove2017;
 

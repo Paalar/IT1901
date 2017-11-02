@@ -16,15 +16,18 @@ import java.io.IOException;
 import java.util.List;
 
 public class Main extends Application {
-    Constants constants = new Constants();
     public static List<Festival> festivals;
     public static List<Offer> offers;
+    Constants constants = new Constants();
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        if(Constants.getHome() == null){
+        if (Constants.getHome() == null) {
             constants.setHome("Main");
             constants.setCurrent("Main");
         }
@@ -36,13 +39,9 @@ public class Main extends Application {
         offers = JsonDecode.parseJSONOffers();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     public void changeView(AnchorPane rootPane, String fxmlFile) {
         // Denne burde også legge til hva du har endret til i en stack så vi kan lett lage fram og tilbake knapper.
-        fxmlFile = fxmlFile.replace("ø","o");
+        fxmlFile = fxmlFile.replace("ø", "o");
         fxmlFile = fxmlFile.replace("-", "");
         constants.setPrev(constants.getCurrent());
         constants.setCurrent(fxmlFile);
@@ -55,7 +54,7 @@ public class Main extends Application {
         }
     }
 
-    public void changeViewBack(AnchorPane rootPane, String fxmlFile){
+    public void changeViewBack(AnchorPane rootPane, String fxmlFile) {
         constants.setForw(fxmlFile);
         constants.setCurrent(fxmlFile);
         changeView(rootPane, constants.getPrev());

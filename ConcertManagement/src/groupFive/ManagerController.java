@@ -15,7 +15,7 @@ import java.util.List;
 
 import static Json.JsonEncode.JsonInsert;
 
-public class Manager_controller {
+public class ManagerController {
     @FXML
     private ListView listOfOfferView;
 

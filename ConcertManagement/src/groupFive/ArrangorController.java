@@ -22,7 +22,7 @@ import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
 
-public class Arrangor_controller {
+public class ArrangorController {
 
     private Button lastButtPress = null;
 
