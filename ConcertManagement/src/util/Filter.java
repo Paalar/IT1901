@@ -290,13 +290,18 @@ public class Filter {
         }
         return ("");
     }
-//    public static ArrayList<String> filterList(ArrayList<String> wholeList, String split) {
-//        ArrayList<String> listToAdd = new ArrayList<>();
-//        for (int x  = 0; x < wholeList.size(); x++) {
-//            if (wholeList.get(x).startsWith(split)) {
-//                listToAdd.add(wholeList.get(x).replace(split, ""));
-//            }
-//        }
-//        return listToAdd;
-//    }
+
+    public static String[] getAvailability(String date) {
+        // Hardcodet til uka 2017.
+        String[] output = {"available", "available", "available"};
+        for (Scene s : Main.festivals.get(0).getScene()) {
+            for (Concert c : s.getKonsert()) {
+                if (c.getDato().equals(date)) {
+                    int festIndex = Main.festivals.get(0).getScene().indexOf(s);
+                    output[festIndex] = "Busy - " + c.getArtist();
+                }
+            }
+        }
+        return output;
+    }
 }
