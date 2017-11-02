@@ -66,8 +66,12 @@ public class BookingsjefController {
     @FXML
     private void focusTabOne() {
         if (hasInitialized) {
-            repeatFocus(vBoxBands.getChildren().get(0));
-            generatePricesAndPutInTextAreas("Avenged Sevenfold");
+            try {
+                repeatFocus(vBoxBands.getChildren().get(0));
+                generatePricesAndPutInTextAreas("Avenged Sevenfold");
+            } catch (Exception e) {
+                System.out.println("Du har ingen band i listen og kan ikke velge den første.");
+            }
         }
     }
 
