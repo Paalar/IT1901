@@ -16,8 +16,11 @@
 
 #labelBandInfo {
    -fx-font-size: 28;
-   }
+}
 
+#totalKnaus, #totalStor, #totaltDod, #labelKonsert {
+    -fx-font-size: 20;
+}
 /* List of buttons */
 
 #jobsList {
@@ -141,6 +144,11 @@
  -fx-background-color: #D6CFCB;
  -fx-border-radius: 10 10 0 0;
  -fx-background-radius: 10;
+}
+
+#scrollPane2 {
+    -fx-background: #D6CFCB;
+    -fx-background-color: #D6CFCB;
 }
 
 /* Margin
