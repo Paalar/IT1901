@@ -63,33 +63,6 @@ public class Bookingansvarlig_controller {
         putGenreInList();
         hasInitialized = true;
         focusTabOne();
-        fixDatePicker();
-    }
-
-    private void fixDatePicker() {
-        String[] festivalStart = Main.festivals.get(0).getDatoStart().split("-");
-        Callback<DatePicker, DateCell> dayCellFactor = new Callback<DatePicker, DateCell>() {
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        String[] festivalStart = Main.festivals.get(0).getDatoStart().split("-");
-                        String[] festivalSlutt = Main.festivals.get(0).getDatoSlutt().split("-");
-                        if (item.isBefore(LocalDate.of(Integer.parseInt(festivalStart[2]),Integer.parseInt(festivalStart[1]),Integer.parseInt(festivalStart[0])))) {
-                            setEditable(false);
-                            setDisable(true);
-                            setStyle("-fx-background-color: rgba(255,134,90,0);");
-                        }
-                        if (item.isAfter(LocalDate.of(Integer.parseInt(festivalSlutt[2]),Integer.parseInt(festivalSlutt[1]),Integer.parseInt(festivalSlutt[0])))){
-                            setEditable(false);
-                            setDisable(true);
-                            setStyle("-fx-background-color: rgba(255,134,90,0);");
-                        }
-                    }
-                };
-            }
-        };
-        datePicker.setDayCellFactory(dayCellFactor);
     }
 
     private void repeatFocus(Node node) {
@@ -248,6 +221,21 @@ public class Bookingansvarlig_controller {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         try {
             String date = datePicker.getValue().format(formatter);
+            int[] dateSplitted = new int[3];
+            int[] festivalStart = new int[3];
+            int[] festivalSlutt = new int[3];
+            for (int i = 0; i < 3; i++) {
+                dateSplitted[i] = Integer.valueOf(date.split("-")[i]);
+                festivalStart[i] = Integer.valueOf(Main.festivals.get(0).getDatoStart().split("-")[i]);
+                festivalSlutt[i] = Integer.valueOf(Main.festivals.get(0).getDatoSlutt().split("-")[i]);
+            }
+
+
+            if (!(dateSplitted[2] == festivalStart[2] && dateSplitted[1] == festivalStart[1] && dateSplitted[0] >= festivalStart[0] && dateSplitted[0] <= festivalSlutt[0])) {
+                Popup.showPopup("Tilbud","Dato er ikke innenfor festivalen.", "");
+                return;
+            }
+
             String artist = textFieldArtist.getText();
             int pris = Integer.valueOf(textFieldPris.getText());
             JsonEncode.writeNewOffer(date, artist, pris);
