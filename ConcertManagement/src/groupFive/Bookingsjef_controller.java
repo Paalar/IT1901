@@ -13,9 +13,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import util.Filter;
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +29,7 @@ public class Bookingsjef_controller {
     private AnchorPane rootPane;
 
     @FXML
-    private VBox vBoxBands, velgScene;
+    private VBox vBoxBands, velgScene, vBoxDatoer;
 
     @FXML
     private TextField textFieldSearchBar;
@@ -37,7 +40,7 @@ public class Bookingsjef_controller {
     private List<TextArea> textAreas;
 
     @FXML
-    private Label labelScene1, labelScene2, labelScene3, labelBillettPris;
+    private Label labelScene1, labelScene2, labelScene3, labelBillettPris, totalKnaus, totalStor, totaltDod;
 
     @FXML
     private ListView listViewFestival, listViewArtist, listViewSjanger, listViewPlasser, listViewBillettpris, listViewArtistpris, listViewEconomy, listNotEvaluated, listAccepted, listDeclined;
@@ -53,8 +56,9 @@ public class Bookingsjef_controller {
         textAreas = Arrays.asList(textAreaScene1, textAreaScene2, textAreaScene3);
         labels = Arrays.asList(labelScene1, labelScene2, labelScene3);
         generatePricesAndPutInTextAreas("Avenged Sevenfold");
-        hasInitialized = true;
         putOffersInLists();
+        putConcertDatesInList();
+        hasInitialized = true;
         focusTabOne();
     }
 
@@ -268,5 +272,47 @@ public class Bookingsjef_controller {
     @FXML
     private void declineOffer() {
         approveOrDecline("ikke godkjent");
+    }
+
+    private void putConcertDatesInList() {
+        int[] sumBusyScenes = {0, 0, 0};
+
+
+        String dagFestivalStart = Main.festivals.get(0).getDatoStart();
+        String dagFestivalSlutt = Main.festivals.get(0).getDatoSlutt();
+        int dagStartInt = Integer.valueOf(dagFestivalStart.split("-")[0]);
+        int dagSluttInt = Integer.valueOf(dagFestivalSlutt.split("-")[0]);
+
+        for (int i = dagStartInt; i <= dagSluttInt; i++) {
+            HBox hbox = new HBox();
+            TextField tf = createTextField(i + "-10-2017", "white");
+            hbox.getChildren().add(tf);
+            String[] availability = Filter.getAvailability(i + "-10-2017");
+
+            for (int j = 0; j < 3; j++) {
+                TextField tfAvail;
+                if (availability[j].equals("Ledig")) {
+                    tfAvail = createTextField("Ledig", "lightgreen");
+                } else {
+                    tfAvail = createTextField(availability[j], "pink");
+                    sumBusyScenes[j]++;
+                }
+                hbox.getChildren().add(tfAvail);
+            }
+            vBoxDatoer.getChildren().add(hbox);
+        }
+        totaltDod.setText("Totalt: " + String.valueOf(sumBusyScenes[0]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalStor.setText("Totalt: " + String.valueOf(sumBusyScenes[1]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalKnaus.setText("Totalt: " + String.valueOf(sumBusyScenes[2]) + "/" +String.valueOf(dagSluttInt - dagStartInt + 1));
+
+    }
+
+    public TextField createTextField(String name, String color) {
+        final TextField textField = new TextField(name);
+        textField.setId("");
+        textField.setPrefSize(275,20);
+        textField.setFont(Font.font("Arial", 15));
+        textField.setStyle("-fx-background-color:" + color);
+        return textField;
     }
 }
