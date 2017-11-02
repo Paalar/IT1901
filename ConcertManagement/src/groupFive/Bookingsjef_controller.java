@@ -59,15 +59,12 @@ public class Bookingsjef_controller {
         putOffersInLists();
         putConcertDatesInList();
         hasInitialized = true;
-
+        focusTabOne();
     }
 
     private void repeatFocus(Node node) {
         Platform.runLater(() -> {
-            if (!node.isFocused()) {
-                node.requestFocus();
-                repeatFocus(node);
-            }
+            node.requestFocus();
         });
     }
 
@@ -191,9 +188,10 @@ public class Bookingsjef_controller {
                 }
             }
         }
+        int[] plasserArray = {7000, 1000, 200};
         for (int i = 0; i < 3; i++) {
             labels.get(i).setText(scenes.get(i));
-            int plasser = Filter.getSceneSize(scenes.get(i));
+            int plasser = plasserArray[i];
             double multipliers = prevConcertMultiplier * sales * popularity;
             if (multipliers < 1.0) {
                 multipliers += 1.0;
@@ -236,11 +234,15 @@ public class Bookingsjef_controller {
         listNotEvaluated.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                String clicked = listNotEvaluated.getSelectionModel().getSelectedItem().toString();
-                clicked = clicked.split(" - ")[0];
-                clicked = clicked.replaceAll("[\\t\\n]+", "");
-                // fjerner alle tabs og new lines.
-                offerBandSelected = clicked;
+                try {
+                    String clicked = listNotEvaluated.getSelectionModel().getSelectedItem().toString();
+                    clicked = clicked.split(" - ")[0];
+                    clicked = clicked.replaceAll("[\\t\\n]+", "");
+                    // fjerner alle tabs og new lines.
+                    offerBandSelected = clicked;
+                } catch (Exception e) {
+                    System.out.println("Du har ingen i listen.");
+                }
             }
         });
     }

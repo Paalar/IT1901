@@ -256,6 +256,21 @@ public class Filter {
         return FXCollections.observableArrayList(allTekniskeBehov);
     }
 
+    public static List<String> getAllBandsSpecificFestival(String festival) {
+        List<String> artists = new ArrayList<>();
+        for (Festival f : Main.festivals) {
+            if (f.getFestival().equals(festival)) {
+                for (Scene s : f.getScene()) {
+                    for (Concert c : s.getKonsert()) {
+                        artists.add(c.getArtist());
+                    }
+                }
+
+            }
+        }
+        return artists;
+    }
+
     public static List<String> getAllBandsFestivalsExcept(String exceptionFestival) {
         List<String> artistsUkaException = new ArrayList<>();
         List<String> artistsOlder = new ArrayList<>();
