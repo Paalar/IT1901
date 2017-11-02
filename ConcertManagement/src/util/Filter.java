@@ -308,12 +308,12 @@ public class Filter {
 
     public static String[] getAvailability(String date) {
         // Hardcodet til uka 2017.
-        String[] output = {"available", "available", "available"};
+        String[] output = {"Ledig", "Ledig", "Ledig"};
         for (Scene s : Main.festivals.get(0).getScene()) {
             for (Concert c : s.getKonsert()) {
                 if (c.getDato().equals(date)) {
                     int festIndex = Main.festivals.get(0).getScene().indexOf(s);
-                    output[festIndex] = "Busy - " + c.getArtist();
+                    output[festIndex] = "Opptatt - " + c.getArtist();
                 }
             }
         }

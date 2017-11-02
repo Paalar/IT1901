@@ -291,8 +291,8 @@ public class Bookingsjef_controller {
 
             for (int j = 0; j < 3; j++) {
                 TextField tfAvail;
-                if (availability[j].equals("available")) {
-                    tfAvail = createTextField("Available", "lightgreen");
+                if (availability[j].equals("Ledig")) {
+                    tfAvail = createTextField("Ledig", "lightgreen");
                 } else {
                     tfAvail = createTextField(availability[j], "pink");
                     sumBusyScenes[j]++;
