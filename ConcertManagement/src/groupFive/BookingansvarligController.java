@@ -24,9 +24,6 @@ public class BookingansvarligController {
     private CheckBox remove2017;
 
     @FXML
-    private TextField searchBand;
-
-    @FXML
     private AnchorPane rootPane;
 
     @FXML
@@ -39,7 +36,7 @@ public class BookingansvarligController {
     private Label labelBandInfo;
 
     @FXML
-    private TextField textFieldArtist, textFieldPris;
+    private TextField textFieldArtist, textFieldPris, searchBand;
 
     @FXML
     private DatePicker datePicker;
@@ -239,6 +236,8 @@ public class BookingansvarligController {
         textFieldPris.setText("");
         // Fjerner informasjon i textfieldene etter den har blitt lagret.
     }
+
+
 
 
     @FXML

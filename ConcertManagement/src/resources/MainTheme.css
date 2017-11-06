@@ -18,7 +18,7 @@
    -fx-font-size: 28;
 }
 
-#totalKnaus, #totalStor, #totaltDod, #labelKonsert {
+#totalKnaus, #totalStor, #totaltDod, #labelKonsert, #totalTilb {
     -fx-font-size: 20;
 }
 /* List of buttons */
