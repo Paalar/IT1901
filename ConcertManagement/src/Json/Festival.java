@@ -8,10 +8,6 @@ public class Festival {
     private String datoStart;
     private String datoSlutt;
     private List<Scene> scene;
-    /*
-    List<Offer> tilbud;
-    List<Result> resultat;
-    */
 
     public String getFestival() {
         return festival;
@@ -44,12 +40,4 @@ public class Festival {
     public void setScene(List<Scene> scene) {
         this.scene = scene;
     }
-
-    /*
-    public List<Offer> getTilbud() { return tilbud; }
-
-    public List<Result> getResultat() {
-        return resultat;
-    }
-    */
 }

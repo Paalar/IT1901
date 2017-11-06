@@ -12,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import util.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -22,7 +21,7 @@ import java.util.List;
 
 import static util.Filter.getAllFestivalsObservableList;
 
-public class Arrangor_controller {
+public class ArrangorController {
 
     private Button lastButtPress = null;
 
@@ -137,12 +136,12 @@ public class Arrangor_controller {
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {
                 for (int i = 0; i < f.getScene().size(); i++) {
-                    if(scene.equals(f.getScene().get(i).getNavn()) || scene.equals("All Scenes")) {
+                    if (scene.equals(f.getScene().get(i).getNavn()) || scene.equals("All Scenes")) {
                         List<Concert> concerts = f.getScene().get(i).getKonsert();
                         for (int n = 0; n < concerts.size(); n++) {
                             Button btn = createButton(concerts.get(n).getArtist());
                             btn.setId("tekButts");
-                            btn.setPrefSize(200,20);
+                            btn.setPrefSize(200, 20);
                             vboxArtists.getChildren().add(btn);
                         }
                     }
@@ -193,7 +192,7 @@ public class Arrangor_controller {
         //Lager knapper
         final Button button = new Button(name);
         button.setId("arrScenes");
-        button.setPrefSize(300,50);
+        button.setPrefSize(300, 50);
         button.setOnMouseClicked(event -> {
             try {
                 lastButtPress = button;
@@ -244,9 +243,9 @@ public class Arrangor_controller {
 
 
     @FXML
-    private void goHome(){
+    private void goHome() {
         Main main = new Main();
-        main.changeView(rootPane, Constants.getHome());
+        main.changeView(rootPane, "Main");
     }
 
 }

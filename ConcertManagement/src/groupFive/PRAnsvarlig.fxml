@@ -12,122 +12,128 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.PRAnsvarlig_controller">
-   <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <ButtonBar fx:id="buttonBar" BorderPane.alignment="CENTER">
-              <buttons>
-                  <Label />
-                  <Label fx:id="labelArrTitle" alignment="CENTER" text="PR-Ansvarlig" />
-                <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="762.0" text="Logg ut" />
-              </buttons>
-            </ButtonBar>
-         </top>
-         <left>
-             <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-                 <children>
-                     <VBox fx:id="vboxSearch">
-                         <children>
-                             <Label text="Søk på band">
-                                 <VBox.margin>
-                                     <Insets bottom="5.0" top="10.0" />
-                                 </VBox.margin>
-                             </Label>
-                             <TextField fx:id="searchBand" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk.." />
-                         </children>
-                         <VBox.margin>
-                             <Insets />
-                         </VBox.margin>
-                     </VBox>
-                     <ScrollPane fx:id="scrollPane" prefWidth="180.0">
-                         <content>
-                             <AnchorPane fx:id="scrollPaneAnchor" minHeight="0.0" minWidth="0.0">
-                                 <children>
-                                     <VBox fx:id="vBoxBands">
-                                         <padding>
-                                             <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                                         </padding>
-                                         <children>
-                                             <!-- <Label fx:id="txt_velg_band" text="Velg band" visible="false">
-                                         <VBox.margin>
-                                            <Insets bottom="10.0" left="15.0" top="10.0" />
-                                         </VBox.margin>
-                                         <font>
-                                            <Font size="18.0" />
-                                         </font>
-                                      </Label>-->
-                                         </children>
-                                     </VBox>
-                                 </children>
-                             </AnchorPane>
-                         </content>
-                         <VBox.margin>
-                             <Insets />
-                         </VBox.margin>
-                     </ScrollPane>
-                 </children>
-                 <BorderPane.margin>
-                     <Insets />
-                 </BorderPane.margin>
-             </VBox>
-         </left>
-         <center>
-            <HBox spacing="50.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox spacing="20.0">
-                     <children>
-                        <Label text="E-post">
-                           <graphic>
-                              <TextField fx:id="textFieldEmail" editable="false" />
-                           </graphic>
-                        </Label>
-                        <Label text="Salgstall">
-                           <graphic>
-                              <TextField fx:id="textFieldSales" editable="false" />
-                           </graphic>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <HBox>
-                     <children>
-                        <VBox spacing="10.0">
-                           <children>
-                              <Label fx:id="labelBandInfo" text="Velg en artist" />
-                              <HBox>
-                                 <children>
-                                    <TextArea fx:id="textAreaOmtale" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                    </TextArea>
-                                    <Label alignment="CENTER" text="Presseomtale">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
-                                 <graphic>
-                                    <TextField fx:id="textFieldLink1" editable="false" prefWidth="483.0" />
-                                 </graphic>
-                              </Label>
-                              <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
-                                 <graphic>
-                                    <TextField fx:id="textFieldLink2" editable="false" prefWidth="483.0" />
-                                 </graphic>
-                              </Label>
-                           </children>
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="groupFive.PRAnsvarligController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="0.0">
+            <top>
+                <ButtonBar fx:id="buttonBar" BorderPane.alignment="CENTER">
+                    <buttons>
+                        <Label/>
+                        <Label fx:id="labelArrTitle" alignment="CENTER" text="PR-Ansvarlig"/>
+                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0"
+                                prefWidth="762.0" text="Logg ut"/>
+                    </buttons>
+                </ButtonBar>
+            </top>
+            <left>
+                <VBox fx:id="tabVboxBorderLeft" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox fx:id="vboxSearch">
+                            <children>
+                                <Label text="Søk på band">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <TextField fx:id="searchBand" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar"
+                                           promptText="Søk.."/>
+                            </children>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
                         </VBox>
-                     </children>
-                  </HBox>
-               </children>
-               <BorderPane.margin>
-                  <Insets left="20.0" right="20.0" top="230.0" />
-               </BorderPane.margin>
-            </HBox>
-         </center>
-      </BorderPane>
-   </children>
+                        <ScrollPane fx:id="scrollPane" prefWidth="180.0">
+                            <content>
+                                <AnchorPane fx:id="scrollPaneAnchor" minHeight="0.0" minWidth="0.0">
+                                    <children>
+                                        <VBox fx:id="vBoxBands">
+                                            <padding>
+                                                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0"/>
+                                            </padding>
+                                            <children>
+                                                <!-- <Label fx:id="txt_velg_band" text="Velg band" visible="false">
+                                            <VBox.margin>
+                                               <Insets bottom="10.0" left="15.0" top="10.0" />
+                                            </VBox.margin>
+                                            <font>
+                                               <Font size="18.0" />
+                                            </font>
+                                         </Label>-->
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </ScrollPane>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets/>
+                    </BorderPane.margin>
+                </VBox>
+            </left>
+            <center>
+                <HBox spacing="50.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox spacing="20.0">
+                            <children>
+                                <Label text="E-post">
+                                    <graphic>
+                                        <TextField fx:id="textFieldEmail" editable="false"/>
+                                    </graphic>
+                                </Label>
+                                <Label text="Salgstall">
+                                    <graphic>
+                                        <TextField fx:id="textFieldSales" editable="false"/>
+                                    </graphic>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <HBox>
+                            <children>
+                                <VBox spacing="10.0">
+                                    <children>
+                                        <Label fx:id="labelBandInfo" text="Velg en artist"/>
+                                        <HBox>
+                                            <children>
+                                                <TextArea fx:id="textAreaOmtale" editable="false" maxHeight="-Infinity"
+                                                          maxWidth="-Infinity" wrapText="true">
+                                                    <HBox.margin>
+                                                        <Insets right="10.0"/>
+                                                    </HBox.margin>
+                                                </TextArea>
+                                                <Label alignment="CENTER" text="Presseomtale">
+                                                    <HBox.margin>
+                                                        <Insets/>
+                                                    </HBox.margin>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
+                                            <graphic>
+                                                <TextField fx:id="textFieldLink1" editable="false" prefWidth="483.0"/>
+                                            </graphic>
+                                        </Label>
+                                        <Label maxWidth="1.7976931348623157E308" text="Lenke til presseomtale">
+                                            <graphic>
+                                                <TextField fx:id="textFieldLink2" editable="false" prefWidth="483.0"/>
+                                            </graphic>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets left="20.0" right="20.0" top="230.0"/>
+                    </BorderPane.margin>
+                </HBox>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>

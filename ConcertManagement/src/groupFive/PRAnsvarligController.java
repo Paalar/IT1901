@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import util.Filter;
 
-public class PRAnsvarlig_controller {
+public class PRAnsvarligController {
 
     @FXML
     private AnchorPane rootPane;
@@ -63,7 +63,7 @@ public class PRAnsvarlig_controller {
         while (band.contains(" ")) {
             band = band.replace(" ", "");
         }
-        band = band.replace("å","aa");
+        band = band.replace("å", "aa");
         band = band.replace("æ", "ae");
         band = band.replace("ø", "o");
         return band;
@@ -101,13 +101,12 @@ public class PRAnsvarlig_controller {
         // Denne lager og returnerer en Button.
         final Button button = new Button(name);
         button.setId("arrScenes");
-        button.setPrefSize(200,20);
+        button.setPrefSize(200, 20);
         button.setOnMouseClicked(event -> {
             putInfoInTextAreas(name);
         });
         return button;
     }
-
 
 
     @FXML
@@ -117,7 +116,7 @@ public class PRAnsvarlig_controller {
     }
 
     @FXML
-    private void goHome(){
+    private void goHome() {
         String fxmlFileName = "Main";
         Main main = new Main();
         main.changeView(rootPane, fxmlFileName);
