@@ -23,8 +23,6 @@ import static util.Filter.getAllFestivalsObservableList;
 
 public class ArrangorController {
 
-    private Button lastButtPress = null;
-
     @FXML
     private ScrollPane scrollPane;
 
@@ -101,7 +99,6 @@ public class ArrangorController {
         putSceneNamesInTextBox(Main.festivals.get(0).getFestival(), "All Scenes");
 
         // Fokuserer og viser navnene til de som jobber for første konsert.
-        String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
         showArbeidere(Main.festivals.get(0).getScene().get(0).getKonsert().get(0).getArtist());
         repeatFocus(vboxArtists.getChildren().get(0));
         totalView();
@@ -195,7 +192,6 @@ public class ArrangorController {
         button.setPrefSize(300, 50);
         button.setOnMouseClicked(event -> {
             try {
-                lastButtPress = button;
                 showArbeidere(name);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -208,8 +204,6 @@ public class ArrangorController {
         String scene = choiceBoxScenes.getItems().get(sceneSelected).toString();
         String festival = choiceBoxFestivals.getItems().get(festivalSelected).toString();
         ArrayList<String> totalOversikt = new ArrayList<>();
-//        vboxLightTech.getChildren().clear();
-//        vboxSoundTech.getChildren().clear();
 
         for (Festival f : Main.festivals) {
             if (f.getFestival().equals(festival)) {

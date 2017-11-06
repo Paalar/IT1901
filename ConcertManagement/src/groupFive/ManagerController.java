@@ -16,41 +16,18 @@ import java.util.List;
 import static Json.JsonEncode.JsonInsert;
 
 public class ManagerController {
-    @FXML
-    private ListView listOfOfferView;
 
     @FXML
     private ListView needListAdded;
 
     @FXML
-    private TextField listOfNeedsAddedLabel;
+    private TextField listOfNeedsAddedLabel, need, inputFieldNeed;
 
     @FXML
-    private TextField need;
+    private Label artist, scene, date;
 
     @FXML
-    private TextField inputFieldNeed;
-
-    @FXML
-    private Label artist;
-
-    @FXML
-    private Label scene;
-
-    @FXML
-    private Label date;
-
-    private String artistNameString = "";
-    private String sceneNameString;
-    private String datoString;
-
-    private Button buttonName;
-
-    @FXML
-    private Button sendButton;
-
-    @FXML
-    private Button addButton;
+    private Button sendButton, addButton;
 
     @FXML
     private AnchorPane rootPane;
@@ -58,8 +35,9 @@ public class ManagerController {
     @FXML
     private VBox needsNotSent1;
 
+    private String artistNameString = "", sceneNameString, datoString;
+    private Button buttonName;
     private List<String> needsList = new ArrayList<>();
-
     private List<Offer> offers = new ArrayList<>();
     private String err = "error";
 

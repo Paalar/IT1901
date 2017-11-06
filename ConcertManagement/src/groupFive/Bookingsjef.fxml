@@ -16,47 +16,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css"
-            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="groupFive.BookingsjefController">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../resources/MainTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="groupFive.BookingsjefController">
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
                 <ButtonBar fx:id="labelArrtTitle" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <buttons>
-                        <Label/>
-                        <Label fx:id="labelArrTitle" alignment="CENTER" text="Bookingsjef"/>
-                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goBack" prefWidth="407.0"
-                                text="Logg ut"/>
+                        <Label />
+                        <Label fx:id="labelArrTitle" alignment="CENTER" text="Bookingsjef" />
+                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goBack" prefWidth="407.0" text="Logg ut" />
                     </buttons>
                     <BorderPane.margin>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </BorderPane.margin>
                     <padding>
-                        <Insets bottom="5.0" right="20.0" top="5.0"/>
+                        <Insets bottom="5.0" right="20.0" top="5.0" />
                     </padding>
                 </ButtonBar>
             </top>
             <center>
-                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
-                         BorderPane.alignment="CENTER">
+                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                     <tabs>
                         <Tab fx:id="tabButt" onSelectionChanged="#focusTabOne" text="Forslag til billettpris">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
-                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <center>
                                                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                                     <children>
                                                         <Label fx:id="labelBillettPris" text="Forslag til billettpris">
                                                             <padding>
-                                                                <Insets bottom="30.0"/>
+                                                                <Insets bottom="30.0" />
                                                             </padding>
                                                             <font>
-                                                                <Font name="Arial Bold" size="24.0"/>
+                                                                <Font name="Arial Bold" size="24.0" />
                                                             </font>
                                                         </Label>
                                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -65,65 +59,56 @@
                                                                     <children>
                                                                         <Label fx:id="labelScene1" text="Label">
                                                                             <VBox.margin>
-                                                                                <Insets bottom="5.0"/>
+                                                                                <Insets bottom="5.0" />
                                                                             </VBox.margin>
                                                                         </Label>
-                                                                        <TextArea fx:id="textAreaScene1"
-                                                                                  editable="false"
-                                                                                  maxHeight="-Infinity"/>
+                                                                        <TextArea fx:id="textAreaScene1" editable="false" maxHeight="-Infinity" />
                                                                     </children>
                                                                 </VBox>
                                                                 <VBox>
                                                                     <children>
                                                                         <Label fx:id="labelScene2" text="Label">
                                                                             <VBox.margin>
-                                                                                <Insets bottom="5.0"/>
+                                                                                <Insets bottom="5.0" />
                                                                             </VBox.margin>
                                                                         </Label>
-                                                                        <TextArea fx:id="textAreaScene2"
-                                                                                  editable="false"
-                                                                                  maxHeight="-Infinity"/>
+                                                                        <TextArea fx:id="textAreaScene2" editable="false" maxHeight="-Infinity" />
                                                                     </children>
                                                                 </VBox>
                                                                 <VBox>
                                                                     <children>
                                                                         <Label fx:id="labelScene3" text="Label">
                                                                             <VBox.margin>
-                                                                                <Insets bottom="5.0"/>
+                                                                                <Insets bottom="5.0" />
                                                                             </VBox.margin>
                                                                         </Label>
-                                                                        <TextArea fx:id="textAreaScene3"
-                                                                                  editable="false"
-                                                                                  maxHeight="-Infinity"/>
+                                                                        <TextArea fx:id="textAreaScene3" editable="false" maxHeight="-Infinity" />
                                                                     </children>
                                                                 </VBox>
                                                             </children>
                                                             <VBox.margin>
-                                                                <Insets left="100.0" right="100.0"/>
+                                                                <Insets left="100.0" right="100.0" />
                                                             </VBox.margin>
                                                         </HBox>
                                                     </children>
                                                     <padding>
-                                                        <Insets bottom="100.0"/>
+                                                        <Insets bottom="100.0" />
                                                     </padding>
                                                 </VBox>
                                             </center>
                                             <left>
-                                                <VBox prefHeight="200.0" prefWidth="300.0"
-                                                      BorderPane.alignment="CENTER">
+                                                <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                                                     <children>
                                                         <VBox prefWidth="300.0">
                                                             <children>
                                                                 <Label text="Søk på band">
                                                                     <VBox.margin>
-                                                                        <Insets bottom="5.0"/>
+                                                                        <Insets bottom="5.0" />
                                                                     </VBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="textFieldSearchBar" alignment="CENTER"
-                                                                           onKeyReleased="#onKeyPressSearchBar"
-                                                                           promptText="Søk..">
+                                                                <TextField fx:id="textFieldSearchBar" alignment="CENTER" onKeyReleased="#onKeyPressSearchBar" promptText="Søk..">
                                                                     <VBox.margin>
-                                                                        <Insets bottom="20.0"/>
+                                                                        <Insets bottom="20.0" />
                                                                     </VBox.margin>
                                                                 </TextField>
                                                                 <ScrollPane fx:id="scrollPane" prefWidth="180.0">
@@ -134,19 +119,15 @@
                                                                                     <children>
                                                                                         <Label text="Velg band">
                                                                                             <VBox.margin>
-                                                                                                <Insets bottom="10.0"
-                                                                                                        left="30.0"
-                                                                                                        top="10.0"/>
+                                                                                                <Insets bottom="10.0" left="30.0" top="10.0" />
                                                                                             </VBox.margin>
                                                                                             <font>
-                                                                                                <Font name="System Bold"
-                                                                                                      size="18.0"/>
+                                                                                                <Font name="System Bold" size="18.0" />
                                                                                             </font>
                                                                                         </Label>
                                                                                     </children>
                                                                                     <padding>
-                                                                                        <Insets bottom="10.0" left="5.0"
-                                                                                                right="5.0" top="10.0"/>
+                                                                                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                                                                                     </padding>
                                                                                 </VBox>
                                                                             </children>
@@ -155,20 +136,19 @@
                                                                 </ScrollPane>
                                                             </children>
                                                             <VBox.margin>
-                                                                <Insets bottom="10.0" left="30.0" right="30.0"
-                                                                        top="10.0"/>
+                                                                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                                                             </VBox.margin>
                                                         </VBox>
                                                     </children>
                                                     <BorderPane.margin>
-                                                        <Insets left="25.0" top="20.0"/>
+                                                        <Insets left="25.0" top="20.0" />
                                                     </BorderPane.margin>
                                                 </VBox>
                                             </left>
                                         </BorderPane>
                                     </children>
                                     <padding>
-                                        <Insets top="35.0"/>
+                                        <Insets top="35.0" />
                                     </padding>
                                 </AnchorPane>
                             </content>
@@ -177,22 +157,20 @@
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <left>
-                                                <VBox fx:id="vboxBorderLeft" prefWidth="300.0"
-                                                      BorderPane.alignment="CENTER">
+                                                <VBox fx:id="vboxBorderLeft" prefWidth="300.0" BorderPane.alignment="CENTER">
                                                     <children>
                                                         <Label fx:id="labelBandInfo1" text="Velg scene">
                                                             <font>
-                                                                <Font size="18.0"/>
+                                                                <Font size="18.0" />
                                                             </font>
                                                         </Label>
                                                         <ScrollPane fx:id="scrollPane">
                                                             <content>
                                                                 <AnchorPane fx:id="scrollPaneAnchor">
                                                                     <children>
-                                                                        <VBox fx:id="velgScene" spacing="5.0"/>
+                                                                        <VBox fx:id="velgScene" spacing="5.0" />
                                                                     </children>
                                                                 </AnchorPane>
                                                             </content>
@@ -205,49 +183,49 @@
                                                     <children>
                                                         <VBox>
                                                             <children>
-                                                                <Label text="Festivals"/>
-                                                                <ListView fx:id="listViewFestival"/>
+                                                                <Label text="Festivals" />
+                                                                <ListView fx:id="listViewFestival" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="10.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Artist"/>
-                                                                <ListView fx:id="listViewArtist"/>
+                                                                <Label text="Artist" />
+                                                                <ListView fx:id="listViewArtist" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="258.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Sjanger"/>
-                                                                <ListView fx:id="listViewSjanger"/>
+                                                                <Label text="Sjanger" />
+                                                                <ListView fx:id="listViewSjanger" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="506.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Solgte Billetter"/>
-                                                                <ListView fx:id="listViewPlasser"/>
+                                                                <Label text="Solgte Billetter" />
+                                                                <ListView fx:id="listViewPlasser" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="745.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Billettpris"/>
-                                                                <ListView fx:id="listViewBillettpris"/>
+                                                                <Label text="Billettpris" />
+                                                                <ListView fx:id="listViewBillettpris" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="794.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Artistpris"/>
-                                                                <ListView fx:id="listViewArtistpris"/>
+                                                                <Label text="Artistpris" />
+                                                                <ListView fx:id="listViewArtistpris" />
                                                             </children>
                                                         </VBox>
                                                         <VBox layoutX="826.0" layoutY="10.0">
                                                             <children>
-                                                                <Label text="Økonomisk resultat"/>
-                                                                <ListView fx:id="listViewEconomy"/>
+                                                                <Label text="Økonomisk resultat" />
+                                                                <ListView fx:id="listViewEconomy" />
                                                             </children>
                                                         </VBox>
                                                     </children>
                                                     <BorderPane.margin>
-                                                        <Insets right="20.0" top="50.0"/>
+                                                        <Insets right="20.0" top="50.0" />
                                                     </BorderPane.margin>
                                                 </HBox>
                                             </center>
@@ -260,33 +238,22 @@
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <center>
-                                                <HBox prefHeight="300.0" prefWidth="980.0"
-                                                      BorderPane.alignment="CENTER">
+                                                <HBox prefHeight="300.0" prefWidth="980.0" BorderPane.alignment="CENTER">
                                                     <children>
                                                         <VBox>
                                                             <children>
                                                                 <Label text="Ikke vurdert">
                                                                     <VBox.margin>
-                                                                        <Insets bottom="10.0" left="10.0" right="10.0"
-                                                                                top="10.0"/>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                                     </VBox.margin>
                                                                 </Label>
-                                                                <ListView fx:id="listNotEvaluated"/>
+                                                                <ListView fx:id="listNotEvaluated" />
                                                                 <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                                                     <buttons>
-                                                                        <Button fx:id="approveOfferButton"
-                                                                                mnemonicParsing="false"
-                                                                                onAction="#approveOffer"
-                                                                                prefHeight="23.0" prefWidth="121.0"
-                                                                                text="Godkjenn" translateX="-12.0"/>
-                                                                        <Button fx:id="rejectOfferButton"
-                                                                                mnemonicParsing="false"
-                                                                                onAction="#declineOffer"
-                                                                                prefWidth="121.0" text="Avslå"
-                                                                                translateX="-10.0"/>
+                                                                        <Button fx:id="approveOfferButton" mnemonicParsing="false" onAction="#approveOffer" prefHeight="23.0" prefWidth="121.0" text="Godkjenn" translateX="-12.0" />
+                                                                        <Button fx:id="rejectOfferButton" mnemonicParsing="false" onAction="#declineOffer" prefWidth="121.0" text="Avslå" translateX="-10.0" />
                                                                     </buttons>
                                                                 </ButtonBar>
                                                             </children>
@@ -295,47 +262,43 @@
                                                             <children>
                                                                 <Label text="Godkjent">
                                                                     <VBox.margin>
-                                                                        <Insets bottom="10.0" left="10.0" right="10.0"
-                                                                                top="10.0"/>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                                     </VBox.margin>
                                                                 </Label>
-                                                                <ListView fx:id="listAccepted"/>
+                                                                <ListView fx:id="listAccepted" />
                                                             </children>
                                                         </VBox>
                                                         <VBox>
                                                             <children>
                                                                 <Label text="Avslått">
                                                                     <VBox.margin>
-                                                                        <Insets bottom="10.0" left="10.0" right="10.0"
-                                                                                top="10.0"/>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                                     </VBox.margin>
                                                                 </Label>
-                                                                <ListView fx:id="listDeclined"/>
+                                                                <ListView fx:id="listDeclined" />
                                                             </children>
                                                         </VBox>
                                                     </children>
                                                     <BorderPane.margin>
-                                                        <Insets left="250.0" top="30.0"/>
+                                                        <Insets left="250.0" top="30.0" />
                                                     </BorderPane.margin>
                                                 </HBox>
                                             </center>
                                             <top>
-                                                <Label fx:id="labelBillettPris1" text="Oversikt over tilbud"
-                                                       BorderPane.alignment="CENTER">
+                                                <Label fx:id="labelBillettPris1" text="Oversikt over tilbud" BorderPane.alignment="CENTER">
                                                     <padding>
-                                                        <Insets bottom="30.0"/>
+                                                        <Insets bottom="30.0" />
                                                     </padding>
                                                     <font>
-                                                        <Font name="Arial Bold" size="24.0"/>
+                                                        <Font name="Arial Bold" size="24.0" />
                                                     </font>
                                                     <BorderPane.margin>
-                                                        <Insets top="35.0"/>
+                                                        <Insets top="35.0" />
                                                     </BorderPane.margin>
                                                 </Label>
                                             </top>
                                             <right>
-                                                <AnchorPane prefHeight="475.0" prefWidth="293.0"
-                                                            BorderPane.alignment="CENTER"/>
+                                                <AnchorPane prefHeight="475.0" prefWidth="293.0" BorderPane.alignment="CENTER" />
                                             </right>
                                         </BorderPane>
                                     </children>
@@ -346,8 +309,7 @@
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <center>
                                                 <VBox BorderPane.alignment="CENTER">
                                                     <children>
@@ -355,46 +317,40 @@
                                                             <children>
                                                                 <ButtonBar>
                                                                     <buttons>
-                                                                        <Label fx:id="labelKonsert" prefWidth="282.0"
-                                                                               text="Dato"/>
-                                                                        <Label fx:id="labelKonsert" text="Dødens dal"/>
-                                                                        <Label fx:id="labelKonsert" text="Storsalen"/>
-                                                                        <Label fx:id="labelKonsert" text="Knaus"/>
+                                                                        <Label fx:id="labelKonsert" prefWidth="282.0" text="Dato" />
+                                                                        <Label fx:id="labelKonsert" text="Dødens dal" />
+                                                                        <Label fx:id="labelKonsert" text="Storsalen" />
+                                                                        <Label fx:id="labelKonsert" text="Knaus" />
                                                                     </buttons>
                                                                 </ButtonBar>
                                                                 <ButtonBar prefHeight="40.0" prefWidth="200.0">
                                                                     <buttons>
-                                                                        <Label prefWidth="282.0"/>
-                                                                        <Label fx:id="totaltDod" text="Totalt:"/>
-                                                                        <Label fx:id="totalStor" text="Totalt:"/>
-                                                                        <Label fx:id="totalKnaus" text="Totalt:"/>
+                                                                        <Label fx:id="totalTilb" prefWidth="282.0" text="Antall tilbud:" />
+                                                                        <Label fx:id="totaltDod" text="Antall konserter:" />
+                                                                        <Label fx:id="totalStor" text="Antall konserter:" />
+                                                                        <Label fx:id="totalKnaus" text="Antall konserter:" />
                                                                     </buttons>
                                                                 </ButtonBar>
-                                                                <ScrollPane fx:id="scrollPane2" prefHeight="615.0"
-                                                                            prefWidth="1280.0">
+                                                                <ScrollPane fx:id="scrollPane2" prefHeight="615.0" prefWidth="1280.0">
                                                                     <content>
                                                                         <AnchorPane>
                                                                             <children>
-                                                                                <VBox fx:id="vBoxDatoer" spacing="1.0"
-                                                                                      AnchorPane.bottomAnchor="0.0"
-                                                                                      AnchorPane.leftAnchor="0.0"
-                                                                                      AnchorPane.rightAnchor="0.0"
-                                                                                      AnchorPane.topAnchor="0.0"/>
+                                                                                <VBox fx:id="vBoxDatoer" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                                             </children>
                                                                         </AnchorPane>
                                                                     </content>
                                                                     <padding>
-                                                                        <Insets bottom="5.0" top="5.0"/>
+                                                                        <Insets bottom="5.0" top="5.0" />
                                                                     </padding>
                                                                     <VBox.margin>
-                                                                        <Insets/>
+                                                                        <Insets />
                                                                     </VBox.margin>
                                                                 </ScrollPane>
                                                             </children>
                                                         </VBox>
                                                     </children>
                                                     <BorderPane.margin>
-                                                        <Insets bottom="20.0" left="75.0" right="75.0" top="50.0"/>
+                                                        <Insets bottom="20.0" left="75.0" right="75.0" top="50.0" />
                                                     </BorderPane.margin>
                                                 </VBox>
                                             </center>
@@ -405,7 +361,7 @@
                         </Tab>
                     </tabs>
                     <BorderPane.margin>
-                        <Insets top="15.0"/>
+                        <Insets top="15.0" />
                     </BorderPane.margin>
                 </TabPane>
             </center>

@@ -34,7 +34,7 @@ public class BookingsjefController {
     private List<TextArea> textAreas;
 
     @FXML
-    private Label labelScene1, labelScene2, labelScene3, labelBillettPris, totalKnaus, totalStor, totaltDod;
+    private Label labelScene1, labelScene2, labelScene3, labelBillettPris, totalKnaus, totalStor, totaltDod, totalTilb;
 
     @FXML
     private ListView listViewFestival, listViewArtist, listViewSjanger, listViewPlasser, listViewBillettpris, listViewArtistpris, listViewEconomy, listNotEvaluated, listAccepted, listDeclined;
@@ -299,9 +299,10 @@ public class BookingsjefController {
             }
             vBoxDatoer.getChildren().add(hbox);
         }
-        totaltDod.setText("Totalt: " + String.valueOf(sumBusyScenes[0]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
-        totalStor.setText("Totalt: " + String.valueOf(sumBusyScenes[1]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
-        totalKnaus.setText("Totalt: " + String.valueOf(sumBusyScenes[2]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totaltDod.setText("Antall konserter: " + String.valueOf(sumBusyScenes[0]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalStor.setText("Antall konserter: " + String.valueOf(sumBusyScenes[1]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalKnaus.setText("Antall konserter: " + String.valueOf(sumBusyScenes[2]) + "/" + String.valueOf(dagSluttInt - dagStartInt + 1));
+        totalTilb.setText("Antall tilbud: " + String.valueOf(Main.offers.size()));
 
     }
 
