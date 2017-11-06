@@ -112,12 +112,6 @@ public class ManagerController {
         date.setVisible(what);
     }
 
-    @FXML
-    private void goBack() {
-        String fxmlFileName = "Main";
-        Main main = new Main();
-        main.changeView(rootPane, fxmlFileName);
-    }
 
     @FXML
     private void goHome() {
@@ -293,9 +287,11 @@ public class ManagerController {
             inputFieldNeed.setText("");
         } else {
             String aNeed = inputFieldNeed.getText();
-            needsList.add(aNeed);
-            popListView(needsList, needListAdded);
-            inputFieldNeed.setText("");
+            if (!aNeed.equals("")) {
+                needsList.add(aNeed);
+                popListView(needsList, needListAdded);
+                inputFieldNeed.setText("");
+            }
         }
     }
 
