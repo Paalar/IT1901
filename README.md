@@ -24,12 +24,16 @@ Hvis man vil endre på noe selv, anbefales det å installere Scene Builder som e
 ---
 
 
-For å komme i gang med din egen festival trenger du bare å laste ned dette open-source prosjektet:
+For å komme i gang med din egen festival trenger du bare å laste ned denne mappen:
+* [Direkte link til prosjektet](https://github.com/Paalar/it1901/releases/download/1.2/ConcertManagement.zip)
 
-(Akkurat nå er prosjektet lukket på GitHub.)
+Hvis man ønsker å laste ned hele prosjektet:
 
     git clone https://github.com/Paalar/it1901.git
-    cd ConcertManagement\output\artifacts\ConcertManagement
+ 
+Deretter gå gjennom mappene:
+    
+    ConcertManagement\output\artifacts\ConcertManagement
     
  ##### Windows & Mac
  Kjør ConcertManagement.jar
